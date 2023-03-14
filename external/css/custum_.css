@@ -1,0 +1,61 @@
+.at-expanding-share-button-toggle {
+	display: none !important;
+}
+.sidebar-right-trigger.wave-effect.wave-effect-x {
+	display: none !important;
+}
+.dlab-demo-trigger {
+	display: none !important;
+}
+.img img {
+	padding: 20px;
+	margin-left: 100px;
+	background: #0453a214;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+.centrics {
+	width: 60%;
+	margin: 0 auto;
+}
+
+.main-login-filds label{
+    font-size: 16px;
+}
+
+.main-login-filds input{
+    border: 2px solid #0453a2;
+    border-radius: 0;
+}
+
+.main-login-filds input:focus{
+    border-color: #f3912e;
+}
+
+.main-login-frgt-pass {
+    font-size: 14px;
+    color: #f3912e;
+}
+
+.main-login-frgt-pass:hover {
+    color: #ff2f00;
+}
+
+.sign-txt {
+    font-size: 18px;
+    color: #0453a2;
+}
+
+.main-login-btn {
+    background: #0453a2;
+    border-color: #0453a2;
+    border-radius: 35px;
+    font-size: 16px;
+}
+
+.main-login-btn:hover {
+    background: #f3912e;
+    border-color: #f3912e;
+}
+
+
