@@ -54,7 +54,7 @@ $route['default_controller'] = 'login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-// $route['product-category/(:any)'] = 'product/productcategory/$1';
-// $route['product-category/popular-brands/(:any)'] = 'product/brand/$1';
-// $route['product-category/(:any)/(:any)'] = 'product/productcategory/$1/$2';
+$route['product-category/(:any)'] = 'product/productcategory/$1';
+$route['product-category/popular-brands/(:any)'] = 'product/brand/$1';
+$route['product-category/(:any)/(:any)'] = 'product/productcategory/$1/$2';
 
