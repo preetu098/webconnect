@@ -75,7 +75,7 @@
                                     <span class="nav-text">Clients</span>
                                  </a>
                                  <ul aria-expanded="false" class="left mm-collapse mm-show" style="">
-                                    <li><a href="<?= base_url('clients/'); ?>">Add Clients</a></li>
+                                    <li><a href="<?= base_url('clients'); ?>">Add Clients</a></li>
                                     <li><a href="<?= base_url('clients/manageclients'); ?>">Manage Clients</a></li>
                                     <li><a href="<?= base_url('clients/editclient/'); ?>">Edit Clients</a></li>
                                     <li><a href="<?= base_url('clients/clientpolicies/'); ?>">Manage Policies</a></li>

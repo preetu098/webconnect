@@ -116,10 +116,13 @@ class Client extends MY_Controller
 
     public function dashboard($pid = null)
     {
+        
         if (empty($this->session->userdata('cid'))) {
             redirect("client/index/");
         } else {
-
+            $data['result'] = $this->qm->all("ri_clientpolicy_tbl", "*", array('cid' => $cid));
+            $data['mainContent'] = "client/dashboard";
+            $this->load->view('cpanel', $data);
             $cid = $this->session->userdata('cid');
 
             $data['cid'] = $cid;
@@ -167,9 +170,7 @@ class Client extends MY_Controller
                 }
             }
 
-            $data['result'] = $this->qm->all("ri_clientpolicy_tbl", "*", array('cid' => $cid));
-            $data['mainContent'] = "client/dashboard";
-            $this->load->view('cpanel', $data);
+            
         }
     }
 

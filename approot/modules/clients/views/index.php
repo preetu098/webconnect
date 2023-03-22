@@ -9,11 +9,6 @@
                </div>
                <div class="row">
                 
-                  
-                 
-               
-                  
-                
                   <div class="col-xl-12 col-lg-12">
                      <div class="card">
                         <div class="card-header">
@@ -54,15 +49,15 @@
                                        <select class="form-control" name="cname" id="cname" onchange="myFunction(this.value)">
                                         <option>Select Company</option>
                                         <?php 
-                                        //   $cli = $this->qm->all('ad_crm_account');
-                                        //   foreach ($cli as $cli) {   
-                                        /*$curl = curl_init();
+                                           $cli = $this->qm->all('ad_crm_account');
+                                           foreach ($cli as $cli) {   
+                                        $curl = curl_init();
                                         curl_setopt($curl, CURLOPT_URL, "https://crm.riskbirbal.com/admin/api/api/index_get/?tb=acc");
                                         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
                                         $output = curl_exec($curl);
                                         $decode=json_decode($output);
                                         curl_close($curl);
-                                        print_r($data);*/
+                                        print_r($data);
                                         
                                         $decode = $this->qm->all2("ad_crm_account","*",array('account_type_id'=>'2'));
                                   
