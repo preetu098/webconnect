@@ -1,3 +1,9 @@
+<?php
+echo $pid;
+echo $cid;
+print_r($_GET);
+echo "hi";
+?>
 <div class="content-body">
     <div class="container-fluid">
         <div class="row page-titles">
@@ -48,8 +54,8 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="card-body">
+                        <div class="table-responsive">
                         <div class="table-responsive">
                             <table id="example2" class="display" style="min-width: 845px">
                                 <thead>
@@ -110,6 +116,7 @@
                                     <?php } ?>
                                 </tbody>
                             </table>
+                        </div>
                         </div>
                     </div>
                 </div>

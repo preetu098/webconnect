@@ -748,10 +748,13 @@ class Clients extends MY_Controller
     {
         $data = [];
         $post = $this->input->post();
+        print_r($post);
         $post['cid'] = $cid;
         $post['pid'] = $pid;
-        $post['created_on'] = $cid;
-        $post['modified_on'] = $cid;
+        $post['upto_days'] = $cid;
+        $post['premium_collected'] = $pid;
+        // $post['created_on'] = $cid;
+        // $post['modified_on'] = $cid;
 
         $ad = $this->qm->insert("short_period_scales", $post);
         if ($ad) {
