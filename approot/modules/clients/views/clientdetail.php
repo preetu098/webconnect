@@ -1,7 +1,7 @@
 <!--**********************************
    Content body start
    ***********************************-->
-<div class="content-body">
+   <div class="content-body">
     <div class="container-fluid">
         <div class="row page-titles">
             <ol class="breadcrumb">
@@ -53,69 +53,33 @@
                             <a href="<?= base_url('employee/register/'); ?><?= $cid; ?>/<?= $pid; ?>" target="_blank"
                                 class="btn btn-info"><span class="btn-icon-start text-info"><i class="fa fa-user"></i>
                                 </span>Employee Register</a>
-                            <a href="<?= base_url('clients/employees'); ?>/<?= $cid; ?>/<?= $pid; ?>"
-                                class="btn btn-success" aria-expanded="false"><span
-                                    class="btn-icon-start text-success"><i class="fa fa-users"></i>
-                                </span>Employees </a>
+                           
                         </li>
 
 
                     </ul>
-
+<div class="text-center">
+                        <h4>Create Companys WellConnect Profile</h4>
+                    </div>
                 </div>
             </div>
-            <!-- <div class="col-lg-7">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Welcome Message</h4>
-                        <a href="<?= base_url('clients/message'); ?>/<?= $cid; ?>/<?= $pid; ?>" class="btn btn-dark">Add Message</a>
-                    </div>
-                    <div class="card-body">
-                        
-                        <div class="default-tab">
-                            <ul class="nav nav-tabs" role="tablist">
-                                <?php
-                                $a = 1;
-                                $well = $this->qm->all("welcomemsg_tbl", "*", array('cid' => $cid, 'pid' => $pid));
-                                foreach ($well as $well) {
-                                ?>       
-                                    <li class="nav-item">
-                                        <a class="nav-link <?= ($a == 1) ? 'active' : ''; ?>" data-bs-toggle="tab" href="#message<?= $well->id; ?>"><i class="la la-envelope me-2"></i>   <?= $well->type; ?></a>
-                                    </li>
-                                    <?php $a++;
-                                } ?>
-                            </ul>
-                            <div class="tab-content">
-                                <?php
-                                $ab = 1;
-                                $well = $this->qm->all("welcomemsg_tbl", "*", array('cid' => $cid, 'pid' => $pid));
-                                foreach ($well as $well) {
-                                ?>    
-                                    <div class="tab-pane fade <?= ($ab == 1) ? 'show active' : ''; ?>" id="message<?= $well->id; ?>">
-                                        <div class="pt-4">
-
-                                            <?= $well->msg; ?><br>
-                                            <a href="<?= base_url('clients/editmessage'); ?>/<?= $well->id; ?>/<?= $cid; ?>/<?= $pid; ?>" class="btn btn-primary">
-                                                <i class="fas fa-pencil-alt"></i> Edit</a>
-                                        </div>
-                                    </div>
-
-                                    <?php
-                                    $ab++;
-                                }
-                                    ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-        </div>
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="card">
+           
+           
+          <div class="container">
+              <div class="accordion accordion-flush" id="accordionFlushExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+     <h4 style="text-align:center"> Step1-Define Policy(Relation List)</h4> 
+      </button>
+    </h2>
+    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+          
+          <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Relation List</h4>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
                             data-bs-target="#addrelation"> Add Relation</button>
                         <div class="modal fade" id="addrelation" data-bs-backdrop="addrelation" data-bs-keyboard="false"
                             tabindex="-1" aria-labelledby="addrelationBackdropLabel" aria-hidden="true">
@@ -296,146 +260,39 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-
-
-
-
-
-            <div class="col-lg-9">
-                <div class="card">
-                    <div class="card-header d-block">
-
-                        <div class="btn-group mt-2" role="group">
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
-                                aria-expanded="false"><span class="btn-icon-start text-primary"><i
-                                        class="fa fa-file-powerpoint"></i>
-                                </span>PPT </button>
-                            <div class="dropdown-menu" style="margin: 0px;">
-                                <button type="button" onclick="getForm(this.value, <?= $cid; ?>, <?= $pid; ?>)"
-                                    class="dropdown-item" value="1">Add PPT</button>
-                                <button type="button" onclick="getForm(this.value, <?= $cid; ?>, <?= $pid; ?>)"
-                                    class="dropdown-item" value="2">View PPT</button>
-                            </div>
-                        </div>
-                        <div class="btn-group mt-2" role="group">
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
-                                aria-expanded="false"><span class="btn-icon-start text-primary"><i
-                                        class="fa fa-comments"></i>
-                                </span>FAQ </button>
-                            <div class="dropdown-menu" style="margin: 0px;">
-                                <button type="button" onclick="getForm(this.value, <?= $cid; ?>, <?= $pid; ?>)"
-                                    class="dropdown-item" value="3">Add</button>
-                                <button type="button" onclick="getForm(this.value, <?= $cid; ?>, <?= $pid; ?>)"
-                                    class="dropdown-item" value="4">View</button>
-                            </div>
-                        </div>
-                        <div class="btn-group mt-2" role="group">
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
-                                aria-expanded="false"><span class="btn-icon-start text-primary"><i
-                                        class="fa fa-images"></i>
-                                </span>Upload Banner </button>
-                            <div class="dropdown-menu" style="margin: 0px;">
-                                <button type="button" onclick="getForm(this.value, <?= $cid; ?>, <?= $pid; ?>)"
-                                    class="dropdown-item" value="5">Banner</button>
-
-                            </div>
-                        </div>
-
-                        <div class="btn-group mt-2" role="group">
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
-                                aria-expanded="false"><span class="btn-icon-start text-primary"><i
-                                        class="fa fa-question"></i>
-                                </span>Claim Process </button>
-                            <div class="dropdown-menu" style="margin: 0px;">
-                                <button type="button" onclick="getForm(this.value, <?= $cid; ?>, <?= $pid; ?>)"
-                                    class="dropdown-item" value="6">Add</button>
-                                <button type="button" onclick="getForm(this.value, <?= $cid; ?>, <?= $pid; ?>)"
-                                    class="dropdown-item" value="7">View</button>
-                            </div>
-                        </div>
-                        <div class="btn-group mt-2" role="group">
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
-                                aria-expanded="false"><span class="btn-icon-start text-primary"><i
-                                        class="fa fa-file"></i>
-                                </span>Client Document </button>
-                            <div class="dropdown-menu" style="margin: 0px;">
-                                <button type="button" onclick="getForm(this.value, <?= $cid; ?>, <?= $pid; ?>)"
-                                    class="dropdown-item" value="8">Add</button>
-                                <button type="button" onclick="getForm(this.value, <?= $cid; ?>, <?= $pid; ?>)"
-                                    class="dropdown-item" value="9">View</button>
-                            </div>
-                        </div>
-                        <div class="btn-group mt-2" role="group">
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
-                                aria-expanded="false"><span class="btn-icon-start text-primary"><i
-                                        class="fa fa-file"></i>
-                                </span>Claim Summary </button>
-                            <div class="dropdown-menu" style="margin: 0px;">
-                                <button type="button" id="btn-open-csum"
-                                    onclick="getForm(this.value, <?= $cid; ?>, <?= $pid; ?>)" class="dropdown-item"
-                                    value="10">View</button>
-                            </div>
-                        </div>
-                        <div class="btn-group mt-2" role="group">
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
-                                aria-expanded="false"><span class="btn-icon-start text-primary"><i
-                                        class="fa fa-file"></i>
-                                </span>Claim Tracking </button>
-                            <div class="dropdown-menu" style="margin: 0px;">
-                                <button type="button" id="btn-open-ctrack"
-                                    onclick="getForm(this.value, <?= $cid; ?>, <?= $pid; ?>)" class="dropdown-item"
-                                    value="11">View</button>
-                            </div>
-                        </div>
-                        <div class="btn-group mt-2" role="group">
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
-                                aria-expanded="false"><span class="btn-icon-start text-primary"><i
-                                        class="fa fa-file"></i>
-                                </span>Endorsment Calculations </button>
-                            <div class="dropdown-menu" style="margin: 0px;">
-                                <button type="button" id="btn-open-endclc"
-                                    onclick="getForm(this.value, <?= $cid; ?>, <?= $pid; ?>)" class="dropdown-item"
-                                    value="12">View</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-body" id="dem">
-                        <?php
-                        if (!empty($this->session->flashdata('success'))) {
-
-                            $success = $this->session->flashdata('success');
-                        ?>
-                        <div class="alert alert-success alert-dismissible fade show" style="width: 25%;">
-
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
-                            </button>
-                            <strong>Success!</strong><?= $success; ?>
-                        </div>
-                        <?php
-                        } else if (!empty($this->session->flashdata('error'))) {
-                            $error = $this->session->flashdata('error');
-                        ?>
-                        <div class="alert alert-danger alert-dismissible fade show" style="width: 25%;">
-
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
-                            </button>
-                            <strong>Error!</strong> <?= $error; ?>
-                        </div>
-                        <?php } else {
-                        } ?>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-        </div>
-
-        <div class="row">
+          
+          
+          
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+       <h4 style="text-align:center">STEP2-Upload/Update Details of Enrolled Employees</h4>
+      </button>
+    </h2>
+    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+           <a href="<?= base_url('clients/employees'); ?>/<?= $cid; ?>/<?= $pid; ?>"
+                                class="btn btn-success" aria-expanded="false"><span
+                                    class="btn-icon-start text-success"><i class="fa fa-users"></i>
+                                </span>Employees </a>
+          
+      </div>
+    </div>
+  </div>
+  
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+               <h4 style="text-align:center">STEP3- Create Escalation Matrix</h4>
+              </button>
+            </h2>
+            <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                  
+                     <div class="row">
             <!--                   <div class="col-lg-12">-->
             <div class="col-lg-4">
                 <div class="card">
@@ -445,7 +302,7 @@
                         $riskchk = $this->qm->single("fm_escalationmetrix_tbl", "*", array('cid' => $cid, 'pid' => $pid, 'type' => 'riskbirbal'));
                         if ($riskchk->id < 1) {
                         ?>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="modal"
                             data-bs-target="#riskbirbal"> Add Riskbirbal </button>
                         <?php } ?>
                         <div class="modal fade" id="riskbirbal" data-bs-backdrop="riskbirbal" data-bs-keyboard="false"
@@ -929,7 +786,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">TPA LIST</h4>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#addtpa">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="modal" data-bs-target="#addtpa">
                             Add TPA </button>
                         <div class="modal fade" id="addtpa" data-bs-backdrop="addtpa" data-bs-keyboard="false"
                             tabindex="-1" aria-labelledby="addrelationBackdropLabel" aria-hidden="true">
@@ -1132,7 +989,7 @@
                     <div class="row" id="viewmembers" style="padding:10px">
                         <div class="col-md-12 col-sm-12">
                             <div class="card membr-list-crd" style="border:0px !important">
-                                <h2>TPA LIST </h2>
+                                <h4>TPA LIST </h4>
                                 <?php
                                 $cnt = 0;
                                 $rel = $this->qm->all("fm_escalationmetrix_tbl", "*", array('type' => 'tpa', 'pid' => $pid, 'cid' => $cid));
@@ -1228,7 +1085,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Insurer List</h4>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="modal"
                             data-bs-target="#addinsurer"> Add Insurer </button>
                         <div class="modal fade" id="addinsurer" data-bs-backdrop="addinsurer" data-bs-keyboard="false"
                             tabindex="-1" aria-labelledby="addrelationBackdropLabel" aria-hidden="true">
@@ -1411,7 +1268,7 @@
                     <div class="row" id="viewmembers" style="padding:10px">
                         <div class="col-md-12 col-sm-12">
                             <div class="card membr-list-crd" style="border:0px !important">
-                                <h2>Insurer Details </h2>
+                                <h4>Insurer Details </h4>
                                 <?php
                                 $cnt = 0;
                                 $rel = $this->qm->all("fm_escalationmetrix_tbl", "*", array('type' => 'insurer', 'pid' => $pid, 'cid' => $cid));
@@ -1520,6 +1377,248 @@
             </div>
 
         </div>
+              </div>
+            </div>
+          </div>
+          
+          
+          
+          
+          
+           <div class="accordion-item">
+                 <h2 class="accordion-header" id="flush-headingFour">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                <h4 style="text-align:center">STEP4-Add Orientation PPT ,Add FAQs,Add Network Hospital List and Blacklist Hospital,Set Claim Summary and Claim Tracking</h4>
+              </button>
+            </h2>
+            <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                    <div class="row">
+           
+
+
+
+
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header d-block">
+
+                        <div class="btn-group mt-2" role="group">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false"><span class="btn-icon-start text-primary"><i
+                                        class="fa fa-file-powerpoint"></i>
+                                </span>PPT </button>
+                            <div class="dropdown-menu" style="margin: 0px;">
+                                <button type="button" onclick="getForm(this.value, <?= $cid; ?>, <?= $pid; ?>)"
+                                    class="dropdown-item" value="1">Add PPT</button>
+                                <button type="button" onclick="getForm(this.value, <?= $cid; ?>, <?= $pid; ?>)"
+                                    class="dropdown-item" value="2">View PPT</button>
+                            </div>
+                        </div>
+                        <div class="btn-group mt-2" role="group">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false"><span class="btn-icon-start text-primary"><i
+                                        class="fa fa-comments"></i>
+                                </span>FAQ </button>
+                            <div class="dropdown-menu" style="margin: 0px;">
+                                <button type="button" onclick="getForm(this.value, <?= $cid; ?>, <?= $pid; ?>)"
+                                    class="dropdown-item" value="3">Add</button>
+                                <button type="button" onclick="getForm(this.value, <?= $cid; ?>, <?= $pid; ?>)"
+                                    class="dropdown-item" value="4">View</button>
+                            </div>
+                        </div>
+                        <div class="btn-group mt-2" role="group">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false"><span class="btn-icon-start text-primary"><i
+                                        class="fa fa-images"></i>
+                                </span>Upload Banner </button>
+                            <div class="dropdown-menu" style="margin: 0px;">
+                                <button type="button" onclick="getForm(this.value, <?= $cid; ?>, <?= $pid; ?>)"
+                                    class="dropdown-item" value="5">Banner</button>
+
+                            </div>
+                        </div>
+
+                        <!--<div class="btn-group mt-2" role="group">-->
+                        <!--    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"-->
+                        <!--        aria-expanded="false"><span class="btn-icon-start text-primary"><i-->
+                        <!--                class="fa fa-question"></i>-->
+                        <!--        </span>Claim Process </button>-->
+                        <!--    <div class="dropdown-menu" style="margin: 0px;">-->
+                        <!--        <button type="button" onclick="getForm(this.value, <?= $cid; ?>, <?= $pid; ?>)"-->
+                        <!--            class="dropdown-item" value="6">Add</button>-->
+                        <!--        <button type="button" onclick="getForm(this.value, <?= $cid; ?>, <?= $pid; ?>)"-->
+                        <!--            class="dropdown-item" value="7">View</button>-->
+                        <!--    </div>-->
+                        <!--</div>-->
+                        <div class="btn-group mt-2" role="group">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false"><span class="btn-icon-start text-primary"><i
+                                        class="fa fa-file"></i>
+                                </span>Client Document </button>
+                            <div class="dropdown-menu" style="margin: 0px;">
+                                <button type="button" onclick="getForm(this.value, <?= $cid; ?>, <?= $pid; ?>)"
+                                    class="dropdown-item" value="8">Add</button>
+                                <button type="button" onclick="getForm(this.value, <?= $cid; ?>, <?= $pid; ?>)"
+                                    class="dropdown-item" value="9">View</button>
+                            </div>
+                        </div>
+                        <div class="btn-group mt-2" role="group">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false"><span class="btn-icon-start text-primary"><i
+                                        class="fa fa-file"></i>
+                                </span>Claim Summary </button>
+                            <div class="dropdown-menu" style="margin: 0px;">
+                                <button type="button" id="btn-open-csum"
+                                    onclick="getForm(this.value, <?= $cid; ?>, <?= $pid; ?>)" class="dropdown-item"
+                                    value="10">View</button>
+                            </div>
+                        </div>
+                        <div class="btn-group mt-2" role="group">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false"><span class="btn-icon-start text-primary"><i
+                                        class="fa fa-file"></i>
+                                </span>Claim Tracking </button>
+                            <div class="dropdown-menu" style="margin: 0px;">
+                                <button type="button" id="btn-open-ctrack"
+                                    onclick="getForm(this.value, <?= $cid; ?>, <?= $pid; ?>)" class="dropdown-item"
+                                    value="11">View</button>
+                            </div>
+                        </div>
+                        <div class="btn-group mt-2" role="group">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false"><span class="btn-icon-start text-primary"><i
+                                        class="fa fa-file"></i>
+                                </span>Endorsment Calculations </button>
+                            <div class="dropdown-menu" style="margin: 0px;">
+                                <button type="button" id="btn-open-endclc"
+                                    onclick="getForm(this.value, <?= $cid; ?>, <?= $pid; ?>)" class="dropdown-item"
+                                    value="12">View</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body" id="dem">
+                        <?php
+                        if (!empty($this->session->flashdata('success'))) {
+
+                            $success = $this->session->flashdata('success');
+                        ?>
+                        <div class="alert alert-success alert-dismissible fade show" style="width: 25%;">
+
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
+                            </button>
+                            <strong>Success!</strong><?= $success; ?>
+                        </div>
+                        <?php
+                        } else if (!empty($this->session->flashdata('error'))) {
+                            $error = $this->session->flashdata('error');
+                        ?>
+                        <div class="alert alert-danger alert-dismissible fade show" style="width: 25%;">
+
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
+                            </button>
+                            <strong>Error!</strong> <?= $error; ?>
+                        </div>
+                        <?php } else {
+                        } ?>
+                    </div>
+                </div>
+            </div>
+
+
+                  
+                  
+              </div>
+            </div>
+          </div>
+          
+          
+          
+          
+       
+          
+       
+          
+        
+          
+          
+          
+          
+          
+          
+          
+        </div>
+    </div>
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+            <!-- <div class="col-lg-7">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Welcome Message</h4>
+                        <a href="<?= base_url('clients/message'); ?>/<?= $cid; ?>/<?= $pid; ?>" class="btn btn-dark">Add Message</a>
+                    </div>
+                    <div class="card-body">
+                        
+                        <div class="default-tab">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <?php
+                                $a = 1;
+                                $well = $this->qm->all("welcomemsg_tbl", "*", array('cid' => $cid, 'pid' => $pid));
+                                foreach ($well as $well) {
+                                ?>       
+                                    <li class="nav-item">
+                                        <a class="nav-link <?= ($a == 1) ? 'active' : ''; ?>" data-bs-toggle="tab" href="#message<?= $well->id; ?>"><i class="la la-envelope me-2"></i>   <?= $well->type; ?></a>
+                                    </li>
+                                    <?php $a++;
+                                } ?>
+                            </ul>
+                            <div class="tab-content">
+                                <?php
+                                $ab = 1;
+                                $well = $this->qm->all("welcomemsg_tbl", "*", array('cid' => $cid, 'pid' => $pid));
+                                foreach ($well as $well) {
+                                ?>    
+                                    <div class="tab-pane fade <?= ($ab == 1) ? 'show active' : ''; ?>" id="message<?= $well->id; ?>">
+                                        <div class="pt-4">
+
+                                            <?= $well->msg; ?><br>
+                                            <a href="<?= base_url('clients/editmessage'); ?>/<?= $well->id; ?>/<?= $cid; ?>/<?= $pid; ?>" class="btn btn-primary">
+                                                <i class="fas fa-pencil-alt"></i> Edit</a>
+                                        </div>
+                                    </div>
+
+                                    <?php
+                                    $ab++;
+                                }
+                                    ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+      
+
+
+        </div>
+
+     
 
 
     </div>
