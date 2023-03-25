@@ -33,6 +33,7 @@
                                             <th>Policy End Date</th>
                                             <th>Difference Days</th>
                                             <th>Short Period Rate</th>
+                                            <th>Premium</th>
                                             <th>Short Period Premium</th>
                                             <th>Net Endorsement Premium</th>
                                             <th>Action</th>
@@ -87,16 +88,9 @@
                                                 $premium = $policy_premium_info->premium / 100;
                                                 $short_peroid_rate='100%';
                                             }
-                                            // echo "<br>";
-                                            // echo $premium;
-                                            // echo "<br>";
+                                            
                                             $after_endorsement_premium = $premium + $policy_premium_info->premium;
-                                            // echo "<br>";
-                                            // echo $diffDays = abs($days) + 1;
-                                            // echo "<br>";
-                                        
-
-
+                                           
                                             ?>
                                             <tr>
                                                 <td>
@@ -148,6 +142,8 @@
                                                                 class="fa fa-trash"></i></a>
                                                     </div>
                                                 </td>
+                                                <td></td>
+                                                <td></td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>
