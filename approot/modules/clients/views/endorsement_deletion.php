@@ -51,7 +51,7 @@
                                             $date1 = date("Y-m-d", strtotime($emp->dol));
                                             $date2 = date("Y-m-d", strtotime($policy_info->start_on));
 
-                                            $diff = abs(strtotime($date2) - strtotime($date1));
+                                            $diff = abs(strtotime($date1) - strtotime($date2));
 
                                             $years = floor($diff / (365 * 60 * 60 * 24));
                                             $months = floor(($diff - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
