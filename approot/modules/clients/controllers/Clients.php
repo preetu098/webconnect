@@ -502,8 +502,8 @@ class Clients extends MY_Controller
             $this->load->view('clients/claimtracking', $data);
         } else if ($val == 12) {
             $data['policy_data'] = $this->qm->single("ri_clientpolicy_tbl", "*", array('cid' => $cid, 'id' => $pid));
-            $data['endorscalc'] = $this->qm->single("endorsment_calculations", "*", array('cid' => $cid, 'pid' => $pid));
-            $this->load->view('clients/endorscalc', $data);
+            // $data['endorscalc'] = $this->qm->single("endorsment_calculations", "*", array('cid' => $cid, 'pid' => $pid));
+            // $this->load->view('clients/endorscalc', $data);
         } else {
             echo  "Some Error Occurred";
         }
@@ -769,6 +769,15 @@ class Clients extends MY_Controller
         $data['cid'] = $cid;
         $data['pid'] = $pid;
         $data['mainContent'] = "clients/endorsement";
+        $this->load->view('panel', $data);
+       
+    }
+    public function endorsement_process($cid, $pid)
+    {
+        $data = [];
+        $data['cid'] = $cid;
+        $data['pid'] = $pid;
+        $data['mainContent'] = "clients/endorsement_process";
         $this->load->view('panel', $data);
        
     }

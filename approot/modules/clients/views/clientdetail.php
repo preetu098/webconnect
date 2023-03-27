@@ -1489,7 +1489,7 @@
                                     value="11">View</button>
                             </div>
                         </div>
-                        <div class="btn-group mt-2" role="group">
+                        <!-- <div class="btn-group mt-2" role="group">
                             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
                                 aria-expanded="false"><span class="btn-icon-start text-primary"><i
                                         class="fa fa-file"></i>
@@ -1499,7 +1499,7 @@
                                     onclick="getForm(this.value, <?= $cid; ?>, <?= $pid; ?>)" class="dropdown-item"
                                     value="12">View</button>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
 
                     <div class="card-body" id="dem">
