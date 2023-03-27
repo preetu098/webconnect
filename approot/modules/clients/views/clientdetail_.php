@@ -42,8 +42,10 @@
                                     </span>Hr Login</a>
                                     <a href="<?= base_url('user/register/'); ?><?= $cid; ?>/<?= $pid; ?>" target="_blank" class="btn btn-info"><span class="btn-icon-start text-info"><i class="fa fa-user"></i>
                                     </span>Employee Register</a> 
+                                    
                                     <a  href="<?= base_url('clients/employees'); ?>/<?= $cid; ?>/<?= $pid; ?>" class="btn btn-success" aria-expanded="false"><span class="btn-icon-start text-success"><i class="fa fa-users"></i>
-                                    </span>Employees </a></li>
+                                    </span>Employees </a>
+                                </li>
 
                      
                      </ul>

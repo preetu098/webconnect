@@ -763,6 +763,24 @@ class Clients extends MY_Controller
         $this->session->set_flashdata('error', 'Somthing went wrong!');
         redirect('clients/shortperiodscale/' . $cid . '/' . $pid . '');
     }
+    public function endorsement($cid, $pid)
+    {
+        $data = [];
+        $data['cid'] = $cid;
+        $data['pid'] = $pid;
+        $data['mainContent'] = "clients/endorsement";
+        $this->load->view('panel', $data);
+       
+    }
+    public function endorsement_deletion($cid, $pid)
+    {
+        $data = [];
+        $data['cid'] = $cid;
+        $data['pid'] = $pid;
+        $data['mainContent'] = "clients/endorsement_deletion";
+        $this->load->view('panel', $data);
+       
+    }
 
     public function updShortperiodscale($cid, $pid, $id)
     {
