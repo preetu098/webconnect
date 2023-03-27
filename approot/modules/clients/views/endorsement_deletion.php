@@ -60,7 +60,7 @@
 
                                             $policy_premium_info = $this->qm->single("policy_premium", "*", array('cid' => $cid, 'pid' => $pid));
                                             $policy_premium_info->premium;
-                                            $diffDays=30;
+                                            // $diffDays=30;
                                             if ($diffDays == 7 || $diffDays < 30) {
                                                 $premium = $policy_premium_info->premium * (90 / 100);
                                                 $short_peroid_rate='90%';
