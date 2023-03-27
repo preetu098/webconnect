@@ -748,7 +748,7 @@ class Clients extends MY_Controller
     {
         $data = [];
         $post = $this->input->post();
-        print_r($post);
+        
         $post['cid'] = $cid;
         $post['pid'] = $pid;
         $post['upto_days'] = $cid;
