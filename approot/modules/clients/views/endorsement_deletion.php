@@ -48,6 +48,7 @@
                                             // echo "<pre>";
                                             // print_r($emp->doj);
                                             // echo "</pre>";
+                                            if($emp->mode=="Deletion"){
                                             $date1 = date("Y-m-d", strtotime($emp->dol));
                                             $date2 = date("Y-m-d", strtotime($policy_info->start_on));
 
@@ -146,7 +147,7 @@
                                                 <td></td>
                                                 <td></td>
                                             </tr>
-                                        <?php } ?>
+                                        <?php } } ?>
                                     </tbody>
                                 </table>
                             </div>

@@ -44,10 +44,12 @@
                                         $count=1;
                                         $policy_info = $this->qm->single("ad_policy", "*", array('policy_id' => $pid));
                                         $emp = $this->qm->all('ri_employee_tbl', '*', array('cid' => $cid, 'pid' => $pid));
+                                        
                                         foreach ($emp as $emp) {
-                                            // echo "<pre>";
-                                            // print_r($emp->doj);
-                                            // echo "</pre>";
+                                            
+                                            if($emp->mode=="New Addition"){
+                                                
+                                            
                                             $date1 = date("Y-m-d", strtotime($emp->doj));
                                             $date2 = date("Y-m-d", strtotime($policy_info->expiry_on));
 
@@ -59,6 +61,7 @@
                                             $diffDays = abs($days) + 1;
 
                                             $policy_premium_info = $this->qm->single("policy_premium", "*", array('cid' => $cid, 'pid' => $pid));
+                                            $policy_suminsured_info = $this->qm->single("policy_suminsureds", "*", array('cid' => $cid, 'pid' => $pid));
                                             $policy_premium_info->premium;
                                             // $diffDays=30;
                                             if ($diffDays == 7 || $diffDays < 30) {
@@ -103,7 +106,7 @@
                                                 <td><?php echo $emp->age?></td>
                                                 <td><?php echo $emp->gender?></td>
                                                 <td><?php echo $emp->relation?></td>
-                                                <td><?php echo $emp->sum_insured?></td>
+                                                <td><?php echo $policy_suminsured_info->suminsured?></td>
                                                 <td><?php echo $emp->doj?></td>
                                                 <td>
                                                     <?php
@@ -146,7 +149,7 @@
                                                 <td></td>
                                                 <td></td>
                                             </tr>
-                                        <?php } ?>
+                                        <?php } }?>
                                     </tbody>
                                 </table>
                             </div>

@@ -46,7 +46,7 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                        //$res = $this->qm->all("ri_employee_tbl","*",array('cid'=>$cid,'mode'=>'addition'));
+                                        $res = $this->qm->all("ri_employee_tbl","*",array('cid'=>$cid,'mode'=>'addition'));
                                         foreach($res as $res){
                                             $com = $this->qm->single("ri_clientpolicy_tbl","*",array('cid'=>$cid));
                                         ?>
@@ -103,8 +103,8 @@
                                     $gp = $this->qm->all("ri_clientpolicy_tbl","*",array('cid'=>$cid,'id'=>$pid));
                                     foreach($gp as $gp){
                                         $cnt++;
-                                    $pol = $this->qm->single2("ad_policy","*",array('policy_no'=>$gp->policy_num));
-                                    $end = $this->qm->all2("ad_policy_endorsement","*",array('policy_id'=>$pol->policy_id));
+                                    $pol = $this->qm->single("ad_policy","*",array('policy_no'=>$gp->policy_num));
+                                    $end = $this->qm->all("ad_policy_endorsement","*",array('policy_id'=>$pol->policy_id));
                                     foreach($end as $end){
                                         $rrrrr=$this->qm->get_end_files($end->endorsement_id);
                                         //print_r($rrrrr);

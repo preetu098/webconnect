@@ -228,7 +228,7 @@ class Clients extends MY_Controller
             echo '</select>';
         } else {
 
-            $decode = $this->qm->all2("ad_policy", "*", array('policy_type_id' => $typ));
+            $decode = $this->qm->all("ad_policy", "*", array('policy_type_id' => $typ));
             //print_r($decode);
 
             echo '<label>Policy Number </label>';
