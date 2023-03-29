@@ -44,21 +44,24 @@
                                         $count=1;
                                         $policy_info = $this->qm->single("ad_policy", "*", array('policy_id' => $pid));
                                         $emp = $this->qm->all('ri_employee_tbl', '*', array('cid' => $cid, 'pid' => $pid));
+                                        function dateDifference($start_date, $end_date) {
+                                            $start_array = date_parse($start_date);
+                                            $end_array = date_parse($end_date);
+                                            $start_date = GregorianToJD($start_array["month"], $start_array["day"], $start_array["year"]) . "</br>";
+                                            $end_date = GregorianToJD($end_array["month"], $end_array["day"], $end_array["year"]);
+                                            return round(($end_date - $start_date), 0);
+                                        }
                                         foreach ($emp as $emp) {
                                             // echo "<pre>";
                                             // print_r($emp->doj);
                                             // echo "</pre>";
                                             if($emp->mode=="Deletion"){
-                                            $date1 = date("Y-m-d", strtotime($emp->dol));
-                                            $date2 = date("Y-m-d", strtotime($policy_info->start_on));
 
-                                            $diff = abs(strtotime($date1) - strtotime($date2));
-
-                                            $years = floor($diff / (365 * 60 * 60 * 24));
-                                            $months = floor(($diff - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
-                                            $days = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
-                                            $diffDays = abs($days) + 1;
-
+                                            $date_of_leaving = date("Y-m-d", strtotime($emp->dol));
+                                            $date_of_policy_start = date("Y-m-d", strtotime($policy_info->start_on));
+                                            $diffDays= dateDifference($date_of_leaving,$date_of_policy_start);
+                                            
+                                            $diffDays = abs($diffDays) + 1;
                                             $policy_premium_info = $this->qm->single("policy_premium", "*", array('cid' => $cid, 'pid' => $pid));
                                             $policy_premium_info->premium;
                                             // $diffDays=30;

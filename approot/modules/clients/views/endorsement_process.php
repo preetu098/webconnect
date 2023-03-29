@@ -44,24 +44,25 @@
                                         $count=1;
                                         $policy_info = $this->qm->single("ad_policy", "*", array('policy_id' => $pid));
                                         $emp = $this->qm->all('ri_employee_tbl', '*', array('cid' => $cid, 'pid' => $pid));
-                                        
+                                        function dateDifference($start_date, $end_date) {
+                                            $start_array = date_parse($start_date);
+                                            $end_array = date_parse($end_date);
+                                            $start_date = GregorianToJD($start_array["month"], $start_array["day"], $start_array["year"]) . "</br>";
+                                            $end_date = GregorianToJD($end_array["month"], $end_array["day"], $end_array["year"]);
+                                            return round(($end_date - $start_date), 0);
+                                        }
                                         foreach ($emp as $emp) {
                                             
                                             if($emp->mode=="New Addition"){
                                                 
                                             
-                                            $date1 = date("Y-m-d", strtotime($emp->doj));
-                                            $date2 = date("Y-m-d", strtotime($policy_info->expiry_on));
-
-                                            $diff = abs(strtotime($date2) - strtotime($date1));
-
-                                            $years = floor($diff / (365 * 60 * 60 * 24));
-                                            $months = floor(($diff - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
-                                            $days = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
-                                            $diffDays = abs($days) + 1;
+                                            $date_of_joining = date("Y-m-d", strtotime($emp->doj));
+                                            $date_of_policy_expire = date("Y-m-d", strtotime($policy_info->expiry_on));
+                                            $diffDays= dateDifference($date_of_joining,$date_of_policy_expire);
+                                            
+                                            $diffDays = abs($diffDays) + 1;
 
                                             $policy_premium_info = $this->qm->single("policy_premium", "*", array('cid' => $cid, 'pid' => $pid));
-                                            $policy_suminsured_info = $this->qm->single("policy_suminsureds", "*", array('cid' => $cid, 'pid' => $pid));
                                             $policy_premium_info->premium;
                                             // $diffDays=30;
                                             if ($diffDays == 7 || $diffDays < 30) {
@@ -72,7 +73,7 @@
                                                 $premium = $policy_premium_info->premium * (25 / 100);
                                                 $short_peroid_rate='25%';
                                             }
-                                            if ($diffDays == 60) {
+                                            if ($diffDays == 60 ||$diffDays < 60) {
                                                 $premium = $policy_premium_info->premium * (35 / 100);
                                                 $short_peroid_rate='35%';
                                             }
@@ -106,7 +107,7 @@
                                                 <td><?php echo $emp->age?></td>
                                                 <td><?php echo $emp->gender?></td>
                                                 <td><?php echo $emp->relation?></td>
-                                                <td><?php echo $policy_suminsured_info->suminsured?></td>
+                                                <td><?php echo $emp->sum_insured?></td>
                                                 <td><?php echo $emp->doj?></td>
                                                 <td>
                                                     <?php
