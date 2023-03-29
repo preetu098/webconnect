@@ -36,7 +36,7 @@
                                             <th>Premium</th>
                                             <th>Short Period Premium</th>
                                             <th>Net Endorsement Premium</th>
-                                            <th>Action</th>
+                                            <!-- <th>Action</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -134,7 +134,7 @@
                                                 <td>
                                                     <?php echo $after_endorsement_premium; ?>
                                                 </td>
-                                                <td>
+                                                <!-- <td>
                                                     <div class="d-flex">
                                                         <a href="javascript:void(0)" data-bs-toggle="modal"
                                                             data-bs-target="#short_period_edit<?= $key + 1; ?>"
@@ -145,7 +145,7 @@
                                                             class="btn btn-danger shadow btn-xs sharp"><i
                                                                 class="fa fa-trash"></i></a>
                                                     </div>
-                                                </td>
+                                                </td> -->
                                                 <td></td>
                                                 <td></td>
                                             </tr>
