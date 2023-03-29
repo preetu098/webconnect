@@ -9,7 +9,7 @@ class Clients extends MY_Controller
 {
     public function index()
     {
-        
+
         if (empty($this->session->userdata('aid'))) {
             redirect('login/index');
         } else {
@@ -43,7 +43,7 @@ class Clients extends MY_Controller
 
         if (!empty($_FILES['image']['name'])) {
 
-            $dat =  $this->qm->upload('./external/uploads/', 'image');
+            $dat = $this->qm->upload('./external/uploads/', 'image');
 
             $post['image'] = $dat;
         }
@@ -159,7 +159,7 @@ class Clients extends MY_Controller
     {
 
         if (!empty($_FILES['image']['name'])) {
-            $dat =  $this->qm->upload('./external/uploads/', 'image');
+            $dat = $this->qm->upload('./external/uploads/', 'image');
         } else {
             $dat = $this->input->post('img');
         }
@@ -247,7 +247,7 @@ class Clients extends MY_Controller
     {
         $cname = $this->input->post('cname');
         $get = explode('|', $cname);
-        $img =  $this->qm->upload('./external/uploads/', 'iimage');
+        $img = $this->qm->upload('./external/uploads/', 'iimage');
         $data = array(
             'cid' => $get[0],
             'cname' => $get[1],
@@ -459,8 +459,35 @@ class Clients extends MY_Controller
             $in = $this->qm->insert('endorsment_calculations', $postdata);
         }
 
-        redirect("clients/clientdetail/$cid/$pid", $data);
+        redirect("clients/endorsement/$cid/$pid", $data);
     }
+
+    public function endorsmentCalculationMethod($cid, $pid)
+    {
+        $data = [];
+        $post = $this->input->post();
+        $where = "pid = '" . $pid . "' and cid = '" . $cid . "'";
+        $postdata['pid'] = $pid;
+        $postdata['cid'] = $cid;
+        $postdata['created_by'] = $cid;
+        $postdata['modified_by'] = $cid;
+        $postdata['status'] = $post['status'];
+        $data['endorscalc'] = $this->qm->single("endorsment_calculations", "*", array('cid' => $cid, 'pid' => $pid));
+
+
+        $postdata['calculation_method'] = $post['calculation_method'];
+
+
+        if (!empty($data['endorscalc'])) {
+
+            $up = $this->qm->update('endorsment_calculations', $postdata, $where);
+        } else {
+            $in = $this->qm->insert('endorsment_calculations', $postdata);
+        }
+
+        redirect("clients/endorsement/$cid/$pid", $data);
+    }
+
 
     public function updclaimtracking($cid, $pid)
     {
@@ -505,7 +532,7 @@ class Clients extends MY_Controller
             // $data['endorscalc'] = $this->qm->single("endorsment_calculations", "*", array('cid' => $cid, 'pid' => $pid));
             // $this->load->view('clients/endorscalc', $data);
         } else {
-            echo  "Some Error Occurred";
+            echo "Some Error Occurred";
         }
     }
 
@@ -557,7 +584,7 @@ class Clients extends MY_Controller
         $arrdata = [];
         $min_age = $post['min_age'];
         $max_age = $post['max_age'];
-        if (!empty($max_age) && !empty($min_age)) :
+        if (!empty($max_age) && !empty($min_age)):
             for ($min_age = $min_age; $min_age <= $max_age; $min_age++) {
                 $arrdata[] = $min_age;
             }
@@ -565,7 +592,7 @@ class Clients extends MY_Controller
 
         $existingData = [];
         $agebnds = $this->qm->all('policy_agebands', "*", array('cid' => $cid, 'pid' => $pid));
-        if (!empty($agebnds)) :
+        if (!empty($agebnds)):
             foreach ($agebnds as $key => $val) {
                 $existingData[] = $val->min_age;
                 $existingData[] = $val->max_age;
@@ -597,7 +624,7 @@ class Clients extends MY_Controller
         $arrdata = [];
         $min_age = $post['min_age'];
         $max_age = $post['max_age'];
-        if (!empty($max_age) && !empty($min_age)) :
+        if (!empty($max_age) && !empty($min_age)):
             for ($min_age = $min_age; $min_age <= $max_age; $min_age++) {
                 $arrdata[] = $min_age;
             }
@@ -605,7 +632,7 @@ class Clients extends MY_Controller
 
         $existingData = [];
         $agebnds = $this->qm->all('policy_agebands', "*", array('cid' => $cid, 'pid' => $pid));
-        if (!empty($agebnds)) :
+        if (!empty($agebnds)):
             foreach ($agebnds as $key => $val) {
                 if ($val->id == $id) {
                     continue;
@@ -748,7 +775,7 @@ class Clients extends MY_Controller
     {
         $data = [];
         $post = $this->input->post();
-        
+
         $post['cid'] = $cid;
         $post['pid'] = $pid;
         $post['upto_days'] = $cid;
@@ -770,7 +797,16 @@ class Clients extends MY_Controller
         $data['pid'] = $pid;
         $data['mainContent'] = "clients/endorsement";
         $this->load->view('panel', $data);
-       
+
+    }
+    public function endorsement_pro_rata($cid, $pid)
+    {
+        $data = [];
+        $data['cid'] = $cid;
+        $data['pid'] = $pid;
+        $data['mainContent'] = "clients/endorsement_pro_rata";
+        $this->load->view('panel', $data);
+
     }
     public function endorsement_process($cid, $pid)
     {
@@ -779,7 +815,7 @@ class Clients extends MY_Controller
         $data['pid'] = $pid;
         $data['mainContent'] = "clients/endorsement_process";
         $this->load->view('panel', $data);
-       
+
     }
     public function endorsement_deletion($cid, $pid)
     {
@@ -788,7 +824,7 @@ class Clients extends MY_Controller
         $data['pid'] = $pid;
         $data['mainContent'] = "clients/endorsement_deletion";
         $this->load->view('panel', $data);
-       
+
     }
 
     public function updShortperiodscale($cid, $pid, $id)
@@ -824,11 +860,11 @@ class Clients extends MY_Controller
         if (!empty($_FILES['ppt']['name']) && count($_FILES['ppt']['name']) > 0) {
             $filesCount = count($_FILES['ppt']['name']);
             for ($i = 0; $i < $filesCount; $i++) {
-                $_FILES['file']['name']     = $_FILES['ppt']['name'][$i];
-                $_FILES['file']['type']     = $_FILES['ppt']['type'][$i];
+                $_FILES['file']['name'] = $_FILES['ppt']['name'][$i];
+                $_FILES['file']['type'] = $_FILES['ppt']['type'][$i];
                 $_FILES['file']['tmp_name'] = $_FILES['ppt']['tmp_name'][$i];
-                $_FILES['file']['error']     = $_FILES['ppt']['error'][$i];
-                $_FILES['file']['size']     = $_FILES['ppt']['size'][$i];
+                $_FILES['file']['error'] = $_FILES['ppt']['error'][$i];
+                $_FILES['file']['size'] = $_FILES['ppt']['size'][$i];
 
                 // File upload configuration 
 
@@ -898,7 +934,7 @@ class Clients extends MY_Controller
     {
         if (!empty($_FILES['banner_img']['name'])) {
             $post = $this->input->post();
-            $data =  $this->qm->upload('./external/uploads/', 'banner_img');
+            $data = $this->qm->upload('./external/uploads/', 'banner_img');
 
             $post['banner_img'] = $data;
             $post['cid'] = $cid;
@@ -992,7 +1028,7 @@ class Clients extends MY_Controller
             $endorsmentCalculations = $this->qm->single("endorsment_calculations", "*", array('cid' => $cid, 'pid' => $pid));
             $post = $this->input->post();
             // print_r($post);
-            $data =  $this->qm->upload('./external/uploads/', 'card');
+            $data = $this->qm->upload('./external/uploads/', 'card');
             $post['card'] = $data;
             $post['cid'] = $cid;
             $post['pid'] = $pid;
@@ -1050,7 +1086,7 @@ class Clients extends MY_Controller
             $link = $this->input->post('docu_link');
         } else {
 
-            $link =  $this->qm->upload('./external/uploads/', 'docu_link');
+            $link = $this->qm->upload('./external/uploads/', 'docu_link');
         }
 
         $post['docu_link'] = $link;
@@ -1082,7 +1118,7 @@ class Clients extends MY_Controller
     public function updpolicy($pid)
     {
         $post = $this->input->post();
-        $img =  $this->qm->upload('./external/uploads/', 'iimage');
+        $img = $this->qm->upload('./external/uploads/', 'iimage');
         if (!empty($img)) {
             $post['iimage'] = $img;
         }
@@ -1270,7 +1306,8 @@ class Clients extends MY_Controller
                                 'dob' => date("Y-m-d", strtotime($dob)),
                                 'age' => $age,
                                 'wedd_date' => date("Y-m-d", strtotime($wedd_date)),
-                                'status' => '1', //new member status
+                                'status' => '1',
+                                //new member status
                                 'mode' => $mode,
                                 'reson' => $reason,
                                 'updated_on' => date('Y-m-d')
@@ -1427,14 +1464,14 @@ class Clients extends MY_Controller
                                 'mode' => $mode,
                                 'status' => $status,
                             );
-                            
-                            if($onlycard) {
+
+                            if ($onlycard) {
                                 $dataa = array(
                                     'card' => $card
                                 );
                             }
-                            
-                            if(($corrected_relation == 'Self' && !$onlycard) || $onlycard) {
+
+                            if (($corrected_relation == 'Self' && !$onlycard) || $onlycard) {
                                 $where = array('pid' => $pid, 'cid' => $cid, 'emp_id' => $emp_id);
                                 $this->qm->update('ri_employee_tbl', $dataa, $where);
                             }
@@ -1502,8 +1539,8 @@ class Clients extends MY_Controller
                                 'status' => $status,
                                 'updated_on' => date('Y-m-d')
                             );
-                            
-                            if($onlycard) {
+
+                            if ($onlycard) {
                                 $dataa = array(
                                     'card' => $card
                                 );
@@ -2200,7 +2237,7 @@ class Clients extends MY_Controller
         $spreadsheet->getActiveSheet()->getStyle('AQ1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('000000');
         $spreadsheet->getActiveSheet()->getStyle('AQ1')->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
 
-       
+
         $rows = 2;
 
         foreach ($users as $val) {
@@ -2233,8 +2270,8 @@ class Clients extends MY_Controller
             $sheet->setCellValue('X' . $rows, $val->gender);
             $sheet->setCellValue('Y' . $rows, (!empty($val->card) && file_exists(FCPATH . 'external/uploads/policy_cards/' . $cid . '_' . $pid . '/' . $val->card . '.pdf')) ? 'Yes' : 'No');
 
-            $employeeUpdatesTbl = $this->qm->all('ri_employee_updates_tbl', '*', array('type' => 'emp', 'tbl_id' => $val->eid ));
-            if(count($employeeUpdatesTbl) > 0) {
+            $employeeUpdatesTbl = $this->qm->all('ri_employee_updates_tbl', '*', array('type' => 'emp', 'tbl_id' => $val->eid));
+            if (count($employeeUpdatesTbl) > 0) {
                 $empUpdale = json_decode($employeeUpdatesTbl[0]->data);
                 // $sheet->setCellValue('Z' . $rows, "");
                 $sheet->setCellValue('AA' . $rows, $empUpdale->name);
@@ -2242,7 +2279,7 @@ class Clients extends MY_Controller
                 $sheet->setCellValue('AC' . $rows, $empUpdale->mobile);
                 $sheet->setCellValue('AD' . $rows, $empUpdale->relation);
                 $sheet->setCellValue('AE' . $rows, "");
-                $sheet->setCellValue('AF' . $rows, getDMYDate($empUpdale->dob, false));  
+                $sheet->setCellValue('AF' . $rows, getDMYDate($empUpdale->dob, false));
                 $sheet->setCellValue('AG' . $rows, $empUpdale->age);
                 $sheet->setCellValue('AH' . $rows, getDMYDate($empUpdale->doj, false));
                 $sheet->setCellValue('AI' . $rows, getDMYDate($empUpdale->dol, false));
@@ -2253,14 +2290,14 @@ class Clients extends MY_Controller
                 $sheet->setCellValue('AN' . $rows, $empUpdale->status);
                 $sheet->setCellValue('AO' . $rows, getStatusMap($empUpdale->status));
                 $sheet->setCellValue('AP' . $rows, $empUpdale->reson);
-                $sheet->setCellValue('AQ' . $rows, $empUpdale->gender); 
+                $sheet->setCellValue('AQ' . $rows, $empUpdale->gender);
             } else {
                 $sheet->setCellValue('AA' . $rows, '');
                 $sheet->setCellValue('AB' . $rows, '');
                 $sheet->setCellValue('AC' . $rows, '');
                 $sheet->setCellValue('AD' . $rows, '');
                 $sheet->setCellValue('AE' . $rows, "");
-                $sheet->setCellValue('AF' . $rows, '');  
+                $sheet->setCellValue('AF' . $rows, '');
                 $sheet->setCellValue('AG' . $rows, '');
                 $sheet->setCellValue('AH' . $rows, '');
                 $sheet->setCellValue('AI' . $rows, '');
@@ -2273,7 +2310,7 @@ class Clients extends MY_Controller
                 $sheet->setCellValue('AP' . $rows, '');
                 $sheet->setCellValue('AQ' . $rows, '');
             }
-            
+
             $rows++;
 
             $dependsData = $this->qm->all('ri_dependent_tbl', '*', array('eid' => $val->eid));
@@ -2314,16 +2351,16 @@ class Clients extends MY_Controller
                 $sheet->setCellValue('X' . $rows, $valDep->gender);
                 $sheet->setCellValue('Y' . $rows, (!empty($valDep->card) && file_exists(FCPATH . 'external/uploads/policy_cards/' . $cid . '_' . $pid . '/' . $valDep->card . '.pdf')) ? 'Yes' : 'No');
 
-                $employeeUpdatesTbl_dep = $this->qm->all('ri_employee_updates_tbl', '*', array('type' => 'dep', 'tbl_id' => $valDep->did ));
+                $employeeUpdatesTbl_dep = $this->qm->all('ri_employee_updates_tbl', '*', array('type' => 'dep', 'tbl_id' => $valDep->did));
 
-                if(count($employeeUpdatesTbl_dep) > 0) {
+                if (count($employeeUpdatesTbl_dep) > 0) {
                     $empUpdale_dep = json_decode($employeeUpdatesTbl_dep[0]->data);
                     $sheet->setCellValue('AA' . $rows, $empUpdale_dep->name);
                     $sheet->setCellValue('AB' . $rows, $empUpdale_dep->email);
                     $sheet->setCellValue('AC' . $rows, $empUpdale_dep->mobile);
                     $sheet->setCellValue('AD' . $rows, $empUpdale_dep->reltype);
                     $sheet->setCellValue('AE' . $rows, $empUpdale_dep->rel_index);
-                    $sheet->setCellValue('AF' . $rows, getDMYDate($empUpdale_dep->dob, false));  
+                    $sheet->setCellValue('AF' . $rows, getDMYDate($empUpdale_dep->dob, false));
                     $sheet->setCellValue('AG' . $rows, $empUpdale_dep->age);
                     $sheet->setCellValue('AH' . $rows, "");
                     $sheet->setCellValue('AI' . $rows, getDMYDate($empUpdale_dep->dol, false));
@@ -2341,7 +2378,7 @@ class Clients extends MY_Controller
                     $sheet->setCellValue('AC' . $rows, '');
                     $sheet->setCellValue('AD' . $rows, '');
                     $sheet->setCellValue('AE' . $rows, '');
-                    $sheet->setCellValue('AF' . $rows, '');  
+                    $sheet->setCellValue('AF' . $rows, '');
                     $sheet->setCellValue('AG' . $rows, '');
                     $sheet->setCellValue('AH' . $rows, "");
                     $sheet->setCellValue('AI' . $rows, '');
@@ -2501,7 +2538,8 @@ class Clients extends MY_Controller
             $rows++;
         }
         $cl = $this->qm->all('ri_employee_tbl', '*', array('cid' => $cid, 'pid' => $pid));
-        foreach ($cl as $cl);
+        foreach ($cl as $cl)
+            ;
         $fileName = $cl->client_code . '-dependent.xlsx';
         $writer = new Xlsx($spreadsheet);
         $writer->save("external/uploads/" . $fileName);
@@ -2521,11 +2559,11 @@ class Clients extends MY_Controller
                 'message' => 'Unable to upload card'
             ];
 
-            $_FILES['file']['name']       = $_FILES['card']['name'][$i];
-            $_FILES['file']['type']       = $_FILES['card']['type'][$i];
-            $_FILES['file']['tmp_name']   = $_FILES['card']['tmp_name'][$i];
-            $_FILES['file']['error']      = $_FILES['card']['error'][$i];
-            $_FILES['file']['size']       = $_FILES['card']['size'][$i];
+            $_FILES['file']['name'] = $_FILES['card']['name'][$i];
+            $_FILES['file']['type'] = $_FILES['card']['type'][$i];
+            $_FILES['file']['tmp_name'] = $_FILES['card']['tmp_name'][$i];
+            $_FILES['file']['error'] = $_FILES['card']['error'][$i];
+            $_FILES['file']['size'] = $_FILES['card']['size'][$i];
 
             // File upload configuration
             $uploadPath = './external/uploads/policy_cards/' . $cid . '_' . $pid;
@@ -2534,7 +2572,7 @@ class Clients extends MY_Controller
             }
             $config['upload_path'] = $uploadPath;
             $config['allowed_types'] = 'jpg|jpeg|pdf|gif|zip';
-            $config['max_size']    = '900000000000000';
+            $config['max_size'] = '900000000000000';
             // Load and initialize upload library
             $this->load->library('upload', $config);
             $this->upload->initialize($config);
@@ -2568,9 +2606,9 @@ class Clients extends MY_Controller
         $image = array();
         $ImageCount = count($_FILES[$name]['name']);
         for ($i = 0; $i < $ImageCount; $i++) {
-            $_FILES['file']['name']       = $_FILES[$name]['name'][$i];
-            $_FILES['file']['type']       = $_FILES[$name]['type'][$i];
-            $_FILES['file']['tmp_name']   = $_FILES[$name]['tmp_name'][$i];
+            $_FILES['file']['name'] = $_FILES[$name]['name'][$i];
+            $_FILES['file']['type'] = $_FILES[$name]['type'][$i];
+            $_FILES['file']['tmp_name'] = $_FILES[$name]['tmp_name'][$i];
             // $_FILES['file']['error']      = $_FILES[$name]['error'][$i];
             //$_FILES['file']['size']       = $_FILES[$name]['size'][$i];
 
@@ -2655,8 +2693,8 @@ class Clients extends MY_Controller
 
         /*if($type=='Self')
         {
-            $this->qm->update("ri_employee_tbl",array('status'=>'0','mode'=>'Deletion'),array('eid'=>$eid));
-            $this->qm->update("ri_dependent_tbl",array('status'=>'0','mode'=>'Deletion'),array('eid'=>$eid,'cid'=>$cid,'pid'=>$pid));
+        $this->qm->update("ri_employee_tbl",array('status'=>'0','mode'=>'Deletion'),array('eid'=>$eid));
+        $this->qm->update("ri_dependent_tbl",array('status'=>'0','mode'=>'Deletion'),array('eid'=>$eid,'cid'=>$cid,'pid'=>$pid));
         }*/
         if ($type == 'Self' || $type == 'self') {
             $this->qm->delete("ri_employee_tbl", array('eid' => $eid, 'cid' => $cid, 'pid' => $pid));
@@ -2737,8 +2775,7 @@ class Clients extends MY_Controller
                     'wedd_date' =>date("Y-m-d",strtotime($wedd_date)), 
                     'status' => $status,
                     'updated_on' => $updated_on,
-
-                );*/
+                    );*/
                     $data = array(
                         'pro_id' => $pro_id,
                         'cat_id' => $cat_id,
@@ -2862,7 +2899,7 @@ class Clients extends MY_Controller
     }
 
     // Get policy premium
-    public function getPolicyPremiumData($suminsuredId, $agebandId, $cid,  $pid)
+    public function getPolicyPremiumData($suminsuredId, $agebandId, $cid, $pid)
     {
         $data = $this->qm->single("policy_premium", "*", array('suminsured_id' => $suminsuredId, 'ageband_id' => $agebandId, 'cid' => $cid, 'pid' => $pid));
         // if $data == NULL then throw Error
@@ -2930,14 +2967,13 @@ class Clients extends MY_Controller
     public function downloadCard()
     {
         $file_exists = file_exists(FCPATH . 'external/uploads/policy_cards/' . $_GET['cid'] . '_' . $_GET['pid'] . '/' . $_GET['cardid'] . '.pdf') ? 1 : 0;
-        if(!$file_exists)
-        {
+        if (!$file_exists) {
             $fileName = $_GET['cardid'] . ".pdf";
             $file_location = 'external/uploads/create_new_policy_cards/' . $_GET['cid'] . '_' . $_GET['pid'] . '/';
             if (!is_dir($file_location)) {
                 mkdir($file_location, 0777, TRUE);
             }
-            $cardData['a'] = base_url() . $file_location.$fileName;
+            $cardData['a'] = base_url() . $file_location . $fileName;
             $cardData['employee'] = $this->qm->all('ri_employee_tbl', '*', array('cid' => $_GET['cid'], 'pid' => $_GET['pid'], 'emp_id' => $_GET['emp_id']))[0];
             $cardData['dependent'] = $this->qm->all('ri_dependent_tbl', '*', array('cid' => $_GET['cid'], 'pid' => $_GET['pid'], 'emp_id' => $_GET['emp_id']));
             $this->load->view('employeeCard', $cardData);
@@ -2950,12 +2986,12 @@ class Clients extends MY_Controller
             $dompdf->render();
             $pdf = $dompdf->output();
             file_put_contents($file_location . $fileName, $pdf);
-        }else{
+        } else {
             $data['a'] = base_url() . 'external/uploads/policy_cards/' . $_GET['cid'] . '_' . $_GET['pid'] . '/' . $_GET['cardid'] . '.pdf';
             $data['employee'] = $this->qm->all('ri_employee_tbl', '*', array('cid' => $_GET['cid'], 'pid' => $_GET['pid'], 'emp_id' => $_GET['emp_id']))[0];
             $data['dependent'] = $this->qm->all('ri_dependent_tbl', '*', array('cid' => $_GET['cid'], 'pid' => $_GET['pid'], 'emp_id' => $_GET['emp_id']));
             $this->load->view('employeeCard', $data);
         }
-        
+
     }
 }

@@ -3,18 +3,19 @@
         <div class="row page-titles">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">Clients</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Endorsement Deletion </a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Endorsement Calculations </a></li>
             </ol>
         </div>
-
-        <div class="row">
+            <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Endorsement Deletion List</h4>
+                        <h4 class="card-title">Endorsement Addition List</h4>
+                        <a href="<?= base_url('Clients/endorsement_deletion/'); ?><?= $cid; ?>/<?= $pid; ?>" 
+                        class="btn btn-primary">Endorsement Pro Rata Deletion List</a>
+                       
                     </div>
-                   
-                    <div class="card-body">
+                   <div class="card-body">
                         <div class="table-responsive">
                             <div class="table-responsive">
                                 <table id="example2" class="display" style="min-width: 845px">
@@ -22,21 +23,21 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Employee ID</th>
-                                            <th>Employee Name</th>
+                                            <th>Insured Name</th>
+                                            <th>RelationShip</th>
+                                            <th>Gender</th>
                                             <th>Date of Birth</th>
                                             <th>Age</th>
-                                            <th>Gender</th>
-                                            <th>RelationShip</th>
-                                            <th>Sum insured</th>
-                                            <th>Date Of Leaving</th>
+                                            <th>Age Band</th>
+                                            <th>Date Of Joining</th>
                                             <th>Policy Start date</th>
                                             <th>Policy End Date</th>
-                                            <th>Difference Days</th>
-                                            <th>Short Period Rate</th>
+                                            <th>Sum insured</th>
+                                            <th>Pro Rata Days</th>
                                             <th>Premium</th>
-                                            <th>Short Period Premium</th>
-                                            <th>Net Endorsement Premium</th>
-                                            <!-- <th>Action</th> -->
+                                            <th> Per Day Premium</th>
+                                            <th>Pro Rata Premium</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -52,49 +53,49 @@
                                             return round(($end_date - $start_date), 0);
                                         }
                                         foreach ($emp as $emp) {
-                                            // echo "<pre>";
-                                            // print_r($emp->doj);
-                                            // echo "</pre>";
-                                            if($emp->mode=="Deletion"){
-
-                                            $date_of_leaving = date("Y-m-d", strtotime($emp->dol));
-                                            $date_of_policy_start = date("Y-m-d", strtotime($policy_info->start_on));
-                                            $diffDays= dateDifference($date_of_leaving,$date_of_policy_start);
+                                            
+                                            if($emp->mode=="New Addition"){
+                                                
+                                            
+                                            $date_of_joining = date("Y-m-d", strtotime($emp->doj));
+                                            $date_of_policy_expire = date("Y-m-d", strtotime($policy_info->expiry_on));
+                                            $diffDays= dateDifference($date_of_joining,$date_of_policy_expire);
                                             
                                             $diffDays = abs($diffDays) + 1;
+
                                             $policy_premium_info = $this->qm->single("policy_premium", "*", array('cid' => $cid, 'pid' => $pid));
                                             $policy_premium_info->premium;
                                             // $diffDays=30;
                                             if ($diffDays == 7 || $diffDays < 30) {
-                                                $premium = $policy_premium_info->premium * (90 / 100);
-                                                $short_peroid_rate='90%';
+                                                $premium = $policy_premium_info->premium * (10 / 100);
+                                                $short_peroid_rate='10%';
                                             }
                                             if ($diffDays == 30) {
-                                                $premium = $policy_premium_info->premium * (75 / 100);
-                                                $short_peroid_rate='75%';
+                                                $premium = $policy_premium_info->premium * (25 / 100);
+                                                $short_peroid_rate='25%';
                                             }
-                                            if ($diffDays == 60) {
-                                                $premium = $policy_premium_info->premium * (65 / 100);
-                                                $short_peroid_rate='65%';
+                                            if ($diffDays == 60 ||$diffDays < 60) {
+                                                $premium = $policy_premium_info->premium * (35 / 100);
+                                                $short_peroid_rate='35%';
                                             }
                                             if ($diffDays == 90) {
                                                 $premium = $policy_premium_info->premium * (50 / 100);
                                                 $short_peroid_rate='50%';
                                             }
                                             if ($diffDays == 120) {
-                                                $premium = $policy_premium_info->premium * (40 / 100);
-                                                $short_peroid_rate='40%';
+                                                $premium = $policy_premium_info->premium * (60 / 100);
+                                                $short_peroid_rate='60%';
                                             }
                                             if ($diffDays == 180) {
-                                                $premium = $policy_premium_info->premium * (25 / 100);
-                                                $short_peroid_rate='25%';
+                                                $premium = $policy_premium_info->premium * (75 / 100);
+                                                $short_peroid_rate='75%';
                                             }
                                             if ($diffDays == 240) {
-                                                $premium = $policy_premium_info->premium * (15 / 100);
-                                                $short_peroid_rate='15%';
+                                                $premium = $policy_premium_info->premium / 100;
+                                                $short_peroid_rate='100%';
                                             }
                                             
-                                            $after_endorsement_premium = $premium - $policy_premium_info->premium;
+                                            $after_endorsement_premium = $premium + $policy_premium_info->premium;
                                            
                                             ?>
                                             <tr>
@@ -108,17 +109,16 @@
                                                 <td><?php echo $emp->gender?></td>
                                                 <td><?php echo $emp->relation?></td>
                                                 <td><?php echo $emp->sum_insured?></td>
-                                                
-                                                <td><?php echo  date("d-m-Y", strtotime($emp->dol));?></td>
+                                                <td><?php echo  date("d-m-Y", strtotime($emp->doj));?></td>
                                                 <td>
                                                     <?php
-                                                    echo $date1 = date("d-m-Y", strtotime($policy_info->start_on));
+                                                    echo  date("d-m-Y", strtotime($policy_info->start_on));
 
                                                     ?>
                                                 </td>
                                                 <td>
                                                     <?php
-                                                    echo $date2 = date("d-m-Y", strtotime($policy_info->expiry_on));
+                                                    echo  date("d-m-Y", strtotime($policy_info->expiry_on));
                                                     ?>
                                                 </td>
                                                 <td>
@@ -134,7 +134,7 @@
                                                     <?php echo $premium; ?>
                                                 </td>
                                                 <td>
-                                                    <?php echo abs($after_endorsement_premium); ?>
+                                                    <?php echo $after_endorsement_premium; ?>
                                                 </td>
                                                 <!-- <td>
                                                     <div class="d-flex">
@@ -151,7 +151,7 @@
                                                 <td></td>
                                                 <td></td>
                                             </tr>
-                                        <?php } } ?>
+                                        <?php } }?>
                                     </tbody>
                                 </table>
                             </div>

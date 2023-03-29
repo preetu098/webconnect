@@ -13,6 +13,8 @@
                         <h4 class="card-title">Endorsement Addition List</h4>
                         <a href="<?= base_url('Clients/endorsement_deletion/'); ?><?= $cid; ?>/<?= $pid; ?>" 
                         class="btn btn-primary">Deletion List</a>
+                        <a href="<?= base_url('Clients/endorsement_pro_rata/'); ?><?= $cid; ?>/<?= $pid; ?>" 
+                        class="btn btn-primary">Endorsement Pro Rata</a>
                     </div>
                    <div class="card-body">
                         <div class="table-responsive">
@@ -108,16 +110,16 @@
                                                 <td><?php echo $emp->gender?></td>
                                                 <td><?php echo $emp->relation?></td>
                                                 <td><?php echo $emp->sum_insured?></td>
-                                                <td><?php echo $emp->doj?></td>
+                                                <td><?php echo  date("d-m-Y", strtotime($emp->doj));?></td>
                                                 <td>
                                                     <?php
-                                                    echo $date1 = date("d-m-Y", strtotime($policy_info->start_on));
+                                                    echo  date("d-m-Y", strtotime($policy_info->start_on));
 
                                                     ?>
                                                 </td>
                                                 <td>
                                                     <?php
-                                                    echo $date2 = date("d-m-Y", strtotime($policy_info->expiry_on));
+                                                    echo  date("d-m-Y", strtotime($policy_info->expiry_on));
                                                     ?>
                                                 </td>
                                                 <td>
