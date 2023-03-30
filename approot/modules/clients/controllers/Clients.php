@@ -599,7 +599,8 @@ class Clients extends MY_Controller
             }
         endif;
         $overapData = array_intersect($arrdata, $existingData);
-
+            print_r($overapData);
+            // die;
         if (!empty($overapData)) {
             $this->session->set_flashdata('error', 'Data is Overlaping!');
         } else {
@@ -796,6 +797,15 @@ class Clients extends MY_Controller
         $data['cid'] = $cid;
         $data['pid'] = $pid;
         $data['mainContent'] = "clients/endorsement";
+        $this->load->view('panel', $data);
+
+    }
+    public function template_manager($cid, $pid)
+    {
+        $data = [];
+        $data['cid'] = $cid;
+        $data['pid'] = $pid;
+        $data['mainContent'] = "clients/template_manager";
         $this->load->view('panel', $data);
 
     }

@@ -13,13 +13,15 @@
                 <h4 class="card-title">Endorsment Calculations </h4>
                 <a href="<?= base_url('Clients/endorsement_process/'); ?><?= $cid; ?>/<?= $pid; ?>" 
                         class="btn btn-primary">Process for Endorsement</a>
+                        <a href="<?= base_url('Clients/template_manager/'); ?><?= $cid; ?>/<?= $pid; ?>" 
+                        class="btn btn-primary">Template Manager</a>
             </div>
             <div class="col-sm-4">
             
             </div>
             <?php
             $data = $this->qm->single("endorsment_calculations", "*", array('cid' => $cid, 'pid' => $pid));
-            $policy_info = $this->qm->single("ad_policy", "*", array('policy_id' => $pid));
+            $policy_info = $this->qm->single("ri_clientpolicy_tbl", "*", array('id' => $pid ,'cid' => $cid,));
                                        
             ?>
             <div class="card-body">
@@ -70,13 +72,10 @@
                                             <input type="number" name="backdation_days" id="backdation_days" class="form-text form-control" placeholder="Backdation days" value="<?= $data->backdation_days; ?>">
                                         </h4>
                                         <h4>Start Date :
-                                            <input type="date" name="sdate" id="sdate" class="form-text form-control" placeholder="Start Date" value=" <?php
-                                                    echo  date("d-m-Y", strtotime($policy_info->start_on));
-
-                                                    ?>">
+                                            <input type="date" name="sdate" id="sdate" class="form-text form-control"  value="<?= $policy_info->sdate; ?>">
                                         </h4>
                                         <h4>End Date :
-                                            <input type="date" name="edate" id="edate" class="form-text form-control" placeholder="End Date" value="<?= $policy_data->edate; ?>">
+                                            <input type="date" name="edate" id="edate" class="form-text form-control"  value="<?= $policy_info->edate; ?>">
                                         </h4>
                                         <input type="hidden" name="tab" value="basis_calc_tab">
                                         <div class="publish_unpublish">
@@ -94,7 +93,7 @@
                                 </div>
                                 <div class="tab-pane fade show" id="tb3cnt">
                                     <form class="form-group" method="POST" action="<?php echo base_url(); ?>clients/endorsmentCalculationMethod/<?php echo $cid; ?>/<?php echo $pid; ?>">
-                                        <h4 class="mb-4">SELECT THE BASIS OF CALCULATIONS :
+                                        <h4 class="mb-4">CALCULATIONS Method :
                                             <select name="calculation_method" id="calculation_method" class="form-select form-control" required>
                                                 <option value="">-Select-</option>
                                                <option value="Per Family on Sum Insured ONLY" <?= ($data->calculation_method == 'Per Family on Sum Insured ONLY') ? 'selected' : ''; ?>>Per Family on Sum Insured ONLY</option>
@@ -135,35 +134,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive d-flex justify-content-center">
-                    <!-- <table id="example2" class="display table table-bordered" style="min-width: 845px">
-                        <thead>
-                            <tr>
-                                <th>SumInsured</th>
-                                <?php
-                                $ageband = $this->qm->all("policy_agebands", "*", array('cid' => $cid, 'pid' => $pid), '', 'both', '', 'min_age');
-                                foreach ($ageband as $key => $val) {
-                                ?>
-                                    <th><?php echo $val->min_age . " - " . $val->max_age; ?></th>
-                                <?php } ?>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $psuminsured = $this->qm->all("policy_suminsureds", "*", array('cid' => $cid, 'pid' => $pid), '', 'both', '', 'suminsured');
-                            foreach ($psuminsured as $key => $psuminsuredVal) { ?>
-                                <tr>
-                                    <td> <?php echo $psuminsuredVal->suminsured; ?> </td>
-                                    <?php foreach ($ageband as $key => $agebandVal) { ?>
-                                        <td> <?php
-                                                $premium = $this->qm->single("policy_premium", "*", array('suminsured_id' => $psuminsuredVal->id, 'ageband_id' => $agebandVal->id, 'cid' => $cid, 'pid' => $pid));
-                                                if ($premium->premium  == '')
-                                                    echo "N/A";
-                                                echo $premium->premium; ?> </td>
-                                    <?php } ?>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table> -->
+                   
                     <?php
                     if($data->calculation_method == 'Per Family on Sum Insured ONLY'){
                         
@@ -178,10 +149,56 @@
                         <tbody>
                             <?php
                             $psuminsured = $this->qm->all("policy_suminsureds", "*", array('cid' => $cid, 'pid' => $pid), '', 'both', '', 'suminsured');
+                            foreach ($psuminsured as $key => $psuminsuredVal) { 
+                               
+                                ?>
+                                <tr>
+                                    <td> <?php echo $psuminsuredVal->suminsured; ?> </td>
+                                    
+                                        <td> <?php
+                                                $premium = $this->qm->single("policy_premium", "*", array('suminsured_id' => $psuminsuredVal->id,'cid' => $cid, 'pid' => $pid));
+                                                // print_r($premium);
+                                                if ($premium->premium  == '')
+                                                    echo "N/A";
+                                                echo $premium->premium; ?> </td>
+                                    
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                        <?php
+                    }
+                    ?>
+                   <?php
+                    if($data->calculation_method == 'Per Family on Sum insured and Age Band basis'){
+                    
+                        ?>
+                        <table id="example2" class="display table table-bordered table-stripped" style="min-width: 845px">
+                        <thead>
+                        <tr>
+                               <th></th>
+                                <th class="text-center">Age Band</th>
+                            </tr>
+                            <tr>
+                                <th>SumInsured</th>
+                                <?php
+                                $ageband = $this->qm->all("policy_agebands", "*", array('cid' => $cid, 'pid' => $pid), '', 'both', '', 'min_age');
+                                foreach ($ageband as $key => $val) {
+                                    
+                                ?>
+                                    <th><?php echo $val->min_age . " - " . $val->max_age; ?></th>
+                                <?php } ?>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $psuminsured = $this->qm->all("policy_suminsureds", "*", array('cid' => $cid, 'pid' => $pid), '', 'both', '', 'suminsured');
                             foreach ($psuminsured as $key => $psuminsuredVal) { ?>
                                 <tr>
                                     <td> <?php echo $psuminsuredVal->suminsured; ?> </td>
-                                    <?php foreach ($ageband as $key => $agebandVal) { ?>
+                                    <?php foreach ($ageband as $key => $agebandVal) { 
+                                        
+                                        ?>
                                         <td> <?php
                                                 $premium = $this->qm->single("policy_premium", "*", array('suminsured_id' => $psuminsuredVal->id, 'ageband_id' => $agebandVal->id, 'cid' => $cid, 'pid' => $pid));
                                                 if ($premium->premium  == '')
@@ -194,10 +211,91 @@
                     </table>
                         <?php
                     }
-                    ?>
-                   <?php
-                    if($data->calculation_method == 'Per Family on Sum insured and Age Band basis'){
-                    echo "Per Family on Sum insured and Age Band basis";
+                        ?>
+                        <?php
+                    if($data->calculation_method == 'Self +Family on a demographic basis'){
+                    
+                        ?>
+                        <table id="example2" class="display table table-bordered table-stripped" style="min-width: 845px">
+                        <thead>
+                        <tr>
+                               <th></th>
+                                <th class="text-center">Age Band</th>
+                            </tr>
+                            <tr>
+                                <th>SumInsured</th>
+                                <?php
+                                $ageband = $this->qm->all("policy_agebands", "*", array('cid' => $cid, 'pid' => $pid), '', 'both', '', 'min_age');
+                                foreach ($ageband as $key => $val) {
+                                    
+                                ?>
+                                    <th><?php echo $val->min_age . " - " . $val->max_age; ?></th>
+                                <?php } ?>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $psuminsured = $this->qm->all("policy_suminsureds", "*", array('cid' => $cid, 'pid' => $pid), '', 'both', '', 'suminsured');
+                            foreach ($psuminsured as $key => $psuminsuredVal) { ?>
+                                <tr>
+                                    <td> <?php echo $psuminsuredVal->suminsured; ?> </td>
+                                    <?php foreach ($ageband as $key => $agebandVal) { 
+                                        
+                                        ?>
+                                        <td> <?php
+                                                $premium = $this->qm->single("policy_premium", "*", array('suminsured_id' => $psuminsuredVal->id, 'ageband_id' => $agebandVal->id, 'cid' => $cid, 'pid' => $pid));
+                                                if ($premium->premium  == '')
+                                                    echo "N/A";
+                                                echo $premium->premium; ?> </td>
+                                    <?php } ?>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                        <?php
+                    }
+                        ?>
+                        <?php
+                    if($data->calculation_method == 'Self and Family members loading'){
+                    
+                        ?>
+                        <table id="example2" class="display table table-bordered table-stripped" style="min-width: 845px">
+                        <thead>
+                        <tr>
+                               <th></th>
+                                <th class="text-center">Age Band</th>
+                            </tr>
+                            <tr>
+                                <th>SumInsured</th>
+                                <?php
+                                $ageband = $this->qm->all("policy_agebands", "*", array('cid' => $cid, 'pid' => $pid), '', 'both', '', 'min_age');
+                                foreach ($ageband as $key => $val) {
+                                    
+                                ?>
+                                    <th><?php echo $val->min_age . " - " . $val->max_age; ?></th>
+                                <?php } ?>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $psuminsured = $this->qm->all("policy_suminsureds", "*", array('cid' => $cid, 'pid' => $pid), '', 'both', '', 'suminsured');
+                            foreach ($psuminsured as $key => $psuminsuredVal) { ?>
+                                <tr>
+                                    <td> <?php echo $psuminsuredVal->suminsured; ?> </td>
+                                    <?php foreach ($ageband as $key => $agebandVal) { 
+                                        
+                                        ?>
+                                        <td> <?php
+                                                $premium = $this->qm->single("policy_premium", "*", array('suminsured_id' => $psuminsuredVal->id, 'ageband_id' => $agebandVal->id, 'cid' => $cid, 'pid' => $pid));
+                                                if ($premium->premium  == '')
+                                                    echo "N/A";
+                                                echo $premium->premium; ?> </td>
+                                    <?php } ?>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                        <?php
                     }
                         ?>
                 </div>
