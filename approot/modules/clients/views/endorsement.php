@@ -16,9 +16,7 @@
                         <a href="<?= base_url('Clients/template_manager/'); ?><?= $cid; ?>/<?= $pid; ?>" 
                         class="btn btn-primary">Template Manager</a>
             </div>
-            <div class="col-sm-4">
-            
-            </div>
+           
             <?php
             $data = $this->qm->single("endorsment_calculations", "*", array('cid' => $cid, 'pid' => $pid));
             $policy_info = $this->qm->single("ri_clientpolicy_tbl", "*", array('id' => $pid ,'cid' => $cid,));
