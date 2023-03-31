@@ -25,7 +25,7 @@
             <div class="card-body">
                 <div class="basic-list-group">
                     <div class="row">
-                        <div class="col-lg-6 col-xl-6">
+                        <div class="col-lg-5 col-xl-5">
                             <div class="list-group mb-4 " id="list-tab" role="tablist">
                                 <a class="list-group-item list-group-item-action active" id="tb3" data-bs-toggle="list" href="#premiumcontnet" role="tab" aria-selected="true">Setup Premium</a>
                                 <a class="list-group-item list-group-item-action" id="tb1" data-bs-toggle="list" href="#gsttbcontnet" role="tab" aria-selected="true">Setup GST</a>
@@ -34,7 +34,7 @@
                             
                             </div>
                         </div>
-                        <div class="col-lg-6 col-xl-6">
+                        <div class="col-lg-7 col-xl-7">
                             <div class="tab-content" id="nav-tabContent">
                                 <div class="tab-pane fade show" id="gsttbcontnet">
                                     <form class="form-group" method="POST" action="<?php echo base_url(); ?>clients/endorsmentCalculation/<?php echo $cid; ?>/<?php echo $pid; ?>">
@@ -58,7 +58,7 @@
                                 <div class="tab-pane fade show" id="tb2cnt">
                                     <form class="form-group" method="POST" action="<?php echo base_url(); ?>clients/endorsmentCalculation/<?php echo $cid; ?>/<?php echo $pid; ?>">
                                         <h4 class="mb-4">SELECT THE BASIS OF CALCULATIONS :
-                                            <select name="basis_of_calculation" id="basis_of_calculation" class="form-select form-control" required <?= $data->basis_of_calculation; ?>>
+                                            <select name="basis_of_calculation" id="basis_of_calculation" onchange="getShortScale();" class="form-select form-control" required <?= $data->basis_of_calculation; ?>>
                                                 <option value="">-Select-</option>
                                                 <option value="pro_rata_basis" <?= ($data->basis_of_calculation == 'pro_rata_basis') ? 'selected' : ''; ?>>
                                                     PRO RATA BASIS</option>
@@ -103,6 +103,7 @@
                                         
                                         <button type="submit" class="btn btn-primary"> <i class="fas fa-pencil-alt"></i>
                                             Update</button>
+                                        
                                         <span id="showpopupbtn"></span>
                                     </form>
                                 </div>
@@ -110,6 +111,7 @@
                                     <a href="<?php echo base_url('clients/policyagebands/' . $cid . '/' . $pid); ?>" class="btn btn-primary" target="_blank">Policy Agebands</a>
                                     <a href="<?php echo base_url('clients/policysuminsurds/' . $cid . '/' . $pid); ?>" class="btn btn-primary" target="_blank">Policy SumInsureds</a>
                                     <a href="<?php echo base_url('clients/policypremium/' . $cid . '/' . $pid); ?>" class="btn btn-primary" target="_blank">Policy Premium</a>
+                                    <!-- <a href='<?= base_url('clients/shortperiodscale/' . $cid . '/' . $pid) ?>' class='btn btn-primary' target='_blank'>Short period scale</a> -->
                                 </div>
                             </div>
                         </div>
@@ -301,18 +303,5 @@
         </div>
     </div>
 </div>
-<script>
-    $(document).ready(function() {
-        $("#basis_of_calculation").change(function() {
-            if ($(this).val() == 'short_period_scale') {
-                $("#showpopupbtn").html(
-                    "<a href='<?= base_url('clients/shortperiodscale/' . $cid . '/' . $pid) ?>' class='btn btn-primary' target='_blank'>Short period scale</a>"
-                );
-            } else if ($(this).val() == 'pro_rata_basis') {
-                $("#showpopupbtn").html("");
-            }
-        });
-        $("#basis_of_calculation").change();
-    });
-</script>
+
         

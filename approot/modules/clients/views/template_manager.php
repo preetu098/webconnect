@@ -11,11 +11,10 @@
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Template Manager </h4>
-                
+                <a href="<?= base_url('Clients/template_master/'); ?><?= $cid; ?>/<?= $pid; ?>"
+                            class="btn btn-primary">Template Master</a>
             </div>
-            <div class="col-sm-4">
             
-            </div>
             <?php
             $data = $this->qm->single("endorsment_calculations", "*", array('cid' => $cid, 'pid' => $pid));
             $policy_info = $this->qm->single("ri_clientpolicy_tbl", "*", array('id' => $pid ,'cid' => $cid,));
@@ -29,28 +28,7 @@
                             <div class="tab-content" id="nav-tabContent">
                                 
                                 
-                                    <form class="form-group" method="POST" action="<?php echo base_url(); ?>clients/endorsmentCalculation/<?php echo $cid; ?>/<?php echo $pid; ?>">
-                                        <h4 class="mb-4">SELECT Policy Type :
-                                            <select name="basis_of_calculation" id="basis_of_calculation" class="form-select form-control" required >
-                                                <option value="">-Select-</option>
-                                               <option value="gmc">GMC</option>
-                                               <option value="gpa">GPA</option>
-                                               <option value="gtli">GTLI</option>
-                                            </select>
-                                        </h4>
-                                        <h4 class="mb-4">SELECT Endorsement Type :
-                                            <select name="basis_of_calculation" id="basis_of_calculation" class="form-select form-control" required >
-                                                <option value="">-Select-</option>
-                                                <option value="addition">Addition</option>
-                                               <option value="deletion">Deletion</option>
-                                               <option value="correction">Correction</option>
-                                            </select>
-                                        </h4>
-                                       
-                                        <button type="submit" class="btn btn-primary">
-                                            Submit</button>
-                                        <span id="showpopupbtn"></span>
-                                    </form>
+                                    
                                 </div>
                                 
                                

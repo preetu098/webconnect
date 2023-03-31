@@ -11,7 +11,8 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Endorsement Addition List</h4>
-                        <a href="<?= base_url('Clients/endorsement_deletion/'); ?><?= $cid; ?>/<?= $pid; ?>" class="btn btn-primary">Deletion List</a>
+                        <a href="<?= base_url('Clients/endorsement_deletion/'); ?><?= $cid; ?>/<?= $pid; ?>"
+                            class="btn btn-primary">Deletion List</a>
                         <!-- <a href="<?= base_url('Clients/endorsement_pro_rata/'); ?><?= $cid; ?>/<?= $pid; ?>" class="btn btn-primary">Endorsement Pro Rata</a> -->
                     </div>
                     <?php
@@ -53,24 +54,23 @@
                                             if ($endorsment_calculations_info->basis_of_calculation == "pro_rata_basis") {
 
 
-                                            ?>
-                                                <th>Pro Rata Basis</th>
+                                                ?>
+                                                <th>Pro Rata Premium</th>
                                                 <th>GST</th>
-                                                <th>Pro Rata Period Premium With GST</th>
-                                            <?php
+                                                <th>Pro Rata Premium With GST</th>
+                                                <?php
                                             } else {
-                                            ?>
-                                                
+                                                ?>
+
                                                 <th>Short Period Rate</th>
                                                 <th>Short Period Premium</th>
                                                 <th>GST</th>
                                                 <th>Short Period Premium With GST</th>
-                                            <?php
+                                                <?php
                                             }
                                             ?>
 
-                                            <!-- <th>Net Endorsement Premium</th> -->
-                                            <!-- <th>Action</th> -->
+                                          
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -95,7 +95,7 @@
                                                 $pro_diffDays = dateDifference($pro_date_of_policy_start, $pro_date_of_policy_expire);
 
                                                 $pro_diffDays = abs($pro_diffDays) + 1;
-                                                $pro_rata= (($policy_premium_info->premium / $pro_diffDays) * $diffDays);
+                                                $pro_rata = (($policy_premium_info->premium / $pro_diffDays) * $diffDays);
 
 
                                                 if ($endorsment_calculations_info->gst == 1) {
@@ -131,55 +131,72 @@
                                                     $premium = $policy_premium_info->premium * (75 / 100);
                                                     $short_peroid_rate = '75%';
                                                 }
-                                                if ($diffDays == 240) {
-                                                    $premium = $policy_premium_info->premium / 100;
+                                                if ($diffDays <= 240 || $diffDays >= 240) {
+                                                    $premium = $policy_premium_info->premium * (100 / 100);
                                                     $short_peroid_rate = '100%';
                                                 }
 
-                                                $after_endorsement_premium = $premium + $policy_premium_info->premium;
 
-                                        ?>
+                                                ?>
                                                 <tr>
                                                     <td>
                                                         <?php echo $count++; ?>
                                                     </td>
-                                                    <td><?php echo $emp->emp_id ?></td>
-                                                    <td><?php echo $emp->emp_name ?></td>
-                                                    <td><?php echo $emp->dob ?></td>
-                                                    <td><?php echo $emp->age ?></td>
-                                                    <td><?php echo $emp->gender ?></td>
-                                                    <td><?php echo $emp->relation ?></td>
-                                                    <td><?php echo $emp->sum_insured ?></td>
-                                                    <td><?php echo  date("d-m-Y", strtotime($emp->doj)); ?></td>
-                                                    <td><?php
+                                                    <td>
+                                                        <?php echo $emp->emp_id ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $emp->emp_name ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $emp->dob ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $emp->age ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $emp->gender ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $emp->relation ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $emp->sum_insured ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo date("d-m-Y", strtotime($emp->doj)); ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php
                                                         if ($EED >= 43) {
                                                             echo '43';
                                                         } else {
                                                             echo $EED;
                                                         }
-                                                        ?></td>
+                                                        ?>
+                                                    </td>
 
                                                     <td>
                                                         <?php
                                                         $startdate = strtotime($emp->doj);
-                                                        //    if ($EED >= 43) {
-                                                        //     echo date("d-m-Y", strtotime("+43 days", $startdate)) . "<br>";
+                                                        if ($EED >= 43) {
+                                                            echo date("d-m-Y", strtotime("+43 days", $startdate)) . "<br>";
 
-                                                        //    }else{
-                                                        //     echo date("d-m-Y", strtotime(date("Y-m-d"),$startdate)) . "<br>";
-                                                        //    }
-                                                        echo date("d-m-Y", strtotime("+43 days", $startdate)) . "<br>";
+                                                        } else {
+                                                            echo date("d-m-Y", strtotime($emp->doj)) . "<br>";
+                                                        }
+                                                        // echo date("d-m-Y", strtotime("+43 days", $startdate)) . "<br>";
                                                         ?>
                                                     </td>
                                                     <td>
                                                         <?php
-                                                        echo  date("d-m-Y", strtotime($policy_info->start_on));
+                                                        echo date("d-m-Y", strtotime($policy_info->start_on));
 
                                                         ?>
                                                     </td>
                                                     <td>
                                                         <?php
-                                                        echo  date("d-m-Y", strtotime($policy_info->expiry_on));
+                                                        echo date("d-m-Y", strtotime($policy_info->expiry_on));
                                                         ?>
                                                     </td>
                                                     <td>
@@ -192,46 +209,43 @@
                                                     if ($endorsment_calculations_info->basis_of_calculation == "pro_rata_basis") {
 
 
-                                                    ?>
-                                                    <td><?php echo $pro_rata?></td>
-                                                    <td><?php echo $pro_gst_premium?></td>
-                                                    <td><?php echo $pro_rata_gst_premium?></td>
-                                                    <?php
+                                                        ?>
+                                                        <td>
+                                                            <?php echo (int) $pro_rata ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo (int) $pro_gst_premium ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo (int) $pro_rata_gst_premium ?>
+                                                        </td>
+                                                        <?php
                                                     } else {
-                                                    ?> <td><?php echo $short_peroid_rate; ?></td>
-
-
+                                                        ?>
+                                                        <td>
+                                                            <?php echo $short_peroid_rate; ?>
+                                                        </td>
 
                                                         <td>
                                                             <?php echo $premium; ?>
                                                         </td>
-                                                        <td><?php echo $gst_premium; ?></td>
-                                                        <td><?php echo $short_gst_premium; ?></td>
+                                                        <td>
+                                                            <?php echo $gst_premium; ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $short_gst_premium; ?>
+                                                        </td>
 
-                                                    <?php
+                                                        <?php
                                                     }
                                                     ?>
 
 
-                                                    <!-- <td>
-                                                        <?php echo $after_endorsement_premium; ?>
-                                                    </td> -->
-                                                    <!-- <td>
-                                                    <div class="d-flex">
-                                                        <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                            data-bs-target="#short_period_edit<?= $key + 1; ?>"
-                                                            class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a onclick="return confirm('Are you sure want to delete')"
-                                                            href="<?= base_url('clients/deletePeriodScale'); ?>/<?= $val->cid; ?>/<?= $val->pid; ?>/<?= $val->id; ?>"
-                                                            class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td> -->
+                                                   
                                                     <td></td>
                                                     <td></td>
                                                 </tr>
-                                        <?php }
+                                            <?php }
                                         } ?>
                                     </tbody>
                                 </table>

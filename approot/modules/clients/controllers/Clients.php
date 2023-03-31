@@ -473,10 +473,7 @@ class Clients extends MY_Controller
         $postdata['modified_by'] = $cid;
         $postdata['status'] = $post['status'];
         $data['endorscalc'] = $this->qm->single("endorsment_calculations", "*", array('cid' => $cid, 'pid' => $pid));
-
-
         $postdata['calculation_method'] = $post['calculation_method'];
-
 
         if (!empty($data['endorscalc'])) {
 
@@ -599,8 +596,8 @@ class Clients extends MY_Controller
             }
         endif;
         $overapData = array_intersect($arrdata, $existingData);
-            print_r($overapData);
-            // die;
+        print_r($overapData);
+        // die;
         if (!empty($overapData)) {
             $this->session->set_flashdata('error', 'Data is Overlaping!');
         } else {
@@ -781,8 +778,8 @@ class Clients extends MY_Controller
         $post['pid'] = $pid;
         $post['upto_days'] = $cid;
         $post['premium_collected'] = $pid;
-        // $post['created_on'] = $cid;
-        // $post['modified_on'] = $cid;
+        $post['created_on'] = $cid;
+        $post['modified_on'] = $cid;
 
         $ad = $this->qm->insert("short_period_scales", $post);
         if ($ad) {
@@ -790,6 +787,7 @@ class Clients extends MY_Controller
         }
         $this->session->set_flashdata('error', 'Somthing went wrong!');
         redirect('clients/shortperiodscale/' . $cid . '/' . $pid . '');
+
     }
     public function endorsement($cid, $pid)
     {
@@ -797,6 +795,15 @@ class Clients extends MY_Controller
         $data['cid'] = $cid;
         $data['pid'] = $pid;
         $data['mainContent'] = "clients/endorsement";
+        $this->load->view('panel', $data);
+
+    }
+    public function template_master($cid, $pid)
+    {
+        $data = [];
+        $data['cid'] = $cid;
+        $data['pid'] = $pid;
+        $data['mainContent'] = "clients/template_master";
         $this->load->view('panel', $data);
 
     }
@@ -843,6 +850,8 @@ class Clients extends MY_Controller
         $post = $this->input->post();
         $post['cid'] = $cid;
         $post['pid'] = $pid;
+        $post['upto_days'] = $cid;
+        $post['premium_collected'] = $pid;
         $post['modified_on'] = $cid;
 
         $where = array('pid' => $pid, 'cid' => $cid, 'id' => $id);
