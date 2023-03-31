@@ -13,7 +13,6 @@
                         <h4 class="card-title">Endorsement Addition List</h4>
                         <a href="<?= base_url('Clients/endorsement_deletion/'); ?><?= $cid; ?>/<?= $pid; ?>"
                             class="btn btn-primary">Deletion List</a>
-                        <!-- <a href="<?= base_url('Clients/endorsement_pro_rata/'); ?><?= $cid; ?>/<?= $pid; ?>" class="btn btn-primary">Endorsement Pro Rata</a> -->
                     </div>
                     <?php
                     $endorsment_calculations_info = $this->qm->single("endorsment_calculations", "*", array('cid' => $cid, 'pid' => $pid));
@@ -69,9 +68,7 @@
                                                 <?php
                                             }
                                             ?>
-
-                                          
-                                        </tr>
+                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php

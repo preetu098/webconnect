@@ -816,15 +816,7 @@ class Clients extends MY_Controller
         $this->load->view('panel', $data);
 
     }
-    public function endorsement_pro_rata($cid, $pid)
-    {
-        $data = [];
-        $data['cid'] = $cid;
-        $data['pid'] = $pid;
-        $data['mainContent'] = "clients/endorsement_pro_rata";
-        $this->load->view('panel', $data);
-
-    }
+    
     public function endorsement_process($cid, $pid)
     {
         $data = [];
