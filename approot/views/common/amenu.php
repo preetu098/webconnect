@@ -79,7 +79,8 @@
                                     <li><a href="<?= base_url('clients/manageclients'); ?>">Manage Clients</a></li>
                                     <li><a href="<?= base_url('clients/editclient/'); ?>">Edit Clients</a></li>
                                     <li><a href="<?= base_url('clients/clientpolicies/'); ?>">Manage Policies</a></li>
-
+                                    <li><a href="<?= base_url('Clients/template_master/'); ?>"
+                            >Template Master</a></li>
                                  </ul>
 
                               </li>

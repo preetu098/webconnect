@@ -798,7 +798,7 @@ class Clients extends MY_Controller
         $this->load->view('panel', $data);
 
     }
-    public function template_master($cid, $pid)
+    public function template_master()
     {
         $data = [];
         $data['cid'] = $cid;
@@ -816,7 +816,21 @@ class Clients extends MY_Controller
         $this->load->view('panel', $data);
 
     }
-    
+
+    public function create_master()
+    {
+        $post = $this->input->post();
+
+        $data = [];
+
+        $data['cname'] = $this->input->post('cname');
+        $data['policy_type'] = $this->input->post('policy_type');
+        $data['endorsement_type'] = $this->input->post('endorsement_type');
+        $data['mainContent'] = "clients/create_master";
+        $this->load->view('panel', $data);
+
+    }
+
     public function endorsement_process($cid, $pid)
     {
         $data = [];
@@ -1351,6 +1365,56 @@ class Clients extends MY_Controller
             }
         }
     }
+    public function uploadTemplateFormat()
+    {
+        $file_mimes = array('text/x-comma-separated-values', 'text/comma-separated-values', 'application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'text/plain', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+
+        if (isset($_FILES['efile']['name']) && in_array($_FILES['efile']['type'], $file_mimes)) {
+            $arr_file = explode('.', $_FILES['efile']['name']);
+            $extension = end($arr_file);
+            if ('csv' == $extension) {
+                $reader = new \PhpOffice\PhpSpreadsheet\Reader\Csv();
+            } elseif ('xls' == $extension) {
+                $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xls();
+            } else {
+                $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+            }
+
+            $spreadsheet = $reader->load($_FILES['efile']['tmp_name']);
+            $sheetData = $spreadsheet->getActiveSheet()->toArray();
+
+            if (!empty($sheetData)) {
+
+
+
+                for ($i = 1; $i < count($sheetData); $i++) {
+
+                    // die;
+
+                    $data = [];
+
+                    $data['company'] = $sheetData[$i][1];
+                    $data['member'] = $sheetData[$i][2];
+                    $data['age'] = $sheetData[$i][3];
+                    $data['si'] = $sheetData[$i][4];
+                    $data['a/d/c'] = $sheetData[$i][5];
+                    $data['doj'] = $sheetData[$i][6];
+                    $data['dol'] = $sheetData[$i][7];
+
+
+
+
+                    $ins = $this->qm->insert('template_master', $data);
+                }
+
+            }
+
+            redirect('clients/create_master');
+        } else {
+            redirect('clients/uploadTemplateFormat');
+        }
+    }
+
 
     public function editemployee($cid, $pid, $eid)
     {

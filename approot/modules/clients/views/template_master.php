@@ -30,54 +30,114 @@
 
 
                                         <form class="form-group" method="POST"
-                                            action="<?php echo base_url(); ?>clients/endorsmentCalculation/<?php echo $cid; ?>/<?php echo $pid; ?>">
+                                            action="<?= base_url('Clients/create_master'); ?>">
 
                                             <div class="mb-3">
                                                 <label class="form-label">
                                                     <h4>Company Name</h4>
                                                 </label>
-                                                <select class="form-control" name="cname" id="cname"
-                                                    onchange="editCli(this.value)">
+                                                <select class="form-control" name="cname" id="cname">
                                                     <option>Select Company</option>
                                                     <?php
-                                                    $cli = $this->qm->all('ri_clients_tbl');
-                                                    foreach ($cli as $cli) {
+                                                    $insurance_company = $this->qm->all('ad_crm_account', "*", array('account_type_id' => '1'));
+                                                    foreach ($insurance_company as $company) {
 
                                                         ?>
-                                                        <option value="<?= $cli->cid; ?>"><?= $cli->cname; ?></option>
+                                                        <option value="<?= $company->account_id; ?>" <?php
+                                                          if ($company->account_id == $_POST['cname']) {
+                                                              echo 'selected';
+                                                          }
+                                                          ?>><?= $company->account_name; ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
+
                                             <h4 class="mb-4">SELECT Policy Type :
-                                                <select name="basis_of_calculation" id="basis_of_calculation"
-                                                    class="form-select form-control" required>
-                                                    <option value="">-Select-</option>
-                                                    <option value="gmc">GMC</option>
-                                                    <option value="gpa">GPA</option>
-                                                    <option value="gtli">GTLI</option>
+
+                                                <select class="form-control" name="policy_type" id="type" required>
+                                                    <option>Select Type</option>
+                                                    <option value="5283">Data Collection</option>
+                                                    <?php
+
+                                                    $newd = $this->qm->all2("ad_policy_type", "*", array('policy_dept_id' => '7'));
+
+                                                    foreach ($newd as $typ) {
+                                                        ?>
+                                                        <option value="<?= $typ->policy_type_id; ?>" <?php
+                                                          if ($typ->policy_type_id == $_POST['policy_type']) {
+                                                              echo 'selected';
+                                                          }
+                                                          ?>><?= $typ->policy_type_name; ?></option>
+                                                    <?php } ?>
                                                 </select>
                                             </h4>
                                             <h4 class="mb-4">SELECT Endorsement Type :
-                                                <select name="basis_of_calculation" id="basis_of_calculation"
+                                                <select name="endorsement_type" id="endorsement_type"
                                                     class="form-select form-control" required>
                                                     <option value="">-Select-</option>
-                                                    <option value="addition">Addition</option>
-                                                    <option value="deletion">Deletion</option>
-                                                    <option value="correction">Correction</option>
+                                                    <option value="addition_deletion" <?php
+                                                    if ($_POST['endorsement_type'] == "addition_deletion") {
+                                                        echo 'selected';
+                                                    }
+                                                    ?>>Addition & Deletion</option>
+                                                    <option value="addition" <?php
+                                                    if ($_POST['endorsement_type'] == "addition") {
+                                                        echo 'selected';
+                                                    }
+                                                    ?>>Addition</option>
+                                                    <option value="deletion" <?php
+                                                    if ($_POST['endorsement_type'] == "deletion") {
+                                                        echo 'selected';
+                                                    }
+                                                    ?>>Deletion</option>
+                                                    <option value="correction" <?php
+                                                    if ($_POST['endorsement_type'] == "correction") {
+                                                        echo 'selected';
+                                                    }
+                                                    ?>>Correction</option>
                                                 </select>
                                             </h4>
+                                            <button class="btn btn-primary">Create Master</button>
 
-                                            <button type="submit" class="btn btn-primary">
-                                                Submit</button>
-                                            <span id="showpopupbtn"></span>
+
                                         </form>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive d-flex justify-content-center">
 
+                                    <?php
+                                    $psuminsured = $this->qm->all("template_master", "*", array());
+
+                                    if ((count($psuminsured) > 0)) {
+
+                                        ?>
+                                        <table id="example2" class="display table table-bordered" style="min-width: 845px">
+
+                                            <tbody>
+                                                <?php
+
+                                                foreach ($psuminsured as $key => $psuminsuredVal) {
+
+                                                    ?>
+
+                                                    <?php ?>
+                                                </tbody>
+                                            </table>
+                                            <?php
+                                                }
+                                    }
+                                    ?>
 
                                 </div>
-
                             </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
