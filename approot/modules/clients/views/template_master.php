@@ -27,8 +27,6 @@
 
                                 <div class="col-lg-6 col-xl-6">
                                     <div class="tab-content" id="nav-tabContent">
-
-
                                         <form class="form-group" method="POST"
                                             action="<?= base_url('Clients/create_master'); ?>">
 

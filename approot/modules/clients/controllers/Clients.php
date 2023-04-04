@@ -1139,6 +1139,18 @@ class Clients extends MY_Controller
             $this->load->view('panel', $data);
         }
     }
+    public function endorsement_format_download($cid,$pid)
+    {
+        if (empty($this->session->userdata('aid'))) {
+            redirect('login/index');
+        } else {
+
+            $data['cid'] = $cid;
+            $data['pid'] = $pid;
+            $data['mainContent'] = "clients/endorsement_format_download";
+            $this->load->view('panel', $data);
+        }
+    }
 
     public function updpolicy($pid)
     {
