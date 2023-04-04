@@ -1385,23 +1385,24 @@ class Clients extends MY_Controller
 
             if (!empty($sheetData)) {
 
-
+                $post = $this->input->post();
 
                 for ($i = 1; $i < count($sheetData); $i++) {
 
                     // die;
+                    
 
                     $data = [];
-
                     $data['company'] = $sheetData[$i][1];
                     $data['member'] = $sheetData[$i][2];
                     $data['age'] = $sheetData[$i][3];
                     $data['si'] = $sheetData[$i][4];
-                    $data['a/d/c'] = $sheetData[$i][5];
+                    $data['mode'] = $sheetData[$i][5];
                     $data['doj'] = $sheetData[$i][6];
                     $data['dol'] = $sheetData[$i][7];
-
-
+                    $data['company_id'] = $this->input->post('company_id');
+                    $data['policy_type'] = $this->input->post('policy_type');
+                    $data['endorsement_type'] = $this->input->post('endorsement_type');
 
 
                     $ins = $this->qm->insert('template_master', $data);
@@ -1409,9 +1410,9 @@ class Clients extends MY_Controller
 
             }
 
-            redirect('clients/create_master');
+            redirect('clients/template_master');
         } else {
-            redirect('clients/uploadTemplateFormat');
+            redirect('clients/template_master');
         }
     }
 

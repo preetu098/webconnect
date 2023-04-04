@@ -20,68 +20,63 @@
                         ?>
                     </div>
                     <div class="card-body">
-                            <div class="basic-form">
-                    <div class="col-lg-6 col-xl-6">
-                        <div class="tab-content" id="nav-tabContent">
+                        <div class="basic-form">
+                            <div class="col-lg-6 col-xl-6">
+                                <div class="tab-content" id="nav-tabContent">
 
-                            <form class="form-group" method="POST" action="">
-                                <input type="hidden" name='policy_type' value='<?= $newd->policy_type?>'>
+                                    <form class="form-group" method="POST" action="">
+                                        <input type="hidden" name='policy_type' value='<?= $newd->policy_type ?>'>
 
-                                <label class="">SELECT Master Type :</label>
-                                <select name="excel_type" id="excel_type" onchange="this.form.submit();"
-                                    class="form-select form-control" required>
-                                    <option value="">-Select-</option>
-                                    <option value="automatic" <?php
-                                    if ($_POST['excel_type'] == "automatic") {
-                                        echo 'selected';
-                                    }
-                                    ?>>
+                                        <label class="">SELECT Master Type :</label>
+                                        <select name="excel_type" id="excel_type" onchange="masterType(this.value);"
+                                            class="form-select form-control" required>
+                                            <option value="">-Select-</option>
+                                            <option value="automatic" <?php
+                                            if ($_POST['excel_type'] == "automatic") {
+                                                echo 'selected';
+                                            }
+                                            ?>>
                             Create From EXcel File</option>
-                                    <option value="manual" <?php
-                                    if ($_POST['excel_type'] == "manual") {
-                                        echo 'selected';
-                                    }
-                                    ?>>Manual</option>
+                                            <option value="manual" <?php
+                                            if ($_POST['excel_type'] == "manual") {
+                                                echo 'selected';
+                                            }
+                                            ?>>Manual</option>
 
-                                </select>
-
-
+                                        </select>
 
 
+
+
+                                    </form>
+                                </div>
+                            </div>
+
+
+                            <form method="POST" id="form" style="display: none;"
+                                action="<?= base_url('clients/uploadTemplateFormat'); ?>" enctype="multipart/form-data">
+                                <?php
+                                $cl = $this->qm->all("ri_clients_tbl", "*", array('cid' => $cid));
+                                foreach ($cl as $cl)
+                                    ;
+                                ?>
+                                <input type="hidden" name="company_id" value="<?= $cname; ?>">
+                                <input type="hidden" name="policy_type" value="<?= $policy_type ?>">
+                                <input type="hidden" name="endorsement_type" value="<?= $endorsement_type ?>">
+                                <div class="row">
+
+                                    <div class="col-lg-6 col-xl-6">
+                                        <label class="form-label">Upload</label>
+                                        <input type="file" name="efile" class="form-control">
+                                    </div>
+
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Upload</button>
                             </form>
                         </div>
                     </div>
-                    <?php
-                    if ($_POST['excel_type'] == "automatic") {
-                        ?>
-                        
-                                <form method="POST"
-                                    action="<?= base_url('clients/uploadTemplateFormat');?>"
-                                    enctype="multipart/form-data">
-                                    <?php
-                                    $cl = $this->qm->all("ri_clients_tbl", "*", array('cid' => $cid));
-                                    foreach ($cl as $cl)
-                                        ;
-                                    ?>
-                                    <input type="hidden" name="client_code" value="<?= $cl->ccode; ?>">
-                                    <input type="hidden" name="client_name" value="<?= $cl->cname; ?>">
-                                    <input type="hidden" name="data_type" value="1">
-                                    <div class="row">
 
-                                        <div class="col-lg-6 col-xl-6">
-                                            <label class="form-label">Upload</label>
-                                            <input type="file" name="efile" class="form-control">
-                                        </div>
-
-                                    </div>
-
-                                    <button type="submit" class="btn btn-primary">Upload</button>
-                                </form>
-                            </div>
-                        </div>
-                        <?php
-                    }
-                    ?>
 
                 </div>
             </div>
@@ -201,3 +196,13 @@
                </div> -->
 </div>
 </div>
+<script>
+    function masterType(value) {
+        console.log(value);
+        if (value == "automatic") {
+            $("#form").css('display', 'block');
+        } else {
+            $("#form").css('display', 'none');
+        }
+    }
+</script>

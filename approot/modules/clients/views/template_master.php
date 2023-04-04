@@ -108,25 +108,39 @@
                                 <div class="table-responsive d-flex justify-content-center">
 
                                     <?php
-                                    $psuminsured = $this->qm->all("template_master", "*", array());
+                                    $template = $this->qm->all("template_master", "*", array());
 
-                                    if ((count($psuminsured) > 0)) {
+                                    if ((count($template) > 0)) {
 
                                         ?>
-                                        <table id="example2" class="display table table-bordered" style="min-width: 845px">
+                                        <table id="example2" class="table table-bordered table-stripped" style="min-width: 845px">
 
                                             <tbody>
                                                 <?php
 
-                                                foreach ($psuminsured as $key => $psuminsuredVal) {
-
+                                                foreach ($template as $key => $template) {
+                                                    $newd = $this->qm->single("ad_policy_type", "*", array('policy_type_id' => $template->policy_type, 'policy_dept_id' => '7'));
+                                                    $insurance_company = $this->qm->single('ad_crm_account', "*", array('account_id' => $template->company_id, 'account_type_id' => '1'));
+                                                   
                                                     ?>
-
-                                                    <?php ?>
+                                                    
+                                                        <tr>
+                                                            <td><?php echo $insurance_company->account_name?></td>
+                                                            <td><?php echo $newd->policy_type_name?></td>
+                                                            <td><?php echo $template->endorsement_type?></td>
+                                                            <td><?php echo $template->company?></td>
+                                                            <td><?php echo $template->member?></td>
+                                                            <td><?php echo $template->age?></td>
+                                                            <td><?php echo $template->si?></td>
+                                                            <td><?php echo $template->mode;?></td>
+                                                        </tr>
+                                                        <?php } ?>
+                                                    </tbody>
+                                                   
                                                 </tbody>
                                             </table>
                                             <?php
-                                                }
+                                               
                                     }
                                     ?>
 

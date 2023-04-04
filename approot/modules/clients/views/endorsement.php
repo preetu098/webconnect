@@ -13,8 +13,7 @@
                 <h4 class="card-title">Endorsment Calculations </h4>
                 <a href="<?= base_url('Clients/endorsement_process/'); ?><?= $cid; ?>/<?= $pid; ?>" 
                         class="btn btn-primary">Process for Endorsement</a>
-                        <a href="<?= base_url('Clients/template_manager/'); ?><?= $cid; ?>/<?= $pid; ?>" 
-                        class="btn btn-primary">Template Manager</a>
+                        
             </div>
            
             <?php
