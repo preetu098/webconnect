@@ -1139,7 +1139,7 @@ class Clients extends MY_Controller
             $this->load->view('panel', $data);
         }
     }
-    public function endorsement_format_download($cid,$pid)
+    public function endorsement_format_download($cid, $pid)
     {
         if (empty($this->session->userdata('aid'))) {
             redirect('login/index');
@@ -1377,6 +1377,150 @@ class Clients extends MY_Controller
             }
         }
     }
+    public function download_endorsement($cid, $pid)
+    {
+        set_time_limit(0);
+        ini_set('memory_limit', '512M');
+
+        $cond = " cid='$cid' && pid='$pid' ";
+        $data = [];
+
+        $data['company_id'] = $this->input->post('cname');
+        $data['policy_type'] = $this->input->post('policy_type');
+        $data['endorsement_type'] = $this->input->post('endorsement_type');
+
+        $endorsement__template_info = $this->qm->single("template_master", "*", array('company_id' => $data['company_id'], 'policy_type' => $data['policy_type'], 'endorsement_type' => $data['endorsement_type']));
+        
+
+
+        $spreadsheet = new Spreadsheet();
+
+        $sheet = $spreadsheet->getActiveSheet();
+
+        $sheet->setCellValue('A1', $endorsement__template_info->company);
+        $spreadsheet->getActiveSheet()->getStyle('A1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('000000');
+        $spreadsheet->getActiveSheet()->getStyle('A1')->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
+
+        $sheet->setCellValue('B1', $endorsement__template_info->member);
+        $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('000000');
+        $spreadsheet->getActiveSheet()->getStyle('B1')->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
+
+        $sheet->setCellValue('C1', $endorsement__template_info->age);
+        $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('000000');
+        $spreadsheet->getActiveSheet()->getStyle('C1')->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
+
+        $sheet->setCellValue('D1', $endorsement__template_info->si);
+        $spreadsheet->getActiveSheet()->getStyle('D1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('000000');
+        $spreadsheet->getActiveSheet()->getStyle('D1')->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
+
+        $sheet->setCellValue('E1', $endorsement__template_info->mode);
+        $spreadsheet->getActiveSheet()->getStyle('E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('000000');
+        $spreadsheet->getActiveSheet()->getStyle('E1')->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
+
+        $sheet->setCellValue('F1', $endorsement__template_info->doj);
+        $spreadsheet->getActiveSheet()->getStyle('F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('000000');
+        $spreadsheet->getActiveSheet()->getStyle('F1')->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
+
+        $sheet->setCellValue('G1', $endorsement__template_info->dol);
+        $spreadsheet->getActiveSheet()->getStyle('G1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('000000');
+        $spreadsheet->getActiveSheet()->getStyle('G1')->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
+
+        // $sheet->setCellValue('H1', $endorsement__template_info->dol);
+        // $spreadsheet->getActiveSheet()->getStyle('H1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('000000');
+        // $spreadsheet->getActiveSheet()->getStyle('H1')->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
+
+
+
+        $endorsment_calculations_info = $this->qm->single("endorsment_calculations", "*", array('cid' => $cid, 'pid' => $pid));
+        $policy_info = $this->qm->single("ad_policy", "*", array('policy_id' => $pid));
+        $policy_premium_info = $this->qm->single("policy_premium", "*", array('cid' => $cid, 'pid' => $pid));
+        function dateDifference($start_date, $end_date)
+        {
+            $start_array = date_parse($start_date);
+            $end_array = date_parse($end_date);
+            $start_date = GregorianToJD($start_array["month"], $start_array["day"], $start_array["year"]) . "</br>";
+            $end_date = GregorianToJD($end_array["month"], $end_array["day"], $end_array["year"]);
+            return round(($end_date - $start_date), 0);
+        }
+        $emp = $this->qm->all('ri_employee_tbl', '*', array('cid' => $cid, 'pid' => $pid));
+
+        foreach ($emp as $emp) {
+
+            if ($emp->mode == "New Addition") {
+
+
+                $date_of_joining = date("Y-m-d", strtotime($emp->doj));
+                $date_of_policy_expire = date("Y-m-d", strtotime($policy_info->expiry_on));
+                $diffDays = dateDifference($date_of_joining, $date_of_policy_expire);
+                $EED = dateDifference($date_of_joining, date("Y-m-d"));
+                $diffDays = abs($diffDays) + 1;
+
+                $pro_date_of_policy_start = date("Y-m-d", strtotime($policy_info->start_on));
+                $pro_date_of_policy_expire = date("Y-m-d", strtotime($policy_info->expiry_on));
+                $pro_diffDays = dateDifference($pro_date_of_policy_start, $pro_date_of_policy_expire);
+
+                $pro_diffDays = abs($pro_diffDays) + 1;
+                $pro_rata = (($policy_premium_info->premium / $pro_diffDays) * $diffDays);
+
+
+                if ($endorsment_calculations_info->gst == 1) {
+                    $gst_premium = $policy_premium_info->premium * ($endorsment_calculations_info->gst_rate / 100);
+                    $short_gst_premium = $gst_premium + $policy_premium_info->premium;
+                    $pro_gst_premium = $pro_rata * ($endorsment_calculations_info->gst_rate / 100);
+                    $pro_rata_gst_premium = $pro_gst_premium + $pro_rata;
+                }
+                $policy_premium_info->premium;
+
+                // $diffDays=30;
+                if ($diffDays <= 7) {
+                    $premium = $policy_premium_info->premium * (10 / 100);
+                    $short_peroid_rate = '10%';
+                }
+                if ($diffDays <= 30) {
+                    $premium = $policy_premium_info->premium * (25 / 100);
+                    $short_peroid_rate = '25%';
+                }
+                if ($diffDays <= 60) {
+                    $premium = $policy_premium_info->premium * (35 / 100);
+                    $short_peroid_rate = '35%';
+                }
+                if ($diffDays <= 90) {
+                    $premium = $policy_premium_info->premium * (50 / 100);
+                    $short_peroid_rate = '50%';
+                }
+                if ($diffDays <= 120) {
+                    $premium = $policy_premium_info->premium * (60 / 100);
+                    $short_peroid_rate = '60%';
+                }
+                if ($diffDays <= 180) {
+                    $premium = $policy_premium_info->premium * (75 / 100);
+                    $short_peroid_rate = '75%';
+                }
+                if ($diffDays <= 240 || $diffDays >= 240) {
+                    $premium = $policy_premium_info->premium * (100 / 100);
+                    $short_peroid_rate = '100%';
+                }
+
+            }
+            $rows = 2;
+            $sheet->setCellValue('A' . $rows, $emp->client_name);
+            $sheet->setCellValue('B' . $rows, $emp->emp_name);
+            $sheet->setCellValue('C' . $rows, $emp->age);
+            $sheet->setCellValue('D' . $rows, $emp->sum_insured);
+            $sheet->setCellValue('E' . $rows, $emp->mode);
+            $sheet->setCellValue('F' . $rows,date("d-m-Y", strtotime($emp->doj)));
+            $sheet->setCellValue('G' . $rows,date("d-m-Y", strtotime($emp->dol)));
+            // $sheet->setCellValue('G' . $rows,$premium);
+
+        }
+
+        $fileName = 'endorsement_export.xlsx';
+        $writer = new Xlsx($spreadsheet);
+        $writer->save("external/uploads/" . $fileName);
+        header("Content-Type: application/vnd.ms-excel");
+        redirect(base_url() . "external/uploads/" . $fileName);
+    }
+
     public function uploadTemplateFormat()
     {
         $file_mimes = array('text/x-comma-separated-values', 'text/comma-separated-values', 'application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'text/plain', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
@@ -1402,7 +1546,7 @@ class Clients extends MY_Controller
                 for ($i = 1; $i < count($sheetData); $i++) {
 
                     // die;
-                    
+
 
                     $data = [];
                     $data['company'] = $sheetData[$i][1];
