@@ -74,6 +74,55 @@
 
                                 <button type="submit" class="btn btn-primary">Upload</button>
                             </form>
+
+                            <form method="POST" id="form1" style="display: none;"
+                                action="<?= base_url('clients/manualTemplateFormat'); ?>">
+                                <input type="hidden" name="company_id" value="<?= $cname; ?>">
+                                <input type="hidden" name="policy_type" value="<?= $policy_type ?>">
+                                <input type="hidden" name="endorsement_type" value="<?= $endorsement_type ?>">
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label>Corporate</label>
+                                        <input type="text" class="form-control" name="corporate">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Employee</label>
+                                        <input type="text" class="form-control" name="employee">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <lable>Age</lable>
+                                        <input type="text" class="form-control" name="age">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Sum insured</label>
+                                        <input type="text" class="form-control" name="suminsured">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Mode</label>
+                                        <input type="text" class="form-control" name="mode">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>DOJ</label>
+                                        <input type="text" class="form-control" name="doj">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="dol">DOL</label>
+                                        <input type="text" class="form-control" name="dol">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="edd">EDD</label>
+                                        <input type="text" class="form-control" name="edd">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="premium">Premium</label>
+                                        <input type="text" class="form-control" name='premium'>
+                                    </div>
+
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
                         </div>
                     </div>
 
@@ -201,8 +250,10 @@
         console.log(value);
         if (value == "automatic") {
             $("#form").css('display', 'block');
+            $("#form1").css('display', 'none');
         } else {
             $("#form").css('display', 'none');
+            $("#form1").css('display', 'block');
         }
     }
 </script>

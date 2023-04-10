@@ -1390,46 +1390,42 @@ class Clients extends MY_Controller
         $data['endorsement_type'] = $this->input->post('endorsement_type');
 
         $endorsement__template_info = $this->qm->single("template_master", "*", array('company_id' => $data['company_id'], 'policy_type' => $data['policy_type'], 'endorsement_type' => $data['endorsement_type']));
-        
-
 
         $spreadsheet = new Spreadsheet();
 
         $sheet = $spreadsheet->getActiveSheet();
 
         $sheet->setCellValue('A1', $endorsement__template_info->company);
-        $spreadsheet->getActiveSheet()->getStyle('A1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('000000');
-        $spreadsheet->getActiveSheet()->getStyle('A1')->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
+        $spreadsheet->getActiveSheet()->getStyle('A1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+        $spreadsheet->getActiveSheet()->getStyle('A1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
 
         $sheet->setCellValue('B1', $endorsement__template_info->member);
-        $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('000000');
-        $spreadsheet->getActiveSheet()->getStyle('B1')->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
+        $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+        $spreadsheet->getActiveSheet()->getStyle('B1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
 
         $sheet->setCellValue('C1', $endorsement__template_info->age);
-        $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('000000');
-        $spreadsheet->getActiveSheet()->getStyle('C1')->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
+        $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+        $spreadsheet->getActiveSheet()->getStyle('C1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
 
         $sheet->setCellValue('D1', $endorsement__template_info->si);
-        $spreadsheet->getActiveSheet()->getStyle('D1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('000000');
-        $spreadsheet->getActiveSheet()->getStyle('D1')->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
+        $spreadsheet->getActiveSheet()->getStyle('D1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+        $spreadsheet->getActiveSheet()->getStyle('D1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
 
         $sheet->setCellValue('E1', $endorsement__template_info->mode);
-        $spreadsheet->getActiveSheet()->getStyle('E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('000000');
-        $spreadsheet->getActiveSheet()->getStyle('E1')->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
+        $spreadsheet->getActiveSheet()->getStyle('E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+        $spreadsheet->getActiveSheet()->getStyle('E1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
 
         $sheet->setCellValue('F1', $endorsement__template_info->doj);
-        $spreadsheet->getActiveSheet()->getStyle('F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('000000');
-        $spreadsheet->getActiveSheet()->getStyle('F1')->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
+        $spreadsheet->getActiveSheet()->getStyle('F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+        $spreadsheet->getActiveSheet()->getStyle('F1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
 
         $sheet->setCellValue('G1', $endorsement__template_info->dol);
-        $spreadsheet->getActiveSheet()->getStyle('G1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('000000');
-        $spreadsheet->getActiveSheet()->getStyle('G1')->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
+        $spreadsheet->getActiveSheet()->getStyle('G1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+        $spreadsheet->getActiveSheet()->getStyle('G1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
 
-        // $sheet->setCellValue('H1', $endorsement__template_info->dol);
-        // $spreadsheet->getActiveSheet()->getStyle('H1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('000000');
-        // $spreadsheet->getActiveSheet()->getStyle('H1')->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
-
-
+        $sheet->setCellValue('H1', $endorsement__template_info->edd);
+        $spreadsheet->getActiveSheet()->getStyle('H1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+        $spreadsheet->getActiveSheet()->getStyle('H1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
 
         $endorsment_calculations_info = $this->qm->single("endorsment_calculations", "*", array('cid' => $cid, 'pid' => $pid));
         $policy_info = $this->qm->single("ad_policy", "*", array('policy_id' => $pid));
@@ -1444,76 +1440,297 @@ class Clients extends MY_Controller
         }
         $emp = $this->qm->all('ri_employee_tbl', '*', array('cid' => $cid, 'pid' => $pid));
 
-        foreach ($emp as $emp) {
+        if ($data['endorsement_type'] == "addition_deletion") {
+            $rows = 0;
+            foreach ($emp as $emp) {
 
-            if ($emp->mode == "New Addition") {
-
-
-                $date_of_joining = date("Y-m-d", strtotime($emp->doj));
-                $date_of_policy_expire = date("Y-m-d", strtotime($policy_info->expiry_on));
-                $diffDays = dateDifference($date_of_joining, $date_of_policy_expire);
-                $EED = dateDifference($date_of_joining, date("Y-m-d"));
-                $diffDays = abs($diffDays) + 1;
-
-                $pro_date_of_policy_start = date("Y-m-d", strtotime($policy_info->start_on));
-                $pro_date_of_policy_expire = date("Y-m-d", strtotime($policy_info->expiry_on));
-                $pro_diffDays = dateDifference($pro_date_of_policy_start, $pro_date_of_policy_expire);
-
-                $pro_diffDays = abs($pro_diffDays) + 1;
-                $pro_rata = (($policy_premium_info->premium / $pro_diffDays) * $diffDays);
+                // echo "<pre>";
+                // print_r($emp);
+                // echo "</pre>";
+                if ($emp->mode == "New Addition" || $emp->mode == "Deletion") {
 
 
-                if ($endorsment_calculations_info->gst == 1) {
-                    $gst_premium = $policy_premium_info->premium * ($endorsment_calculations_info->gst_rate / 100);
-                    $short_gst_premium = $gst_premium + $policy_premium_info->premium;
-                    $pro_gst_premium = $pro_rata * ($endorsment_calculations_info->gst_rate / 100);
-                    $pro_rata_gst_premium = $pro_gst_premium + $pro_rata;
+                    $date_of_joining = date("Y-m-d", strtotime($emp->doj));
+                    $date_of_policy_expire = date("Y-m-d", strtotime($policy_info->expiry_on));
+                    $diffDays = dateDifference($date_of_joining, $date_of_policy_expire);
+                    $EED = dateDifference($date_of_joining, date("Y-m-d"));
+                    $diffDays = abs($diffDays) + 1;
+
+                    $pro_date_of_policy_start = date("Y-m-d", strtotime($policy_info->start_on));
+                    $pro_date_of_policy_expire = date("Y-m-d", strtotime($policy_info->expiry_on));
+                    $pro_diffDays = dateDifference($pro_date_of_policy_start, $pro_date_of_policy_expire);
+
+                    $pro_diffDays = abs($pro_diffDays) + 1;
+                    $pro_rata = (($policy_premium_info->premium / $pro_diffDays) * $diffDays);
+
+
+                    if ($endorsment_calculations_info->gst == 1) {
+                        $gst_premium = $policy_premium_info->premium * ($endorsment_calculations_info->gst_rate / 100);
+                        $short_gst_premium = $gst_premium + $policy_premium_info->premium;
+                        $pro_gst_premium = $pro_rata * ($endorsment_calculations_info->gst_rate / 100);
+                        $pro_rata_gst_premium = $pro_gst_premium + $pro_rata;
+                    }
+                    $policy_premium_info->premium;
+
+                    // $diffDays=30;
+                    if ($diffDays <= 7) {
+                        $premium = $policy_premium_info->premium * (10 / 100);
+                        $short_peroid_rate = '10%';
+                    }
+                    if ($diffDays <= 30) {
+                        $premium = $policy_premium_info->premium * (25 / 100);
+                        $short_peroid_rate = '25%';
+                    }
+                    if ($diffDays <= 60) {
+                        $premium = $policy_premium_info->premium * (35 / 100);
+                        $short_peroid_rate = '35%';
+                    }
+                    if ($diffDays <= 90) {
+                        $premium = $policy_premium_info->premium * (50 / 100);
+                        $short_peroid_rate = '50%';
+                    }
+                    if ($diffDays <= 120) {
+                        $premium = $policy_premium_info->premium * (60 / 100);
+                        $short_peroid_rate = '60%';
+                    }
+                    if ($diffDays <= 180) {
+                        $premium = $policy_premium_info->premium * (75 / 100);
+                        $short_peroid_rate = '75%';
+                    }
+                    if ($diffDays <= 240 || $diffDays >= 240) {
+                        $premium = $policy_premium_info->premium * (100 / 100);
+                        $short_peroid_rate = '100%';
+                    }
+
+                    $date_of_leaving = date("Y-m-d", strtotime($emp->dol));
+                    $date_of_leaving = '2023-04-07';
+                    $date_of_policy_start = date("Y-m-d", strtotime($policy_info->start_on));
+                    $diffDays = dateDifference($date_of_leaving, $date_of_policy_start);
+
+                    $diffDays = abs($diffDays) + 1;
+                    $pro_date_of_policy_start = date("Y-m-d", strtotime($policy_info->start_on));
+                    $pro_date_of_policy_expire = date("Y-m-d", strtotime($policy_info->expiry_on));
+                    $pro_diffDays = dateDifference($pro_date_of_policy_start, $pro_date_of_policy_expire);
+
+                    $pro_diffDays = abs($pro_diffDays) + 1;
+                    $pro_rata = (($policy_premium_info->premium / $pro_diffDays) * $diffDays);
+
+                    $EED = dateDifference($date_of_leaving, date("Y-m-d"));
+
+
+                    // $diffDays=30;
+                    if ($diffDays <= 7) {
+                        $premium = $policy_premium_info->premium * (90 / 100);
+                        $short_peroid_rate = '90%';
+                    }
+                    if (($diffDays <= 30 || $diffDays < 30) && $diffDays > 7) {
+                        $premium = $policy_premium_info->premium * (75 / 100);
+                        $short_peroid_rate = '75%';
+                    }
+                    if (($diffDays <= 60 || $diffDays < 60) && $diffDays > 30) {
+                        $premium = $policy_premium_info->premium * (65 / 100);
+                        $short_peroid_rate = '65%';
+                    }
+                    if (($diffDays == 90 || $diffDays < 90) && $diffDays > 60) {
+                        $premium = $policy_premium_info->premium * (50 / 100);
+                        $short_peroid_rate = '50%';
+                    }
+                    if (($diffDays == 120 || $diffDays < 120) && $diffDays > 90) {
+                        $premium = $policy_premium_info->premium * (40 / 100);
+                        $short_peroid_rate = '40%';
+                    }
+                    if (($diffDays == 180 || $diffDays < 180) && $diffDays > 120) {
+                        $premium = $policy_premium_info->premium * (25 / 100);
+                        $short_peroid_rate = '25%';
+                    }
+                    if (($diffDays == 240 || $diffDays < 240) && $diffDays > 180) {
+                        $premium = $policy_premium_info->premium * (15 / 100);
+                        $short_peroid_rate = '15%';
+                    }
+
+                    if ($endorsment_calculations_info->gst == 1) {
+                        $gst_premium = $policy_premium_info->premium * ($endorsment_calculations_info->gst_rate / 100);
+                        $short_gst_premium = $gst_premium + $premium;
+                        $pro_gst_premium = $pro_rata * ($endorsment_calculations_info->gst_rate / 100);
+                        $pro_rata_gst_premium = $pro_gst_premium + $pro_rata;
+                    }
+
+
+
+                    $sheet->setCellValue('A' . $rows, $emp->client_name);
+                    $sheet->setCellValue('B' . $rows, $emp->emp_name);
+                    $sheet->setCellValue('C' . $rows, $emp->age);
+                    $sheet->setCellValue('D' . $rows, $emp->sum_insured);
+                    if ($emp->mode == "Deletion") {
+                        $sheet->setCellValue('E' . $rows, 'D');
+                    }
+                    if ($emp->mode == "New Addition") {
+                        $sheet->setCellValue('E' . $rows, 'A');
+                    }
+
+
+                    $sheet->setCellValue('F' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                    $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dol)));
+
+
+
                 }
-                $policy_premium_info->premium;
-
-                // $diffDays=30;
-                if ($diffDays <= 7) {
-                    $premium = $policy_premium_info->premium * (10 / 100);
-                    $short_peroid_rate = '10%';
-                }
-                if ($diffDays <= 30) {
-                    $premium = $policy_premium_info->premium * (25 / 100);
-                    $short_peroid_rate = '25%';
-                }
-                if ($diffDays <= 60) {
-                    $premium = $policy_premium_info->premium * (35 / 100);
-                    $short_peroid_rate = '35%';
-                }
-                if ($diffDays <= 90) {
-                    $premium = $policy_premium_info->premium * (50 / 100);
-                    $short_peroid_rate = '50%';
-                }
-                if ($diffDays <= 120) {
-                    $premium = $policy_premium_info->premium * (60 / 100);
-                    $short_peroid_rate = '60%';
-                }
-                if ($diffDays <= 180) {
-                    $premium = $policy_premium_info->premium * (75 / 100);
-                    $short_peroid_rate = '75%';
-                }
-                if ($diffDays <= 240 || $diffDays >= 240) {
-                    $premium = $policy_premium_info->premium * (100 / 100);
-                    $short_peroid_rate = '100%';
-                }
-
+                $rows++;
             }
-            $rows = 2;
-            $sheet->setCellValue('A' . $rows, $emp->client_name);
-            $sheet->setCellValue('B' . $rows, $emp->emp_name);
-            $sheet->setCellValue('C' . $rows, $emp->age);
-            $sheet->setCellValue('D' . $rows, $emp->sum_insured);
-            $sheet->setCellValue('E' . $rows, $emp->mode);
-            $sheet->setCellValue('F' . $rows,date("d-m-Y", strtotime($emp->doj)));
-            $sheet->setCellValue('G' . $rows,date("d-m-Y", strtotime($emp->dol)));
-            // $sheet->setCellValue('G' . $rows,$premium);
 
         }
+        if ($data['endorsement_type'] == "addition") {
+            $rows = 0;
+            foreach ($emp as $emp) {
 
+                if ($emp->mode == "New Addition") {
+
+
+                    $date_of_joining = date("Y-m-d", strtotime($emp->doj));
+                    $date_of_policy_expire = date("Y-m-d", strtotime($policy_info->expiry_on));
+                    $diffDays = dateDifference($date_of_joining, $date_of_policy_expire);
+                    $EED = dateDifference($date_of_joining, date("Y-m-d"));
+                    $diffDays = abs($diffDays) + 1;
+
+                    $pro_date_of_policy_start = date("Y-m-d", strtotime($policy_info->start_on));
+                    $pro_date_of_policy_expire = date("Y-m-d", strtotime($policy_info->expiry_on));
+                    $pro_diffDays = dateDifference($pro_date_of_policy_start, $pro_date_of_policy_expire);
+
+                    $pro_diffDays = abs($pro_diffDays) + 1;
+                    $pro_rata = (($policy_premium_info->premium / $pro_diffDays) * $diffDays);
+
+
+                    if ($endorsment_calculations_info->gst == 1) {
+                        $gst_premium = $policy_premium_info->premium * ($endorsment_calculations_info->gst_rate / 100);
+                        $short_gst_premium = $gst_premium + $policy_premium_info->premium;
+                        $pro_gst_premium = $pro_rata * ($endorsment_calculations_info->gst_rate / 100);
+                        $pro_rata_gst_premium = $pro_gst_premium + $pro_rata;
+                    }
+                    $policy_premium_info->premium;
+
+                    // $diffDays=30;
+                    if ($diffDays <= 7) {
+                        $premium = $policy_premium_info->premium * (10 / 100);
+                        $short_peroid_rate = '10%';
+                    }
+                    if ($diffDays <= 30) {
+                        $premium = $policy_premium_info->premium * (25 / 100);
+                        $short_peroid_rate = '25%';
+                    }
+                    if ($diffDays <= 60) {
+                        $premium = $policy_premium_info->premium * (35 / 100);
+                        $short_peroid_rate = '35%';
+                    }
+                    if ($diffDays <= 90) {
+                        $premium = $policy_premium_info->premium * (50 / 100);
+                        $short_peroid_rate = '50%';
+                    }
+                    if ($diffDays <= 120) {
+                        $premium = $policy_premium_info->premium * (60 / 100);
+                        $short_peroid_rate = '60%';
+                    }
+                    if ($diffDays <= 180) {
+                        $premium = $policy_premium_info->premium * (75 / 100);
+                        $short_peroid_rate = '75%';
+                    }
+                    if ($diffDays <= 240 || $diffDays >= 240) {
+                        $premium = $policy_premium_info->premium * (100 / 100);
+                        $short_peroid_rate = '100%';
+                    }
+
+                }
+                $rows = 2;
+                $sheet->setCellValue('A' . $rows, $emp->client_name);
+                $sheet->setCellValue('B' . $rows, $emp->emp_name);
+                $sheet->setCellValue('C' . $rows, $emp->age);
+                $sheet->setCellValue('D' . $rows, $emp->sum_insured);
+                $sheet->setCellValue('E' . $rows, 'A');
+                $sheet->setCellValue('F' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                // $sheet->setCellValue('G' . $rows,$premium);
+
+            }
+            $rows++;
+        }
+
+        if ($data['endorsement_type'] == "deletion") {
+            $rows = 0;
+            foreach ($emp as $emp) {
+                // echo "<pre>";
+                // print_r($emp->doj);
+                // echo "</pre>";
+                if ($emp->mode == "Deletion") {
+
+                    $date_of_leaving = date("Y-m-d", strtotime($emp->dol));
+                    $date_of_leaving = '2023-04-07';
+                    $date_of_policy_start = date("Y-m-d", strtotime($policy_info->start_on));
+                    $diffDays = dateDifference($date_of_leaving, $date_of_policy_start);
+
+                    $diffDays = abs($diffDays) + 1;
+                    $pro_date_of_policy_start = date("Y-m-d", strtotime($policy_info->start_on));
+                    $pro_date_of_policy_expire = date("Y-m-d", strtotime($policy_info->expiry_on));
+                    $pro_diffDays = dateDifference($pro_date_of_policy_start, $pro_date_of_policy_expire);
+
+                    $pro_diffDays = abs($pro_diffDays) + 1;
+                    $pro_rata = (($policy_premium_info->premium / $pro_diffDays) * $diffDays);
+
+                    $EED = dateDifference($date_of_leaving, date("Y-m-d"));
+
+
+                    // $diffDays=30;
+                    if ($diffDays <= 7) {
+                        $premium = $policy_premium_info->premium * (90 / 100);
+                        $short_peroid_rate = '90%';
+                    }
+                    if (($diffDays <= 30 || $diffDays < 30) && $diffDays > 7) {
+                        $premium = $policy_premium_info->premium * (75 / 100);
+                        $short_peroid_rate = '75%';
+                    }
+                    if (($diffDays <= 60 || $diffDays < 60) && $diffDays > 30) {
+                        $premium = $policy_premium_info->premium * (65 / 100);
+                        $short_peroid_rate = '65%';
+                    }
+                    if (($diffDays == 90 || $diffDays < 90) && $diffDays > 60) {
+                        $premium = $policy_premium_info->premium * (50 / 100);
+                        $short_peroid_rate = '50%';
+                    }
+                    if (($diffDays == 120 || $diffDays < 120) && $diffDays > 90) {
+                        $premium = $policy_premium_info->premium * (40 / 100);
+                        $short_peroid_rate = '40%';
+                    }
+                    if (($diffDays == 180 || $diffDays < 180) && $diffDays > 120) {
+                        $premium = $policy_premium_info->premium * (25 / 100);
+                        $short_peroid_rate = '25%';
+                    }
+                    if (($diffDays == 240 || $diffDays < 240) && $diffDays > 180) {
+                        $premium = $policy_premium_info->premium * (15 / 100);
+                        $short_peroid_rate = '15%';
+                    }
+
+                    if ($endorsment_calculations_info->gst == 1) {
+                        $gst_premium = $policy_premium_info->premium * ($endorsment_calculations_info->gst_rate / 100);
+                        $short_gst_premium = $gst_premium + $premium;
+                        $pro_gst_premium = $pro_rata * ($endorsment_calculations_info->gst_rate / 100);
+                        $pro_rata_gst_premium = $pro_gst_premium + $pro_rata;
+                    }
+
+                    $rows = 2;
+                    $sheet->setCellValue('A' . $rows, $emp->client_name);
+                    $sheet->setCellValue('B' . $rows, $emp->emp_name);
+                    $sheet->setCellValue('C' . $rows, $emp->age);
+                    $sheet->setCellValue('D' . $rows, $emp->sum_insured);
+                    $sheet->setCellValue('E' . $rows, 'D');
+                    $sheet->setCellValue('F' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                    $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                    // $sheet->setCellValue('G' . $rows,$premium);
+
+                }
+                $rows++;
+            }
+
+
+        }
+        // die;
         $fileName = 'endorsement_export.xlsx';
         $writer = new Xlsx($spreadsheet);
         $writer->save("external/uploads/" . $fileName);
@@ -1545,9 +1762,6 @@ class Clients extends MY_Controller
 
                 for ($i = 1; $i < count($sheetData); $i++) {
 
-                    // die;
-
-
                     $data = [];
                     $data['company'] = $sheetData[$i][1];
                     $data['member'] = $sheetData[$i][2];
@@ -1572,6 +1786,31 @@ class Clients extends MY_Controller
         }
     }
 
+    public function manualTemplateFormat()
+    {
+
+
+        $post = $this->input->post();
+
+        $data = [];
+        $data['company'] = $this->input->post('corporate');
+        $data['member'] = $this->input->post('employee');
+        $data['age'] = $this->input->post('age');
+        $data['si'] = $this->input->post('suminsured');
+        $data['mode'] = $this->input->post('mode');
+        $data['doj'] = $this->input->post('doj');
+        $data['dol'] = $this->input->post('dol');
+        $data['edd'] = $this->input->post('edd');
+        $data['company_id'] = $this->input->post('company_id');
+        $data['policy_type'] = $this->input->post('policy_type');
+        $data['endorsement_type'] = $this->input->post('endorsement_type');
+
+
+        $ins = $this->qm->insert('template_master', $data);
+
+        redirect('clients/template_master');
+
+    }
 
     public function editemployee($cid, $pid, $eid)
     {
