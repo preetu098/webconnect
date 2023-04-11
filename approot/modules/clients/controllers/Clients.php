@@ -1394,7 +1394,9 @@ class Clients extends MY_Controller
         $spreadsheet = new Spreadsheet();
 
         $sheet = $spreadsheet->getActiveSheet();
-
+        foreach (range('A', 'H') as $letra) {
+            $spreadsheet->getActiveSheet()->getColumnDimension($letra)->setAutoSize(true);
+        }
         $sheet->setCellValue('A1', $endorsement__template_info->company);
         $spreadsheet->getActiveSheet()->getStyle('A1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
         $spreadsheet->getActiveSheet()->getStyle('A1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
@@ -1448,7 +1450,6 @@ class Clients extends MY_Controller
                 // print_r($emp);
                 // echo "</pre>";
                 if ($emp->mode == "New Addition" || $emp->mode == "Deletion") {
-
 
                     $date_of_joining = date("Y-m-d", strtotime($emp->doj));
                     $date_of_policy_expire = date("Y-m-d", strtotime($policy_info->expiry_on));
@@ -1571,7 +1572,7 @@ class Clients extends MY_Controller
 
                     $sheet->setCellValue('F' . $rows, date("d-m-Y", strtotime($emp->doj)));
                     $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dol)));
-
+                    
 
 
                 }
@@ -1647,7 +1648,7 @@ class Clients extends MY_Controller
                 $sheet->setCellValue('E' . $rows, 'A');
                 $sheet->setCellValue('F' . $rows, date("d-m-Y", strtotime($emp->doj)));
                 $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dol)));
-                // $sheet->setCellValue('G' . $rows,$premium);
+                
 
             }
             $rows++;
@@ -1715,14 +1716,14 @@ class Clients extends MY_Controller
                     }
 
                     $rows = 2;
-                    $sheet->setCellValue('A' . $rows, $emp->client_name);
+                    $sheet->setCellValue('C' . $rows, $emp->client_name);
                     $sheet->setCellValue('B' . $rows, $emp->emp_name);
-                    $sheet->setCellValue('C' . $rows, $emp->age);
+                    $sheet->setCellValue('A' . $rows, $emp->age);
                     $sheet->setCellValue('D' . $rows, $emp->sum_insured);
                     $sheet->setCellValue('E' . $rows, 'D');
                     $sheet->setCellValue('F' . $rows, date("d-m-Y", strtotime($emp->doj)));
                     $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dol)));
-                    // $sheet->setCellValue('G' . $rows,$premium);
+                    
 
                 }
                 $rows++;
