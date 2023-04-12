@@ -107,10 +107,8 @@ class Clients extends MY_Controller
                 <select class="form-control" name="status">
                   <option value="1" ' . (($get->status == 1) ? 'selected' : '') . '>Active</option>
                   <option value="0" ' . (($get->status == 0) ? 'selected' : '') . '>Inactive</option>
-
                </select>
             </div>
-
              <div class="col-md-4 mb-3">
              <label class="form-label">Tech Support Name</label>
              <input type="text" name="tname" class="form-control"  value="' . $get->tname . '" >
@@ -127,7 +125,6 @@ class Clients extends MY_Controller
              <input type="email" name="temail" class="form-control"  value="' . $get->temail . '">
              
            </div>
-
            <div class="col-md-4 mb-3">
              <label class="form-label">Functional Support Name</label>
              <input type="text" name="fname" class="form-control"  value="' . $get->fname . '">
@@ -146,7 +143,6 @@ class Clients extends MY_Controller
            </div>
            <input type="hidden" name="img" value="' . $get->image . '">
            <div class="mb-3 col-md-3">
-
               <button type="submit" class="btn btn-primary">Update Client</button>
             </div>
             </div>
@@ -581,7 +577,7 @@ class Clients extends MY_Controller
         $arrdata = [];
         $min_age = $post['min_age'];
         $max_age = $post['max_age'];
-        if (!empty($max_age) && !empty($min_age)):
+        if (!empty($max_age) && !empty($min_age)) :
             for ($min_age = $min_age; $min_age <= $max_age; $min_age++) {
                 $arrdata[] = $min_age;
             }
@@ -589,7 +585,7 @@ class Clients extends MY_Controller
 
         $existingData = [];
         $agebnds = $this->qm->all('policy_agebands', "*", array('cid' => $cid, 'pid' => $pid));
-        if (!empty($agebnds)):
+        if (!empty($agebnds)) :
             foreach ($agebnds as $key => $val) {
                 $existingData[] = $val->min_age;
                 $existingData[] = $val->max_age;
@@ -622,7 +618,7 @@ class Clients extends MY_Controller
         $arrdata = [];
         $min_age = $post['min_age'];
         $max_age = $post['max_age'];
-        if (!empty($max_age) && !empty($min_age)):
+        if (!empty($max_age) && !empty($min_age)) :
             for ($min_age = $min_age; $min_age <= $max_age; $min_age++) {
                 $arrdata[] = $min_age;
             }
@@ -630,7 +626,7 @@ class Clients extends MY_Controller
 
         $existingData = [];
         $agebnds = $this->qm->all('policy_agebands', "*", array('cid' => $cid, 'pid' => $pid));
-        if (!empty($agebnds)):
+        if (!empty($agebnds)) :
             foreach ($agebnds as $key => $val) {
                 if ($val->id == $id) {
                     continue;
@@ -787,7 +783,6 @@ class Clients extends MY_Controller
         }
         $this->session->set_flashdata('error', 'Somthing went wrong!');
         redirect('clients/shortperiodscale/' . $cid . '/' . $pid . '');
-
     }
     public function endorsement($cid, $pid)
     {
@@ -796,7 +791,6 @@ class Clients extends MY_Controller
         $data['pid'] = $pid;
         $data['mainContent'] = "clients/endorsement";
         $this->load->view('panel', $data);
-
     }
     public function template_master()
     {
@@ -805,7 +799,6 @@ class Clients extends MY_Controller
         $data['pid'] = $pid;
         $data['mainContent'] = "clients/template_master";
         $this->load->view('panel', $data);
-
     }
     public function template_manager($cid, $pid)
     {
@@ -814,7 +807,6 @@ class Clients extends MY_Controller
         $data['pid'] = $pid;
         $data['mainContent'] = "clients/template_manager";
         $this->load->view('panel', $data);
-
     }
 
     public function create_master()
@@ -828,7 +820,6 @@ class Clients extends MY_Controller
         $data['endorsement_type'] = $this->input->post('endorsement_type');
         $data['mainContent'] = "clients/create_master";
         $this->load->view('panel', $data);
-
     }
 
     public function endorsement_process($cid, $pid)
@@ -838,7 +829,6 @@ class Clients extends MY_Controller
         $data['pid'] = $pid;
         $data['mainContent'] = "clients/endorsement_process";
         $this->load->view('panel', $data);
-
     }
     public function endorsement_deletion($cid, $pid)
     {
@@ -847,7 +837,6 @@ class Clients extends MY_Controller
         $data['pid'] = $pid;
         $data['mainContent'] = "clients/endorsement_deletion";
         $this->load->view('panel', $data);
-
     }
 
     public function updShortperiodscale($cid, $pid, $id)
@@ -1390,6 +1379,8 @@ class Clients extends MY_Controller
         $data['endorsement_type'] = $this->input->post('endorsement_type');
 
         $endorsement__template_info = $this->qm->single("template_master", "*", array('company_id' => $data['company_id'], 'policy_type' => $data['policy_type'], 'endorsement_type' => $data['endorsement_type']));
+        $template_rules = $this->qm->single("template_rules", "*", array('company_id' => $data['company_id'], 'policy_type' => $data['policy_type'], 'endorsement_type' => $data['endorsement_type']));
+        // print_r($template_rules);
 
         $spreadsheet = new Spreadsheet();
 
@@ -1397,9 +1388,14 @@ class Clients extends MY_Controller
         foreach (range('A', 'H') as $letra) {
             $spreadsheet->getActiveSheet()->getColumnDimension($letra)->setAutoSize(true);
         }
-        $sheet->setCellValue('A1', $endorsement__template_info->company);
-        $spreadsheet->getActiveSheet()->getStyle('A1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        $spreadsheet->getActiveSheet()->getStyle('A1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+        if ($template_rules->A1 = 'C1') {
+            $sheet->setCellValue('A1', $endorsement__template_info->age);
+            $spreadsheet->getActiveSheet()->getStyle('A1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+            $spreadsheet->getActiveSheet()->getStyle('A1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+        }
+
+
 
         $sheet->setCellValue('B1', $endorsement__template_info->member);
         $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
@@ -1556,9 +1552,11 @@ class Clients extends MY_Controller
                         $pro_rata_gst_premium = $pro_gst_premium + $pro_rata;
                     }
 
+                    if ($template_rules->A1 = 'C1') {
+                        $sheet->setCellValue('A' . $rows, $emp->age);
+                    }
 
-
-                    $sheet->setCellValue('A' . $rows, $emp->client_name);
+                    // $sheet->setCellValue('A' . $rows, $emp->client_name);
                     $sheet->setCellValue('B' . $rows, $emp->emp_name);
                     $sheet->setCellValue('C' . $rows, $emp->age);
                     $sheet->setCellValue('D' . $rows, $emp->sum_insured);
@@ -1572,13 +1570,9 @@ class Clients extends MY_Controller
 
                     $sheet->setCellValue('F' . $rows, date("d-m-Y", strtotime($emp->doj)));
                     $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dol)));
-                    
-
-
                 }
                 $rows++;
             }
-
         }
         if ($data['endorsement_type'] == "addition") {
             $rows = 0;
@@ -1638,7 +1632,6 @@ class Clients extends MY_Controller
                         $premium = $policy_premium_info->premium * (100 / 100);
                         $short_peroid_rate = '100%';
                     }
-
                 }
                 $rows = 2;
                 $sheet->setCellValue('A' . $rows, $emp->client_name);
@@ -1648,8 +1641,6 @@ class Clients extends MY_Controller
                 $sheet->setCellValue('E' . $rows, 'A');
                 $sheet->setCellValue('F' . $rows, date("d-m-Y", strtotime($emp->doj)));
                 $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dol)));
-                
-
             }
             $rows++;
         }
@@ -1723,13 +1714,9 @@ class Clients extends MY_Controller
                     $sheet->setCellValue('E' . $rows, 'D');
                     $sheet->setCellValue('F' . $rows, date("d-m-Y", strtotime($emp->doj)));
                     $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dol)));
-                    
-
                 }
                 $rows++;
             }
-
-
         }
         // die;
         $fileName = 'endorsement_export.xlsx';
@@ -1778,7 +1765,6 @@ class Clients extends MY_Controller
 
                     $ins = $this->qm->insert('template_master', $data);
                 }
-
             }
 
             redirect('clients/template_master');
@@ -1810,7 +1796,6 @@ class Clients extends MY_Controller
         $ins = $this->qm->insert('template_master', $data);
 
         redirect('clients/template_master');
-
     }
 
     public function editemployee($cid, $pid, $eid)
@@ -3010,8 +2995,7 @@ class Clients extends MY_Controller
             $rows++;
         }
         $cl = $this->qm->all('ri_employee_tbl', '*', array('cid' => $cid, 'pid' => $pid));
-        foreach ($cl as $cl)
-            ;
+        foreach ($cl as $cl);
         $fileName = $cl->client_code . '-dependent.xlsx';
         $writer = new Xlsx($spreadsheet);
         $writer->save("external/uploads/" . $fileName);
@@ -3435,7 +3419,24 @@ class Clients extends MY_Controller
         }
         redirect("clients/clientpolicies/");
     }
+    public function RulesTemplateFormat()
+    {
+        $post = $this->input->post();
+        print_r($post);
+        $data = [];
 
+        $data['cname'] = $this->input->post('company_id');
+        $data['policy_type'] = $this->input->post('policy_type');
+        $data['endorsement_type'] = $this->input->post('endorsement_type');
+        $data['A1'] = $this->input->post('A1');
+        $data['A1_data'] = $this->input->post('A1_data');
+        $ad = $this->qm->insert("template_rules", $post);
+        if ($ad) {
+            $this->session->set_flashdata('success', 'Added Successfully');
+        }
+        $this->session->set_flashdata('error', 'Somthing went wrong!');
+        redirect('clients/template_master/');
+    }
     public function downloadCard()
     {
         $file_exists = file_exists(FCPATH . 'external/uploads/policy_cards/' . $_GET['cid'] . '_' . $_GET['pid'] . '/' . $_GET['cardid'] . '.pdf') ? 1 : 0;
@@ -3464,6 +3465,5 @@ class Clients extends MY_Controller
             $data['dependent'] = $this->qm->all('ri_dependent_tbl', '*', array('cid' => $_GET['cid'], 'pid' => $_GET['pid'], 'emp_id' => $_GET['emp_id']));
             $this->load->view('employeeCard', $data);
         }
-
     }
 }

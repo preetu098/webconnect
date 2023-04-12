@@ -28,20 +28,19 @@
                                         <input type="hidden" name='policy_type' value='<?= $newd->policy_type ?>'>
 
                                         <label class="">SELECT Master Type :</label>
-                                        <select name="excel_type" id="excel_type" onchange="masterType(this.value);"
-                                            class="form-select form-control" required>
+                                        <select name="excel_type" id="excel_type" onchange="masterType(this.value);" class="form-select form-control" required>
                                             <option value="">-Select-</option>
                                             <option value="automatic" <?php
-                                            if ($_POST['excel_type'] == "automatic") {
-                                                echo 'selected';
-                                            }
-                                            ?>>
-                            Create From EXcel File</option>
+                                                                        if ($_POST['excel_type'] == "automatic") {
+                                                                            echo 'selected';
+                                                                        }
+                                                                        ?>>
+                                                Create From EXcel File</option>
                                             <option value="manual" <?php
-                                            if ($_POST['excel_type'] == "manual") {
-                                                echo 'selected';
-                                            }
-                                            ?>>Manual</option>
+                                                                    if ($_POST['excel_type'] == "manual") {
+                                                                        echo 'selected';
+                                                                    }
+                                                                    ?>>Manual</option>
 
                                         </select>
 
@@ -53,12 +52,10 @@
                             </div>
 
 
-                            <form method="POST" id="form" style="display: none;"
-                                action="<?= base_url('clients/uploadTemplateFormat'); ?>" enctype="multipart/form-data">
+                            <form method="POST" id="form" style="display: none;" action="<?= base_url('clients/uploadTemplateFormat'); ?>" enctype="multipart/form-data">
                                 <?php
                                 $cl = $this->qm->all("ri_clients_tbl", "*", array('cid' => $cid));
-                                foreach ($cl as $cl)
-                                    ;
+                                foreach ($cl as $cl);
                                 ?>
                                 <input type="hidden" name="company_id" value="<?= $cname; ?>">
                                 <input type="hidden" name="policy_type" value="<?= $policy_type ?>">
@@ -75,8 +72,7 @@
                                 <button type="submit" class="btn btn-primary">Upload</button>
                             </form>
 
-                            <form method="POST" id="form1" style="display: none;"
-                                action="<?= base_url('clients/manualTemplateFormat'); ?>">
+                            <form method="POST" id="form1" style="display: none;" action="<?= base_url('clients/manualTemplateFormat'); ?>">
                                 <input type="hidden" name="company_id" value="<?= $cname; ?>">
                                 <input type="hidden" name="policy_type" value="<?= $policy_type ?>">
                                 <input type="hidden" name="endorsement_type" value="<?= $endorsement_type ?>">
@@ -123,6 +119,26 @@
 
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
+                            <form method="POST" id="form2" action="<?= base_url('clients/RulesTemplateFormat'); ?>">
+                                <input type="hidden" name="company_id" value="<?= $cname; ?>">
+                                <input type="hidden" name="policy_type" value="<?= $policy_type ?>">
+                                <input type="hidden" name="endorsement_type" value="<?= $endorsement_type ?>">
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label>A1</label>
+                                        <input type="text" class="form-control" name="A1">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>A1 Data</label>
+                                        <input type="text" class="form-control" name="A1_data">
+                                    </div>
+                                    
+
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
                         </div>
                     </div>
 
@@ -155,9 +171,9 @@
          <div class="basic-form">
             <form method="POST" action="<?= base_url('clients/uploadmember'); ?>/<?= $cid; ?>/<?= $pid; ?>" enctype="multipart/form-data">
                   <?php
-                  $cl = $this->qm->all("ri_clients_tbl", "*", array('cid' => $cid)); foreach ($cl as $cl)
-                      ;
-                  ?>
+                    $cl = $this->qm->all("ri_clients_tbl", "*", array('cid' => $cid));
+                    foreach ($cl as $cl);
+                    ?>
                      <input type="hidden" name="client_code" value="<?= $cl->ccode; ?>">
                      <input type="hidden" name="client_name" value="<?= $cl->cname; ?>">
                      <input type="hidden" name="data_type" value="1">
@@ -185,9 +201,9 @@
          <div class="basic-form">
               <form method="POST" action="<?= base_url('clients/updatemember'); ?>/<?= $cid; ?>/<?= $pid; ?>" enctype="multipart/form-data">
                <?php
-               $cl = $this->qm->all("ri_clients_tbl", "*", array('cid' => $cid)); foreach ($cl as $cl)
-                   ;
-               ?>
+                $cl = $this->qm->all("ri_clients_tbl", "*", array('cid' => $cid));
+                foreach ($cl as $cl);
+                ?>
                      <input type="hidden" name="client_code" value="<?= $cl->ccode; ?>">
                      <input type="hidden" name="client_name" value="<?= $cl->cname; ?>">
                      <input type="hidden" name="data_type" value="1">
@@ -215,9 +231,9 @@
          <div class="basic-form">
             <form method="POST" action="<?= base_url('clients/deletemember'); ?>/<?= $cid; ?>/<?= $pid; ?>" enctype="multipart/form-data">
                  <?php
-                 $cl = $this->qm->all("ri_clients_tbl", "*", array('cid' => $cid)); foreach ($cl as $cl)
-                     ;
-                 ?>
+                    $cl = $this->qm->all("ri_clients_tbl", "*", array('cid' => $cid));
+                    foreach ($cl as $cl);
+                    ?>
                      <input type="hidden" name="client_code" value="<?= $cl->ccode; ?>">
                      <input type="hidden" name="client_name" value="<?= $cl->cname; ?>">
                      <input type="hidden" name="data_type" value="1">
