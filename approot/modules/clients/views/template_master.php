@@ -102,8 +102,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-body">
-                                <div class="table-responsive d-flex justify-content-center">
+                            
+                                <div class="table-responsive">
 
                                     <?php
                                     $template = $this->qm->all("template_master", "*", array());
@@ -111,11 +111,40 @@
                                     if ((count($template) > 0)) {
 
                                         ?>
-                                        <table id="example2" class="table table-bordered table-stripped" style="min-width: 845px">
-
+                                        <table  class="table table-bordered table-stripped" style="min-width: 845px">
+                                            <thead>
+                                                <tr>
+                                                    <td>#</td>
+                                                    <td>Company Name</td>
+                                                    <td>Policy Type</td>
+                                                    <td>Endorsement Type</td>
+                                                    <td>A1</td>
+                                                    <td>B1</td>
+                                                    <td>C1</td>
+                                                    <td>D1</td>
+                                                    <td>E1</td>
+                                                    <td>F1</td>
+                                                    <td>G1</td>
+                                                    <td>H1</td>
+                                                    <td>I1</td>
+                                                    <td>J1</td>
+                                                    <td>K1</td>
+                                                    <td>L1</td>
+                                                    <td>M1</td>
+                                                    <td>N1</td>
+                                                    <td>O1</td>
+                                                    <td>P1</td>
+                                                    <td>Q1</td>
+                                                    <td>R1</td>
+                                                    <td>S1</td>
+                                                    <td>T1</td>
+                                                    <td>U1</td>
+                                                    
+                                                </tr>
+                                            </thead>
                                             <tbody>
                                                 <?php
-
+                                                $count=1;
                                                 foreach ($template as $key => $template) {
                                                     $newd = $this->qm->single("ad_policy_type", "*", array('policy_type_id' => $template->policy_type, 'policy_dept_id' => '7'));
                                                     $insurance_company = $this->qm->single('ad_crm_account', "*", array('account_id' => $template->company_id, 'account_type_id' => '1'));
@@ -123,14 +152,31 @@
                                                     ?>
                                                     
                                                         <tr>
+                                                            <td><?php echo $count++;?></td>
                                                             <td><?php echo $insurance_company->account_name?></td>
                                                             <td><?php echo $newd->policy_type_name?></td>
                                                             <td><?php echo $template->endorsement_type?></td>
-                                                            <td><?php echo $template->company?></td>
-                                                            <td><?php echo $template->member?></td>
-                                                            <td><?php echo $template->age?></td>
-                                                            <td><?php echo $template->si?></td>
-                                                            <td><?php echo $template->mode;?></td>
+                                                            <td><?php echo $template->S_No?></td>
+                                                            <td><?php echo $template->Policy_No?></td>
+                                                            <td><?php echo $template->mode?></td>
+                                                            <td><?php echo $template->Employee_no?></td>
+                                                            <td><?php echo $template->Insured_Name;?></td>
+                                                            <td><?php echo $template->Relationship_type?></td>
+                                                            <td><?php echo $template->Date_of_Birth?></td>
+                                                            <td><?php echo $template->Age?></td>
+                                                            <td><?php echo $template->Sum_Insured?></td>
+                                                            <td><?php echo $template->Date_of_Joining;?></td>
+                                                            <td><?php echo $template->Date_of_Leaving?></td>
+                                                            <td><?php echo $template->Date_of_Marriage?></td>
+                                                            <td><?php echo $template->Remarks_for_Corrections?></td>
+                                                            <td><?php echo $template->First_Name?></td>
+                                                            <td><?php echo $template->Last_Name;?></td>
+                                                            <td><?php echo $template->Mobile_No?></td>
+                                                            <td><?php echo $template->Email?></td>
+                                                            <td><?php echo $template->Endorsement_Effective_Date?></td>
+                                                            <td><?php echo $template->Premium_including_GST?></td>
+                                                            <td><?php echo $template->Wrong_DETAILS;?></td>
+                                                            <td><?php echo $template->salary;?></td>
                                                         </tr>
                                                         <?php } ?>
                                                     </tbody>
@@ -145,8 +191,6 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>

@@ -123,6 +123,27 @@
 
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
+
+                            <form method="POST" id="form2" action="<?= base_url('clients/RulesTemplateFormat'); ?>">
+                                <input type="hidden" name="company_id" value="<?= $cname; ?>">
+                                <input type="hidden" name="policy_type" value="<?= $policy_type ?>">
+                                <input type="hidden" name="endorsement_type" value="<?= $endorsement_type ?>">
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label>A1</label>
+                                        <input type="text" class="form-control" name="A1">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>A1 Data</label>
+                                        <input type="text" class="form-control" name="A1_data">
+                                    </div>
+                                    
+
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
                         </div>
                     </div>
 
