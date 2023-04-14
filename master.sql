@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 13, 2023 at 12:02 PM
+-- Generation Time: Apr 14, 2023 at 02:13 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -61,7 +61,8 @@ CREATE TABLE `template_master` (
 --
 
 INSERT INTO `template_master` (`id`, `S_No`, `Policy_No`, `mode`, `Employee_no`, `Insured_Name`, `Relationship_type`, `Date_of_Birth`, `Age`, `Sum_Insured`, `Date_of_Joining`, `Date_of_Leaving`, `Date_of_Marriage`, `Remarks_for_Corrections`, `First_Name`, `Last_Name`, `Mobile_No`, `Email`, `Endorsement_Effective_Date`, `Premium_including_GST`, `Wrong_DETAILS`, `salary`, `company_id`, `policy_type`, `endorsement_type`) VALUES
-(1, 'S_No', 'Policy_No', 'A_ Addition D_Deletion C_Change', 'Employee_no', 'Insured_Name', 'Relationship_type', 'Date_of_Birth', 'Age', 'Sum_Insured', 'Date_of_Joining', 'Date_of_Leaving', 'Date_of_Marriage', 'Remarks_for_Corrections', 'First_Name', 'Last_Name', 'Mobile_No', 'Email', 'Endorsement_Effective_Date', 'Premium_including_GST', 'Wrong_DETAILS', 'salary', 319, '107', 'addition_deletion');
+(1, 'S_No', 'Policy_No', 'A_ Addition D_Deletion C_Change', 'Employee_no', 'Insured_Name', 'Relationship_type', 'Date_of_Birth', 'Age', 'Sum_Insured', 'Date_of_Joining', 'Date_of_Leaving', 'Date_of_Marriage', 'Remarks_for_Corrections', 'First_Name', 'Last_Name', 'Mobile_No', 'Email', 'Endorsement_Effective_Date', 'Premium_including_GST', 'Wrong_DETAILS', 'salary', 319, '107', 'addition_deletion'),
+(10, 'S_No', 'Policy_No', 'A_ Addition D_Deletion C_Change', 'Employee code', 'Insured_Name', 'Relationship_type', 'Date_of_Birth', 'Age', 'Sum_Insured', 'Date_of_Joining', 'Date_of_Leaving', 'Date_of_Marriage', 'Remarks_for_Corrections', 'First_Name', 'Last_Name', 'Mobile_No', 'Email', 'Endorsement_Effective_Date', 'Premium_including_GST', 'Wrong_DETAILS', 'salary', 327, '108', 'addition_deletion');
 
 --
 -- Indexes for dumped tables
@@ -81,7 +82,7 @@ ALTER TABLE `template_master`
 -- AUTO_INCREMENT for table `template_master`
 --
 ALTER TABLE `template_master`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

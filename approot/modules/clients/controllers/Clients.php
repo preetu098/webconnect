@@ -577,7 +577,7 @@ class Clients extends MY_Controller
         $arrdata = [];
         $min_age = $post['min_age'];
         $max_age = $post['max_age'];
-        if (!empty($max_age) && !empty($min_age)) :
+        if (!empty($max_age) && !empty($min_age)):
             for ($min_age = $min_age; $min_age <= $max_age; $min_age++) {
                 $arrdata[] = $min_age;
             }
@@ -585,7 +585,7 @@ class Clients extends MY_Controller
 
         $existingData = [];
         $agebnds = $this->qm->all('policy_agebands', "*", array('cid' => $cid, 'pid' => $pid));
-        if (!empty($agebnds)) :
+        if (!empty($agebnds)):
             foreach ($agebnds as $key => $val) {
                 $existingData[] = $val->min_age;
                 $existingData[] = $val->max_age;
@@ -618,7 +618,7 @@ class Clients extends MY_Controller
         $arrdata = [];
         $min_age = $post['min_age'];
         $max_age = $post['max_age'];
-        if (!empty($max_age) && !empty($min_age)) :
+        if (!empty($max_age) && !empty($min_age)):
             for ($min_age = $min_age; $min_age <= $max_age; $min_age++) {
                 $arrdata[] = $min_age;
             }
@@ -626,7 +626,7 @@ class Clients extends MY_Controller
 
         $existingData = [];
         $agebnds = $this->qm->all('policy_agebands', "*", array('cid' => $cid, 'pid' => $pid));
-        if (!empty($agebnds)) :
+        if (!empty($agebnds)):
             foreach ($agebnds as $key => $val) {
                 if ($val->id == $id) {
                     continue;
@@ -1367,24 +1367,8 @@ class Clients extends MY_Controller
         }
     }
 
-    public function RulesTemplateFormat()
-    {
-        $post = $this->input->post();
-        print_r($post);
-        $data = [];
 
-        $data['cname'] = $this->input->post('company_id');
-        $data['policy_type'] = $this->input->post('policy_type');
-        $data['endorsement_type'] = $this->input->post('endorsement_type');
-        $data['A1'] = $this->input->post('A1');
-        $data['A1_data'] = $this->input->post('A1_data');
-        $ad = $this->qm->insert("template_rules", $post);
-        if ($ad) {
-            $this->session->set_flashdata('success', 'Added Successfully');
-        }
-        $this->session->set_flashdata('error', 'Somthing went wrong!');
-        redirect('clients/template_master/');
-    }
+
     public function download_endorsement($cid, $pid)
     {
 
@@ -1400,54 +1384,14 @@ class Clients extends MY_Controller
 
         $endorsement__template_info = $this->qm->single("template_master", "*", array('company_id' => $data['company_id'], 'policy_type' => $data['policy_type'], 'endorsement_type' => $data['endorsement_type']));
         $template_rules = $this->qm->single("template_rules", "*", array('company_id' => $data['company_id'], 'policy_type' => $data['policy_type'], 'endorsement_type' => $data['endorsement_type']));
-<<<<<<< HEAD
-        // print_r($endorsement__template_info);
-// die;
-=======
-        // print_r($template_rules);
 
->>>>>>> e904b8ada9eb8493dbe2747bb8bc7a80759f94d0
+
         $spreadsheet = new Spreadsheet();
 
         $sheet = $spreadsheet->getActiveSheet();
         foreach (range('A', 'U') as $letra) {
             $spreadsheet->getActiveSheet()->getColumnDimension($letra)->setAutoSize(true);
         }
-<<<<<<< HEAD
-        // if ($template_rules->A1 = 'B1') {
-        //     $sheet->setCellValue('A1', $endorsement__template_info->Policy_No);
-        //     $spreadsheet->getActiveSheet()->getStyle('A1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        //     $spreadsheet->getActiveSheet()->getStyle('A1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-        // }
-        // if ($template_rules->A1 = 'C1') {
-        //     $sheet->setCellValue('A1', $endorsement__template_info->mode);
-        //     $spreadsheet->getActiveSheet()->getStyle('A1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        //     $spreadsheet->getActiveSheet()->getStyle('A1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-        // }
-        // if ($template_rules->A1 = 'D1') {
-        //     $sheet->setCellValue('A1', $endorsement__template_info->Employee_no);
-        //     $spreadsheet->getActiveSheet()->getStyle('A1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        //     $spreadsheet->getActiveSheet()->getStyle('A1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-        // }
-        // if ($template_rules->A1 = 'E1') {
-        //     $sheet->setCellValue('A1', $endorsement__template_info->Insured_Name);
-        //     $spreadsheet->getActiveSheet()->getStyle('A1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        //     $spreadsheet->getActiveSheet()->getStyle('A1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-        // }
-=======
-
-        if ($template_rules->A1 = 'C1') {
-            $sheet->setCellValue('A1', $endorsement__template_info->age);
-            $spreadsheet->getActiveSheet()->getStyle('A1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-            $spreadsheet->getActiveSheet()->getStyle('A1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-        }
-
-
->>>>>>> e904b8ada9eb8493dbe2747bb8bc7a80759f94d0
-
-        // $sheet->setCellValue('A1', $endorsement__template_info->S_No);
-        // $spreadsheet->getActiveSheet()->getStyle('A1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        // $spreadsheet->getActiveSheet()->getStyle('A1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
 
         switch ($template_rules->A1) {
             case 'A1':
@@ -1577,55 +1521,1689 @@ class Clients extends MY_Controller
                 $spreadsheet->getActiveSheet()->getStyle('A1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
                 break;
 
+            default:
+                $sheet->setCellValue('A1', $endorsement__template_info->S_No);
+                $spreadsheet->getActiveSheet()->getStyle('A1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('A1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+
         }
-        $sheet->setCellValue('B1', $endorsement__template_info->Policy_No);
-        $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        $spreadsheet->getActiveSheet()->getStyle('B1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-
-        $sheet->setCellValue('C1', $endorsement__template_info->mode);
-        $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        $spreadsheet->getActiveSheet()->getStyle('C1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-
-        $sheet->setCellValue('D1', $endorsement__template_info->Employee_no);
-        $spreadsheet->getActiveSheet()->getStyle('D1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        $spreadsheet->getActiveSheet()->getStyle('D1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-
-        $sheet->setCellValue('E1', $endorsement__template_info->Insured_Name);
-        $spreadsheet->getActiveSheet()->getStyle('E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        $spreadsheet->getActiveSheet()->getStyle('E1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-
-        $sheet->setCellValue('F1', $endorsement__template_info->Relationship_type);
-        $spreadsheet->getActiveSheet()->getStyle('F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        $spreadsheet->getActiveSheet()->getStyle('F1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-
-        $sheet->setCellValue('G1', $endorsement__template_info->Date_of_Birth);
-        $spreadsheet->getActiveSheet()->getStyle('G1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        $spreadsheet->getActiveSheet()->getStyle('G1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-
-        $sheet->setCellValue('H1', $endorsement__template_info->Age);
-        $spreadsheet->getActiveSheet()->getStyle('H1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        $spreadsheet->getActiveSheet()->getStyle('H1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
 
 
-        $sheet->setCellValue('I1', $endorsement__template_info->Sum_Insured);
-        $spreadsheet->getActiveSheet()->getStyle('I1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        $spreadsheet->getActiveSheet()->getStyle('I1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+        switch ($template_rules->B1) {
+            case 'A1':
+                $sheet->setCellValue('B1', $endorsement__template_info->S_No);
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
 
-        $sheet->setCellValue('J1', $endorsement__template_info->Date_of_Joining);
-        $spreadsheet->getActiveSheet()->getStyle('J1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        $spreadsheet->getActiveSheet()->getStyle('J1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+            case 'B1':
+                $sheet->setCellValue('B1', $endorsement__template_info->Policy_No);
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
 
-        $sheet->setCellValue('K1', $endorsement__template_info->Date_of_Leaving);
-        $spreadsheet->getActiveSheet()->getStyle('K1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        $spreadsheet->getActiveSheet()->getStyle('K1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+            case 'C1':
+                $sheet->setCellValue('B1', $endorsement__template_info->mode);
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
 
-        $sheet->setCellValue('L1', $endorsement__template_info->Date_of_Marriage);
-        $spreadsheet->getActiveSheet()->getStyle('L1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        $spreadsheet->getActiveSheet()->getStyle('L1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+            case 'D1':
+                $sheet->setCellValue('B1', $endorsement__template_info->Employee_no);
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
 
-        $sheet->setCellValue('M1', $endorsement__template_info->Remarks_for_Corrections);
-        $spreadsheet->getActiveSheet()->getStyle('M1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        $spreadsheet->getActiveSheet()->getStyle('M1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+            case 'E1':
+                $sheet->setCellValue('B1', $endorsement__template_info->Insured_Name);
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'F1':
+                $sheet->setCellValue('B1', $endorsement__template_info->Relationship_type);
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'G1':
+                $sheet->setCellValue('B1', $endorsement__template_info->Date_of_Birth);
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'H1':
+                $sheet->setCellValue('B1', $endorsement__template_info->Age);
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'I1':
+                $sheet->setCellValue('B1', $endorsement__template_info->Sum_Insured);
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'J1':
+                $sheet->setCellValue('B1', $endorsement__template_info->Date_of_Joining);
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+
+            case 'K1':
+                $sheet->setCellValue('B1', $endorsement__template_info->Date_of_Leaving);
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'L1':
+                $sheet->setCellValue('B1', $endorsement__template_info->Date_of_Marriage);
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'M1':
+                $sheet->setCellValue('B1', $endorsement__template_info->Remarks_for_Corrections);
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'N1':
+                $sheet->setCellValue('B1', $endorsement__template_info->First_Name);
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'O1':
+                $sheet->setCellValue('B1', $endorsement__template_info->Last_Name);
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'P1':
+                $sheet->setCellValue('B1', $endorsement__template_info->Mobile_No);
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'Q1':
+                $sheet->setCellValue('B1', $endorsement__template_info->Email);
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'R1':
+                $sheet->setCellValue('B1', $endorsement__template_info->Endorsement_Effective_Date);
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'S1':
+                $sheet->setCellValue('B1', $endorsement__template_info->Premium_including_GST);
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'T1':
+                $sheet->setCellValue('B1', $endorsement__template_info->Wrong_DETAILS);
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'U1':
+                $sheet->setCellValue('B1', $endorsement__template_info->salary);
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            default:
+                $sheet->setCellValue('B1', $endorsement__template_info->Policy_No);
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('B1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+
+        }
+
+        switch ($template_rules->C1) {
+            case 'A1':
+                $sheet->setCellValue('C1', $endorsement__template_info->S_No);
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'B1':
+                $sheet->setCellValue('C1', $endorsement__template_info->Policy_No);
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'C1':
+                $sheet->setCellValue('C1', $endorsement__template_info->mode);
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'D1':
+                $sheet->setCellValue('C1', $endorsement__template_info->Employee_no);
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'E1':
+                $sheet->setCellValue('C1', $endorsement__template_info->Insured_Name);
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'F1':
+                $sheet->setCellValue('C1', $endorsement__template_info->Relationship_type);
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'G1':
+                $sheet->setCellValue('C1', $endorsement__template_info->Date_of_Birth);
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'H1':
+                $sheet->setCellValue('C1', $endorsement__template_info->Age);
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'I1':
+                $sheet->setCellValue('C1', $endorsement__template_info->Sum_Insured);
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'J1':
+                $sheet->setCellValue('C1', $endorsement__template_info->Date_of_Joining);
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+
+            case 'K1':
+                $sheet->setCellValue('C1', $endorsement__template_info->Date_of_Leaving);
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'L1':
+                $sheet->setCellValue('C1', $endorsement__template_info->Date_of_Marriage);
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'M1':
+                $sheet->setCellValue('C1', $endorsement__template_info->Remarks_for_Corrections);
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'N1':
+                $sheet->setCellValue('C1', $endorsement__template_info->First_Name);
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'O1':
+                $sheet->setCellValue('C1', $endorsement__template_info->Last_Name);
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'P1':
+                $sheet->setCellValue('C1', $endorsement__template_info->Mobile_No);
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'Q1':
+                $sheet->setCellValue('C1', $endorsement__template_info->Email);
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'R1':
+                $sheet->setCellValue('C1', $endorsement__template_info->Endorsement_Effective_Date);
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'S1':
+                $sheet->setCellValue('C1', $endorsement__template_info->Premium_including_GST);
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'T1':
+                $sheet->setCellValue('C1', $endorsement__template_info->Wrong_DETAILS);
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'U1':
+                $sheet->setCellValue('C1', $endorsement__template_info->salary);
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            default:
+                $sheet->setCellValue('C1', $endorsement__template_info->mode);
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('C1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+
+        }
+
+        switch ($template_rules->D1) {
+            case 'A1':
+                $sheet->setCellValue('D1', $endorsement__template_info->S_No);
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'B1':
+                $sheet->setCellValue('D1', $endorsement__template_info->Policy_No);
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'C1':
+                $sheet->setCellValue('D1', $endorsement__template_info->mode);
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'D1':
+                $sheet->setCellValue('D1', $endorsement__template_info->Employee_no);
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'E1':
+                $sheet->setCellValue('D1', $endorsement__template_info->Insured_Name);
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'F1':
+                $sheet->setCellValue('D1', $endorsement__template_info->Relationship_type);
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'G1':
+                $sheet->setCellValue('D1', $endorsement__template_info->Date_of_Birth);
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'H1':
+                $sheet->setCellValue('D1', $endorsement__template_info->Age);
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'I1':
+                $sheet->setCellValue('D1', $endorsement__template_info->Sum_Insured);
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'J1':
+                $sheet->setCellValue('D1', $endorsement__template_info->Date_of_Joining);
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+
+            case 'K1':
+                $sheet->setCellValue('D1', $endorsement__template_info->Date_of_Leaving);
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'L1':
+                $sheet->setCellValue('D1', $endorsement__template_info->Date_of_Marriage);
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'M1':
+                $sheet->setCellValue('D1', $endorsement__template_info->Remarks_for_Corrections);
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'N1':
+                $sheet->setCellValue('D1', $endorsement__template_info->First_Name);
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'O1':
+                $sheet->setCellValue('D1', $endorsement__template_info->Last_Name);
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'P1':
+                $sheet->setCellValue('D1', $endorsement__template_info->Mobile_No);
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'Q1':
+                $sheet->setCellValue('D1', $endorsement__template_info->Email);
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'R1':
+                $sheet->setCellValue('D1', $endorsement__template_info->Endorsement_Effective_Date);
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'S1':
+                $sheet->setCellValue('D1', $endorsement__template_info->Premium_including_GST);
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'T1':
+                $sheet->setCellValue('D1', $endorsement__template_info->Wrong_DETAILS);
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'U1':
+                $sheet->setCellValue('D1', $endorsement__template_info->salary);
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            default:
+                $sheet->setCellValue('D1', $endorsement__template_info->Employee_no);
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('D1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+        }
+
+        switch ($template_rules->E1) {
+            case 'A1':
+                $sheet->setCellValue('E1', $endorsement__template_info->S_No);
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'B1':
+                $sheet->setCellValue('E1', $endorsement__template_info->Policy_No);
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'C1':
+                $sheet->setCellValue('E1', $endorsement__template_info->mode);
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'D1':
+                $sheet->setCellValue('E1', $endorsement__template_info->Employee_no);
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'E1':
+                $sheet->setCellValue('E1', $endorsement__template_info->Insured_Name);
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'F1':
+                $sheet->setCellValue('E1', $endorsement__template_info->Relationship_type);
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'G1':
+                $sheet->setCellValue('E1', $endorsement__template_info->Date_of_Birth);
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'H1':
+                $sheet->setCellValue('E1', $endorsement__template_info->Age);
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'I1':
+                $sheet->setCellValue('E1', $endorsement__template_info->Sum_Insured);
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'J1':
+                $sheet->setCellValue('E1', $endorsement__template_info->Date_of_Joining);
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+
+            case 'K1':
+                $sheet->setCellValue('E1', $endorsement__template_info->Date_of_Leaving);
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'L1':
+                $sheet->setCellValue('E1', $endorsement__template_info->Date_of_Marriage);
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'M1':
+                $sheet->setCellValue('E1', $endorsement__template_info->Remarks_for_Corrections);
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'N1':
+                $sheet->setCellValue('E1', $endorsement__template_info->First_Name);
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'O1':
+                $sheet->setCellValue('E1', $endorsement__template_info->Last_Name);
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'P1':
+                $sheet->setCellValue('E1', $endorsement__template_info->Mobile_No);
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'Q1':
+                $sheet->setCellValue('E1', $endorsement__template_info->Email);
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'R1':
+                $sheet->setCellValue('E1', $endorsement__template_info->Endorsement_Effective_Date);
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'S1':
+                $sheet->setCellValue('E1', $endorsement__template_info->Premium_including_GST);
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'T1':
+                $sheet->setCellValue('E1', $endorsement__template_info->Wrong_DETAILS);
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'U1':
+                $sheet->setCellValue('E1', $endorsement__template_info->salary);
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            default:
+                $sheet->setCellValue('E1', $endorsement__template_info->Insured_Name);
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('E1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+        }
+
+        switch ($template_rules->F1) {
+            case 'A1':
+                $sheet->setCellValue('F1', $endorsement__template_info->S_No);
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'B1':
+                $sheet->setCellValue('F1', $endorsement__template_info->Policy_No);
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'C1':
+                $sheet->setCellValue('F1', $endorsement__template_info->mode);
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'D1':
+                $sheet->setCellValue('F1', $endorsement__template_info->Employee_no);
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'E1':
+                $sheet->setCellValue('F1', $endorsement__template_info->Insured_Name);
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'F1':
+                $sheet->setCellValue('F1', $endorsement__template_info->Relationship_type);
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'G1':
+                $sheet->setCellValue('F1', $endorsement__template_info->Date_of_Birth);
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'H1':
+                $sheet->setCellValue('F1', $endorsement__template_info->Age);
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'I1':
+                $sheet->setCellValue('F1', $endorsement__template_info->Sum_Insured);
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'J1':
+                $sheet->setCellValue('F1', $endorsement__template_info->Date_of_Joining);
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+
+            case 'K1':
+                $sheet->setCellValue('F1', $endorsement__template_info->Date_of_Leaving);
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'L1':
+                $sheet->setCellValue('F1', $endorsement__template_info->Date_of_Marriage);
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'M1':
+                $sheet->setCellValue('F1', $endorsement__template_info->Remarks_for_Corrections);
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'N1':
+                $sheet->setCellValue('F1', $endorsement__template_info->First_Name);
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'O1':
+                $sheet->setCellValue('F1', $endorsement__template_info->Last_Name);
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'P1':
+                $sheet->setCellValue('F1', $endorsement__template_info->Mobile_No);
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'Q1':
+                $sheet->setCellValue('F1', $endorsement__template_info->Email);
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'R1':
+                $sheet->setCellValue('F1', $endorsement__template_info->Endorsement_Effective_Date);
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'S1':
+                $sheet->setCellValue('F1', $endorsement__template_info->Premium_including_GST);
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'T1':
+                $sheet->setCellValue('F1', $endorsement__template_info->Wrong_DETAILS);
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'U1':
+                $sheet->setCellValue('F1', $endorsement__template_info->salary);
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            default:
+                $sheet->setCellValue('F1', $endorsement__template_info->Relationship_type);
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('F1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+        }
+
+        switch ($template_rules->G1) {
+            case 'A1':
+                $sheet->setCellValue('G1', $endorsement__template_info->S_No);
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'B1':
+                $sheet->setCellValue('G1', $endorsement__template_info->Policy_No);
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'C1':
+                $sheet->setCellValue('G1', $endorsement__template_info->mode);
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'D1':
+                $sheet->setCellValue('G1', $endorsement__template_info->Employee_no);
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'E1':
+                $sheet->setCellValue('G1', $endorsement__template_info->Insured_Name);
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'F1':
+                $sheet->setCellValue('G1', $endorsement__template_info->Relationship_type);
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'G1':
+                $sheet->setCellValue('G1', $endorsement__template_info->Date_of_Birth);
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'H1':
+                $sheet->setCellValue('G1', $endorsement__template_info->Age);
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'I1':
+                $sheet->setCellValue('G1', $endorsement__template_info->Sum_Insured);
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'J1':
+                $sheet->setCellValue('G1', $endorsement__template_info->Date_of_Joining);
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+
+            case 'K1':
+                $sheet->setCellValue('G1', $endorsement__template_info->Date_of_Leaving);
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'L1':
+                $sheet->setCellValue('G1', $endorsement__template_info->Date_of_Marriage);
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'M1':
+                $sheet->setCellValue('G1', $endorsement__template_info->Remarks_for_Corrections);
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'N1':
+                $sheet->setCellValue('G1', $endorsement__template_info->First_Name);
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'O1':
+                $sheet->setCellValue('G1', $endorsement__template_info->Last_Name);
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'P1':
+                $sheet->setCellValue('G1', $endorsement__template_info->Mobile_No);
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'Q1':
+                $sheet->setCellValue('G1', $endorsement__template_info->Email);
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'R1':
+                $sheet->setCellValue('G1', $endorsement__template_info->Endorsement_Effective_Date);
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'S1':
+                $sheet->setCellValue('G1', $endorsement__template_info->Premium_including_GST);
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'T1':
+                $sheet->setCellValue('G1', $endorsement__template_info->Wrong_DETAILS);
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'U1':
+                $sheet->setCellValue('G1', $endorsement__template_info->salary);
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            default:
+                $sheet->setCellValue('G1', $endorsement__template_info->Date_of_Birth);
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('G1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+        }
+
+        switch ($template_rules->H1) {
+            case 'A1':
+                $sheet->setCellValue('H1', $endorsement__template_info->S_No);
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'B1':
+                $sheet->setCellValue('H1', $endorsement__template_info->Policy_No);
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'C1':
+                $sheet->setCellValue('H1', $endorsement__template_info->mode);
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'D1':
+                $sheet->setCellValue('H1', $endorsement__template_info->Employee_no);
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'E1':
+                $sheet->setCellValue('H1', $endorsement__template_info->Insured_Name);
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'F1':
+                $sheet->setCellValue('H1', $endorsement__template_info->Relationship_type);
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'G1':
+                $sheet->setCellValue('H1', $endorsement__template_info->Date_of_Birth);
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'H1':
+                $sheet->setCellValue('H1', $endorsement__template_info->Age);
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'I1':
+                $sheet->setCellValue('H1', $endorsement__template_info->Sum_Insured);
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'J1':
+                $sheet->setCellValue('H1', $endorsement__template_info->Date_of_Joining);
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+
+            case 'K1':
+                $sheet->setCellValue('H1', $endorsement__template_info->Date_of_Leaving);
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'L1':
+                $sheet->setCellValue('H1', $endorsement__template_info->Date_of_Marriage);
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'M1':
+                $sheet->setCellValue('H1', $endorsement__template_info->Remarks_for_Corrections);
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'N1':
+                $sheet->setCellValue('H1', $endorsement__template_info->First_Name);
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'O1':
+                $sheet->setCellValue('H1', $endorsement__template_info->Last_Name);
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'P1':
+                $sheet->setCellValue('H1', $endorsement__template_info->Mobile_No);
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'Q1':
+                $sheet->setCellValue('H1', $endorsement__template_info->Email);
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'R1':
+                $sheet->setCellValue('H1', $endorsement__template_info->Endorsement_Effective_Date);
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'S1':
+                $sheet->setCellValue('H1', $endorsement__template_info->Premium_including_GST);
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'T1':
+                $sheet->setCellValue('H1', $endorsement__template_info->Wrong_DETAILS);
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'U1':
+                $sheet->setCellValue('H1', $endorsement__template_info->salary);
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            default:
+                $sheet->setCellValue('H1', $endorsement__template_info->Age);
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('H1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+        }
+
+        switch ($template_rules->I1) {
+            case 'A1':
+                $sheet->setCellValue('I1', $endorsement__template_info->S_No);
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'B1':
+                $sheet->setCellValue('I1', $endorsement__template_info->Policy_No);
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'C1':
+                $sheet->setCellValue('I1', $endorsement__template_info->mode);
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'D1':
+                $sheet->setCellValue('I1', $endorsement__template_info->Employee_no);
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'E1':
+                $sheet->setCellValue('I1', $endorsement__template_info->Insured_Name);
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'F1':
+                $sheet->setCellValue('I1', $endorsement__template_info->Relationship_type);
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'G1':
+                $sheet->setCellValue('I1', $endorsement__template_info->Date_of_Birth);
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'H1':
+                $sheet->setCellValue('I1', $endorsement__template_info->Age);
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'I1':
+                $sheet->setCellValue('I1', $endorsement__template_info->Sum_Insured);
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'J1':
+                $sheet->setCellValue('I1', $endorsement__template_info->Date_of_Joining);
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+
+            case 'K1':
+                $sheet->setCellValue('I1', $endorsement__template_info->Date_of_Leaving);
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'L1':
+                $sheet->setCellValue('I1', $endorsement__template_info->Date_of_Marriage);
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'M1':
+                $sheet->setCellValue('I1', $endorsement__template_info->Remarks_for_Corrections);
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'N1':
+                $sheet->setCellValue('I1', $endorsement__template_info->First_Name);
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'O1':
+                $sheet->setCellValue('I1', $endorsement__template_info->Last_Name);
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'P1':
+                $sheet->setCellValue('I1', $endorsement__template_info->Mobile_No);
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'Q1':
+                $sheet->setCellValue('I1', $endorsement__template_info->Email);
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'R1':
+                $sheet->setCellValue('I1', $endorsement__template_info->Endorsement_Effective_Date);
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'S1':
+                $sheet->setCellValue('I1', $endorsement__template_info->Premium_including_GST);
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'T1':
+                $sheet->setCellValue('I1', $endorsement__template_info->Wrong_DETAILS);
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'U1':
+                $sheet->setCellValue('I1', $endorsement__template_info->salary);
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            default:
+                $sheet->setCellValue('I1', $endorsement__template_info->Sum_Insured);
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('I1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+        }
+
+
+        switch ($template_rules->J1) {
+            case 'A1':
+                $sheet->setCellValue('J1', $endorsement__template_info->S_No);
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'B1':
+                $sheet->setCellValue('J1', $endorsement__template_info->Policy_No);
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'C1':
+                $sheet->setCellValue('J1', $endorsement__template_info->mode);
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'D1':
+                $sheet->setCellValue('J1', $endorsement__template_info->Employee_no);
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'E1':
+                $sheet->setCellValue('J1', $endorsement__template_info->Insured_Name);
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'F1':
+                $sheet->setCellValue('J1', $endorsement__template_info->Relationship_type);
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'G1':
+                $sheet->setCellValue('J1', $endorsement__template_info->Date_of_Birth);
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'H1':
+                $sheet->setCellValue('J1', $endorsement__template_info->Age);
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'I1':
+                $sheet->setCellValue('J1', $endorsement__template_info->Sum_Insured);
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'J1':
+                $sheet->setCellValue('J1', $endorsement__template_info->Date_of_Joining);
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+
+            case 'K1':
+                $sheet->setCellValue('J1', $endorsement__template_info->Date_of_Leaving);
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'L1':
+                $sheet->setCellValue('J1', $endorsement__template_info->Date_of_Marriage);
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'M1':
+                $sheet->setCellValue('J1', $endorsement__template_info->Remarks_for_Corrections);
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'N1':
+                $sheet->setCellValue('J1', $endorsement__template_info->First_Name);
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'O1':
+                $sheet->setCellValue('J1', $endorsement__template_info->Last_Name);
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'P1':
+                $sheet->setCellValue('J1', $endorsement__template_info->Mobile_No);
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'Q1':
+                $sheet->setCellValue('J1', $endorsement__template_info->Email);
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'R1':
+                $sheet->setCellValue('J1', $endorsement__template_info->Endorsement_Effective_Date);
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'S1':
+                $sheet->setCellValue('J1', $endorsement__template_info->Premium_including_GST);
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'T1':
+                $sheet->setCellValue('J1', $endorsement__template_info->Wrong_DETAILS);
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'U1':
+                $sheet->setCellValue('J1', $endorsement__template_info->salary);
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            default:
+                $sheet->setCellValue('J1', $endorsement__template_info->Date_of_Joining);
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('J1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+        }
+
+
+        switch ($template_rules->K1) {
+            case 'A1':
+                $sheet->setCellValue('K1', $endorsement__template_info->S_No);
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'B1':
+                $sheet->setCellValue('K1', $endorsement__template_info->Policy_No);
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'C1':
+                $sheet->setCellValue('K1', $endorsement__template_info->mode);
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'D1':
+                $sheet->setCellValue('K1', $endorsement__template_info->Employee_no);
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'E1':
+                $sheet->setCellValue('K1', $endorsement__template_info->Insured_Name);
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'F1':
+                $sheet->setCellValue('K1', $endorsement__template_info->Relationship_type);
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'G1':
+                $sheet->setCellValue('K1', $endorsement__template_info->Date_of_Birth);
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'H1':
+                $sheet->setCellValue('K1', $endorsement__template_info->Age);
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'I1':
+                $sheet->setCellValue('K1', $endorsement__template_info->Sum_Insured);
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'J1':
+                $sheet->setCellValue('K1', $endorsement__template_info->Date_of_Joining);
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+
+            case 'K1':
+                $sheet->setCellValue('K1', $endorsement__template_info->Date_of_Leaving);
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'L1':
+                $sheet->setCellValue('K1', $endorsement__template_info->Date_of_Marriage);
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'M1':
+                $sheet->setCellValue('K1', $endorsement__template_info->Remarks_for_Corrections);
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'N1':
+                $sheet->setCellValue('K1', $endorsement__template_info->First_Name);
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'O1':
+                $sheet->setCellValue('K1', $endorsement__template_info->Last_Name);
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'P1':
+                $sheet->setCellValue('K1', $endorsement__template_info->Mobile_No);
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'Q1':
+                $sheet->setCellValue('K1', $endorsement__template_info->Email);
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'R1':
+                $sheet->setCellValue('K1', $endorsement__template_info->Endorsement_Effective_Date);
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'S1':
+                $sheet->setCellValue('K1', $endorsement__template_info->Premium_including_GST);
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'T1':
+                $sheet->setCellValue('K1', $endorsement__template_info->Wrong_DETAILS);
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'U1':
+                $sheet->setCellValue('K1', $endorsement__template_info->salary);
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            default:
+                $sheet->setCellValue('K1', $endorsement__template_info->Date_of_Leaving);
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('K1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+        }
+
+        switch ($template_rules->L1) {
+            case 'A1':
+                $sheet->setCellValue('L1', $endorsement__template_info->S_No);
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'B1':
+                $sheet->setCellValue('L1', $endorsement__template_info->Policy_No);
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'C1':
+                $sheet->setCellValue('L1', $endorsement__template_info->mode);
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'D1':
+                $sheet->setCellValue('L1', $endorsement__template_info->Employee_no);
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'E1':
+                $sheet->setCellValue('L1', $endorsement__template_info->Insured_Name);
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'F1':
+                $sheet->setCellValue('L1', $endorsement__template_info->Relationship_type);
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'G1':
+                $sheet->setCellValue('L1', $endorsement__template_info->Date_of_Birth);
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'H1':
+                $sheet->setCellValue('L1', $endorsement__template_info->Age);
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'I1':
+                $sheet->setCellValue('L1', $endorsement__template_info->Sum_Insured);
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'J1':
+                $sheet->setCellValue('L1', $endorsement__template_info->Date_of_Joining);
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+
+            case 'K1':
+                $sheet->setCellValue('L1', $endorsement__template_info->Date_of_Leaving);
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'L1':
+                $sheet->setCellValue('L1', $endorsement__template_info->Date_of_Marriage);
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'M1':
+                $sheet->setCellValue('L1', $endorsement__template_info->Remarks_for_Corrections);
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'N1':
+                $sheet->setCellValue('L1', $endorsement__template_info->First_Name);
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'O1':
+                $sheet->setCellValue('L1', $endorsement__template_info->Last_Name);
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'P1':
+                $sheet->setCellValue('L1', $endorsement__template_info->Mobile_No);
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'Q1':
+                $sheet->setCellValue('L1', $endorsement__template_info->Email);
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'R1':
+                $sheet->setCellValue('L1', $endorsement__template_info->Endorsement_Effective_Date);
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'S1':
+                $sheet->setCellValue('L1', $endorsement__template_info->Premium_including_GST);
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'T1':
+                $sheet->setCellValue('L1', $endorsement__template_info->Wrong_DETAILS);
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'U1':
+                $sheet->setCellValue('L1', $endorsement__template_info->salary);
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            default:
+                $sheet->setCellValue('L1', $endorsement__template_info->Date_of_Marriage);
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('L1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+        }
+
+
+        switch ($template_rules->M1) {
+            case 'A1':
+                $sheet->setCellValue('M1', $endorsement__template_info->S_No);
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'B1':
+                $sheet->setCellValue('M1', $endorsement__template_info->Policy_No);
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'C1':
+                $sheet->setCellValue('M1', $endorsement__template_info->mode);
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'D1':
+                $sheet->setCellValue('M1', $endorsement__template_info->Employee_no);
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'E1':
+                $sheet->setCellValue('M1', $endorsement__template_info->Insured_Name);
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'F1':
+                $sheet->setCellValue('M1', $endorsement__template_info->Relationship_type);
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'G1':
+                $sheet->setCellValue('M1', $endorsement__template_info->Date_of_Birth);
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'H1':
+                $sheet->setCellValue('M1', $endorsement__template_info->Age);
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'I1':
+                $sheet->setCellValue('M1', $endorsement__template_info->Sum_Insured);
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'J1':
+                $sheet->setCellValue('M1', $endorsement__template_info->Date_of_Joining);
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+
+            case 'K1':
+                $sheet->setCellValue('M1', $endorsement__template_info->Date_of_Leaving);
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'L1':
+                $sheet->setCellValue('M1', $endorsement__template_info->Date_of_Marriage);
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'M1':
+                $sheet->setCellValue('M1', $endorsement__template_info->Remarks_for_Corrections);
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'N1':
+                $sheet->setCellValue('M1', $endorsement__template_info->First_Name);
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'O1':
+                $sheet->setCellValue('M1', $endorsement__template_info->Last_Name);
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'P1':
+                $sheet->setCellValue('M1', $endorsement__template_info->Mobile_No);
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'Q1':
+                $sheet->setCellValue('M1', $endorsement__template_info->Email);
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'R1':
+                $sheet->setCellValue('M1', $endorsement__template_info->Endorsement_Effective_Date);
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'S1':
+                $sheet->setCellValue('M1', $endorsement__template_info->Premium_including_GST);
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'T1':
+                $sheet->setCellValue('M1', $endorsement__template_info->Wrong_DETAILS);
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'U1':
+                $sheet->setCellValue('M1', $endorsement__template_info->salary);
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            default:
+                $sheet->setCellValue('M1', $endorsement__template_info->Remarks_for_Corrections);
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('M1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+        }
+
+
+        // $sheet->setCellValue('B1', $endorsement__template_info->Policy_No);
+        // $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+        // $spreadsheet->getActiveSheet()->getStyle('B1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+        // $sheet->setCellValue('C1', $endorsement__template_info->mode);
+        // $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+        // $spreadsheet->getActiveSheet()->getStyle('C1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+        // $sheet->setCellValue('D1', $endorsement__template_info->Employee_no);
+        // $spreadsheet->getActiveSheet()->getStyle('D1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+        // $spreadsheet->getActiveSheet()->getStyle('D1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+        // $sheet->setCellValue('E1', $endorsement__template_info->Insured_Name);
+        // $spreadsheet->getActiveSheet()->getStyle('E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+        // $spreadsheet->getActiveSheet()->getStyle('E1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+        // $sheet->setCellValue('F1', $endorsement__template_info->Relationship_type);
+        // $spreadsheet->getActiveSheet()->getStyle('F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+        // $spreadsheet->getActiveSheet()->getStyle('F1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+        // $sheet->setCellValue('G1', $endorsement__template_info->Date_of_Birth);
+        // $spreadsheet->getActiveSheet()->getStyle('G1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+        // $spreadsheet->getActiveSheet()->getStyle('G1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+        // $sheet->setCellValue('H1', $endorsement__template_info->Age);
+        // $spreadsheet->getActiveSheet()->getStyle('H1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+        // $spreadsheet->getActiveSheet()->getStyle('H1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+
+        // $sheet->setCellValue('I1', $endorsement__template_info->Sum_Insured);
+        // $spreadsheet->getActiveSheet()->getStyle('I1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+        // $spreadsheet->getActiveSheet()->getStyle('I1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+        // $sheet->setCellValue('J1', $endorsement__template_info->Date_of_Joining);
+        // $spreadsheet->getActiveSheet()->getStyle('J1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+        // $spreadsheet->getActiveSheet()->getStyle('J1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+        // $sheet->setCellValue('K1', $endorsement__template_info->Date_of_Leaving);
+        // $spreadsheet->getActiveSheet()->getStyle('K1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+        // $spreadsheet->getActiveSheet()->getStyle('K1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+        // $sheet->setCellValue('L1', $endorsement__template_info->Date_of_Marriage);
+        // $spreadsheet->getActiveSheet()->getStyle('L1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+        // $spreadsheet->getActiveSheet()->getStyle('L1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+        // $sheet->setCellValue('M1', $endorsement__template_info->Remarks_for_Corrections);
+        // $spreadsheet->getActiveSheet()->getStyle('M1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+        // $spreadsheet->getActiveSheet()->getStyle('M1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
 
         $sheet->setCellValue('N1', $endorsement__template_info->First_Name);
         $spreadsheet->getActiveSheet()->getStyle('N1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
@@ -1678,9 +3256,7 @@ class Clients extends MY_Controller
             $rows = 0;
             foreach ($emp as $emp) {
 
-                // echo "<pre>";
-                // print_r($emp);
-                // echo "</pre>";
+
                 if ($emp->mode == "New Addition" || $emp->mode == "Deletion") {
 
                     $date_of_joining = date("Y-m-d", strtotime($emp->doj));
@@ -1787,11 +3363,6 @@ class Clients extends MY_Controller
                         $pro_gst_premium = $pro_rata * ($endorsment_calculations_info->gst_rate / 100);
                         $pro_rata_gst_premium = $pro_gst_premium + $pro_rata;
                     }
-
-<<<<<<< HEAD
-                    // if ($template_rules->A1 = 'C1') {
-                    //     $sheet->setCellValue('A' . $rows, $emp->age);
-                    // }
                     switch ($template_rules->A1) {
                         case 'A1':
                             $sheet->setCellValue('A' . $rows, $rows);
@@ -1878,300 +3449,1195 @@ class Clients extends MY_Controller
                             $sheet->setCellValue('A' . $rows, $emp->sum_insured);
                             break;
 
-=======
-                    if ($template_rules->A1 = 'C1') {
-                        $sheet->setCellValue('A' . $rows, $emp->age);
-                    }
-
-                    // $sheet->setCellValue('A' . $rows, $emp->client_name);
-                    $sheet->setCellValue('B' . $rows, $emp->emp_name);
-                    $sheet->setCellValue('C' . $rows, $emp->age);
-                    $sheet->setCellValue('D' . $rows, $emp->sum_insured);
-                    if ($emp->mode == "Deletion") {
-                        $sheet->setCellValue('E' . $rows, 'D');
-                    }
-                    if ($emp->mode == "New Addition") {
-                        $sheet->setCellValue('E' . $rows, 'A');
->>>>>>> e904b8ada9eb8493dbe2747bb8bc7a80759f94d0
-                    }
-                    // $sheet->setCellValue('A' . $rows, $rows);
-                    $sheet->setCellValue('B' . $rows, $policy_info->policy_no);
-                    $sheet->setCellValue('C' . $rows, $emp->mode);
-                    $sheet->setCellValue('D' . $rows, $emp->emp_id);
-                    $sheet->setCellValue('E' . $rows, $emp->client_name);
-                    $sheet->setCellValue('F' . $rows, $emp->relation);
-                    $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dob)));
-                    $sheet->setCellValue('H' . $rows, $emp->age);
-                    $sheet->setCellValue('I' . $rows, $emp->sum_insured);
-                    $sheet->setCellValue('J' . $rows, date("d-m-Y", strtotime($emp->doj)));
-                    $sheet->setCellValue('K' . $rows, date("d-m-Y", strtotime($emp->dol)));
-                    $sheet->setCellValue('L' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
-                    $sheet->setCellValue('M' . $rows, $emp->client_name);
-                    $sheet->setCellValue('N' . $rows, $emp->emp_name);
-                    $sheet->setCellValue('O' . $rows, $emp->age);
-                    $sheet->setCellValue('P' . $rows, $emp->mobile);
-                    $sheet->setCellValue('Q' . $rows, $emp->email);
-                    $sheet->setCellValue('R' . $rows, $emp->emp_name);
-                    $sheet->setCellValue('S' . $rows, $premium);
-                    $sheet->setCellValue('T' . $rows, $emp->sum_insured);
-                    $sheet->setCellValue('U' . $rows, $emp->sum_insured);
-
-
-<<<<<<< HEAD
-
-=======
-                    $sheet->setCellValue('F' . $rows, date("d-m-Y", strtotime($emp->doj)));
-                    $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dol)));
->>>>>>> e904b8ada9eb8493dbe2747bb8bc7a80759f94d0
-                }
-                $rows++;
-            }
-        }
-        if ($data['endorsement_type'] == "addition") {
-            $rows = 0;
-            foreach ($emp as $emp) {
-
-                if ($emp->mode == "New Addition") {
-
-
-                    $date_of_joining = date("Y-m-d", strtotime($emp->doj));
-                    $date_of_policy_expire = date("Y-m-d", strtotime($policy_info->expiry_on));
-                    $diffDays = dateDifference($date_of_joining, $date_of_policy_expire);
-                    $EED = dateDifference($date_of_joining, date("Y-m-d"));
-                    $diffDays = abs($diffDays) + 1;
-
-                    $pro_date_of_policy_start = date("Y-m-d", strtotime($policy_info->start_on));
-                    $pro_date_of_policy_expire = date("Y-m-d", strtotime($policy_info->expiry_on));
-                    $pro_diffDays = dateDifference($pro_date_of_policy_start, $pro_date_of_policy_expire);
-
-                    $pro_diffDays = abs($pro_diffDays) + 1;
-                    $pro_rata = (($policy_premium_info->premium / $pro_diffDays) * $diffDays);
-
-
-                    if ($endorsment_calculations_info->gst == 1) {
-                        $gst_premium = $policy_premium_info->premium * ($endorsment_calculations_info->gst_rate / 100);
-                        $short_gst_premium = $gst_premium + $policy_premium_info->premium;
-                        $pro_gst_premium = $pro_rata * ($endorsment_calculations_info->gst_rate / 100);
-                        $pro_rata_gst_premium = $pro_gst_premium + $pro_rata;
-                    }
-                    $policy_premium_info->premium;
-
-                    // $diffDays=30;
-                    if ($diffDays <= 7) {
-                        $premium = $policy_premium_info->premium * (10 / 100);
-                        $short_peroid_rate = '10%';
-                    }
-                    if ($diffDays <= 30) {
-                        $premium = $policy_premium_info->premium * (25 / 100);
-                        $short_peroid_rate = '25%';
-                    }
-                    if ($diffDays <= 60) {
-                        $premium = $policy_premium_info->premium * (35 / 100);
-                        $short_peroid_rate = '35%';
-                    }
-                    if ($diffDays <= 90) {
-                        $premium = $policy_premium_info->premium * (50 / 100);
-                        $short_peroid_rate = '50%';
-                    }
-                    if ($diffDays <= 120) {
-                        $premium = $policy_premium_info->premium * (60 / 100);
-                        $short_peroid_rate = '60%';
-                    }
-                    if ($diffDays <= 180) {
-                        $premium = $policy_premium_info->premium * (75 / 100);
-                        $short_peroid_rate = '75%';
-                    }
-                    if ($diffDays <= 240 || $diffDays >= 240) {
-                        $premium = $policy_premium_info->premium * (100 / 100);
-                        $short_peroid_rate = '100%';
-                    }
-                }
-                $rows = 2;
-<<<<<<< HEAD
-                switch ($template_rules->A1) {
-                        case 'A1':
+                            default:
                             $sheet->setCellValue('A' . $rows, $rows);
+
+                    }
+
+                    switch ($template_rules->B1) {
+                        case 'A1':
+                            $sheet->setCellValue('B' . $rows, $rows);
                             break;
 
                         case 'B1':
-                            $sheet->setCellValue('A' . $rows, $policy_info->policy_no);
+                            $sheet->setCellValue('B' . $rows, $policy_info->policy_no);
                             break;
 
                         case 'C1':
-                            $sheet->setCellValue('A' . $rows, $emp->mode);
+                            $sheet->setCellValue('B' . $rows, $emp->mode);
                             break;
 
                         case 'D1':
-                            $sheet->setCellValue('A' . $rows, $emp->emp_id);
+                            $sheet->setCellValue('B' . $rows, $emp->emp_id);
                             break;
 
                         case 'E1':
-                            $sheet->setCellValue('A' . $rows, $emp->client_name);
+                            $sheet->setCellValue('B' . $rows, $emp->client_name);
                             break;
 
                         case 'F1':
-                            $sheet->setCellValue('A' . $rows, $emp->relation);
+                            $sheet->setCellValue('B' . $rows, $emp->relation);
                             break;
 
                         case 'G1':
-                            $sheet->setCellValue('A' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            $sheet->setCellValue('B' . $rows, date("d-m-Y", strtotime($emp->dob)));
                             break;
 
                         case 'H1':
-                            $sheet->setCellValue('A' . $rows, $emp->age);
+                            $sheet->setCellValue('B' . $rows, $emp->age);
                             break;
 
                         case 'I1':
-                            $sheet->setCellValue('A' . $rows, $emp->sum_insured);
+                            $sheet->setCellValue('B' . $rows, $emp->sum_insured);
                             break;
 
                         case 'J1':
-                            $sheet->setCellValue('A' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            $sheet->setCellValue('B' . $rows, date("d-m-Y", strtotime($emp->doj)));
                             break;
 
 
                         case 'K1':
-                            $sheet->setCellValue('A' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            $sheet->setCellValue('B' . $rows, date("d-m-Y", strtotime($emp->dol)));
                             break;
 
                         case 'L1':
-                            $sheet->setCellValue('A' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            $sheet->setCellValue('B' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
                             break;
 
                         case 'M1':
-                            $sheet->setCellValue('A' . $rows, $emp->client_name);
+                            $sheet->setCellValue('B' . $rows, $emp->client_name);
                             break;
 
                         case 'N1':
-                            $sheet->setCellValue('A' . $rows, $emp->emp_name);
+                            $sheet->setCellValue('B' . $rows, $emp->emp_name);
                             break;
 
                         case 'O1':
-                            $sheet->setCellValue('A' . $rows, $emp->age);
+                            $sheet->setCellValue('B' . $rows, $emp->age);
                             break;
 
                         case 'P1':
-                            $sheet->setCellValue('A' . $rows, $emp->mobile);
+                            $sheet->setCellValue('B' . $rows, $emp->mobile);
                             break;
 
                         case 'Q1':
-                            $sheet->setCellValue('A' . $rows, $emp->email);
+                            $sheet->setCellValue('B' . $rows, $emp->email);
                             break;
 
                         case 'R1':
-                            $sheet->setCellValue('A' . $rows, $emp->emp_name);
+                            $sheet->setCellValue('B' . $rows, $emp->emp_name);
                             break;
 
                         case 'S1':
-                            $sheet->setCellValue('A' . $rows, $premium);
+                            $sheet->setCellValue('B' . $rows, $premium);
                             break;
 
                         case 'T1':
-                            $sheet->setCellValue('A' . $rows, $emp->sum_insured);
+                            $sheet->setCellValue('B' . $rows, $emp->sum_insured);
                             break;
 
                         case 'U1':
-                            $sheet->setCellValue('A' . $rows, $emp->sum_insured);
+                            $sheet->setCellValue('B' . $rows, $emp->sum_insured);
                             break;
 
+                            default:
+                            $sheet->setCellValue('B' . $rows, $policy_info->policy_no);
+
                     }
-                // $sheet->setCellValue('A' . $rows, $emp->client_name);
-                $sheet->setCellValue('B' . $rows, $emp->emp_name);
-                $sheet->setCellValue('C' . $rows, $emp->mode);
-                $sheet->setCellValue('D' . $rows, $emp->sum_insured);
-                $sheet->setCellValue('E' . $rows, $emp->client_name);
-                $sheet->setCellValue('F' . $rows, $emp->emp_name);
-                $sheet->setCellValue('G' . $rows, $emp->age);
-                $sheet->setCellValue('H' . $rows, $emp->sum_insured);
-                $sheet->setCellValue('I' . $rows, $emp->client_name);
-                $sheet->setCellValue('J' . $rows, date("d-m-Y", strtotime($emp->doj)));
-                $sheet->setCellValue('K' . $rows, date("d-m-Y", strtotime($emp->dol)));
-                $sheet->setCellValue('L' . $rows, $emp->sum_insured);
-                $sheet->setCellValue('M' . $rows, $emp->client_name);
-                $sheet->setCellValue('N' . $rows, $emp->emp_name);
-                $sheet->setCellValue('O' . $rows, $emp->age);
-                $sheet->setCellValue('P' . $rows, $emp->sum_insured);
-                $sheet->setCellValue('Q' . $rows, $emp->client_name);
-                $sheet->setCellValue('R' . $rows, $emp->emp_name);
-                $sheet->setCellValue('S' . $rows, $emp->age);
-                $sheet->setCellValue('T' . $rows, $emp->sum_insured);
-                $sheet->setCellValue('U' . $rows, $emp->sum_insured);
-=======
-                $sheet->setCellValue('A' . $rows, $emp->client_name);
-                $sheet->setCellValue('B' . $rows, $emp->emp_name);
-                $sheet->setCellValue('C' . $rows, $emp->age);
-                $sheet->setCellValue('D' . $rows, $emp->sum_insured);
-                $sheet->setCellValue('E' . $rows, 'A');
-                $sheet->setCellValue('F' . $rows, date("d-m-Y", strtotime($emp->doj)));
-                $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dol)));
->>>>>>> e904b8ada9eb8493dbe2747bb8bc7a80759f94d0
+
+                    switch ($template_rules->C1) {
+                        case 'A1':
+                            $sheet->setCellValue('C' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('C' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('C' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('C' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('C' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('C' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('C' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('C' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('C' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('C' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('C' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('C' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('C' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('C' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('C' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('C' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('C' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('C' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('C' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('C' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('C' . $rows, $emp->sum_insured);
+                            break;
+
+                            default:
+                            $sheet->setCellValue('C' . $rows, $emp->mode);
+
+                    }
+                    switch ($template_rules->D1) {
+                        case 'A1':
+                            $sheet->setCellValue('D' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('D' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('D' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('D' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('D' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('D' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('D' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('D' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('D' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('D' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('D' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('D' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('D' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('D' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('D' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('D' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('D' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('D' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('D' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('D' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('D' . $rows, $emp->sum_insured);
+                            break;
+
+                            default:
+                            $sheet->setCellValue('D' . $rows, $emp->emp_id);
+
+                    }
+                    switch ($template_rules->E1) {
+                        case 'A1':
+                            $sheet->setCellValue('E' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('E' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('E' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('E' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('E' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('E' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('E' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('E' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('E' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('E' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('E' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('E' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('E' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('E' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('E' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('E' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('E' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('E' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('E' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('E' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('E' . $rows, $emp->sum_insured);
+                            break;
+
+                            default:
+                            $sheet->setCellValue('E' . $rows, $emp->client_name);
+
+                    }
+
+                    switch ($template_rules->F1) {
+                        case 'A1':
+                            $sheet->setCellValue('F' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('F' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('F' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('F' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('F' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('F' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('F' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('F' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('F' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('F' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('F' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('F' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('F' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('F' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('F' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('F' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('F' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('F' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('F' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('F' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('F' . $rows, $emp->sum_insured);
+                            break;
+
+                            default:
+                            $sheet->setCellValue('F' . $rows, $emp->relation);
+
+                    }
+
+                    switch ($template_rules->G1) {
+                        case 'A1':
+                            $sheet->setCellValue('G' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('G' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('G' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('G' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('G' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('G' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('G' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('G' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('G' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('G' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('G' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('G' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('G' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('G' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('G' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('G' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('G' . $rows, $emp->sum_insured);
+                            break;
+
+                            default:
+                            $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dob)));
+
+                    }
+
+
+                    switch ($template_rules->H1) {
+                        case 'A1':
+                            $sheet->setCellValue('H' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('H' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('H' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('H' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('H' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('H' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('H' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('H' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('H' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('H' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('H' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('H' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('H' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('H' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('H' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('H' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('H' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('H' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('H' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('H' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('H' . $rows, $emp->sum_insured);
+                            break;
+
+                            default:
+                            $sheet->setCellValue('H' . $rows, $emp->age);
+
+                    }
+
+
+                    switch ($template_rules->I1) {
+                        case 'A1':
+                            $sheet->setCellValue('I' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('I' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('I' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('I' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('I' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('I' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('I' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('I' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('I' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('I' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('I' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('I' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('I' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('I' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('I' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('I' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('I' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('I' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('I' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('I' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('I' . $rows, $emp->sum_insured);
+                            break;
+
+                            default:
+                            $sheet->setCellValue('I' . $rows, $emp->sum_insured);
+
+                    }
+
+                    switch ($template_rules->J1) {
+                        case 'A1':
+                            $sheet->setCellValue('J' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('J' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('J' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('J' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('J' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('J' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('J' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('J' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('J' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('J' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('J' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('J' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('J' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('J' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('J' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('J' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('J' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('J' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('J' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('J' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('J' . $rows, $emp->sum_insured);
+                            break;
+
+                            default:
+                            $sheet->setCellValue('J' . $rows, date("d-m-Y", strtotime($emp->doj)));
+
+                    }
+
+
+                    switch ($template_rules->K1) {
+                        case 'A1':
+                            $sheet->setCellValue('K' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('K' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('K' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('K' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('K' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('K' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('K' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('K' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('K' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('K' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('K' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('K' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('K' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('K' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('K' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('K' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('K' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('K' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('K' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('K' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('K' . $rows, $emp->sum_insured);
+                            break;
+
+                            default:
+                            $sheet->setCellValue('K' . $rows, date("d-m-Y", strtotime($emp->dol)));
+
+                    }
+
+
+                    switch ($template_rules->L1) {
+                        case 'A1':
+                            $sheet->setCellValue('L' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('L' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('L' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('L' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('L' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('L' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('L' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('L' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('L' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('L' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('L' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('L' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('L' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('L' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('L' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('L' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('L' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('L' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('L' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('L' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('L' . $rows, $emp->sum_insured);
+                            break;
+
+                            default:
+                            $sheet->setCellValue('L' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+
+                    }
+
+
+                    switch ($template_rules->M1) {
+                        case 'A1':
+                            $sheet->setCellValue('M' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('M' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('M' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('M' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('M' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('M' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('M' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('M' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('M' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('M' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('M' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('M' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('M' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('M' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('M' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('M' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('M' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('M' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('M' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('M' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('M' . $rows, $emp->sum_insured);
+                            break;
+
+                            default:
+                            $sheet->setCellValue('M' . $rows, $emp->client_name);
+
+                    }
+
+
+                    // $sheet->setCellValue('A' . $rows, $rows);
+                    // $sheet->setCellValue('B' . $rows, $policy_info->policy_no);
+                    // $sheet->setCellValue('C' . $rows, $emp->mode);
+                    // $sheet->setCellValue('D' . $rows, $emp->emp_id);
+                    // $sheet->setCellValue('E' . $rows, $emp->client_name);
+                    // $sheet->setCellValue('F' . $rows, $emp->relation);
+                    // $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                    // $sheet->setCellValue('H' . $rows, $emp->age);
+                    // $sheet->setCellValue('I' . $rows, $emp->sum_insured);
+                    // $sheet->setCellValue('J' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                    // $sheet->setCellValue('K' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                    // $sheet->setCellValue('L' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                    // $sheet->setCellValue('M' . $rows, $emp->client_name);
+                    // $sheet->setCellValue('N' . $rows, $emp->emp_name);
+                    // $sheet->setCellValue('O' . $rows, $emp->age);
+                    // $sheet->setCellValue('P' . $rows, $emp->mobile);
+                    // $sheet->setCellValue('Q' . $rows, $emp->email);
+                    // $sheet->setCellValue('R' . $rows, $emp->emp_name);
+                    // $sheet->setCellValue('S' . $rows, $premium);
+                    // $sheet->setCellValue('T' . $rows, $emp->sum_insured);
+                    // $sheet->setCellValue('U' . $rows, $emp->sum_insured);
+                    // $sheet->setCellValue('F' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                    // $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dol)));
+
+                }
+                $rows++;
             }
-            $rows++;
-        }
+            if ($data['endorsement_type'] == "addition") {
+                $rows = 0;
+                foreach ($emp as $emp) {
 
-        if ($data['endorsement_type'] == "deletion") {
-            $rows = 0;
-            foreach ($emp as $emp) {
-                // echo "<pre>";
-                // print_r($emp->doj);
-                // echo "</pre>";
-                if ($emp->mode == "Deletion") {
-
-                    $date_of_leaving = date("Y-m-d", strtotime($emp->dol));
-                    $date_of_leaving = '2023-04-07';
-                    $date_of_policy_start = date("Y-m-d", strtotime($policy_info->start_on));
-                    $diffDays = dateDifference($date_of_leaving, $date_of_policy_start);
-
-                    $diffDays = abs($diffDays) + 1;
-                    $pro_date_of_policy_start = date("Y-m-d", strtotime($policy_info->start_on));
-                    $pro_date_of_policy_expire = date("Y-m-d", strtotime($policy_info->expiry_on));
-                    $pro_diffDays = dateDifference($pro_date_of_policy_start, $pro_date_of_policy_expire);
-
-                    $pro_diffDays = abs($pro_diffDays) + 1;
-                    $pro_rata = (($policy_premium_info->premium / $pro_diffDays) * $diffDays);
-
-                    $EED = dateDifference($date_of_leaving, date("Y-m-d"));
+                    if ($emp->mode == "New Addition") {
 
 
-                    // $diffDays=30;
-                    if ($diffDays <= 7) {
-                        $premium = $policy_premium_info->premium * (90 / 100);
-                        $short_peroid_rate = '90%';
+                        $date_of_joining = date("Y-m-d", strtotime($emp->doj));
+                        $date_of_policy_expire = date("Y-m-d", strtotime($policy_info->expiry_on));
+                        $diffDays = dateDifference($date_of_joining, $date_of_policy_expire);
+                        $EED = dateDifference($date_of_joining, date("Y-m-d"));
+                        $diffDays = abs($diffDays) + 1;
+
+                        $pro_date_of_policy_start = date("Y-m-d", strtotime($policy_info->start_on));
+                        $pro_date_of_policy_expire = date("Y-m-d", strtotime($policy_info->expiry_on));
+                        $pro_diffDays = dateDifference($pro_date_of_policy_start, $pro_date_of_policy_expire);
+
+                        $pro_diffDays = abs($pro_diffDays) + 1;
+                        $pro_rata = (($policy_premium_info->premium / $pro_diffDays) * $diffDays);
+
+
+                        if ($endorsment_calculations_info->gst == 1) {
+                            $gst_premium = $policy_premium_info->premium * ($endorsment_calculations_info->gst_rate / 100);
+                            $short_gst_premium = $gst_premium + $policy_premium_info->premium;
+                            $pro_gst_premium = $pro_rata * ($endorsment_calculations_info->gst_rate / 100);
+                            $pro_rata_gst_premium = $pro_gst_premium + $pro_rata;
+                        }
+                        $policy_premium_info->premium;
+
+                        // $diffDays=30;
+                        if ($diffDays <= 7) {
+                            $premium = $policy_premium_info->premium * (10 / 100);
+                            $short_peroid_rate = '10%';
+                        }
+                        if ($diffDays <= 30) {
+                            $premium = $policy_premium_info->premium * (25 / 100);
+                            $short_peroid_rate = '25%';
+                        }
+                        if ($diffDays <= 60) {
+                            $premium = $policy_premium_info->premium * (35 / 100);
+                            $short_peroid_rate = '35%';
+                        }
+                        if ($diffDays <= 90) {
+                            $premium = $policy_premium_info->premium * (50 / 100);
+                            $short_peroid_rate = '50%';
+                        }
+                        if ($diffDays <= 120) {
+                            $premium = $policy_premium_info->premium * (60 / 100);
+                            $short_peroid_rate = '60%';
+                        }
+                        if ($diffDays <= 180) {
+                            $premium = $policy_premium_info->premium * (75 / 100);
+                            $short_peroid_rate = '75%';
+                        }
+                        if ($diffDays <= 240 || $diffDays >= 240) {
+                            $premium = $policy_premium_info->premium * (100 / 100);
+                            $short_peroid_rate = '100%';
+                        }
                     }
-                    if (($diffDays <= 30 || $diffDays < 30) && $diffDays > 7) {
-                        $premium = $policy_premium_info->premium * (75 / 100);
-                        $short_peroid_rate = '75%';
-                    }
-                    if (($diffDays <= 60 || $diffDays < 60) && $diffDays > 30) {
-                        $premium = $policy_premium_info->premium * (65 / 100);
-                        $short_peroid_rate = '65%';
-                    }
-                    if (($diffDays == 90 || $diffDays < 90) && $diffDays > 60) {
-                        $premium = $policy_premium_info->premium * (50 / 100);
-                        $short_peroid_rate = '50%';
-                    }
-                    if (($diffDays == 120 || $diffDays < 120) && $diffDays > 90) {
-                        $premium = $policy_premium_info->premium * (40 / 100);
-                        $short_peroid_rate = '40%';
-                    }
-                    if (($diffDays == 180 || $diffDays < 180) && $diffDays > 120) {
-                        $premium = $policy_premium_info->premium * (25 / 100);
-                        $short_peroid_rate = '25%';
-                    }
-                    if (($diffDays == 240 || $diffDays < 240) && $diffDays > 180) {
-                        $premium = $policy_premium_info->premium * (15 / 100);
-                        $short_peroid_rate = '15%';
-                    }
-
-                    if ($endorsment_calculations_info->gst == 1) {
-                        $gst_premium = $policy_premium_info->premium * ($endorsment_calculations_info->gst_rate / 100);
-                        $short_gst_premium = $gst_premium + $premium;
-                        $pro_gst_premium = $pro_rata * ($endorsment_calculations_info->gst_rate / 100);
-                        $pro_rata_gst_premium = $pro_gst_premium + $pro_rata;
-                    }
-
                     $rows = 2;
-<<<<<<< HEAD
+
                     switch ($template_rules->A1) {
                         case 'A1':
                             $sheet->setCellValue('A' . $rows, $rows);
@@ -2280,25 +4746,210 @@ class Clients extends MY_Controller
                     $sheet->setCellValue('S' . $rows, $emp->age);
                     $sheet->setCellValue('T' . $rows, $emp->sum_insured);
                     $sheet->setCellValue('U' . $rows, $emp->sum_insured);
-=======
-                    $sheet->setCellValue('C' . $rows, $emp->client_name);
+
+                    $sheet->setCellValue('A' . $rows, $emp->client_name);
                     $sheet->setCellValue('B' . $rows, $emp->emp_name);
-                    $sheet->setCellValue('A' . $rows, $emp->age);
+                    $sheet->setCellValue('C' . $rows, $emp->age);
                     $sheet->setCellValue('D' . $rows, $emp->sum_insured);
-                    $sheet->setCellValue('E' . $rows, 'D');
+                    $sheet->setCellValue('E' . $rows, 'A');
                     $sheet->setCellValue('F' . $rows, date("d-m-Y", strtotime($emp->doj)));
                     $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dol)));
->>>>>>> e904b8ada9eb8493dbe2747bb8bc7a80759f94d0
+
                 }
                 $rows++;
             }
+
+            if ($data['endorsement_type'] == "deletion") {
+                $rows = 0;
+                foreach ($emp as $emp) {
+                    // echo "<pre>";
+                    // print_r($emp->doj);
+                    // echo "</pre>";
+                    if ($emp->mode == "Deletion") {
+
+                        $date_of_leaving = date("Y-m-d", strtotime($emp->dol));
+                        $date_of_leaving = '2023-04-07';
+                        $date_of_policy_start = date("Y-m-d", strtotime($policy_info->start_on));
+                        $diffDays = dateDifference($date_of_leaving, $date_of_policy_start);
+
+                        $diffDays = abs($diffDays) + 1;
+                        $pro_date_of_policy_start = date("Y-m-d", strtotime($policy_info->start_on));
+                        $pro_date_of_policy_expire = date("Y-m-d", strtotime($policy_info->expiry_on));
+                        $pro_diffDays = dateDifference($pro_date_of_policy_start, $pro_date_of_policy_expire);
+
+                        $pro_diffDays = abs($pro_diffDays) + 1;
+                        $pro_rata = (($policy_premium_info->premium / $pro_diffDays) * $diffDays);
+
+                        $EED = dateDifference($date_of_leaving, date("Y-m-d"));
+
+
+                        // $diffDays=30;
+                        if ($diffDays <= 7) {
+                            $premium = $policy_premium_info->premium * (90 / 100);
+                            $short_peroid_rate = '90%';
+                        }
+                        if (($diffDays <= 30 || $diffDays < 30) && $diffDays > 7) {
+                            $premium = $policy_premium_info->premium * (75 / 100);
+                            $short_peroid_rate = '75%';
+                        }
+                        if (($diffDays <= 60 || $diffDays < 60) && $diffDays > 30) {
+                            $premium = $policy_premium_info->premium * (65 / 100);
+                            $short_peroid_rate = '65%';
+                        }
+                        if (($diffDays == 90 || $diffDays < 90) && $diffDays > 60) {
+                            $premium = $policy_premium_info->premium * (50 / 100);
+                            $short_peroid_rate = '50%';
+                        }
+                        if (($diffDays == 120 || $diffDays < 120) && $diffDays > 90) {
+                            $premium = $policy_premium_info->premium * (40 / 100);
+                            $short_peroid_rate = '40%';
+                        }
+                        if (($diffDays == 180 || $diffDays < 180) && $diffDays > 120) {
+                            $premium = $policy_premium_info->premium * (25 / 100);
+                            $short_peroid_rate = '25%';
+                        }
+                        if (($diffDays == 240 || $diffDays < 240) && $diffDays > 180) {
+                            $premium = $policy_premium_info->premium * (15 / 100);
+                            $short_peroid_rate = '15%';
+                        }
+
+                        if ($endorsment_calculations_info->gst == 1) {
+                            $gst_premium = $policy_premium_info->premium * ($endorsment_calculations_info->gst_rate / 100);
+                            $short_gst_premium = $gst_premium + $premium;
+                            $pro_gst_premium = $pro_rata * ($endorsment_calculations_info->gst_rate / 100);
+                            $pro_rata_gst_premium = $pro_gst_premium + $pro_rata;
+                        }
+
+                        $rows = 2;
+
+                        switch ($template_rules->A1) {
+                            case 'A1':
+                                $sheet->setCellValue('A' . $rows, $rows);
+                                break;
+
+                            case 'B1':
+                                $sheet->setCellValue('A' . $rows, $policy_info->policy_no);
+                                break;
+
+                            case 'C1':
+                                $sheet->setCellValue('A' . $rows, $emp->mode);
+                                break;
+
+                            case 'D1':
+                                $sheet->setCellValue('A' . $rows, $emp->emp_id);
+                                break;
+
+                            case 'E1':
+                                $sheet->setCellValue('A' . $rows, $emp->client_name);
+                                break;
+
+                            case 'F1':
+                                $sheet->setCellValue('A' . $rows, $emp->relation);
+                                break;
+
+                            case 'G1':
+                                $sheet->setCellValue('A' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                                break;
+
+                            case 'H1':
+                                $sheet->setCellValue('A' . $rows, $emp->age);
+                                break;
+
+                            case 'I1':
+                                $sheet->setCellValue('A' . $rows, $emp->sum_insured);
+                                break;
+
+                            case 'J1':
+                                $sheet->setCellValue('A' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                                break;
+
+
+                            case 'K1':
+                                $sheet->setCellValue('A' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                                break;
+
+                            case 'L1':
+                                $sheet->setCellValue('A' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                                break;
+
+                            case 'M1':
+                                $sheet->setCellValue('A' . $rows, $emp->client_name);
+                                break;
+
+                            case 'N1':
+                                $sheet->setCellValue('A' . $rows, $emp->emp_name);
+                                break;
+
+                            case 'O1':
+                                $sheet->setCellValue('A' . $rows, $emp->age);
+                                break;
+
+                            case 'P1':
+                                $sheet->setCellValue('A' . $rows, $emp->mobile);
+                                break;
+
+                            case 'Q1':
+                                $sheet->setCellValue('A' . $rows, $emp->email);
+                                break;
+
+                            case 'R1':
+                                $sheet->setCellValue('A' . $rows, $emp->emp_name);
+                                break;
+
+                            case 'S1':
+                                $sheet->setCellValue('A' . $rows, $premium);
+                                break;
+
+                            case 'T1':
+                                $sheet->setCellValue('A' . $rows, $emp->sum_insured);
+                                break;
+
+                            case 'U1':
+                                $sheet->setCellValue('A' . $rows, $emp->sum_insured);
+                                break;
+
+                        }
+                        // $sheet->setCellValue('A' . $rows, $emp->client_name);
+                        $sheet->setCellValue('B' . $rows, $emp->emp_name);
+                        $sheet->setCellValue('C' . $rows, $emp->mode);
+                        $sheet->setCellValue('D' . $rows, $emp->sum_insured);
+                        $sheet->setCellValue('E' . $rows, $emp->client_name);
+                        $sheet->setCellValue('F' . $rows, $emp->emp_name);
+                        $sheet->setCellValue('G' . $rows, $emp->age);
+                        $sheet->setCellValue('H' . $rows, $emp->sum_insured);
+                        $sheet->setCellValue('I' . $rows, $emp->client_name);
+                        $sheet->setCellValue('J' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                        $sheet->setCellValue('K' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                        $sheet->setCellValue('L' . $rows, $emp->sum_insured);
+                        $sheet->setCellValue('M' . $rows, $emp->client_name);
+                        $sheet->setCellValue('N' . $rows, $emp->emp_name);
+                        $sheet->setCellValue('O' . $rows, $emp->age);
+                        $sheet->setCellValue('P' . $rows, $emp->sum_insured);
+                        $sheet->setCellValue('Q' . $rows, $emp->client_name);
+                        $sheet->setCellValue('R' . $rows, $emp->emp_name);
+                        $sheet->setCellValue('S' . $rows, $emp->age);
+                        $sheet->setCellValue('T' . $rows, $emp->sum_insured);
+                        $sheet->setCellValue('U' . $rows, $emp->sum_insured);
+
+                        $sheet->setCellValue('C' . $rows, $emp->client_name);
+                        $sheet->setCellValue('B' . $rows, $emp->emp_name);
+                        $sheet->setCellValue('A' . $rows, $emp->age);
+                        $sheet->setCellValue('D' . $rows, $emp->sum_insured);
+                        $sheet->setCellValue('E' . $rows, 'D');
+                        $sheet->setCellValue('F' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                        $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dol)));
+
+                    }
+                    $rows++;
+                }
+            }
+            // die;
+            $fileName = 'endorsement_export.xlsx';
+            $writer = new Xlsx($spreadsheet);
+            $writer->save("external/uploads/" . $fileName);
+            header("Content-Type: application/vnd.ms-excel");
+            redirect(base_url() . "external/uploads/" . $fileName);
         }
-        // die;
-        $fileName = 'endorsement_export.xlsx';
-        $writer = new Xlsx($spreadsheet);
-        $writer->save("external/uploads/" . $fileName);
-        header("Content-Type: application/vnd.ms-excel");
-        redirect(base_url() . "external/uploads/" . $fileName);
     }
 
     public function uploadTemplateFormat()
@@ -2322,9 +4973,9 @@ class Clients extends MY_Controller
             if (!empty($sheetData)) {
 
                 $post = $this->input->post();
-                $data = [];
-                for ($i = 0; $i < count($sheetData); $i++) {
 
+                for ($i = 0; $i < count($sheetData); $i++) {
+                    $data = [];
                     // $data['id'] = $sheetData[$i][0];
                     $data['S_No'] = $sheetData[$i][1];
                     $data['Policy_No'] = $sheetData[$i][2];
@@ -2350,9 +5001,13 @@ class Clients extends MY_Controller
                     $data['company_id'] = $this->input->post('company_id');
                     $data['policy_type'] = $this->input->post('policy_type');
                     $data['endorsement_type'] = $this->input->post('endorsement_type');
-
+                    // echo '<pre>';
+                    // print_r($sheetData[]);
+                    // echo '</pre>';
+                    // die;
                     $ins = $this->qm->insert('template_master', $data);
                 }
+                redirect('clients/template_master');
             }
 
             redirect('clients/template_master');
@@ -3583,7 +6238,8 @@ class Clients extends MY_Controller
             $rows++;
         }
         $cl = $this->qm->all('ri_employee_tbl', '*', array('cid' => $cid, 'pid' => $pid));
-        foreach ($cl as $cl);
+        foreach ($cl as $cl)
+            ;
         $fileName = $cl->client_code . '-dependent.xlsx';
         $writer = new Xlsx($spreadsheet);
         $writer->save("external/uploads/" . $fileName);
@@ -4010,14 +6666,35 @@ class Clients extends MY_Controller
     public function RulesTemplateFormat()
     {
         $post = $this->input->post();
-        print_r($post);
+
         $data = [];
 
         $data['cname'] = $this->input->post('company_id');
         $data['policy_type'] = $this->input->post('policy_type');
         $data['endorsement_type'] = $this->input->post('endorsement_type');
         $data['A1'] = $this->input->post('A1');
-        $data['A1_data'] = $this->input->post('A1_data');
+        $data['B1'] = $this->input->post('B1');
+        $data['C1'] = $this->input->post('C1');
+        $data['D1'] = $this->input->post('D1');
+        $data['E1'] = $this->input->post('E1');
+        $data['F1'] = $this->input->post('F1');
+        $data['G1'] = $this->input->post('G1');
+        $data['H1'] = $this->input->post('H1');
+        $data['I1'] = $this->input->post('I1');
+        $data['J1'] = $this->input->post('J1');
+        $data['K1'] = $this->input->post('K1');
+        $data['L1'] = $this->input->post('L1');
+        $data['M1'] = $this->input->post('M1');
+        $data['N1'] = $this->input->post('N1');
+        $data['O1'] = $this->input->post('O1');
+        $data['P1'] = $this->input->post('P1');
+        $data['Q1'] = $this->input->post('Q1');
+        $data['R1'] = $this->input->post('R1');
+        $data['S1'] = $this->input->post('S1');
+        $data['T1'] = $this->input->post('T1');
+        $data['U1'] = $this->input->post('U1');
+
+
         $ad = $this->qm->insert("template_rules", $post);
         if ($ad) {
             $this->session->set_flashdata('success', 'Added Successfully');
