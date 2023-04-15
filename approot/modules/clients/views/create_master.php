@@ -42,6 +42,7 @@
                                                 echo 'selected';
                                             }
                                             ?>>Manual</option>
+                                            <option value="rules">Rules</option>
 
                                         </select>
 
@@ -76,47 +77,97 @@
 
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <label>Corporate</label>
-                                        <input type="text" class="form-control" name="corporate">
+                                        <label>A1</label>
+                                        <input type="text" class="form-control" name="A1">
                                     </div>
                                     <div class="col-sm-6">
-                                        <label>Employee</label>
-                                        <input type="text" class="form-control" name="employee">
+                                        <label>B1</label>
+                                        <input type="text" class="form-control" name="B1">
                                     </div>
                                     <div class="col-sm-6">
-                                        <lable>Age</lable>
-                                        <input type="text" class="form-control" name="age">
+                                        <label>C1</label>
+                                        <input type="text" class="form-control" name="C1">
                                     </div>
                                     <div class="col-sm-6">
-                                        <label>Sum insured</label>
-                                        <input type="text" class="form-control" name="suminsured">
+                                        <label>D1</label>
+                                        <input type="text" class="form-control" name="D1">
                                     </div>
                                     <div class="col-sm-6">
-                                        <label>Mode</label>
-                                        <input type="text" class="form-control" name="mode">
+                                        <label>E1</label>
+                                        <input type="text" class="form-control" name="E1">
                                     </div>
                                     <div class="col-sm-6">
-                                        <label>DOJ</label>
-                                        <input type="text" class="form-control" name="doj">
+                                        <label>F1</label>
+                                        <input type="text" class="form-control" name="F1">
                                     </div>
                                     <div class="col-sm-6">
-                                        <label for="dol">DOL</label>
-                                        <input type="text" class="form-control" name="dol">
+                                        <label>G1</label>
+                                        <input type="text" class="form-control" name="G1">
                                     </div>
                                     <div class="col-sm-6">
-                                        <label for="edd">EDD</label>
-                                        <input type="text" class="form-control" name="edd">
+                                        <label>H1</label>
+                                        <input type="text" class="form-control" name="H1">
                                     </div>
                                     <div class="col-sm-6">
-                                        <label for="premium">Premium</label>
-                                        <input type="text" class="form-control" name='premium'>
+                                        <label>I1</label>
+                                        <input type="text" class="form-control" name="I1">
                                     </div>
+                                    <div class="col-sm-6">
+                                        <label>J1</label>
+                                        <input type="text" class="form-control" name="J1">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>K1</label>
+                                        <input type="text" class="form-control" name="K1">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>L1</label>
+                                        <input type="text" class="form-control" name="L1">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>M1</label>
+                                        <input type="text" class="form-control" name="M1">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>N1</label>
+                                        <input type="text" class="form-control" name="N1">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>O1</label>
+                                        <input type="text" class="form-control" name="O1">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>P1</label>
+                                        <input type="text" class="form-control" name="P1">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Q1</label>
+                                        <input type="text" class="form-control" name="Q1">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>R1</label>
+                                        <input type="text" class="form-control" name="R1">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>S1</label>
+                                        <input type="text" class="form-control" name="S1">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>T1</label>
+                                        <input type="text" class="form-control" name="T1">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>U1</label>
+                                        <input type="text" class="form-control" name="U1">
+                                    </div>
+
+
 
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
-                            <form method="POST" id="form2" action="<?= base_url('clients/RulesTemplateFormat'); ?>">
+                            <form method="POST" id="form2" style="display: none;" action="<?= base_url('clients/RulesTemplateFormat'); ?>">
                                 <input type="hidden" name="company_id" value="<?= $cname; ?>">
                                 <input type="hidden" name="policy_type" value="<?= $policy_type ?>">
                                 <input type="hidden" name="endorsement_type" value="<?= $endorsement_type ?>">
@@ -341,9 +392,16 @@
         if (value == "automatic") {
             $("#form").css('display', 'block');
             $("#form1").css('display', 'none');
-        } else {
+            $("#form2").css('display', 'none');
+        } else if(value == "rules"){
+            $("#form").css('display', 'none');
+            $("#form1").css('display', 'none');
+            $("#form2").css('display', 'block');
+        }
+        else {
             $("#form").css('display', 'none');
             $("#form1").css('display', 'block');
+            $("#form2").css('display', 'none');
         }
     }
 </script>
