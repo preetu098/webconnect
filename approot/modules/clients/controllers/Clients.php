@@ -3156,86 +3156,1089 @@ class Clients extends MY_Controller
         }
 
 
-        // $sheet->setCellValue('B1', $endorsement__template_info->Policy_No);
-        // $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        // $spreadsheet->getActiveSheet()->getStyle('B1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+        switch ($template_rules->N1) {
+            case 'A1':
+                $sheet->setCellValue('N1', $endorsement__template_info->S_No);
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
 
-        // $sheet->setCellValue('C1', $endorsement__template_info->mode);
-        // $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        // $spreadsheet->getActiveSheet()->getStyle('C1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+            case 'B1':
+                $sheet->setCellValue('N1', $endorsement__template_info->Policy_No);
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
 
-        // $sheet->setCellValue('D1', $endorsement__template_info->Employee_no);
-        // $spreadsheet->getActiveSheet()->getStyle('D1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        // $spreadsheet->getActiveSheet()->getStyle('D1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+            case 'C1':
+                $sheet->setCellValue('N1', $endorsement__template_info->mode);
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
 
-        // $sheet->setCellValue('E1', $endorsement__template_info->Insured_Name);
-        // $spreadsheet->getActiveSheet()->getStyle('E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        // $spreadsheet->getActiveSheet()->getStyle('E1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+            case 'D1':
+                $sheet->setCellValue('N1', $endorsement__template_info->Employee_no);
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
 
-        // $sheet->setCellValue('F1', $endorsement__template_info->Relationship_type);
-        // $spreadsheet->getActiveSheet()->getStyle('F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        // $spreadsheet->getActiveSheet()->getStyle('F1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+            case 'E1':
+                $sheet->setCellValue('N1', $endorsement__template_info->Insured_Name);
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
 
-        // $sheet->setCellValue('G1', $endorsement__template_info->Date_of_Birth);
-        // $spreadsheet->getActiveSheet()->getStyle('G1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        // $spreadsheet->getActiveSheet()->getStyle('G1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+            case 'F1':
+                $sheet->setCellValue('N1', $endorsement__template_info->Relationship_type);
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
 
-        // $sheet->setCellValue('H1', $endorsement__template_info->Age);
-        // $spreadsheet->getActiveSheet()->getStyle('H1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        // $spreadsheet->getActiveSheet()->getStyle('H1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+            case 'G1':
+                $sheet->setCellValue('N1', $endorsement__template_info->Date_of_Birth);
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'H1':
+                $sheet->setCellValue('N1', $endorsement__template_info->Age);
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'I1':
+                $sheet->setCellValue('N1', $endorsement__template_info->Sum_Insured);
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'J1':
+                $sheet->setCellValue('N1', $endorsement__template_info->Date_of_Joining);
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
 
 
-        // $sheet->setCellValue('I1', $endorsement__template_info->Sum_Insured);
-        // $spreadsheet->getActiveSheet()->getStyle('I1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        // $spreadsheet->getActiveSheet()->getStyle('I1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+            case 'K1':
+                $sheet->setCellValue('N1', $endorsement__template_info->Date_of_Leaving);
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
 
-        // $sheet->setCellValue('J1', $endorsement__template_info->Date_of_Joining);
-        // $spreadsheet->getActiveSheet()->getStyle('J1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        // $spreadsheet->getActiveSheet()->getStyle('J1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+            case 'L1':
+                $sheet->setCellValue('N1', $endorsement__template_info->Date_of_Marriage);
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
 
-        // $sheet->setCellValue('K1', $endorsement__template_info->Date_of_Leaving);
-        // $spreadsheet->getActiveSheet()->getStyle('K1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        // $spreadsheet->getActiveSheet()->getStyle('K1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+            case 'M1':
+                $sheet->setCellValue('N1', $endorsement__template_info->Remarks_for_Corrections);
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
 
-        // $sheet->setCellValue('L1', $endorsement__template_info->Date_of_Marriage);
-        // $spreadsheet->getActiveSheet()->getStyle('L1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        // $spreadsheet->getActiveSheet()->getStyle('L1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+            case 'N1':
+                $sheet->setCellValue('N1', $endorsement__template_info->First_Name);
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
 
-        // $sheet->setCellValue('M1', $endorsement__template_info->Remarks_for_Corrections);
-        // $spreadsheet->getActiveSheet()->getStyle('M1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        // $spreadsheet->getActiveSheet()->getStyle('M1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+            case 'O1':
+                $sheet->setCellValue('N1', $endorsement__template_info->Last_Name);
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
 
-        $sheet->setCellValue('N1', $endorsement__template_info->First_Name);
-        $spreadsheet->getActiveSheet()->getStyle('N1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        $spreadsheet->getActiveSheet()->getStyle('N1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+            case 'P1':
+                $sheet->setCellValue('N1', $endorsement__template_info->Mobile_No);
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
 
-        $sheet->setCellValue('O1', $endorsement__template_info->Last_Name);
-        $spreadsheet->getActiveSheet()->getStyle('O1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        $spreadsheet->getActiveSheet()->getStyle('O1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+            case 'Q1':
+                $sheet->setCellValue('N1', $endorsement__template_info->Email);
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
 
-        $sheet->setCellValue('P1', $endorsement__template_info->Mobile_No);
-        $spreadsheet->getActiveSheet()->getStyle('P1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        $spreadsheet->getActiveSheet()->getStyle('P1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+            case 'R1':
+                $sheet->setCellValue('N1', $endorsement__template_info->Endorsement_Effective_Date);
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
 
-        $sheet->setCellValue('Q1', $endorsement__template_info->Email);
-        $spreadsheet->getActiveSheet()->getStyle('Q1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        $spreadsheet->getActiveSheet()->getStyle('Q1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+            case 'S1':
+                $sheet->setCellValue('N1', $endorsement__template_info->Premium_including_GST);
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
 
-        $sheet->setCellValue('R1', $endorsement__template_info->Endorsement_Effective_Date);
-        $spreadsheet->getActiveSheet()->getStyle('R1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        $spreadsheet->getActiveSheet()->getStyle('R1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+            case 'T1':
+                $sheet->setCellValue('N1', $endorsement__template_info->Wrong_DETAILS);
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
 
-        $sheet->setCellValue('S1', $endorsement__template_info->Premium_including_GST);
-        $spreadsheet->getActiveSheet()->getStyle('S1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        $spreadsheet->getActiveSheet()->getStyle('S1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+            case 'U1':
+                $sheet->setCellValue('N1', $endorsement__template_info->salary);
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
 
-        $sheet->setCellValue('T1', $endorsement__template_info->Wrong_DETAILS);
-        $spreadsheet->getActiveSheet()->getStyle('T1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        $spreadsheet->getActiveSheet()->getStyle('T1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+            default:
+                $sheet->setCellValue('N1', $endorsement__template_info->First_Name);
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
 
-        $sheet->setCellValue('U1', $endorsement__template_info->salary);
-        $spreadsheet->getActiveSheet()->getStyle('U1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
-        $spreadsheet->getActiveSheet()->getStyle('U1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+        }
+
+        switch ($template_rules->O1) {
+            case 'A1':
+                $sheet->setCellValue('O1', $endorsement__template_info->S_No);
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'B1':
+                $sheet->setCellValue('O1', $endorsement__template_info->Policy_No);
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'C1':
+                $sheet->setCellValue('O1', $endorsement__template_info->mode);
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'D1':
+                $sheet->setCellValue('O1', $endorsement__template_info->Employee_no);
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'E1':
+                $sheet->setCellValue('O1', $endorsement__template_info->Insured_Name);
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'F1':
+                $sheet->setCellValue('O1', $endorsement__template_info->Relationship_type);
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'G1':
+                $sheet->setCellValue('O1', $endorsement__template_info->Date_of_Birth);
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'H1':
+                $sheet->setCellValue('O1', $endorsement__template_info->Age);
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'I1':
+                $sheet->setCellValue('O1', $endorsement__template_info->Sum_Insured);
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'J1':
+                $sheet->setCellValue('O1', $endorsement__template_info->Date_of_Joining);
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+
+            case 'K1':
+                $sheet->setCellValue('O1', $endorsement__template_info->Date_of_Leaving);
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'L1':
+                $sheet->setCellValue('O1', $endorsement__template_info->Date_of_Marriage);
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'M1':
+                $sheet->setCellValue('O1', $endorsement__template_info->Remarks_for_Corrections);
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'N1':
+                $sheet->setCellValue('O1', $endorsement__template_info->First_Name);
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'O1':
+                $sheet->setCellValue('N1', $endorsement__template_info->Last_Name);
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('N1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'P1':
+                $sheet->setCellValue('O1', $endorsement__template_info->Mobile_No);
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'Q1':
+                $sheet->setCellValue('O1', $endorsement__template_info->Email);
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'R1':
+                $sheet->setCellValue('O1', $endorsement__template_info->Endorsement_Effective_Date);
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'S1':
+                $sheet->setCellValue('O1', $endorsement__template_info->Premium_including_GST);
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'T1':
+                $sheet->setCellValue('O1', $endorsement__template_info->Wrong_DETAILS);
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'U1':
+                $sheet->setCellValue('O1', $endorsement__template_info->salary);
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            default:
+                $sheet->setCellValue('O1', $endorsement__template_info->Last_Name);
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('O1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+        }
+
+
+        switch ($template_rules->P1) {
+            case 'A1':
+                $sheet->setCellValue('P1', $endorsement__template_info->S_No);
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'B1':
+                $sheet->setCellValue('P1', $endorsement__template_info->Policy_No);
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'C1':
+                $sheet->setCellValue('P1', $endorsement__template_info->mode);
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'D1':
+                $sheet->setCellValue('P1', $endorsement__template_info->Employee_no);
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'E1':
+                $sheet->setCellValue('P1', $endorsement__template_info->Insured_Name);
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'F1':
+                $sheet->setCellValue('P1', $endorsement__template_info->Relationship_type);
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'G1':
+                $sheet->setCellValue('P1', $endorsement__template_info->Date_of_Birth);
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'H1':
+                $sheet->setCellValue('P1', $endorsement__template_info->Age);
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'I1':
+                $sheet->setCellValue('P1', $endorsement__template_info->Sum_Insured);
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'J1':
+                $sheet->setCellValue('P1', $endorsement__template_info->Date_of_Joining);
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+
+            case 'K1':
+                $sheet->setCellValue('P1', $endorsement__template_info->Date_of_Leaving);
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'L1':
+                $sheet->setCellValue('P1', $endorsement__template_info->Date_of_Marriage);
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'M1':
+                $sheet->setCellValue('P1', $endorsement__template_info->Remarks_for_Corrections);
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'N1':
+                $sheet->setCellValue('P1', $endorsement__template_info->First_Name);
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'O1':
+                $sheet->setCellValue('P1', $endorsement__template_info->Last_Name);
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'P1':
+                $sheet->setCellValue('P1', $endorsement__template_info->Mobile_No);
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'Q1':
+                $sheet->setCellValue('P1', $endorsement__template_info->Email);
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'R1':
+                $sheet->setCellValue('P1', $endorsement__template_info->Endorsement_Effective_Date);
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'S1':
+                $sheet->setCellValue('P1', $endorsement__template_info->Premium_including_GST);
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'T1':
+                $sheet->setCellValue('P1', $endorsement__template_info->Wrong_DETAILS);
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'U1':
+                $sheet->setCellValue('P1', $endorsement__template_info->salary);
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            default:
+                $sheet->setCellValue('P1', $endorsement__template_info->Mobile_No);
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('P1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+        }
+
+
+        switch ($template_rules->Q1) {
+            case 'A1':
+                $sheet->setCellValue('Q1', $endorsement__template_info->S_No);
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'B1':
+                $sheet->setCellValue('Q1', $endorsement__template_info->Policy_No);
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'C1':
+                $sheet->setCellValue('Q1', $endorsement__template_info->mode);
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'D1':
+                $sheet->setCellValue('Q1', $endorsement__template_info->Employee_no);
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'E1':
+                $sheet->setCellValue('Q1', $endorsement__template_info->Insured_Name);
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'F1':
+                $sheet->setCellValue('Q1', $endorsement__template_info->Relationship_type);
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'G1':
+                $sheet->setCellValue('Q1', $endorsement__template_info->Date_of_Birth);
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'H1':
+                $sheet->setCellValue('Q1', $endorsement__template_info->Age);
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'I1':
+                $sheet->setCellValue('Q1', $endorsement__template_info->Sum_Insured);
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'J1':
+                $sheet->setCellValue('Q1', $endorsement__template_info->Date_of_Joining);
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+
+            case 'K1':
+                $sheet->setCellValue('Q1', $endorsement__template_info->Date_of_Leaving);
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'L1':
+                $sheet->setCellValue('Q1', $endorsement__template_info->Date_of_Marriage);
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'M1':
+                $sheet->setCellValue('Q1', $endorsement__template_info->Remarks_for_Corrections);
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'N1':
+                $sheet->setCellValue('Q1', $endorsement__template_info->First_Name);
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'O1':
+                $sheet->setCellValue('Q1', $endorsement__template_info->Last_Name);
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'P1':
+                $sheet->setCellValue('Q1', $endorsement__template_info->Mobile_No);
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'Q1':
+                $sheet->setCellValue('Q1', $endorsement__template_info->Email);
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'R1':
+                $sheet->setCellValue('Q1', $endorsement__template_info->Endorsement_Effective_Date);
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'S1':
+                $sheet->setCellValue('Q1', $endorsement__template_info->Premium_including_GST);
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'T1':
+                $sheet->setCellValue('Q1', $endorsement__template_info->Wrong_DETAILS);
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'U1':
+                $sheet->setCellValue('Q1', $endorsement__template_info->salary);
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            default:
+                $sheet->setCellValue('Q1', $endorsement__template_info->Email);
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('Q1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+        }
+
+        switch ($template_rules->R1) {
+            case 'A1':
+                $sheet->setCellValue('R1', $endorsement__template_info->S_No);
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'B1':
+                $sheet->setCellValue('R1', $endorsement__template_info->Policy_No);
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'C1':
+                $sheet->setCellValue('R1', $endorsement__template_info->mode);
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'D1':
+                $sheet->setCellValue('R1', $endorsement__template_info->Employee_no);
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'E1':
+                $sheet->setCellValue('R1', $endorsement__template_info->Insured_Name);
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'F1':
+                $sheet->setCellValue('R1', $endorsement__template_info->Relationship_type);
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'G1':
+                $sheet->setCellValue('R1', $endorsement__template_info->Date_of_Birth);
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'H1':
+                $sheet->setCellValue('R1', $endorsement__template_info->Age);
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'I1':
+                $sheet->setCellValue('R1', $endorsement__template_info->Sum_Insured);
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'J1':
+                $sheet->setCellValue('R1', $endorsement__template_info->Date_of_Joining);
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+
+            case 'K1':
+                $sheet->setCellValue('R1', $endorsement__template_info->Date_of_Leaving);
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'L1':
+                $sheet->setCellValue('R1', $endorsement__template_info->Date_of_Marriage);
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'M1':
+                $sheet->setCellValue('R1', $endorsement__template_info->Remarks_for_Corrections);
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'N1':
+                $sheet->setCellValue('R1', $endorsement__template_info->First_Name);
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'O1':
+                $sheet->setCellValue('R1', $endorsement__template_info->Last_Name);
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'P1':
+                $sheet->setCellValue('R1', $endorsement__template_info->Mobile_No);
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'Q1':
+                $sheet->setCellValue('R1', $endorsement__template_info->Email);
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'R1':
+                $sheet->setCellValue('R1', $endorsement__template_info->Endorsement_Effective_Date);
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'S1':
+                $sheet->setCellValue('R1', $endorsement__template_info->Premium_including_GST);
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'T1':
+                $sheet->setCellValue('R1', $endorsement__template_info->Wrong_DETAILS);
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'U1':
+                $sheet->setCellValue('R1', $endorsement__template_info->salary);
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            default:
+                $sheet->setCellValue('R1', $endorsement__template_info->Endorsement_Effective_Date);
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('R1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+        }
+
+        switch ($template_rules->S1) {
+            case 'A1':
+                $sheet->setCellValue('S1', $endorsement__template_info->S_No);
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'B1':
+                $sheet->setCellValue('S1', $endorsement__template_info->Policy_No);
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'C1':
+                $sheet->setCellValue('S1', $endorsement__template_info->mode);
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'D1':
+                $sheet->setCellValue('S1', $endorsement__template_info->Employee_no);
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'E1':
+                $sheet->setCellValue('S1', $endorsement__template_info->Insured_Name);
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'F1':
+                $sheet->setCellValue('S1', $endorsement__template_info->Relationship_type);
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'G1':
+                $sheet->setCellValue('S1', $endorsement__template_info->Date_of_Birth);
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'H1':
+                $sheet->setCellValue('S1', $endorsement__template_info->Age);
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'I1':
+                $sheet->setCellValue('S1', $endorsement__template_info->Sum_Insured);
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'J1':
+                $sheet->setCellValue('S1', $endorsement__template_info->Date_of_Joining);
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+
+            case 'K1':
+                $sheet->setCellValue('S1', $endorsement__template_info->Date_of_Leaving);
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'L1':
+                $sheet->setCellValue('S1', $endorsement__template_info->Date_of_Marriage);
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'M1':
+                $sheet->setCellValue('S1', $endorsement__template_info->Remarks_for_Corrections);
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'N1':
+                $sheet->setCellValue('S1', $endorsement__template_info->First_Name);
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'O1':
+                $sheet->setCellValue('S1', $endorsement__template_info->Last_Name);
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'P1':
+                $sheet->setCellValue('S1', $endorsement__template_info->Mobile_No);
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'Q1':
+                $sheet->setCellValue('S1', $endorsement__template_info->Email);
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'R1':
+                $sheet->setCellValue('S1', $endorsement__template_info->Endorsement_Effective_Date);
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'S1':
+                $sheet->setCellValue('S1', $endorsement__template_info->Premium_including_GST);
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'T1':
+                $sheet->setCellValue('S1', $endorsement__template_info->Wrong_DETAILS);
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'U1':
+                $sheet->setCellValue('S1', $endorsement__template_info->salary);
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            default:
+                $sheet->setCellValue('S1', $endorsement__template_info->Premium_including_GST);
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('S1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+        }
+
+        switch ($template_rules->T1) {
+            case 'A1':
+                $sheet->setCellValue('T1', $endorsement__template_info->S_No);
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'B1':
+                $sheet->setCellValue('T1', $endorsement__template_info->Policy_No);
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'C1':
+                $sheet->setCellValue('T1', $endorsement__template_info->mode);
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'D1':
+                $sheet->setCellValue('T1', $endorsement__template_info->Employee_no);
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'E1':
+                $sheet->setCellValue('T1', $endorsement__template_info->Insured_Name);
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'F1':
+                $sheet->setCellValue('T1', $endorsement__template_info->Relationship_type);
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'G1':
+                $sheet->setCellValue('T1', $endorsement__template_info->Date_of_Birth);
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'H1':
+                $sheet->setCellValue('T1', $endorsement__template_info->Age);
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'I1':
+                $sheet->setCellValue('T1', $endorsement__template_info->Sum_Insured);
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'J1':
+                $sheet->setCellValue('T1', $endorsement__template_info->Date_of_Joining);
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+
+            case 'K1':
+                $sheet->setCellValue('T1', $endorsement__template_info->Date_of_Leaving);
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'L1':
+                $sheet->setCellValue('T1', $endorsement__template_info->Date_of_Marriage);
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'M1':
+                $sheet->setCellValue('T1', $endorsement__template_info->Remarks_for_Corrections);
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'N1':
+                $sheet->setCellValue('T1', $endorsement__template_info->First_Name);
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'O1':
+                $sheet->setCellValue('T1', $endorsement__template_info->Last_Name);
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'P1':
+                $sheet->setCellValue('T1', $endorsement__template_info->Mobile_No);
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'Q1':
+                $sheet->setCellValue('T1', $endorsement__template_info->Email);
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'R1':
+                $sheet->setCellValue('T1', $endorsement__template_info->Endorsement_Effective_Date);
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'S1':
+                $sheet->setCellValue('T1', $endorsement__template_info->Premium_including_GST);
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'T1':
+                $sheet->setCellValue('T1', $endorsement__template_info->Wrong_DETAILS);
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'U1':
+                $sheet->setCellValue('T1', $endorsement__template_info->salary);
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            default:
+                $sheet->setCellValue('T1', $endorsement__template_info->Wrong_DETAILS);
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('T1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+        }
+
+
+        switch ($template_rules->U1) {
+            case 'A1':
+                $sheet->setCellValue('U1', $endorsement__template_info->S_No);
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'B1':
+                $sheet->setCellValue('U1', $endorsement__template_info->Policy_No);
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'C1':
+                $sheet->setCellValue('U1', $endorsement__template_info->mode);
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'D1':
+                $sheet->setCellValue('U1', $endorsement__template_info->Employee_no);
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'E1':
+                $sheet->setCellValue('U1', $endorsement__template_info->Insured_Name);
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'F1':
+                $sheet->setCellValue('U1', $endorsement__template_info->Relationship_type);
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'G1':
+                $sheet->setCellValue('U1', $endorsement__template_info->Date_of_Birth);
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'H1':
+                $sheet->setCellValue('U1', $endorsement__template_info->Age);
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'I1':
+                $sheet->setCellValue('U1', $endorsement__template_info->Sum_Insured);
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'J1':
+                $sheet->setCellValue('U1', $endorsement__template_info->Date_of_Joining);
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+
+            case 'K1':
+                $sheet->setCellValue('U1', $endorsement__template_info->Date_of_Leaving);
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'L1':
+                $sheet->setCellValue('U1', $endorsement__template_info->Date_of_Marriage);
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'M1':
+                $sheet->setCellValue('U1', $endorsement__template_info->Remarks_for_Corrections);
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'N1':
+                $sheet->setCellValue('U1', $endorsement__template_info->First_Name);
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'O1':
+                $sheet->setCellValue('U1', $endorsement__template_info->Last_Name);
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'P1':
+                $sheet->setCellValue('U1', $endorsement__template_info->Mobile_No);
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'Q1':
+                $sheet->setCellValue('U1', $endorsement__template_info->Email);
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'R1':
+                $sheet->setCellValue('U1', $endorsement__template_info->Endorsement_Effective_Date);
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'S1':
+                $sheet->setCellValue('U1', $endorsement__template_info->Premium_including_GST);
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'T1':
+                $sheet->setCellValue('U1', $endorsement__template_info->Wrong_DETAILS);
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            case 'U1':
+                $sheet->setCellValue('U1', $endorsement__template_info->salary);
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+                break;
+
+            default:
+                $sheet->setCellValue('U1', $endorsement__template_info->salary);
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
+                $spreadsheet->getActiveSheet()->getStyle('U1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
+
+        }
+
 
 
         $endorsment_calculations_info = $this->qm->single("endorsment_calculations", "*", array('cid' => $cid, 'pid' => $pid));
@@ -3449,7 +4452,7 @@ class Clients extends MY_Controller
                             $sheet->setCellValue('A' . $rows, $emp->sum_insured);
                             break;
 
-                            default:
+                        default:
                             $sheet->setCellValue('A' . $rows, $rows);
 
                     }
@@ -3540,7 +4543,7 @@ class Clients extends MY_Controller
                             $sheet->setCellValue('B' . $rows, $emp->sum_insured);
                             break;
 
-                            default:
+                        default:
                             $sheet->setCellValue('B' . $rows, $policy_info->policy_no);
 
                     }
@@ -3631,7 +4634,7 @@ class Clients extends MY_Controller
                             $sheet->setCellValue('C' . $rows, $emp->sum_insured);
                             break;
 
-                            default:
+                        default:
                             $sheet->setCellValue('C' . $rows, $emp->mode);
 
                     }
@@ -3721,7 +4724,7 @@ class Clients extends MY_Controller
                             $sheet->setCellValue('D' . $rows, $emp->sum_insured);
                             break;
 
-                            default:
+                        default:
                             $sheet->setCellValue('D' . $rows, $emp->emp_id);
 
                     }
@@ -3811,7 +4814,7 @@ class Clients extends MY_Controller
                             $sheet->setCellValue('E' . $rows, $emp->sum_insured);
                             break;
 
-                            default:
+                        default:
                             $sheet->setCellValue('E' . $rows, $emp->client_name);
 
                     }
@@ -3902,7 +4905,7 @@ class Clients extends MY_Controller
                             $sheet->setCellValue('F' . $rows, $emp->sum_insured);
                             break;
 
-                            default:
+                        default:
                             $sheet->setCellValue('F' . $rows, $emp->relation);
 
                     }
@@ -3993,7 +4996,7 @@ class Clients extends MY_Controller
                             $sheet->setCellValue('G' . $rows, $emp->sum_insured);
                             break;
 
-                            default:
+                        default:
                             $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dob)));
 
                     }
@@ -4085,7 +5088,7 @@ class Clients extends MY_Controller
                             $sheet->setCellValue('H' . $rows, $emp->sum_insured);
                             break;
 
-                            default:
+                        default:
                             $sheet->setCellValue('H' . $rows, $emp->age);
 
                     }
@@ -4177,7 +5180,7 @@ class Clients extends MY_Controller
                             $sheet->setCellValue('I' . $rows, $emp->sum_insured);
                             break;
 
-                            default:
+                        default:
                             $sheet->setCellValue('I' . $rows, $emp->sum_insured);
 
                     }
@@ -4268,7 +5271,7 @@ class Clients extends MY_Controller
                             $sheet->setCellValue('J' . $rows, $emp->sum_insured);
                             break;
 
-                            default:
+                        default:
                             $sheet->setCellValue('J' . $rows, date("d-m-Y", strtotime($emp->doj)));
 
                     }
@@ -4360,7 +5363,7 @@ class Clients extends MY_Controller
                             $sheet->setCellValue('K' . $rows, $emp->sum_insured);
                             break;
 
-                            default:
+                        default:
                             $sheet->setCellValue('K' . $rows, date("d-m-Y", strtotime($emp->dol)));
 
                     }
@@ -4452,7 +5455,7 @@ class Clients extends MY_Controller
                             $sheet->setCellValue('L' . $rows, $emp->sum_insured);
                             break;
 
-                            default:
+                        default:
                             $sheet->setCellValue('L' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
 
                     }
@@ -4544,99 +5547,806 @@ class Clients extends MY_Controller
                             $sheet->setCellValue('M' . $rows, $emp->sum_insured);
                             break;
 
-                            default:
+                        default:
                             $sheet->setCellValue('M' . $rows, $emp->client_name);
 
                     }
 
+                    switch ($template_rules->N1) {
+                        case 'A1':
+                            $sheet->setCellValue('N' . $rows, $rows);
+                            break;
 
-                    // $sheet->setCellValue('A' . $rows, $rows);
-                    // $sheet->setCellValue('B' . $rows, $policy_info->policy_no);
-                    // $sheet->setCellValue('C' . $rows, $emp->mode);
-                    // $sheet->setCellValue('D' . $rows, $emp->emp_id);
-                    // $sheet->setCellValue('E' . $rows, $emp->client_name);
-                    // $sheet->setCellValue('F' . $rows, $emp->relation);
-                    // $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dob)));
-                    // $sheet->setCellValue('H' . $rows, $emp->age);
-                    // $sheet->setCellValue('I' . $rows, $emp->sum_insured);
-                    // $sheet->setCellValue('J' . $rows, date("d-m-Y", strtotime($emp->doj)));
-                    // $sheet->setCellValue('K' . $rows, date("d-m-Y", strtotime($emp->dol)));
-                    // $sheet->setCellValue('L' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
-                    // $sheet->setCellValue('M' . $rows, $emp->client_name);
-                    // $sheet->setCellValue('N' . $rows, $emp->emp_name);
-                    // $sheet->setCellValue('O' . $rows, $emp->age);
-                    // $sheet->setCellValue('P' . $rows, $emp->mobile);
-                    // $sheet->setCellValue('Q' . $rows, $emp->email);
-                    // $sheet->setCellValue('R' . $rows, $emp->emp_name);
-                    // $sheet->setCellValue('S' . $rows, $premium);
-                    // $sheet->setCellValue('T' . $rows, $emp->sum_insured);
-                    // $sheet->setCellValue('U' . $rows, $emp->sum_insured);
-                    // $sheet->setCellValue('F' . $rows, date("d-m-Y", strtotime($emp->doj)));
-                    // $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                        case 'B1':
+                            $sheet->setCellValue('N' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('N' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('N' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('N' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('N' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('N' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('N' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('N' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('N' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('N' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('N' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('N' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('N' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('N' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('N' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('N' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('N' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('N' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('N' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('N' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('N' . $rows, $emp->emp_name);
+
+                    }
+
+                    switch ($template_rules->O1) {
+                        case 'A1':
+                            $sheet->setCellValue('O' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('O' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('O' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('O' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('O' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('O' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('O' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('O' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('O' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('O' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('O' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('O' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('O' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('O' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('O' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('O' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('O' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('O' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('O' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('O' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('O' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('O' . $rows, $emp->age);
+
+                    }
+
+                    switch ($template_rules->P1) {
+                        case 'A1':
+                            $sheet->setCellValue('P' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('P' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('P' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('P' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('P' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('P' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('P' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('P' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('P' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('P' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('P' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('P' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('P' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('P' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('P' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('P' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('P' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('P' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('P' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('P' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('P' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('P' . $rows, $emp->mobile);
+
+                    }
+
+                    switch ($template_rules->Q1) {
+                        case 'A1':
+                            $sheet->setCellValue('Q' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('Q' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('Q' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('Q' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('Q' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('Q' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('Q' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('Q' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('Q' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('Q' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('Q' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('Q' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('Q' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('Q' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('Q' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('Q' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('Q' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('Q' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('Q' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('Q' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('Q' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('Q' . $rows, $emp->email);
+
+                    }
+
+                    switch ($template_rules->R1) {
+                        case 'A1':
+                            $sheet->setCellValue('R' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('R' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('R' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('R' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('R' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('R' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('R' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('R' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('R' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('R' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('R' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('R' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('R' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('R' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('R' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('R' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('R' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('R' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('R' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('R' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('R' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('R' . $rows, $emp->emp_name);
+
+                    }
+
+                    switch ($template_rules->S1) {
+                        case 'A1':
+                            $sheet->setCellValue('S' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('S' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('S' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('S' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('S' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('S' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('S' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('S' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('S' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('S' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('S' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('S' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('S' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('S' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('S' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('S' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('S' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('S' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('S' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('S' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('S' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('S' . $rows, $premium);
+
+                    }
+
+                    switch ($template_rules->T1) {
+                        case 'A1':
+                            $sheet->setCellValue('T' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('T' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('T' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('T' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('T' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('T' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('T' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('T' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('T' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('T' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('T' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('T' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('T' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('T' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('T' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('T' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('T' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('T' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('T' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('T' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('T' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('T' . $rows, $emp->sum_insured);
+
+                    }
+
+                    switch ($template_rules->U1) {
+                        case 'A1':
+                            $sheet->setCellValue('U' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('U' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('U' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('U' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('U' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('U' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('U' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('U' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('U' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('U' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('U' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('U' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('U' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('U' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('U' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('U' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('U' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('U' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('U' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('U' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('U' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('U' . $rows, $emp->sum_insured);
+
+                    }
+
+
 
                 }
                 $rows++;
             }
-            if ($data['endorsement_type'] == "addition") {
-                $rows = 0;
-                foreach ($emp as $emp) {
+        }
+        if ($data['endorsement_type'] == "addition") {
+            $rows = 0;
+            foreach ($emp as $emp) {
 
-                    if ($emp->mode == "New Addition") {
-
-
-                        $date_of_joining = date("Y-m-d", strtotime($emp->doj));
-                        $date_of_policy_expire = date("Y-m-d", strtotime($policy_info->expiry_on));
-                        $diffDays = dateDifference($date_of_joining, $date_of_policy_expire);
-                        $EED = dateDifference($date_of_joining, date("Y-m-d"));
-                        $diffDays = abs($diffDays) + 1;
-
-                        $pro_date_of_policy_start = date("Y-m-d", strtotime($policy_info->start_on));
-                        $pro_date_of_policy_expire = date("Y-m-d", strtotime($policy_info->expiry_on));
-                        $pro_diffDays = dateDifference($pro_date_of_policy_start, $pro_date_of_policy_expire);
-
-                        $pro_diffDays = abs($pro_diffDays) + 1;
-                        $pro_rata = (($policy_premium_info->premium / $pro_diffDays) * $diffDays);
+                if ($emp->mode == "New Addition") {
 
 
-                        if ($endorsment_calculations_info->gst == 1) {
-                            $gst_premium = $policy_premium_info->premium * ($endorsment_calculations_info->gst_rate / 100);
-                            $short_gst_premium = $gst_premium + $policy_premium_info->premium;
-                            $pro_gst_premium = $pro_rata * ($endorsment_calculations_info->gst_rate / 100);
-                            $pro_rata_gst_premium = $pro_gst_premium + $pro_rata;
-                        }
-                        $policy_premium_info->premium;
+                    $date_of_joining = date("Y-m-d", strtotime($emp->doj));
+                    $date_of_policy_expire = date("Y-m-d", strtotime($policy_info->expiry_on));
+                    $diffDays = dateDifference($date_of_joining, $date_of_policy_expire);
+                    $EED = dateDifference($date_of_joining, date("Y-m-d"));
+                    $diffDays = abs($diffDays) + 1;
 
-                        // $diffDays=30;
-                        if ($diffDays <= 7) {
-                            $premium = $policy_premium_info->premium * (10 / 100);
-                            $short_peroid_rate = '10%';
-                        }
-                        if ($diffDays <= 30) {
-                            $premium = $policy_premium_info->premium * (25 / 100);
-                            $short_peroid_rate = '25%';
-                        }
-                        if ($diffDays <= 60) {
-                            $premium = $policy_premium_info->premium * (35 / 100);
-                            $short_peroid_rate = '35%';
-                        }
-                        if ($diffDays <= 90) {
-                            $premium = $policy_premium_info->premium * (50 / 100);
-                            $short_peroid_rate = '50%';
-                        }
-                        if ($diffDays <= 120) {
-                            $premium = $policy_premium_info->premium * (60 / 100);
-                            $short_peroid_rate = '60%';
-                        }
-                        if ($diffDays <= 180) {
-                            $premium = $policy_premium_info->premium * (75 / 100);
-                            $short_peroid_rate = '75%';
-                        }
-                        if ($diffDays <= 240 || $diffDays >= 240) {
-                            $premium = $policy_premium_info->premium * (100 / 100);
-                            $short_peroid_rate = '100%';
-                        }
+                    $pro_date_of_policy_start = date("Y-m-d", strtotime($policy_info->start_on));
+                    $pro_date_of_policy_expire = date("Y-m-d", strtotime($policy_info->expiry_on));
+                    $pro_diffDays = dateDifference($pro_date_of_policy_start, $pro_date_of_policy_expire);
+
+                    $pro_diffDays = abs($pro_diffDays) + 1;
+                    $pro_rata = (($policy_premium_info->premium / $pro_diffDays) * $diffDays);
+
+
+                    if ($endorsment_calculations_info->gst == 1) {
+                        $gst_premium = $policy_premium_info->premium * ($endorsment_calculations_info->gst_rate / 100);
+                        $short_gst_premium = $gst_premium + $policy_premium_info->premium;
+                        $pro_gst_premium = $pro_rata * ($endorsment_calculations_info->gst_rate / 100);
+                        $pro_rata_gst_premium = $pro_gst_premium + $pro_rata;
                     }
+                    $policy_premium_info->premium;
+
+                    // $diffDays=30;
+                    if ($diffDays <= 7) {
+                        $premium = $policy_premium_info->premium * (10 / 100);
+                        $short_peroid_rate = '10%';
+                    }
+                    if ($diffDays <= 30) {
+                        $premium = $policy_premium_info->premium * (25 / 100);
+                        $short_peroid_rate = '25%';
+                    }
+                    if ($diffDays <= 60) {
+                        $premium = $policy_premium_info->premium * (35 / 100);
+                        $short_peroid_rate = '35%';
+                    }
+                    if ($diffDays <= 90) {
+                        $premium = $policy_premium_info->premium * (50 / 100);
+                        $short_peroid_rate = '50%';
+                    }
+                    if ($diffDays <= 120) {
+                        $premium = $policy_premium_info->premium * (60 / 100);
+                        $short_peroid_rate = '60%';
+                    }
+                    if ($diffDays <= 180) {
+                        $premium = $policy_premium_info->premium * (75 / 100);
+                        $short_peroid_rate = '75%';
+                    }
+                    if ($diffDays <= 240 || $diffDays >= 240) {
+                        $premium = $policy_premium_info->premium * (100 / 100);
+                        $short_peroid_rate = '100%';
+                    }
+
                     $rows = 2;
+
 
                     switch ($template_rules->A1) {
                         case 'A1':
@@ -4724,239 +6434,3833 @@ class Clients extends MY_Controller
                             $sheet->setCellValue('A' . $rows, $emp->sum_insured);
                             break;
 
+                        default:
+                            $sheet->setCellValue('A' . $rows, $rows);
+
                     }
-                    // $sheet->setCellValue('A' . $rows, $emp->client_name);
-                    $sheet->setCellValue('B' . $rows, $emp->emp_name);
-                    $sheet->setCellValue('C' . $rows, $emp->mode);
-                    $sheet->setCellValue('D' . $rows, $emp->sum_insured);
-                    $sheet->setCellValue('E' . $rows, $emp->client_name);
-                    $sheet->setCellValue('F' . $rows, $emp->emp_name);
-                    $sheet->setCellValue('G' . $rows, $emp->age);
-                    $sheet->setCellValue('H' . $rows, $emp->sum_insured);
-                    $sheet->setCellValue('I' . $rows, $emp->client_name);
-                    $sheet->setCellValue('J' . $rows, date("d-m-Y", strtotime($emp->doj)));
-                    $sheet->setCellValue('K' . $rows, date("d-m-Y", strtotime($emp->dol)));
-                    $sheet->setCellValue('L' . $rows, $emp->sum_insured);
-                    $sheet->setCellValue('M' . $rows, $emp->client_name);
-                    $sheet->setCellValue('N' . $rows, $emp->emp_name);
-                    $sheet->setCellValue('O' . $rows, $emp->age);
-                    $sheet->setCellValue('P' . $rows, $emp->sum_insured);
-                    $sheet->setCellValue('Q' . $rows, $emp->client_name);
-                    $sheet->setCellValue('R' . $rows, $emp->emp_name);
-                    $sheet->setCellValue('S' . $rows, $emp->age);
-                    $sheet->setCellValue('T' . $rows, $emp->sum_insured);
-                    $sheet->setCellValue('U' . $rows, $emp->sum_insured);
 
-                    $sheet->setCellValue('A' . $rows, $emp->client_name);
-                    $sheet->setCellValue('B' . $rows, $emp->emp_name);
-                    $sheet->setCellValue('C' . $rows, $emp->age);
-                    $sheet->setCellValue('D' . $rows, $emp->sum_insured);
-                    $sheet->setCellValue('E' . $rows, 'A');
-                    $sheet->setCellValue('F' . $rows, date("d-m-Y", strtotime($emp->doj)));
-                    $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                    switch ($template_rules->B1) {
+                        case 'A1':
+                            $sheet->setCellValue('B' . $rows, $rows);
+                            break;
 
+                        case 'B1':
+                            $sheet->setCellValue('B' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('B' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('B' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('B' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('B' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('B' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('B' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('B' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('B' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('B' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('B' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('B' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('B' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('B' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('B' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('B' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('B' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('B' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('B' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('B' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('B' . $rows, $policy_info->policy_no);
+
+                    }
+
+                    switch ($template_rules->C1) {
+                        case 'A1':
+                            $sheet->setCellValue('C' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('C' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('C' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('C' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('C' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('C' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('C' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('C' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('C' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('C' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('C' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('C' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('C' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('C' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('C' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('C' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('C' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('C' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('C' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('C' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('C' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('C' . $rows, $emp->mode);
+
+                    }
+                    switch ($template_rules->D1) {
+                        case 'A1':
+                            $sheet->setCellValue('D' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('D' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('D' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('D' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('D' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('D' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('D' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('D' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('D' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('D' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('D' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('D' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('D' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('D' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('D' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('D' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('D' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('D' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('D' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('D' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('D' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('D' . $rows, $emp->emp_id);
+
+                    }
+                    switch ($template_rules->E1) {
+                        case 'A1':
+                            $sheet->setCellValue('E' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('E' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('E' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('E' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('E' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('E' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('E' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('E' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('E' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('E' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('E' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('E' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('E' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('E' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('E' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('E' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('E' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('E' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('E' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('E' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('E' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('E' . $rows, $emp->client_name);
+
+                    }
+
+                    switch ($template_rules->F1) {
+                        case 'A1':
+                            $sheet->setCellValue('F' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('F' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('F' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('F' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('F' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('F' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('F' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('F' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('F' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('F' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('F' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('F' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('F' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('F' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('F' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('F' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('F' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('F' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('F' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('F' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('F' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('F' . $rows, $emp->relation);
+
+                    }
+
+                    switch ($template_rules->G1) {
+                        case 'A1':
+                            $sheet->setCellValue('G' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('G' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('G' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('G' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('G' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('G' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('G' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('G' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('G' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('G' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('G' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('G' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('G' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('G' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('G' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('G' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('G' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dob)));
+
+                    }
+
+
+                    switch ($template_rules->H1) {
+                        case 'A1':
+                            $sheet->setCellValue('H' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('H' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('H' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('H' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('H' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('H' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('H' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('H' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('H' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('H' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('H' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('H' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('H' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('H' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('H' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('H' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('H' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('H' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('H' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('H' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('H' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('H' . $rows, $emp->age);
+
+                    }
+
+
+                    switch ($template_rules->I1) {
+                        case 'A1':
+                            $sheet->setCellValue('I' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('I' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('I' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('I' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('I' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('I' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('I' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('I' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('I' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('I' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('I' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('I' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('I' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('I' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('I' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('I' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('I' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('I' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('I' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('I' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('I' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('I' . $rows, $emp->sum_insured);
+
+                    }
+
+                    switch ($template_rules->J1) {
+                        case 'A1':
+                            $sheet->setCellValue('J' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('J' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('J' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('J' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('J' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('J' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('J' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('J' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('J' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('J' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('J' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('J' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('J' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('J' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('J' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('J' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('J' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('J' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('J' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('J' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('J' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('J' . $rows, date("d-m-Y", strtotime($emp->doj)));
+
+                    }
+
+
+                    switch ($template_rules->K1) {
+                        case 'A1':
+                            $sheet->setCellValue('K' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('K' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('K' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('K' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('K' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('K' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('K' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('K' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('K' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('K' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('K' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('K' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('K' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('K' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('K' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('K' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('K' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('K' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('K' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('K' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('K' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('K' . $rows, date("d-m-Y", strtotime($emp->dol)));
+
+                    }
+
+
+                    switch ($template_rules->L1) {
+                        case 'A1':
+                            $sheet->setCellValue('L' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('L' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('L' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('L' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('L' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('L' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('L' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('L' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('L' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('L' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('L' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('L' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('L' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('L' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('L' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('L' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('L' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('L' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('L' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('L' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('L' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('L' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+
+                    }
+
+
+                    switch ($template_rules->M1) {
+                        case 'A1':
+                            $sheet->setCellValue('M' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('M' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('M' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('M' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('M' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('M' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('M' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('M' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('M' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('M' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('M' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('M' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('M' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('M' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('M' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('M' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('M' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('M' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('M' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('M' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('M' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('M' . $rows, $emp->client_name);
+
+                    }
+
+                    switch ($template_rules->N1) {
+                        case 'A1':
+                            $sheet->setCellValue('N' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('N' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('N' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('N' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('N' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('N' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('N' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('N' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('N' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('N' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('N' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('N' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('N' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('N' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('N' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('N' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('N' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('N' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('N' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('N' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('N' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('N' . $rows, $emp->emp_name);
+
+                    }
+
+                    switch ($template_rules->O1) {
+                        case 'A1':
+                            $sheet->setCellValue('O' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('O' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('O' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('O' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('O' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('O' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('O' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('O' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('O' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('O' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('O' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('O' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('O' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('O' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('O' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('O' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('O' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('O' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('O' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('O' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('O' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('O' . $rows, $emp->age);
+
+                    }
+
+                    switch ($template_rules->P1) {
+                        case 'A1':
+                            $sheet->setCellValue('P' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('P' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('P' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('P' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('P' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('P' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('P' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('P' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('P' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('P' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('P' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('P' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('P' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('P' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('P' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('P' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('P' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('P' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('P' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('P' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('P' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('P' . $rows, $emp->mobile);
+
+                    }
+
+                    switch ($template_rules->Q1) {
+                        case 'A1':
+                            $sheet->setCellValue('Q' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('Q' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('Q' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('Q' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('Q' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('Q' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('Q' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('Q' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('Q' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('Q' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('Q' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('Q' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('Q' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('Q' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('Q' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('Q' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('Q' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('Q' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('Q' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('Q' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('Q' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('Q' . $rows, $emp->email);
+
+                    }
+
+                    switch ($template_rules->R1) {
+                        case 'A1':
+                            $sheet->setCellValue('R' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('R' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('R' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('R' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('R' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('R' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('R' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('R' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('R' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('R' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('R' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('R' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('R' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('R' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('R' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('R' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('R' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('R' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('R' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('R' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('R' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('R' . $rows, $emp->emp_name);
+
+                    }
+
+                    switch ($template_rules->S1) {
+                        case 'A1':
+                            $sheet->setCellValue('S' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('S' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('S' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('S' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('S' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('S' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('S' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('S' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('S' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('S' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('S' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('S' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('S' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('S' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('S' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('S' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('S' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('S' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('S' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('S' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('S' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('S' . $rows, $premium);
+
+                    }
+
+                    switch ($template_rules->T1) {
+                        case 'A1':
+                            $sheet->setCellValue('T' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('T' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('T' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('T' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('T' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('T' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('T' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('T' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('T' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('T' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('T' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('T' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('T' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('T' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('T' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('T' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('T' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('T' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('T' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('T' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('T' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('T' . $rows, $emp->sum_insured);
+
+                    }
+
+                    switch ($template_rules->U1) {
+                        case 'A1':
+                            $sheet->setCellValue('U' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('U' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('U' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('U' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('U' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('U' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('U' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('U' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('U' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('U' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('U' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('U' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('U' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('U' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('U' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('U' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('U' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('U' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('U' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('U' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('U' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('U' . $rows, $emp->sum_insured);
+
+                    }
                 }
                 $rows++;
             }
 
-            if ($data['endorsement_type'] == "deletion") {
-                $rows = 0;
-                foreach ($emp as $emp) {
-                    // echo "<pre>";
-                    // print_r($emp->doj);
-                    // echo "</pre>";
-                    if ($emp->mode == "Deletion") {
+        }
 
-                        $date_of_leaving = date("Y-m-d", strtotime($emp->dol));
-                        $date_of_leaving = '2023-04-07';
-                        $date_of_policy_start = date("Y-m-d", strtotime($policy_info->start_on));
-                        $diffDays = dateDifference($date_of_leaving, $date_of_policy_start);
+        if ($data['endorsement_type'] == "deletion") {
+            $rows = 0;
+            foreach ($emp as $emp) {
+                // echo "<pre>";
+                // print_r($emp->doj);
+                // echo "</pre>";
+                if ($emp->mode == "Deletion") {
 
-                        $diffDays = abs($diffDays) + 1;
-                        $pro_date_of_policy_start = date("Y-m-d", strtotime($policy_info->start_on));
-                        $pro_date_of_policy_expire = date("Y-m-d", strtotime($policy_info->expiry_on));
-                        $pro_diffDays = dateDifference($pro_date_of_policy_start, $pro_date_of_policy_expire);
+                    $date_of_leaving = date("Y-m-d", strtotime($emp->dol));
+                    $date_of_leaving = '2023-04-07';
+                    $date_of_policy_start = date("Y-m-d", strtotime($policy_info->start_on));
+                    $diffDays = dateDifference($date_of_leaving, $date_of_policy_start);
 
-                        $pro_diffDays = abs($pro_diffDays) + 1;
-                        $pro_rata = (($policy_premium_info->premium / $pro_diffDays) * $diffDays);
+                    $diffDays = abs($diffDays) + 1;
+                    $pro_date_of_policy_start = date("Y-m-d", strtotime($policy_info->start_on));
+                    $pro_date_of_policy_expire = date("Y-m-d", strtotime($policy_info->expiry_on));
+                    $pro_diffDays = dateDifference($pro_date_of_policy_start, $pro_date_of_policy_expire);
 
-                        $EED = dateDifference($date_of_leaving, date("Y-m-d"));
+                    $pro_diffDays = abs($pro_diffDays) + 1;
+                    $pro_rata = (($policy_premium_info->premium / $pro_diffDays) * $diffDays);
 
-
-                        // $diffDays=30;
-                        if ($diffDays <= 7) {
-                            $premium = $policy_premium_info->premium * (90 / 100);
-                            $short_peroid_rate = '90%';
-                        }
-                        if (($diffDays <= 30 || $diffDays < 30) && $diffDays > 7) {
-                            $premium = $policy_premium_info->premium * (75 / 100);
-                            $short_peroid_rate = '75%';
-                        }
-                        if (($diffDays <= 60 || $diffDays < 60) && $diffDays > 30) {
-                            $premium = $policy_premium_info->premium * (65 / 100);
-                            $short_peroid_rate = '65%';
-                        }
-                        if (($diffDays == 90 || $diffDays < 90) && $diffDays > 60) {
-                            $premium = $policy_premium_info->premium * (50 / 100);
-                            $short_peroid_rate = '50%';
-                        }
-                        if (($diffDays == 120 || $diffDays < 120) && $diffDays > 90) {
-                            $premium = $policy_premium_info->premium * (40 / 100);
-                            $short_peroid_rate = '40%';
-                        }
-                        if (($diffDays == 180 || $diffDays < 180) && $diffDays > 120) {
-                            $premium = $policy_premium_info->premium * (25 / 100);
-                            $short_peroid_rate = '25%';
-                        }
-                        if (($diffDays == 240 || $diffDays < 240) && $diffDays > 180) {
-                            $premium = $policy_premium_info->premium * (15 / 100);
-                            $short_peroid_rate = '15%';
-                        }
-
-                        if ($endorsment_calculations_info->gst == 1) {
-                            $gst_premium = $policy_premium_info->premium * ($endorsment_calculations_info->gst_rate / 100);
-                            $short_gst_premium = $gst_premium + $premium;
-                            $pro_gst_premium = $pro_rata * ($endorsment_calculations_info->gst_rate / 100);
-                            $pro_rata_gst_premium = $pro_gst_premium + $pro_rata;
-                        }
-
-                        $rows = 2;
-
-                        switch ($template_rules->A1) {
-                            case 'A1':
-                                $sheet->setCellValue('A' . $rows, $rows);
-                                break;
-
-                            case 'B1':
-                                $sheet->setCellValue('A' . $rows, $policy_info->policy_no);
-                                break;
-
-                            case 'C1':
-                                $sheet->setCellValue('A' . $rows, $emp->mode);
-                                break;
-
-                            case 'D1':
-                                $sheet->setCellValue('A' . $rows, $emp->emp_id);
-                                break;
-
-                            case 'E1':
-                                $sheet->setCellValue('A' . $rows, $emp->client_name);
-                                break;
-
-                            case 'F1':
-                                $sheet->setCellValue('A' . $rows, $emp->relation);
-                                break;
-
-                            case 'G1':
-                                $sheet->setCellValue('A' . $rows, date("d-m-Y", strtotime($emp->dob)));
-                                break;
-
-                            case 'H1':
-                                $sheet->setCellValue('A' . $rows, $emp->age);
-                                break;
-
-                            case 'I1':
-                                $sheet->setCellValue('A' . $rows, $emp->sum_insured);
-                                break;
-
-                            case 'J1':
-                                $sheet->setCellValue('A' . $rows, date("d-m-Y", strtotime($emp->doj)));
-                                break;
+                    $EED = dateDifference($date_of_leaving, date("Y-m-d"));
 
 
-                            case 'K1':
-                                $sheet->setCellValue('A' . $rows, date("d-m-Y", strtotime($emp->dol)));
-                                break;
+                    // $diffDays=30;
+                    if ($diffDays <= 7) {
+                        $premium = $policy_premium_info->premium * (90 / 100);
+                        $short_peroid_rate = '90%';
+                    }
+                    if (($diffDays <= 30 || $diffDays < 30) && $diffDays > 7) {
+                        $premium = $policy_premium_info->premium * (75 / 100);
+                        $short_peroid_rate = '75%';
+                    }
+                    if (($diffDays <= 60 || $diffDays < 60) && $diffDays > 30) {
+                        $premium = $policy_premium_info->premium * (65 / 100);
+                        $short_peroid_rate = '65%';
+                    }
+                    if (($diffDays == 90 || $diffDays < 90) && $diffDays > 60) {
+                        $premium = $policy_premium_info->premium * (50 / 100);
+                        $short_peroid_rate = '50%';
+                    }
+                    if (($diffDays == 120 || $diffDays < 120) && $diffDays > 90) {
+                        $premium = $policy_premium_info->premium * (40 / 100);
+                        $short_peroid_rate = '40%';
+                    }
+                    if (($diffDays == 180 || $diffDays < 180) && $diffDays > 120) {
+                        $premium = $policy_premium_info->premium * (25 / 100);
+                        $short_peroid_rate = '25%';
+                    }
+                    if (($diffDays == 240 || $diffDays < 240) && $diffDays > 180) {
+                        $premium = $policy_premium_info->premium * (15 / 100);
+                        $short_peroid_rate = '15%';
+                    }
 
-                            case 'L1':
-                                $sheet->setCellValue('A' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
-                                break;
+                    if ($endorsment_calculations_info->gst == 1) {
+                        $gst_premium = $policy_premium_info->premium * ($endorsment_calculations_info->gst_rate / 100);
+                        $short_gst_premium = $gst_premium + $premium;
+                        $pro_gst_premium = $pro_rata * ($endorsment_calculations_info->gst_rate / 100);
+                        $pro_rata_gst_premium = $pro_gst_premium + $pro_rata;
+                    }
 
-                            case 'M1':
-                                $sheet->setCellValue('A' . $rows, $emp->client_name);
-                                break;
+                    $rows = 2;
+                    switch ($template_rules->A1) {
+                        case 'A1':
+                            $sheet->setCellValue('A' . $rows, $rows);
+                            break;
 
-                            case 'N1':
-                                $sheet->setCellValue('A' . $rows, $emp->emp_name);
-                                break;
+                        case 'B1':
+                            $sheet->setCellValue('A' . $rows, $policy_info->policy_no);
+                            break;
 
-                            case 'O1':
-                                $sheet->setCellValue('A' . $rows, $emp->age);
-                                break;
+                        case 'C1':
+                            $sheet->setCellValue('A' . $rows, $emp->mode);
+                            break;
 
-                            case 'P1':
-                                $sheet->setCellValue('A' . $rows, $emp->mobile);
-                                break;
+                        case 'D1':
+                            $sheet->setCellValue('A' . $rows, $emp->emp_id);
+                            break;
 
-                            case 'Q1':
-                                $sheet->setCellValue('A' . $rows, $emp->email);
-                                break;
+                        case 'E1':
+                            $sheet->setCellValue('A' . $rows, $emp->client_name);
+                            break;
 
-                            case 'R1':
-                                $sheet->setCellValue('A' . $rows, $emp->emp_name);
-                                break;
+                        case 'F1':
+                            $sheet->setCellValue('A' . $rows, $emp->relation);
+                            break;
 
-                            case 'S1':
-                                $sheet->setCellValue('A' . $rows, $premium);
-                                break;
+                        case 'G1':
+                            $sheet->setCellValue('A' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
 
-                            case 'T1':
-                                $sheet->setCellValue('A' . $rows, $emp->sum_insured);
-                                break;
+                        case 'H1':
+                            $sheet->setCellValue('A' . $rows, $emp->age);
+                            break;
 
-                            case 'U1':
-                                $sheet->setCellValue('A' . $rows, $emp->sum_insured);
-                                break;
+                        case 'I1':
+                            $sheet->setCellValue('A' . $rows, $emp->sum_insured);
+                            break;
 
-                        }
-                        // $sheet->setCellValue('A' . $rows, $emp->client_name);
-                        $sheet->setCellValue('B' . $rows, $emp->emp_name);
-                        $sheet->setCellValue('C' . $rows, $emp->mode);
-                        $sheet->setCellValue('D' . $rows, $emp->sum_insured);
-                        $sheet->setCellValue('E' . $rows, $emp->client_name);
-                        $sheet->setCellValue('F' . $rows, $emp->emp_name);
-                        $sheet->setCellValue('G' . $rows, $emp->age);
-                        $sheet->setCellValue('H' . $rows, $emp->sum_insured);
-                        $sheet->setCellValue('I' . $rows, $emp->client_name);
-                        $sheet->setCellValue('J' . $rows, date("d-m-Y", strtotime($emp->doj)));
-                        $sheet->setCellValue('K' . $rows, date("d-m-Y", strtotime($emp->dol)));
-                        $sheet->setCellValue('L' . $rows, $emp->sum_insured);
-                        $sheet->setCellValue('M' . $rows, $emp->client_name);
-                        $sheet->setCellValue('N' . $rows, $emp->emp_name);
-                        $sheet->setCellValue('O' . $rows, $emp->age);
-                        $sheet->setCellValue('P' . $rows, $emp->sum_insured);
-                        $sheet->setCellValue('Q' . $rows, $emp->client_name);
-                        $sheet->setCellValue('R' . $rows, $emp->emp_name);
-                        $sheet->setCellValue('S' . $rows, $emp->age);
-                        $sheet->setCellValue('T' . $rows, $emp->sum_insured);
-                        $sheet->setCellValue('U' . $rows, $emp->sum_insured);
+                        case 'J1':
+                            $sheet->setCellValue('A' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
 
-                        $sheet->setCellValue('C' . $rows, $emp->client_name);
-                        $sheet->setCellValue('B' . $rows, $emp->emp_name);
-                        $sheet->setCellValue('A' . $rows, $emp->age);
-                        $sheet->setCellValue('D' . $rows, $emp->sum_insured);
-                        $sheet->setCellValue('E' . $rows, 'D');
-                        $sheet->setCellValue('F' . $rows, date("d-m-Y", strtotime($emp->doj)));
-                        $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dol)));
+
+                        case 'K1':
+                            $sheet->setCellValue('A' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('A' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('A' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('A' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('A' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('A' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('A' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('A' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('A' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('A' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('A' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('A' . $rows, $rows);
 
                     }
-                    $rows++;
+
+                    switch ($template_rules->B1) {
+                        case 'A1':
+                            $sheet->setCellValue('B' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('B' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('B' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('B' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('B' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('B' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('B' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('B' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('B' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('B' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('B' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('B' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('B' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('B' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('B' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('B' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('B' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('B' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('B' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('B' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('B' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('B' . $rows, $policy_info->policy_no);
+
+                    }
+
+                    switch ($template_rules->C1) {
+                        case 'A1':
+                            $sheet->setCellValue('C' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('C' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('C' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('C' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('C' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('C' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('C' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('C' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('C' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('C' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('C' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('C' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('C' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('C' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('C' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('C' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('C' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('C' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('C' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('C' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('C' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('C' . $rows, $emp->mode);
+
+                    }
+                    switch ($template_rules->D1) {
+                        case 'A1':
+                            $sheet->setCellValue('D' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('D' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('D' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('D' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('D' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('D' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('D' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('D' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('D' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('D' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('D' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('D' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('D' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('D' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('D' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('D' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('D' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('D' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('D' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('D' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('D' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('D' . $rows, $emp->emp_id);
+
+                    }
+                    switch ($template_rules->E1) {
+                        case 'A1':
+                            $sheet->setCellValue('E' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('E' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('E' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('E' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('E' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('E' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('E' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('E' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('E' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('E' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('E' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('E' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('E' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('E' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('E' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('E' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('E' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('E' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('E' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('E' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('E' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('E' . $rows, $emp->client_name);
+
+                    }
+
+                    switch ($template_rules->F1) {
+                        case 'A1':
+                            $sheet->setCellValue('F' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('F' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('F' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('F' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('F' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('F' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('F' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('F' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('F' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('F' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('F' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('F' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('F' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('F' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('F' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('F' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('F' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('F' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('F' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('F' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('F' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('F' . $rows, $emp->relation);
+
+                    }
+
+                    switch ($template_rules->G1) {
+                        case 'A1':
+                            $sheet->setCellValue('G' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('G' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('G' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('G' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('G' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('G' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('G' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('G' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('G' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('G' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('G' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('G' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('G' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('G' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('G' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('G' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('G' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dob)));
+
+                    }
+
+
+                    switch ($template_rules->H1) {
+                        case 'A1':
+                            $sheet->setCellValue('H' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('H' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('H' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('H' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('H' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('H' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('H' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('H' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('H' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('H' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('H' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('H' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('H' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('H' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('H' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('H' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('H' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('H' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('H' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('H' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('H' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('H' . $rows, $emp->age);
+
+                    }
+
+
+                    switch ($template_rules->I1) {
+                        case 'A1':
+                            $sheet->setCellValue('I' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('I' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('I' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('I' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('I' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('I' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('I' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('I' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('I' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('I' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('I' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('I' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('I' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('I' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('I' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('I' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('I' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('I' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('I' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('I' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('I' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('I' . $rows, $emp->sum_insured);
+
+                    }
+
+                    switch ($template_rules->J1) {
+                        case 'A1':
+                            $sheet->setCellValue('J' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('J' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('J' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('J' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('J' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('J' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('J' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('J' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('J' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('J' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('J' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('J' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('J' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('J' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('J' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('J' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('J' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('J' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('J' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('J' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('J' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('J' . $rows, date("d-m-Y", strtotime($emp->doj)));
+
+                    }
+
+
+                    switch ($template_rules->K1) {
+                        case 'A1':
+                            $sheet->setCellValue('K' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('K' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('K' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('K' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('K' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('K' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('K' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('K' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('K' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('K' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('K' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('K' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('K' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('K' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('K' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('K' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('K' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('K' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('K' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('K' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('K' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('K' . $rows, date("d-m-Y", strtotime($emp->dol)));
+
+                    }
+
+
+                    switch ($template_rules->L1) {
+                        case 'A1':
+                            $sheet->setCellValue('L' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('L' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('L' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('L' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('L' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('L' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('L' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('L' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('L' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('L' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('L' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('L' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('L' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('L' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('L' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('L' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('L' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('L' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('L' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('L' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('L' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('L' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+
+                    }
+
+
+                    switch ($template_rules->M1) {
+                        case 'A1':
+                            $sheet->setCellValue('M' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('M' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('M' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('M' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('M' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('M' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('M' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('M' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('M' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('M' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('M' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('M' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('M' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('M' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('M' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('M' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('M' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('M' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('M' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('M' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('M' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('M' . $rows, $emp->client_name);
+
+                    }
+
+                    switch ($template_rules->N1) {
+                        case 'A1':
+                            $sheet->setCellValue('N' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('N' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('N' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('N' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('N' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('N' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('N' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('N' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('N' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('N' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('N' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('N' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('N' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('N' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('N' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('N' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('N' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('N' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('N' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('N' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('N' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('N' . $rows, $emp->emp_name);
+
+                    }
+
+                    switch ($template_rules->O1) {
+                        case 'A1':
+                            $sheet->setCellValue('O' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('O' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('O' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('O' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('O' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('O' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('O' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('O' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('O' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('O' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('O' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('O' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('O' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('O' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('O' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('O' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('O' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('O' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('O' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('O' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('O' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('O' . $rows, $emp->age);
+
+                    }
+
+                    switch ($template_rules->P1) {
+                        case 'A1':
+                            $sheet->setCellValue('P' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('P' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('P' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('P' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('P' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('P' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('P' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('P' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('P' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('P' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('P' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('P' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('P' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('P' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('P' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('P' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('P' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('P' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('P' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('P' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('P' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('P' . $rows, $emp->mobile);
+
+                    }
+
+                    switch ($template_rules->Q1) {
+                        case 'A1':
+                            $sheet->setCellValue('Q' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('Q' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('Q' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('Q' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('Q' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('Q' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('Q' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('Q' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('Q' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('Q' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('Q' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('Q' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('Q' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('Q' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('Q' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('Q' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('Q' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('Q' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('Q' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('Q' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('Q' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('Q' . $rows, $emp->email);
+
+                    }
+
+                    switch ($template_rules->R1) {
+                        case 'A1':
+                            $sheet->setCellValue('R' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('R' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('R' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('R' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('R' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('R' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('R' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('R' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('R' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('R' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('R' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('R' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('R' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('R' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('R' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('R' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('R' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('R' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('R' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('R' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('R' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('R' . $rows, $emp->emp_name);
+
+                    }
+
+                    switch ($template_rules->S1) {
+                        case 'A1':
+                            $sheet->setCellValue('S' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('S' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('S' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('S' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('S' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('S' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('S' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('S' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('S' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('S' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('S' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('S' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('S' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('S' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('S' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('S' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('S' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('S' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('S' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('S' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('S' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('S' . $rows, $premium);
+
+                    }
+
+                    switch ($template_rules->T1) {
+                        case 'A1':
+                            $sheet->setCellValue('T' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('T' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('T' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('T' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('T' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('T' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('T' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('T' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('T' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('T' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('T' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('T' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('T' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('T' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('T' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('T' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('T' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('T' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('T' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('T' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('T' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('T' . $rows, $emp->sum_insured);
+
+                    }
+
+                    switch ($template_rules->U1) {
+                        case 'A1':
+                            $sheet->setCellValue('U' . $rows, $rows);
+                            break;
+
+                        case 'B1':
+                            $sheet->setCellValue('U' . $rows, $policy_info->policy_no);
+                            break;
+
+                        case 'C1':
+                            $sheet->setCellValue('U' . $rows, $emp->mode);
+                            break;
+
+                        case 'D1':
+                            $sheet->setCellValue('U' . $rows, $emp->emp_id);
+                            break;
+
+                        case 'E1':
+                            $sheet->setCellValue('U' . $rows, $emp->client_name);
+                            break;
+
+                        case 'F1':
+                            $sheet->setCellValue('U' . $rows, $emp->relation);
+                            break;
+
+                        case 'G1':
+                            $sheet->setCellValue('U' . $rows, date("d-m-Y", strtotime($emp->dob)));
+                            break;
+
+                        case 'H1':
+                            $sheet->setCellValue('U' . $rows, $emp->age);
+                            break;
+
+                        case 'I1':
+                            $sheet->setCellValue('U' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'J1':
+                            $sheet->setCellValue('U' . $rows, date("d-m-Y", strtotime($emp->doj)));
+                            break;
+
+
+                        case 'K1':
+                            $sheet->setCellValue('U' . $rows, date("d-m-Y", strtotime($emp->dol)));
+                            break;
+
+                        case 'L1':
+                            $sheet->setCellValue('U' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
+                            break;
+
+                        case 'M1':
+                            $sheet->setCellValue('U' . $rows, $emp->client_name);
+                            break;
+
+                        case 'N1':
+                            $sheet->setCellValue('U' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'O1':
+                            $sheet->setCellValue('U' . $rows, $emp->age);
+                            break;
+
+                        case 'P1':
+                            $sheet->setCellValue('U' . $rows, $emp->mobile);
+                            break;
+
+                        case 'Q1':
+                            $sheet->setCellValue('U' . $rows, $emp->email);
+                            break;
+
+                        case 'R1':
+                            $sheet->setCellValue('U' . $rows, $emp->emp_name);
+                            break;
+
+                        case 'S1':
+                            $sheet->setCellValue('U' . $rows, $premium);
+                            break;
+
+                        case 'T1':
+                            $sheet->setCellValue('U' . $rows, $emp->sum_insured);
+                            break;
+
+                        case 'U1':
+                            $sheet->setCellValue('U' . $rows, $emp->sum_insured);
+                            break;
+
+                        default:
+                            $sheet->setCellValue('U' . $rows, $emp->sum_insured);
+
+                    }
                 }
+                $rows++;
             }
-            // die;
-            $fileName = 'endorsement_export.xlsx';
-            $writer = new Xlsx($spreadsheet);
-            $writer->save("external/uploads/" . $fileName);
-            header("Content-Type: application/vnd.ms-excel");
-            redirect(base_url() . "external/uploads/" . $fileName);
         }
+        // die;
+        $fileName = 'endorsement_export.xlsx';
+        $writer = new Xlsx($spreadsheet);
+        $writer->save("external/uploads/" . $fileName);
+        header("Content-Type: application/vnd.ms-excel");
+        redirect(base_url() . "external/uploads/" . $fileName);
     }
+
+
 
     public function uploadTemplateFormat()
     {
         $file_mimes = array('text/x-comma-separated-values', 'text/comma-separated-values', 'application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'text/plain', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 
-        if (isset($_FILES['efile']['name']) && in_array($_FILES['efile']['type'], $file_mimes)) {
+      if (isset($_FILES['efile']['name']) && in_array($_FILES['efile']['type'], $file_mimes)) {
             $arr_file = explode('.', $_FILES['efile']['name']);
             $extension = end($arr_file);
             if ('csv' == $extension) {
@@ -4970,13 +10274,15 @@ class Clients extends MY_Controller
             $spreadsheet = $reader->load($_FILES['efile']['tmp_name']);
             $sheetData = $spreadsheet->getActiveSheet()->toArray();
 
-            if (!empty($sheetData)) {
+            
 
+            if (!empty($sheetData)) {
+                
                 $post = $this->input->post();
 
                 for ($i = 0; $i < count($sheetData); $i++) {
                     $data = [];
-                    // $data['id'] = $sheetData[$i][0];
+                    $data['id'] = $sheetData[$i][0];
                     $data['S_No'] = $sheetData[$i][1];
                     $data['Policy_No'] = $sheetData[$i][2];
                     $data['mode'] = $sheetData[$i][3];
@@ -5001,18 +10307,16 @@ class Clients extends MY_Controller
                     $data['company_id'] = $this->input->post('company_id');
                     $data['policy_type'] = $this->input->post('policy_type');
                     $data['endorsement_type'] = $this->input->post('endorsement_type');
-                    // echo '<pre>';
-                    // print_r($sheetData[]);
-                    // echo '</pre>';
+                    print_r($data);
                     // die;
                     $ins = $this->qm->insert('template_master', $data);
+                    redirect('clients/template_master');
                 }
+                
+            }else {
                 redirect('clients/template_master');
             }
 
-            redirect('clients/template_master');
-        } else {
-            redirect('clients/template_master');
         }
     }
 
@@ -5267,9 +10571,9 @@ class Clients extends MY_Controller
                     }
                 }
                 redirect('clients/employees/' . $cid . '/' . $pid . '');
-            } else {
+                 } else {
                 redirect('clients/uploademployee/' . $cid . '/' . $pid . '');
-            }
+                }   
         }
     }
 

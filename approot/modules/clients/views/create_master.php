@@ -52,11 +52,7 @@
 
                             <form method="POST" id="form" style="display: none;"
                                 action="<?= base_url('clients/uploadTemplateFormat'); ?>" enctype="multipart/form-data">
-                                <?php
-                                $cl = $this->qm->all("ri_clients_tbl", "*", array('cid' => $cid));
-                                foreach ($cl as $cl)
-                                    ;
-                                ?>
+                               
                                 <input type="hidden" name="company_id" value="<?= $cname; ?>">
                                 <input type="hidden" name="policy_type" value="<?= $policy_type ?>">
                                 <input type="hidden" name="endorsement_type" value="<?= $endorsement_type ?>">
