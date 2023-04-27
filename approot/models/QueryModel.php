@@ -52,6 +52,7 @@ class QueryModel extends CI_Model
 
     public function all($table, $column = "*",  $where = "1=1", $srcharr = '', $searchType = 'both', $groupBy = '', $orderColumn = '', $orderBy = 'ASC', $limit = NULL, $offset = 0)
     {
+
         $searchArr = array("'.$srcharr.'" => '');
         $query = $this->db
             ->select($column, FALSE)
@@ -248,6 +249,37 @@ class QueryModel extends CI_Model
         } else {
             return $query->row()->$column;
         }
-    
+    }
+
+    public function excel($heading_name, $mapped_field, $font_style, $font_color, $font_size, $cell_fill_color, $modific)
+    {
+        // php spreadsheet
+        $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
+        // Set active sheet
+        $sheet = $spreadsheet->getActiveSheet();
+        //column names
+        $fieldName = array("Heading Name", "Mapped With", "Font Style", "Font Color", "Font Size", "Cell Fill Color", "Modificatio");
+        $sheet->fromArray($fieldName, null, 'A1');
+        // Add data rows
+        if (count($heading_name) != 0) {
+            foreach ($heading_name as $index => $heading) {
+                $mapField = $mapped_field[0];
+                $fontStyle = $font_style[0];
+                $fontColor = $font_color[0];
+                $fontSize = $font_size[0];
+                $fillColor = $cell_fill_color[0];
+                $modificField = $modific[0];
+                $rowData = array($heading, $mapField, $fontStyle, $fontColor, $fontSize, $fillColor, $modificField);
+                $sheet->fromArray($rowData, null, 'A' . ($index + 2));
+            }
+        }
+        // Set download headers
+        $fileName = "excel.xlsx";
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment;filename="' . $fileName . '"');
+        header('Cache-Control: max-age=0');
+        // Save spreadsheet as Excel file and output to browser
+        $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+        $writer->save('php://output');
     }
 }

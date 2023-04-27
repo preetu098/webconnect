@@ -577,7 +577,7 @@ class Clients extends MY_Controller
         $arrdata = [];
         $min_age = $post['min_age'];
         $max_age = $post['max_age'];
-        if (!empty($max_age) && !empty($min_age)):
+        if (!empty($max_age) && !empty($min_age)) :
             for ($min_age = $min_age; $min_age <= $max_age; $min_age++) {
                 $arrdata[] = $min_age;
             }
@@ -585,7 +585,7 @@ class Clients extends MY_Controller
 
         $existingData = [];
         $agebnds = $this->qm->all('policy_agebands', "*", array('cid' => $cid, 'pid' => $pid));
-        if (!empty($agebnds)):
+        if (!empty($agebnds)) :
             foreach ($agebnds as $key => $val) {
                 $existingData[] = $val->min_age;
                 $existingData[] = $val->max_age;
@@ -618,7 +618,7 @@ class Clients extends MY_Controller
         $arrdata = [];
         $min_age = $post['min_age'];
         $max_age = $post['max_age'];
-        if (!empty($max_age) && !empty($min_age)):
+        if (!empty($max_age) && !empty($min_age)) :
             for ($min_age = $min_age; $min_age <= $max_age; $min_age++) {
                 $arrdata[] = $min_age;
             }
@@ -626,7 +626,7 @@ class Clients extends MY_Controller
 
         $existingData = [];
         $agebnds = $this->qm->all('policy_agebands', "*", array('cid' => $cid, 'pid' => $pid));
-        if (!empty($agebnds)):
+        if (!empty($agebnds)) :
             foreach ($agebnds as $key => $val) {
                 if ($val->id == $id) {
                     continue;
@@ -798,6 +798,20 @@ class Clients extends MY_Controller
         $data['cid'] = $cid;
         $data['pid'] = $pid;
         $data['mainContent'] = "clients/template_master";
+        // print_r($data);
+        // die;
+        $this->load->view('panel', $data);
+    }
+
+
+    public function create_template_master()
+    {
+        $data = [];
+        $data['cid'] = $cid;
+        $data['pid'] = $pid;
+        $data['mainContent'] = "clients/create_template_master";
+        // print_r($data);
+        // die;
         $this->load->view('panel', $data);
     }
     public function template_manager($cid, $pid)
@@ -809,17 +823,16 @@ class Clients extends MY_Controller
         $this->load->view('panel', $data);
     }
 
+
     public function create_master()
     {
         $post = $this->input->post();
-
         $data = [];
-
         $data['cname'] = $this->input->post('cname');
         $data['policy_type'] = $this->input->post('policy_type');
         $data['endorsement_type'] = $this->input->post('endorsement_type');
-        $data['mainContent'] = "clients/create_master";
-        $this->load->view('panel', $data);
+        $data['mainContent'] = "clients/create_template_master";
+        redirect('clients/create_template_master');
     }
 
     public function endorsement_process($cid, $pid)
@@ -838,7 +851,21 @@ class Clients extends MY_Controller
         $data['mainContent'] = "clients/endorsement_deletion";
         $this->load->view('panel', $data);
     }
+    public function add_template_master()
+    {
+        $post = $this->input->post();
+        $heading_name =  $this->input->post('heading_name');
+        $mapped_field =  $this->input->post('mapped_field');
+        $font_style =  $this->input->post('font_style');
+        $font_color =  $this->input->post('font_color');
+        $font_size =  $this->input->post('font_size');
+        $cell_fill_color =  $this->input->post('cell_fill_color');
+        $modific =  $this->input->post('modific');
 
+
+        $this->qm->excel($heading_name, $mapped_field, $font_style, $font_color, $font_size, $cell_fill_color, $modific);
+        // die("scs");
+    }
     public function updShortperiodscale($cid, $pid, $id)
     {
         $data = [];
@@ -1525,8 +1552,6 @@ class Clients extends MY_Controller
                 $sheet->setCellValue('A1', $endorsement__template_info->S_No);
                 $spreadsheet->getActiveSheet()->getStyle('A1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
                 $spreadsheet->getActiveSheet()->getStyle('A1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-
-
         }
 
 
@@ -1662,8 +1687,6 @@ class Clients extends MY_Controller
                 $sheet->setCellValue('B1', $endorsement__template_info->Policy_No);
                 $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
                 $spreadsheet->getActiveSheet()->getStyle('B1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-
-
         }
 
         switch ($template_rules->C1) {
@@ -1798,8 +1821,6 @@ class Clients extends MY_Controller
                 $sheet->setCellValue('C1', $endorsement__template_info->mode);
                 $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
                 $spreadsheet->getActiveSheet()->getStyle('C1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-
-
         }
 
         switch ($template_rules->D1) {
@@ -1934,7 +1955,6 @@ class Clients extends MY_Controller
                 $sheet->setCellValue('D1', $endorsement__template_info->Employee_no);
                 $spreadsheet->getActiveSheet()->getStyle('D1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
                 $spreadsheet->getActiveSheet()->getStyle('D1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-
         }
 
         switch ($template_rules->E1) {
@@ -2069,7 +2089,6 @@ class Clients extends MY_Controller
                 $sheet->setCellValue('E1', $endorsement__template_info->Insured_Name);
                 $spreadsheet->getActiveSheet()->getStyle('E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
                 $spreadsheet->getActiveSheet()->getStyle('E1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-
         }
 
         switch ($template_rules->F1) {
@@ -2204,7 +2223,6 @@ class Clients extends MY_Controller
                 $sheet->setCellValue('F1', $endorsement__template_info->Relationship_type);
                 $spreadsheet->getActiveSheet()->getStyle('F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
                 $spreadsheet->getActiveSheet()->getStyle('F1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-
         }
 
         switch ($template_rules->G1) {
@@ -2339,7 +2357,6 @@ class Clients extends MY_Controller
                 $sheet->setCellValue('G1', $endorsement__template_info->Date_of_Birth);
                 $spreadsheet->getActiveSheet()->getStyle('G1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
                 $spreadsheet->getActiveSheet()->getStyle('G1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-
         }
 
         switch ($template_rules->H1) {
@@ -2474,7 +2491,6 @@ class Clients extends MY_Controller
                 $sheet->setCellValue('H1', $endorsement__template_info->Age);
                 $spreadsheet->getActiveSheet()->getStyle('H1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
                 $spreadsheet->getActiveSheet()->getStyle('H1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-
         }
 
         switch ($template_rules->I1) {
@@ -2609,7 +2625,6 @@ class Clients extends MY_Controller
                 $sheet->setCellValue('I1', $endorsement__template_info->Sum_Insured);
                 $spreadsheet->getActiveSheet()->getStyle('I1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
                 $spreadsheet->getActiveSheet()->getStyle('I1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-
         }
 
 
@@ -2745,7 +2760,6 @@ class Clients extends MY_Controller
                 $sheet->setCellValue('J1', $endorsement__template_info->Date_of_Joining);
                 $spreadsheet->getActiveSheet()->getStyle('J1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
                 $spreadsheet->getActiveSheet()->getStyle('J1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-
         }
 
 
@@ -2881,7 +2895,6 @@ class Clients extends MY_Controller
                 $sheet->setCellValue('K1', $endorsement__template_info->Date_of_Leaving);
                 $spreadsheet->getActiveSheet()->getStyle('K1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
                 $spreadsheet->getActiveSheet()->getStyle('K1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-
         }
 
         switch ($template_rules->L1) {
@@ -3016,7 +3029,6 @@ class Clients extends MY_Controller
                 $sheet->setCellValue('L1', $endorsement__template_info->Date_of_Marriage);
                 $spreadsheet->getActiveSheet()->getStyle('L1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
                 $spreadsheet->getActiveSheet()->getStyle('L1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-
         }
 
 
@@ -3152,7 +3164,6 @@ class Clients extends MY_Controller
                 $sheet->setCellValue('M1', $endorsement__template_info->Remarks_for_Corrections);
                 $spreadsheet->getActiveSheet()->getStyle('M1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
                 $spreadsheet->getActiveSheet()->getStyle('M1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-
         }
 
 
@@ -3288,7 +3299,6 @@ class Clients extends MY_Controller
                 $sheet->setCellValue('N1', $endorsement__template_info->First_Name);
                 $spreadsheet->getActiveSheet()->getStyle('N1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
                 $spreadsheet->getActiveSheet()->getStyle('N1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-
         }
 
         switch ($template_rules->O1) {
@@ -3423,7 +3433,6 @@ class Clients extends MY_Controller
                 $sheet->setCellValue('O1', $endorsement__template_info->Last_Name);
                 $spreadsheet->getActiveSheet()->getStyle('O1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
                 $spreadsheet->getActiveSheet()->getStyle('O1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-
         }
 
 
@@ -3559,7 +3568,6 @@ class Clients extends MY_Controller
                 $sheet->setCellValue('P1', $endorsement__template_info->Mobile_No);
                 $spreadsheet->getActiveSheet()->getStyle('P1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
                 $spreadsheet->getActiveSheet()->getStyle('P1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-
         }
 
 
@@ -3695,7 +3703,6 @@ class Clients extends MY_Controller
                 $sheet->setCellValue('Q1', $endorsement__template_info->Email);
                 $spreadsheet->getActiveSheet()->getStyle('Q1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
                 $spreadsheet->getActiveSheet()->getStyle('Q1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-
         }
 
         switch ($template_rules->R1) {
@@ -3830,7 +3837,6 @@ class Clients extends MY_Controller
                 $sheet->setCellValue('R1', $endorsement__template_info->Endorsement_Effective_Date);
                 $spreadsheet->getActiveSheet()->getStyle('R1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
                 $spreadsheet->getActiveSheet()->getStyle('R1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-
         }
 
         switch ($template_rules->S1) {
@@ -3965,7 +3971,6 @@ class Clients extends MY_Controller
                 $sheet->setCellValue('S1', $endorsement__template_info->Premium_including_GST);
                 $spreadsheet->getActiveSheet()->getStyle('S1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
                 $spreadsheet->getActiveSheet()->getStyle('S1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-
         }
 
         switch ($template_rules->T1) {
@@ -4100,7 +4105,6 @@ class Clients extends MY_Controller
                 $sheet->setCellValue('T1', $endorsement__template_info->Wrong_DETAILS);
                 $spreadsheet->getActiveSheet()->getStyle('T1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
                 $spreadsheet->getActiveSheet()->getStyle('T1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-
         }
 
 
@@ -4236,7 +4240,6 @@ class Clients extends MY_Controller
                 $sheet->setCellValue('U1', $endorsement__template_info->salary);
                 $spreadsheet->getActiveSheet()->getStyle('U1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('0000ff');
                 $spreadsheet->getActiveSheet()->getStyle('U1')->getFont('Arial')->setBold(true)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);
-
         }
 
 
@@ -4454,7 +4457,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('A' . $rows, $rows);
-
                     }
 
                     switch ($template_rules->B1) {
@@ -4545,7 +4547,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('B' . $rows, $policy_info->policy_no);
-
                     }
 
                     switch ($template_rules->C1) {
@@ -4636,7 +4637,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('C' . $rows, $emp->mode);
-
                     }
                     switch ($template_rules->D1) {
                         case 'A1':
@@ -4726,7 +4726,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('D' . $rows, $emp->emp_id);
-
                     }
                     switch ($template_rules->E1) {
                         case 'A1':
@@ -4816,7 +4815,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('E' . $rows, $emp->client_name);
-
                     }
 
                     switch ($template_rules->F1) {
@@ -4907,7 +4905,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('F' . $rows, $emp->relation);
-
                     }
 
                     switch ($template_rules->G1) {
@@ -4998,7 +4995,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dob)));
-
                     }
 
 
@@ -5090,7 +5086,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('H' . $rows, $emp->age);
-
                     }
 
 
@@ -5182,7 +5177,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('I' . $rows, $emp->sum_insured);
-
                     }
 
                     switch ($template_rules->J1) {
@@ -5273,7 +5267,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('J' . $rows, date("d-m-Y", strtotime($emp->doj)));
-
                     }
 
 
@@ -5365,7 +5358,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('K' . $rows, date("d-m-Y", strtotime($emp->dol)));
-
                     }
 
 
@@ -5457,7 +5449,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('L' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
-
                     }
 
 
@@ -5549,7 +5540,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('M' . $rows, $emp->client_name);
-
                     }
 
                     switch ($template_rules->N1) {
@@ -5640,7 +5630,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('N' . $rows, $emp->emp_name);
-
                     }
 
                     switch ($template_rules->O1) {
@@ -5731,7 +5720,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('O' . $rows, $emp->age);
-
                     }
 
                     switch ($template_rules->P1) {
@@ -5822,7 +5810,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('P' . $rows, $emp->mobile);
-
                     }
 
                     switch ($template_rules->Q1) {
@@ -5913,7 +5900,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('Q' . $rows, $emp->email);
-
                     }
 
                     switch ($template_rules->R1) {
@@ -6004,7 +5990,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('R' . $rows, $emp->emp_name);
-
                     }
 
                     switch ($template_rules->S1) {
@@ -6095,7 +6080,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('S' . $rows, $premium);
-
                     }
 
                     switch ($template_rules->T1) {
@@ -6186,7 +6170,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('T' . $rows, $emp->sum_insured);
-
                     }
 
                     switch ($template_rules->U1) {
@@ -6277,11 +6260,7 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('U' . $rows, $emp->sum_insured);
-
                     }
-
-
-
                 }
                 $rows++;
             }
@@ -6436,7 +6415,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('A' . $rows, $rows);
-
                     }
 
                     switch ($template_rules->B1) {
@@ -6527,7 +6505,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('B' . $rows, $policy_info->policy_no);
-
                     }
 
                     switch ($template_rules->C1) {
@@ -6618,7 +6595,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('C' . $rows, $emp->mode);
-
                     }
                     switch ($template_rules->D1) {
                         case 'A1':
@@ -6708,7 +6684,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('D' . $rows, $emp->emp_id);
-
                     }
                     switch ($template_rules->E1) {
                         case 'A1':
@@ -6798,7 +6773,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('E' . $rows, $emp->client_name);
-
                     }
 
                     switch ($template_rules->F1) {
@@ -6889,7 +6863,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('F' . $rows, $emp->relation);
-
                     }
 
                     switch ($template_rules->G1) {
@@ -6980,7 +6953,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dob)));
-
                     }
 
 
@@ -7072,7 +7044,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('H' . $rows, $emp->age);
-
                     }
 
 
@@ -7164,7 +7135,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('I' . $rows, $emp->sum_insured);
-
                     }
 
                     switch ($template_rules->J1) {
@@ -7255,7 +7225,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('J' . $rows, date("d-m-Y", strtotime($emp->doj)));
-
                     }
 
 
@@ -7347,7 +7316,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('K' . $rows, date("d-m-Y", strtotime($emp->dol)));
-
                     }
 
 
@@ -7439,7 +7407,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('L' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
-
                     }
 
 
@@ -7531,7 +7498,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('M' . $rows, $emp->client_name);
-
                     }
 
                     switch ($template_rules->N1) {
@@ -7622,7 +7588,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('N' . $rows, $emp->emp_name);
-
                     }
 
                     switch ($template_rules->O1) {
@@ -7713,7 +7678,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('O' . $rows, $emp->age);
-
                     }
 
                     switch ($template_rules->P1) {
@@ -7804,7 +7768,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('P' . $rows, $emp->mobile);
-
                     }
 
                     switch ($template_rules->Q1) {
@@ -7895,7 +7858,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('Q' . $rows, $emp->email);
-
                     }
 
                     switch ($template_rules->R1) {
@@ -7986,7 +7948,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('R' . $rows, $emp->emp_name);
-
                     }
 
                     switch ($template_rules->S1) {
@@ -8077,7 +8038,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('S' . $rows, $premium);
-
                     }
 
                     switch ($template_rules->T1) {
@@ -8168,7 +8128,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('T' . $rows, $emp->sum_insured);
-
                     }
 
                     switch ($template_rules->U1) {
@@ -8259,12 +8218,10 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('U' . $rows, $emp->sum_insured);
-
                     }
                 }
                 $rows++;
             }
-
         }
 
         if ($data['endorsement_type'] == "deletion") {
@@ -8417,7 +8374,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('A' . $rows, $rows);
-
                     }
 
                     switch ($template_rules->B1) {
@@ -8508,7 +8464,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('B' . $rows, $policy_info->policy_no);
-
                     }
 
                     switch ($template_rules->C1) {
@@ -8599,7 +8554,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('C' . $rows, $emp->mode);
-
                     }
                     switch ($template_rules->D1) {
                         case 'A1':
@@ -8689,7 +8643,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('D' . $rows, $emp->emp_id);
-
                     }
                     switch ($template_rules->E1) {
                         case 'A1':
@@ -8779,7 +8732,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('E' . $rows, $emp->client_name);
-
                     }
 
                     switch ($template_rules->F1) {
@@ -8870,7 +8822,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('F' . $rows, $emp->relation);
-
                     }
 
                     switch ($template_rules->G1) {
@@ -8961,7 +8912,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('G' . $rows, date("d-m-Y", strtotime($emp->dob)));
-
                     }
 
 
@@ -9053,7 +9003,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('H' . $rows, $emp->age);
-
                     }
 
 
@@ -9145,7 +9094,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('I' . $rows, $emp->sum_insured);
-
                     }
 
                     switch ($template_rules->J1) {
@@ -9236,7 +9184,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('J' . $rows, date("d-m-Y", strtotime($emp->doj)));
-
                     }
 
 
@@ -9328,7 +9275,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('K' . $rows, date("d-m-Y", strtotime($emp->dol)));
-
                     }
 
 
@@ -9420,7 +9366,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('L' . $rows, date("d-m-Y", strtotime($emp->wedd_date)));
-
                     }
 
 
@@ -9512,7 +9457,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('M' . $rows, $emp->client_name);
-
                     }
 
                     switch ($template_rules->N1) {
@@ -9603,7 +9547,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('N' . $rows, $emp->emp_name);
-
                     }
 
                     switch ($template_rules->O1) {
@@ -9694,7 +9637,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('O' . $rows, $emp->age);
-
                     }
 
                     switch ($template_rules->P1) {
@@ -9785,7 +9727,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('P' . $rows, $emp->mobile);
-
                     }
 
                     switch ($template_rules->Q1) {
@@ -9876,7 +9817,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('Q' . $rows, $emp->email);
-
                     }
 
                     switch ($template_rules->R1) {
@@ -9967,7 +9907,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('R' . $rows, $emp->emp_name);
-
                     }
 
                     switch ($template_rules->S1) {
@@ -10058,7 +9997,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('S' . $rows, $premium);
-
                     }
 
                     switch ($template_rules->T1) {
@@ -10149,7 +10087,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('T' . $rows, $emp->sum_insured);
-
                     }
 
                     switch ($template_rules->U1) {
@@ -10240,7 +10177,6 @@ class Clients extends MY_Controller
 
                         default:
                             $sheet->setCellValue('U' . $rows, $emp->sum_insured);
-
                     }
                 }
                 $rows++;
@@ -10260,7 +10196,7 @@ class Clients extends MY_Controller
     {
         $file_mimes = array('text/x-comma-separated-values', 'text/comma-separated-values', 'application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'text/plain', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 
-      if (isset($_FILES['efile']['name']) && in_array($_FILES['efile']['type'], $file_mimes)) {
+        if (isset($_FILES['efile']['name']) && in_array($_FILES['efile']['type'], $file_mimes)) {
             $arr_file = explode('.', $_FILES['efile']['name']);
             $extension = end($arr_file);
             if ('csv' == $extension) {
@@ -10274,10 +10210,10 @@ class Clients extends MY_Controller
             $spreadsheet = $reader->load($_FILES['efile']['tmp_name']);
             $sheetData = $spreadsheet->getActiveSheet()->toArray();
 
-            
+
 
             if (!empty($sheetData)) {
-                
+
                 $post = $this->input->post();
 
                 for ($i = 0; $i < count($sheetData); $i++) {
@@ -10312,11 +10248,9 @@ class Clients extends MY_Controller
                     $ins = $this->qm->insert('template_master', $data);
                     redirect('clients/template_master');
                 }
-                
-            }else {
+            } else {
                 redirect('clients/template_master');
             }
-
         }
     }
 
@@ -10584,9 +10518,9 @@ class Clients extends MY_Controller
                     }
                 }
                 redirect('clients/employees/' . $cid . '/' . $pid . '');
-                 } else {
+            } else {
                 redirect('clients/uploademployee/' . $cid . '/' . $pid . '');
-                }   
+            }
         }
     }
 
@@ -11555,8 +11489,7 @@ class Clients extends MY_Controller
             $rows++;
         }
         $cl = $this->qm->all('ri_employee_tbl', '*', array('cid' => $cid, 'pid' => $pid));
-        foreach ($cl as $cl)
-            ;
+        foreach ($cl as $cl);
         $fileName = $cl->client_code . '-dependent.xlsx';
         $writer = new Xlsx($spreadsheet);
         $writer->save("external/uploads/" . $fileName);

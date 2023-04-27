@@ -12,7 +12,7 @@
 
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-   
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
    <meta name="format-detection" content="telephone=no">
    <title>Admin</title>
    <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
@@ -79,8 +79,8 @@
                                     <li><a href="<?= base_url('clients/manageclients'); ?>">Manage Clients</a></li>
                                     <li><a href="<?= base_url('clients/editclient/'); ?>">Edit Clients</a></li>
                                     <li><a href="<?= base_url('clients/clientpolicies/'); ?>">Manage Policies</a></li>
-                                    <li><a href="<?= base_url('Clients/template_master/'); ?>"
-                            >Template Master</a></li>
+                                    <li><a href="<?= base_url('clients/template_master/'); ?>">Template Master</a></li>
+                                    <li><a href="<?= base_url('clients/create_template_master/'); ?>">Create Template Manager</a></li>
                                  </ul>
 
                               </li>
