@@ -862,6 +862,26 @@ class Clients extends MY_Controller
         $cell_fill_color =  $this->input->post('cell_fill_color');
         $modific =  $this->input->post('modific');
 
+        foreach ($heading_name as $index => $heading) {
+
+            $post['heading_name'] = $heading;
+            $post['map_with'] = $mapped_field[0];
+            $post['font_style'] = $font_style[0];
+            $post['font_color'] = $font_color[0];
+            $post['font_size'] = $font_size[0];
+            $post['cell_fill_col'] = $cell_fill_color[0];
+            $post['modification'] = $modific[0];
+            // die($post);
+            // $client = $this->qm->insert('template_format', $post);
+            // print_r($client);
+        }
+        // if ($client) {
+        //     $this->session->set_flashdata('success', 'Template Add Successfully');
+        //     redirect('clients/create_template_master');
+        // } else {
+        //     $this->session->set_flashdata('error', 'Template Addition Failed');
+        //     redirect('clients/create_template_master');
+        // }
 
         $this->qm->excel($heading_name, $mapped_field, $font_style, $font_color, $font_size, $cell_fill_color, $modific);
         // die("scs");

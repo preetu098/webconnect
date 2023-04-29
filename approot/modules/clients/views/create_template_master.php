@@ -96,21 +96,81 @@
                                                                 <label class="form-label" id="label">
                                                                     Font Style
                                                                 </label>
-                                                                <input type="text" class="form-control" name="font_style[]" data-index="1">
+                                                                <select class="form-control =" name="font_style[]" data-index="1">
+                                                                    <option value="">Select Font</option>
+                                                                    <option value="Arial">Arial</option>
+                                                                    <option value="Verdana">Verdana</option>
+                                                                    <option value="Trebuchet MS">Trebuchet MS</option>
+                                                                    <option value="Times New Roman">Times New Roman</option>
+                                                                    <option value="Georgia">Georgia</option>
+                                                                    <option value="Garamond">Garamond</option>
+                                                                    <option value="Courier New">Courier New</option>
+                                                                    <option value="Brush Script MT">Brush Script MT</option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-2 col-xl-2">
                                                             <div class="searchdiv_condition " id="label">
                                                                 <label class="form-label">
                                                                     Font Color</label>
-                                                                <input type="text" class="form-control" name="font_color[]" data-index="1">
+                                                                <select class="form-control " name="font_color[]" data-index="1">
+                                                                    <option value="">Select Color</option>
+                                                                    <option value="FF0000">Red</option>
+                                                                    <option value="00FF00">Green</option>
+                                                                    <option value="0000FF">Blue</option>
+                                                                    <option value="FFFFF">White</option>
+                                                                    <option value="Black">Black</option>
+                                                                    <option value="FF9900">Orange</option>
+                                                                    <option value="800000">Maroon</option>
+                                                                    <option value="FFFF00">Yellow</option>
+                                                                    <option value="32CD32">Lime green</option>
+                                                                    <option value="C47451">Salmon</option>
+                                                                    <option value="008000">Green</option>
+                                                                    <option value="82CAFF">Sky blue</option>
+                                                                    <option value="990000">Crimson</option>
+                                                                    <option value="00FFFF">Aqua</option>
+                                                                    <option value="808080">Grey</option>
+                                                                    <option value="800080">Purple</option>
+                                                                    <option value="FFDB58">Mustard</option>
+                                                                    <option value="FFE5B4">Peach</option>
+                                                                    <option value="EE82EE">Violet</option>
+                                                                    <option value="FF00FF">Magenta</option>
+                                                                    <option value="FF7F50">Coral</option>
+                                                                    <option value="FBB917">Saffron</option>
+                                                                    <option value="A52A2A">Brown</option>
+                                                                    <option value="FFC0CB">Pink</option>
+                                                                    <option value="D2B48C">Tan</option>
+                                                                    <option value="008080">Teal</option>
+                                                                    <option value="1974D2">Navy Blue</option>
+                                                                    <option value="40E0D0">Turquoise</option>
+                                                                    <option value="E6E6FA">Lavender</option>
+                                                                    <option value="F5F5DC">Beige</option>
+                                                                    <option value="800080">Lime</option>
+                                                                    <option value="4B0082">Indigo</option>
+                                                                    <option value="FF00FF">Fuchsia</option>
+                                                                    <option value="306754">Sea green</option>
+                                                                    <option value="41A317">Dark Lime green</option>
+                                                                    <option value="C001A">Burgundy</option>
+                                                                    <option value="34282C">Charcoal</option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-1 col-xl-1">
                                                             <div class="searchdiv_condition " id="label">
                                                                 <label class="form-label">
                                                                     Font Size</label>
-                                                                <input type="text" class="form-control" name="font_size[]" data-index="1">
+                                                                <select class="form-control selectSize" name="font_size[]" data-index="1">
+                                                                    <option value="">Size</option>
+                                                                    <?php
+                                                                    for ($i = 0; $i < 50; $i++) {
+                                                                        if ($i % 2 == 0) {
+                                                                    ?>
+                                                                            <option data-function="<?php echo $i ?>" value="<?php echo $i ?>"><?php echo $i; ?></option>
+                                                                    <?php
+                                                                        }
+                                                                    }
+                                                                    ?>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-1 col-xl-1">
@@ -118,7 +178,46 @@
                                                                 <label class="form-label">
                                                                     Cell Fill Color
                                                                 </label>
-                                                                <input type="text" class="form-control" name="cell_fill_color[]" data-index="1">
+                                                                <select class="form-control searchfield" name="cell_fill_color[]" data-index="1">
+                                                                    <option value="">Color</option>
+                                                                    <option value="FF0000">Red</option>
+                                                                    <option value="00FF00">Green</option>
+                                                                    <option value="0000FF">Blue</option>
+                                                                    <option value="FFFFF">White</option>
+                                                                    <option value="Black">Black</option>
+                                                                    <option value="FF9900">Orange</option>
+                                                                    <option value="800000">Maroon</option>
+                                                                    <option value="FFFF00">Yellow</option>
+                                                                    <option value="32CD32">Lime green</option>
+                                                                    <option value="C47451">Salmon</option>
+                                                                    <option value="008000">Green</option>
+                                                                    <option value="82CAFF">Sky blue</option>
+                                                                    <option value="990000">Crimson</option>
+                                                                    <option value="00FFFF">Aqua</option>
+                                                                    <option value="808080">Grey</option>
+                                                                    <option value="800080">Purple</option>
+                                                                    <option value="FFDB58">Mustard</option>
+                                                                    <option value="FFE5B4">Peach</option>
+                                                                    <option value="EE82EE">Violet</option>
+                                                                    <option value="FF00FF">Magenta</option>
+                                                                    <option value="FF7F50">Coral</option>
+                                                                    <option value="FBB917">Saffron</option>
+                                                                    <option value="A52A2A">Brown</option>
+                                                                    <option value="FFC0CB">Pink</option>
+                                                                    <option value="D2B48C">Tan</option>
+                                                                    <option value="008080">Teal</option>
+                                                                    <option value="1974D2">Navy Blue</option>
+                                                                    <option value="40E0D0">Turquoise</option>
+                                                                    <option value="E6E6FA">Lavender</option>
+                                                                    <option value="F5F5DC">Beige</option>
+                                                                    <option value="800080">Lime</option>
+                                                                    <option value="4B0082">Indigo</option>
+                                                                    <option value="FF00FF">Fuchsia</option>
+                                                                    <option value="306754">Sea green</option>
+                                                                    <option value="41A317">Dark Lime green</option>
+                                                                    <option value="C001A">Burgundy</option>
+                                                                    <option value="34282C">Charcoal</option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-2 col-xl-2">
@@ -172,11 +271,20 @@
         // }
         // var serachopeartor_option = $(".searchoperator[data-index='1'] option:selected");
         // var newoperatoroption = `<option value='${selectedoperator}'>${serachopeartor_option.text()}</option>`;
+        var optionsselectSize = $(".selectSize[data-index='1'] option");
         var options = $(".searchfield[data-index='1'] option");
         console.log("options", options);
         var fields = [];
         options.each(function() {
             fields.push({
+                'fieldname': $(this).val(),
+                'fieldlabel': $(this).text(),
+                'fieldfunction': $(this).data('function')
+            });
+        });
+        var size = [];
+        optionsselectSize.each(function() {
+            size.push({
                 'fieldname': $(this).val(),
                 'fieldlabel': $(this).text(),
                 'fieldfunction': $(this).data('function')
@@ -206,22 +314,112 @@
                 <div class="col-lg-2 col-xl-2">
                     <div class="searchdiv_field ">
 
-                        <input type="text" class="form-control" name="font_style[]" data-index='${noofsearch}'>
+                            <select class="form-control =" name="font_style[]" data-index='${noofsearch}'>
+                                        <option value="">Select Font</option>
+                                        <option value="Arial">Arial</option>
+                                        <option value="Verdana">Verdana</option>
+                                        <option value="Trebuchet MS">Trebuchet MS</option>
+                                        <option value="Times New Roman">Times New Roman</option>
+                                        <option value="Georgia">Georgia</option>
+                                        <option value="Garamond">Garamond</option>
+                                        <option value="Courier New">Courier New</option>
+                                        <option value="Brush Script MT">Brush Script MT</option>
+
+
+                            </select>
                     </div>
                 </div>
                 <div class="col-lg-2 col-xl-2">
                     <div class="searchdiv_condition " id="label">
-                        <input type="text" class="form-control" name="font_color[]" data-index='${noofsearch}'>
+                        <select class="form-control " name="font_color[]" data-index='${noofsearch}'>
+                                                                    <option value="">Select Color</option>
+                                                                    <option value="FF0000">Red</option>
+                                                                    <option value="00FF00">Green</option>
+                                                                    <option value="0000FF">Blue</option>
+                                                                    <option value="FFFFF">White</option>
+                                                                    <option value="Black">Black</option>
+                                                                    <option value="FF9900">Orange</option>
+                                                                    <option value="800000">Maroon</option>
+                                                                    <option value="FFFF00">Yellow</option>
+                                                                    <option value="32CD32">Lime green</option>
+                                                                    <option value="C47451">Salmon</option>
+                                                                    <option value="008000">Green</option>
+                                                                    <option value="82CAFF">Sky blue</option>
+                                                                    <option value="990000">Crimson</option>
+                                                                    <option value="00FFFF">Aqua</option>
+                                                                    <option value="808080">Grey</option>
+                                                                    <option value="800080">Purple</option>
+                                                                    <option value="FFDB58">Mustard</option>
+                                                                    <option value="FFE5B4">Peach</option>
+                                                                    <option value="EE82EE">Violet</option>
+                                                                    <option value="FF00FF">Magenta</option>
+                                                                    <option value="FF7F50">Coral</option>
+                                                                    <option value="FBB917">Saffron</option>
+                                                                    <option value="A52A2A">Brown</option>
+                                                                    <option value="FFC0CB">Pink</option>
+                                                                    <option value="D2B48C">Tan</option>
+                                                                    <option value="008080">Teal</option>
+                                                                    <option value="1974D2">Navy Blue</option>
+                                                                    <option value="40E0D0">Turquoise</option>
+                                                                    <option value="E6E6FA">Lavender</option>
+                                                                    <option value="F5F5DC">Beige</option>
+                                                                    <option value="800080">Lime</option>
+                                                                    <option value="4B0082">Indigo</option>
+                                                                    <option value="FF00FF">Fuchsia</option>
+                                                                    <option value="306754">Sea green</option>
+                                                                    <option value="41A317">Dark Lime green</option>
+                                                                    <option value="C001A">Burgundy</option>
+                                                                    <option value="34282C">Charcoal</option>
+                                                                </select>
                     </div>
                 </div>
                 <div class="col-lg-1 col-xl-1">
                     <div class="searchdiv_condition " id="label">
-                        <input type="text" class="form-control" name="font_size[]" data-index='${noofsearch}'>
+                        <select class="form-control selectSize" name="font_size[]"  data-index='${noofsearch}'></select>
                     </div>
                 </div>
                 <div class="col-lg-1 col-xl-1">
                     <div class="searchdiv_condition " id="label">
-                        <input type="text" class="form-control" name="cell_fill-color[]" data-index='${noofsearch}'>
+                    <select class="form-control " name="cell_fill_color[]" data-index='${noofsearch}'>
+                                                                    <option value="">Color</option>
+                                                                    <option value="FF0000">Red</option>
+                                                                    <option value="00FF00">Green</option>
+                                                                    <option value="0000FF">Blue</option>
+                                                                    <option value="FFFFF">White</option>
+                                                                    <option value="Black">Black</option>
+                                                                    <option value="FF9900">Orange</option>
+                                                                    <option value="800000">Maroon</option>
+                                                                    <option value="FFFF00">Yellow</option>
+                                                                    <option value="32CD32">Lime green</option>
+                                                                    <option value="C47451">Salmon</option>
+                                                                    <option value="008000">Green</option>
+                                                                    <option value="82CAFF">Sky blue</option>
+                                                                    <option value="990000">Crimson</option>
+                                                                    <option value="00FFFF">Aqua</option>
+                                                                    <option value="808080">Grey</option>
+                                                                    <option value="800080">Purple</option>
+                                                                    <option value="FFDB58">Mustard</option>
+                                                                    <option value="FFE5B4">Peach</option>
+                                                                    <option value="EE82EE">Violet</option>
+                                                                    <option value="FF00FF">Magenta</option>
+                                                                    <option value="FF7F50">Coral</option>
+                                                                    <option value="FBB917">Saffron</option>
+                                                                    <option value="A52A2A">Brown</option>
+                                                                    <option value="FFC0CB">Pink</option>
+                                                                    <option value="D2B48C">Tan</option>
+                                                                    <option value="008080">Teal</option>
+                                                                    <option value="1974D2">Navy Blue</option>
+                                                                    <option value="40E0D0">Turquoise</option>
+                                                                    <option value="E6E6FA">Lavender</option>
+                                                                    <option value="F5F5DC">Beige</option>
+                                                                    <option value="800080">Lime</option>
+                                                                    <option value="4B0082">Indigo</option>
+                                                                    <option value="FF00FF">Fuchsia</option>
+                                                                    <option value="306754">Sea green</option>
+                                                                    <option value="41A317">Dark Lime green</option>
+                                                                    <option value="C001A">Burgundy</option>
+                                                                    <option value="34282C">Charcoal</option>
+                                                                </select>
                     </div>
                 </div>
                 <div class="col-lg-2 col-xl-2">
@@ -242,6 +440,9 @@
 
         for (let field of fields) {
             $(`.searchfield[data-index='${noofsearch}']`).append(`<option  data-function="${field['fieldfunction']}"   value="${field['fieldname']}">${field['fieldlabel']}</option>`);
+        }
+        for (let field of size) {
+            $(`.selectSize[data-index='${noofsearch}']`).append(`<option  data-function="${size['fieldfunction']}"   value="${field['fieldname']}">${field['fieldlabel']}</option>`);
         }
 
 

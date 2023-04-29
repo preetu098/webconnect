@@ -11,10 +11,11 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Endorsement Addition List</h4>
-                        <a href="<?= base_url('Clients/endorsement_deletion/'); ?><?= $cid; ?>/<?= $pid; ?>"
-                            class="btn btn-primary">Deletion List</a>
-                            <a href="<?= base_url('Clients/endorsement_format_download/'); ?><?= $cid; ?>/<?= $pid; ?>"
-                            class="btn btn-primary">Download</a>
+                        <a href="<?= base_url('Clients/endorsement_deletion/'); ?><?= $cid; ?>/<?= $pid; ?>" class="btn btn-primary">Deletion List</a>
+                        <!-- <a href="<?= base_url('Clients/endorsement_format_download/'); ?><?= $cid; ?>/<?= $pid; ?>" class="btn btn-primary">Download</a> -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            Download
+                        </button>
                     </div>
                     <?php
                     $endorsment_calculations_info = $this->qm->single("endorsment_calculations", "*", array('cid' => $cid, 'pid' => $pid));
@@ -55,22 +56,22 @@
                                             if ($endorsment_calculations_info->basis_of_calculation == "pro_rata_basis") {
 
 
-                                                ?>
+                                            ?>
                                                 <th>Pro Rata Premium</th>
                                                 <th>GST</th>
                                                 <th>Pro Rata Premium With GST</th>
-                                                <?php
+                                            <?php
                                             } else {
-                                                ?>
+                                            ?>
 
                                                 <th>Short Period Rate</th>
                                                 <th>Short Period Premium</th>
                                                 <th>GST</th>
                                                 <th>Short Period Premium With GST</th>
-                                                <?php
+                                            <?php
                                             }
                                             ?>
-                                         </tr>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                         <?php
@@ -136,7 +137,7 @@
                                                 }
 
 
-                                                ?>
+                                        ?>
                                                 <tr>
                                                     <td>
                                                         <?php echo $count++; ?>
@@ -180,7 +181,6 @@
                                                         $startdate = strtotime($emp->doj);
                                                         if ($EED >= 43) {
                                                             echo date("d-m-Y", strtotime("+43 days", $startdate)) . "<br>";
-
                                                         } else {
                                                             echo date("d-m-Y", strtotime($emp->doj)) . "<br>";
                                                         }
@@ -208,7 +208,7 @@
                                                     if ($endorsment_calculations_info->basis_of_calculation == "pro_rata_basis") {
 
 
-                                                        ?>
+                                                    ?>
                                                         <td>
                                                             <?php echo (int) $pro_rata ?>
                                                         </td>
@@ -218,9 +218,9 @@
                                                         <td>
                                                             <?php echo (int) $pro_rata_gst_premium ?>
                                                         </td>
-                                                        <?php
+                                                    <?php
                                                     } else {
-                                                        ?>
+                                                    ?>
                                                         <td>
                                                             <?php echo $short_peroid_rate; ?>
                                                         </td>
@@ -235,16 +235,16 @@
                                                             <?php echo $short_gst_premium; ?>
                                                         </td>
 
-                                                        <?php
+                                                    <?php
                                                     }
                                                     ?>
 
 
-                                                   
+
                                                     <td></td>
                                                     <td></td>
                                                 </tr>
-                                            <?php }
+                                        <?php }
                                         } ?>
                                     </tbody>
                                 </table>
@@ -255,4 +255,37 @@
             </div>
         </div>
 
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Select Format </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <input type="checkbox" name="format" value="chech"> check
+                        <br>
+                        <input type="checkbox" name="format" value="chech"> check
+                        <br>
+                        <input type="checkbox" name="format" value="chech"> check
+                        <br>
+                        <input type="checkbox" name="format" value="chech"> check
+                        <br>
+                        <input type="checkbox" name="format" value="chech"> check
+                        <br>
+                        <input type="checkbox" name="format" value="chech"> check
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Understood</button>
+                </div>
+            </div>
+        </div>
     </div>

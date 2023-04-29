@@ -9,6 +9,10 @@ class QueryModel extends CI_Model
 
     public function insert($table, $dataArr)
     {
+        // var_dump($table);
+        echo $table;
+        // print_r($this->db->insert($table, $dataArr));
+        die("db");
         if ($this->db->insert($table, $dataArr)) {
             //$this->db->last_query();
             return $this->db->insert_id();
@@ -251,6 +255,59 @@ class QueryModel extends CI_Model
         }
     }
 
+    // public function excel($heading_name, $mapped_field, $font_style, $font_color, $font_size, $cell_fill_color, $modific)
+    // {
+    //     // php spreadsheet
+    //     $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
+    //     // Set active sheet
+    //     $sheet = $spreadsheet->getActiveSheet();
+    //     //column names
+    //     $fieldName = array("Heading Name", "Mapped With", "Font Style", "Font Color", "Font Size", "Cell Fill Color", "Modificatio");
+    //     $sheet->fromArray($fieldName, null, 'A1');
+    //     // Add data rows
+    //     if (count($heading_name) != 0) {
+    //         foreach ($heading_name as $index => $heading) {
+    //             $mapField = $mapped_field[0];
+    //             $fontFamily = $font_style[0];
+    //             $fontColor = $font_color[0];
+    //             $fontSize = $font_size[0];
+    //             $fillColor = $cell_fill_color[0];
+    //             $modificField = $modific[0];
+    //             // Create an array with the row data
+    //             $rowData = array(
+    //                 $heading,
+    //                 $mapField,
+    //                 $fontFamily,
+    //                 $fontColor,
+    //                 $fontSize,
+    //                 $fillColor,
+    //                 $modificField,
+    //             );
+    //             // Set the cell styles
+    //             $cellStyle = $sheet->getStyle('A' . ($index + 2) . ':H' . ($index + 2));
+    //             $cellStyle->getFont()->setName($fontFamily);
+    //             $cellStyle->getFont()->setSize($fontSize);
+    //             $cellStyle->getFont()->setColor(new \PhpOffice\PhpSpreadsheet\Style\Color($fontColor));
+    //             $cellStyle->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB($fillColor);
+
+    //             // Add the row data to the sheet
+    //             $sheet->fromArray($rowData, null, 'A' . ($index + 2));
+    //         }
+    //     }
+    //     // Set the column widths
+    //     foreach (range('A', 'H') as $columnID) {
+    //         $sheet->getColumnDimension($columnID)
+    //             ->setAutoSize(true);
+    //     }
+    //     // Set download headers
+    //     $fileName = "excel.xlsx";
+    //     header('Content-Type: application/vnd.ms-excel');
+    //     header('Content-Disposition: attachment;filename="' . $fileName . '"');
+    //     header('Cache-Control: max-age=0');
+    //     // Save spreadsheet as Excel file and output to browser
+    //     $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+    //     $writer->save('php://output');
+    // }
     public function excel($heading_name, $mapped_field, $font_style, $font_color, $font_size, $cell_fill_color, $modific)
     {
         // php spreadsheet
@@ -258,26 +315,52 @@ class QueryModel extends CI_Model
         // Set active sheet
         $sheet = $spreadsheet->getActiveSheet();
         //column names
-        $fieldName = array("Heading Name", "Mapped With", "Font Style", "Font Color", "Font Size", "Cell Fill Color", "Modificatio");
-        $sheet->fromArray($fieldName, null, 'A1');
+        $fieldName = array("Heading Name", "Mapped With", "Font Style", "Font Color", "Font Size", "Cell Fill Color", "Modification");
+
+        // Set cell styles for each column header
+        $columnCount = count($fieldName);
+        for ($i = 1; $i <= $columnCount; $i++) {
+            $cell = $sheet->getCellByColumnAndRow($i, 1);
+            $cell->setValue($fieldName[$i - 1]);
+            $cell->getStyle()->getFont()->setBold(true);
+            $cell->getStyle()->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+            $cell->getStyle()->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
+            $cell->getStyle()->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('FFCCCCCC');
+            $cell->getStyle()->getFont()->setSize(12);
+        }
+
         // Add data rows
         if (count($heading_name) != 0) {
             foreach ($heading_name as $index => $heading) {
-                $mapField = $mapped_field[0];
-                $fontStyle = $font_style[0];
-                $fontColor = $font_color[0];
-                $fontSize = $font_size[0];
-                $fillColor = $cell_fill_color[0];
-                $modificField = $modific[0];
-                $rowData = array($heading, $mapField, $fontStyle, $fontColor, $fontSize, $fillColor, $modificField);
-                $sheet->fromArray($rowData, null, 'A' . ($index + 2));
+                $mapField = $mapped_field[$index];
+                $fontStyle = $font_style[$index];
+                $fontColor = $font_color[$index];
+                $fontSize = $font_size[$index];
+                $fillColor = $cell_fill_color[$index];
+                $modificField = $modific[$index];
+
+                $sheet->setCellValue('A' . ($index + 2), $heading)
+                    ->setCellValue('B' . ($index + 2), $mapField)
+                    ->setCellValue('C' . ($index + 2), $fontStyle)
+                    ->setCellValue('D' . ($index + 2), $fontColor)
+                    ->setCellValue('E' . ($index + 2), $fontSize)
+                    ->setCellValue('F' . ($index + 2), $modificField);
+
+                // Set cell styles for each data row
+                $cell = $sheet->getCellByColumnAndRow(1, $index + 2);
+                $cell->getStyle()->getFont()->setName($fontStyle);
+                $cell->getStyle()->getFont()->setSize($fontSize);
+                $cell->getStyle()->getFont()->getColor()->setARGB("FF8080");
+                $cell->getStyle()->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB($fillColor);
             }
         }
+
         // Set download headers
         $fileName = "excel.xlsx";
         header('Content-Type: application/vnd.ms-excel');
         header('Content-Disposition: attachment;filename="' . $fileName . '"');
         header('Cache-Control: max-age=0');
+
         // Save spreadsheet as Excel file and output to browser
         $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
         $writer->save('php://output');
