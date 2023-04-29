@@ -89,8 +89,9 @@
                                     <span class="nav-text">Template Manager</span>
                                  </a>
                                  <ul aria-expanded="false" class="left mm-collapse mm-show" style="">
-                                    <li><a href="<?= base_url('clients/template_master/'); ?>">Template Master</a></li>
-                                    <li><a href="<?= base_url('clients/create_template_master/'); ?>">Create Template Manager</a></li>
+                                 <li><a href="<?= base_url('clients/create_template_master/'); ?>">Create Template Master</a></li>
+                                    <li><a href="<?= base_url('clients/template_master/'); ?>">Template Masters</a></li>
+                                    
                                  </ul>
 
                               </li>

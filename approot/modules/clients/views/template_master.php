@@ -31,7 +31,7 @@
 
                                             <div class="mb-3">
                                                 <label class="form-label">
-                                                    <h4>Company Name</h4>
+                                                    <h4>Select Insurance Company</h4>
                                                 </label>
                                                 <select class="form-control" name="cname" id="cname">
                                                     <option>Select Company</option>
@@ -49,7 +49,7 @@
                                                 </select>
                                             </div>
 
-                                            <h4 class="mb-4">SELECT Policy Type :
+                                            <h4 class="mb-4">Select Policy Type :
 
                                                 <select class="form-control" name="policy_type" id="type" required>
                                                     <option>Select Type</option>
@@ -68,7 +68,7 @@
                                                     <?php } ?>
                                                 </select>
                                             </h4>
-                                            <h4 class="mb-4">SELECT Endorsement Type :
+                                            <h4 class="mb-4">Select Endorsement Type :
                                                 <select name="endorsement_type" id="endorsement_type" class="form-select form-control" required>
                                                     <option value="">-Select-</option>
                                                     <option value="addition_deletion" <?php

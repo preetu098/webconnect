@@ -35,7 +35,7 @@
                         </div>
                         <div class="col-lg-7 col-xl-7">
                             <div class="tab-content" id="nav-tabContent">
-                                <div class="tab-pane fade show" id="gsttbcontnet">
+                                <div class="tab-pgit pullane fade show" id="gsttbcontnet">
                                     <form class="form-group" method="POST" action="<?php echo base_url(); ?>clients/endorsmentCalculation/<?php echo $cid; ?>/<?php echo $pid; ?>">
                                         <h4 class="mb-4">GST :
                                             <select name="gst" id="gst" class="form-select form-control">
