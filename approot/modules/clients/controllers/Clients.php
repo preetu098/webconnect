@@ -432,34 +432,129 @@ class Clients extends MY_Controller
         $postdata['modified_by'] = $cid;
         $postdata['status'] = $post['status'];
         $data['endorscalc'] = $this->qm->single("endorsment_calculations", "*", array('cid' => $cid, 'pid' => $pid));
-
         if ($post['tab'] == 'basis_calc_tab') {
             $po['sdate'] = $post['sdate'];
             $po['edate'] = $post['edate'];
             // $po['status'] = $post['status'];
             $postdata['basis_of_calculation'] = $post['basis_of_calculation'];
             $postdata['backdation_days'] = $post['backdation_days'];
-
             $upclientpolicy = $this->qm->update('ri_clientpolicy_tbl', $po, ['id' => $pid, 'cid' => $cid]);
         }
-
         if ($post['tab'] == 'gst_tab') {
             $postdata['gst'] = $post['gst'];
             $postdata['gst_rate'] = $post['gst_rate'];
         }
-
         if (!empty($data['endorscalc'])) {
-
             $up = $this->qm->update('endorsment_calculations', $postdata, $where);
+            $this->saveCalculations($cid,$pic);
         } else {
             $in = $this->qm->insert('endorsment_calculations', $postdata);
+            $this->saveCalculations($cid,$pic);
         }
 
         redirect("clients/endorsement/$cid/$pid", $data);
     }
+    public function saveCalculations($cid,$pid){
+       try {
+        $postdata=[];
+        $endorsment_calculations_info = $this->qm->single("endorsment_calculations", "*", array('cid' => $cid, 'pid' => $pid));
+        $endorsment_calculations_info = $this->qm->single("endorsment_calculations", "*", array('cid' => $cid, 'pid' => $pid));
+        $policy_info = $this->qm->single("ad_policy", "*", array('policy_id' => $pid));
+        $policy_premium_info = $this->qm->single("policy_premium", "*", array('cid' => $cid, 'pid' => $pid));
+        $empl = $this->qm->getAll('ri_employee_tbl', '*', array('cid' => $cid, 'pid' => $pid,'mode'=>"New Addition"));
+        
+        foreach ($empl  as $emp) {
+                $date_of_joining = date("Y-m-d", strtotime($emp->doj));
+                $date_of_policy_expire = date("Y-m-d", strtotime($policy_info->expiry_on));
+                $diffDays = $this->dateDifference($date_of_joining, $date_of_policy_expire);
+                $EED = $this->dateDifference($date_of_joining, date("Y-m-d"));
+                $diffDays = abs($diffDays) + 1;
+                $pro_date_of_policy_start = date("Y-m-d", strtotime($policy_info->start_on));
+                $pro_date_of_policy_expire = date("Y-m-d", strtotime($policy_info->expiry_on));
+                $pro_diffDays =$this->dateDifference($pro_date_of_policy_start, $pro_date_of_policy_expire);
+                $pro_diffDays = abs($pro_diffDays) + 1;
+                $pro_rata = (($policy_premium_info->premium / $pro_diffDays) * $diffDays);
+                if ($endorsment_calculations_info->gst == 1) {
+                    $gst_premium = $policy_premium_info->premium * ($endorsment_calculations_info->gst_rate / 100);
+                    $short_gst_premium = $gst_premium + $policy_premium_info->premium;
+                    $pro_gst_premium = $pro_rata * ($endorsment_calculations_info->gst_rate / 100);
+                    $pro_rata_gst_premium = $pro_gst_premium + $pro_rata;
+                }
+                $policy_premium_info->premium;
+                // $diffDays=30;scdcc
+                if ($diffDays <= 7) {
+                    $premium = $policy_premium_info->premium * (10 / 100);
+                    $short_peroid_rate = '10%';
+                }
+                if ($diffDays <= 30) {
+                    $premium = $policy_premium_info->premium * (25 / 100);
+                    $short_peroid_rate = '25%';
+                }
+                if ($diffDays <= 60) {
+                    $premium = $policy_premium_info->premium * (35 / 100);
+                    $short_peroid_rate = '35%';
+                }
+                if ($diffDays <= 90) {
+                    $premium = $policy_premium_info->premium * (50 / 100);
+                    $short_peroid_rate = '50%';
+                }
+                if ($diffDays <= 120) {
+                    $premium = $policy_premium_info->premium * (60 / 100);
+                    $short_peroid_rate = '60%';
+                }
+                if ($diffDays <= 180) {
+                    $premium = $policy_premium_info->premium * (75 / 100);
+                    $short_peroid_rate = '75%';
+                }
+                if ($diffDays <= 240 || $diffDays >= 240) {
+                    $premium = $policy_premium_info->premium * (100 / 100);
+                    $short_peroid_rate = '100%';
+                }
+                $postdata['eed_cal'] = $EED>= 43? 43:$EED;
+                $postdata['premium_cal'] =$policy_premium_info->premium;
+                $postdata['days_coverage_cal'] = $diffDays;
+                if ($endorsment_calculations_info->basis_of_calculation == "pro_rata_basis") {
+                        $postdata['pro_rata_premium_cal'] =$pro_rata?(int)$pro_rata:0 ;
+                        $postdata['gst_cal'] = $pro_gst_premium?(int) $pro_gst_premium :0;
+                        $postdata['pro_rata_premium_gst_cal'] = $pro_rata_gst_premium ?(int) $pro_rata_gst_premium:0;
+
+                        $postdata['short_period_rate_cal'] = 0;
+                        $postdata['short_period_premium_cal'] = 0;
+                        $postdata['short_period_premium_gst_cal'] = 0;
+                    } else {
+                        $postdata['short_period_rate_cal'] = $short_peroid_rate?$short_peroid_rate:0;
+                        $postdata['short_period_premium_cal'] = $premium?$premium:0;
+                        $postdata['gst_cal'] = $gst_premium?$gst_premium:0;
+                        $postdata['short_period_premium_gst_cal'] = $short_gst_premium?$short_gst_premium:0;
+                        $postdata['pro_rata_premium_cal'] =0;
+                        $postdata['pro_rata_premium_gst_cal'] = 0;
+                    }
+                $where = array('pid' => $pid, 'cid' => $cid, 'eid' => $emp->eid);
+                $update = $this->qm->update('ri_employee_tbl', $postdata, $where);
+                
+        }
+       } catch (\Exception $e) {
+         
+              
+       }
+      
+        
+    }
+     public  function dateDifference($start_date, $end_date)
+    {
+        $start_array = date_parse($start_date);
+        $end_array = date_parse($end_date);
+        $start_date = GregorianToJD($start_array["month"], $start_array["day"], $start_array["year"]) . "</br>";
+        $end_date = GregorianToJD($end_array["month"], $end_array["day"], $end_array["year"]);
+        return round(($end_date - $start_date), 0);
+    }
+
+    
+    
 
     public function endorsmentCalculationMethod($cid, $pid)
-    {
+    {       
+        
         $data = [];
         $post = $this->input->post();
         $where = "pid = '" . $pid . "' and cid = '" . $cid . "'";
@@ -470,14 +565,11 @@ class Clients extends MY_Controller
         $postdata['status'] = $post['status'];
         $data['endorscalc'] = $this->qm->single("endorsment_calculations", "*", array('cid' => $cid, 'pid' => $pid));
         $postdata['calculation_method'] = $post['calculation_method'];
-
         if (!empty($data['endorscalc'])) {
-
             $up = $this->qm->update('endorsment_calculations', $postdata, $where);
         } else {
             $in = $this->qm->insert('endorsment_calculations', $postdata);
         }
-
         redirect("clients/endorsement/$cid/$pid", $data);
     }
 
@@ -798,21 +890,97 @@ class Clients extends MY_Controller
         $data['cid'] = $cid;
         $data['pid'] = $pid;
         $data['mainContent'] = "clients/template_master";
-        // print_r($data);
-        // die;
         $this->load->view('panel', $data);
     }
 
 
-    public function create_template_master()
+    public function create_template_master($cid, $policy_type, $endor_type)
     {
+
         $data = [];
         $data['cid'] = $cid;
-        $data['pid'] = $pid;
+        $data['policy_type'] = $policy_type;
+        $data['endor_type'] = $endor_type;
         $data['mainContent'] = "clients/create_template_master";
-        // print_r($data);
-        // die;
         $this->load->view('panel', $data);
+    }
+    public function template_format_lists()
+    {
+
+        $data = [];
+        // $data['cid'] = $cid;
+        // $data['policy_type'] = $policy_type;
+        // $data['endor_type'] = $endor_type;
+        $data['mainContent'] = "clients/template_list";
+        $this->load->view('panel', $data);
+    }
+
+    public function delete_template($policy_type_id, $endor_type)
+    {
+        if (!empty($endor_type)) {
+            $this->qm->delete("template_format", array('policy_type_id' => $policy_type_id, 'endor_type' => $endor_type));
+            $this->session->set_flashdata('success', 'Template Deleted Successfully');
+        }
+        redirect("clients/template_format_lists/");
+    }
+    public function single_delete_template($id)
+    {
+        if (!empty($id)) {
+            $this->qm->delete("template_format", array('id' => $id));
+            $this->session->set_flashdata('success', 'Template Deleted Successfully');
+        }
+        redirect("clients/template_format_lists/");
+    }
+
+
+
+    public function edit_template_format($policy_typ, $endor_type)
+    {
+
+        if (empty($this->session->userdata('aid'))) {
+            redirect('login/index');
+        } else {
+            $data['policy_typ'] = $policy_typ;
+            $data['endor_type'] = $endor_type;
+            $data['mainContent'] = "clients/edit_format_template";
+            $this->load->view('panel', $data);
+        }
+    }
+    public function update_format($policy_typ, $endor_type)
+
+    {
+
+        try {
+            $post = $this->input->post();
+            $id =  $this->input->post('id');
+            $heading_name =  $this->input->post('heading_name');
+            $mapped_field =  $this->input->post('mapped_field');
+            $font_style =  $this->input->post('font_style');
+            $font_color =  $this->input->post('font_color');
+            $font_size =  $this->input->post('font_size');
+            $cell_fill_col =  $this->input->post('cell_fill_col');
+            $modific =  $this->input->post('modific');
+
+            for ($i = 0; $i < count($id); $i++) {
+                $data = array(
+                    'heading_name' => $heading_name[$i],
+                    'map_with' => $mapped_field[$i],
+                    'font_style' => $font_style[$i],
+                    'font_color' => $font_color[$i],
+                    'font_size' => $font_size[$i],
+                    'cell_fill_col' => $cell_fill_col[$i],
+                    'modification' => $modific[$i]
+                );
+                $this->db->where('id', $id[$i]);
+                $this->db->update('template_format', $data);
+            }
+            $this->session->set_flashdata('success', 'Updated Successfully');
+        } catch (\Exception $e) {
+            die($e);
+            $this->session->set_flashdata('error', 'Somthing went wrong!');
+        }
+
+        redirect('clients/edit_template_format/' . $policy_typ . '/' . $endor_type);
     }
     public function template_manager($cid, $pid)
     {
@@ -829,10 +997,13 @@ class Clients extends MY_Controller
         $post = $this->input->post();
         $data = [];
         $data['cname'] = $this->input->post('cname');
+        $cid = $this->input->post('cname');
+        $policy_type = $this->input->post('policy_type');
+        $endor_type  = $this->input->post('endorsement_type');
         $data['policy_type'] = $this->input->post('policy_type');
         $data['endorsement_type'] = $this->input->post('endorsement_type');
         $data['mainContent'] = "clients/create_template_master";
-        redirect('clients/create_template_master');
+        redirect('clients/create_template_master/' . $cid . '/' . $policy_type . '/' . $endor_type);
     }
 
     public function endorsement_process($cid, $pid)
@@ -851,9 +1022,25 @@ class Clients extends MY_Controller
         $data['mainContent'] = "clients/endorsement_deletion";
         $this->load->view('panel', $data);
     }
+    public function download_template_excel()
+    {
+        $post = $this->input->post();
+        $companyId =  $this->input->post('companyId');
+        $cid =  $this->input->post('cid');
+        $pid =  $this->input->post('pid');
+        $format =  $this->input->post('format');
+        $companyFormat = $this->qm->all('template_format', '*', array('policy_type_id' => $format, 'cid' => $companyId));
+        $emp = $this->qm->all('ri_employee_tbl', '*', array('cid' => $cid, 'pid' => $pid, "mode" => "New Addition"));
+        $this->qm->excel($companyFormat, $emp, $pid);
+    }
     public function add_template_master()
     {
         $post = $this->input->post();
+        $cid =  $this->input->post('cid');
+        $c_name =  $this->input->post('c_name');
+        $policy_type_id =  $this->input->post('policy_type_id');
+        $policy_type_name =  $this->input->post('policy_type_name');
+        $endor_type =  $this->input->post('endor_type');
         $heading_name =  $this->input->post('heading_name');
         $mapped_field =  $this->input->post('mapped_field');
         $font_style =  $this->input->post('font_style');
@@ -861,30 +1048,24 @@ class Clients extends MY_Controller
         $font_size =  $this->input->post('font_size');
         $cell_fill_color =  $this->input->post('cell_fill_color');
         $modific =  $this->input->post('modific');
-
         foreach ($heading_name as $index => $heading) {
 
-            $post['heading_name'] = $heading;
-            $post['map_with'] = $mapped_field[0];
-            $post['font_style'] = $font_style[0];
-            $post['font_color'] = $font_color[0];
-            $post['font_size'] = $font_size[0];
-            $post['cell_fill_col'] = $cell_fill_color[0];
-            $post['modification'] = $modific[0];
-            // die($post);
-            // $client = $this->qm->insert('template_format', $post);
-            // print_r($client);
+            $data['cid'] = $cid;
+            $data['c_name'] = $c_name;
+            $data['policy_type_id'] = $policy_type_id;
+            $data['policy_type_name'] = $policy_type_name;
+            $data['endor_type'] = $endor_type;
+            $data['heading_name'] = $heading;
+            $data['map_with'] = $mapped_field[0];
+            $data['font_style'] = $font_style[0];
+            $data['font_color'] = $font_color[0];
+            $data['font_size'] = $font_size[0];
+            $data['cell_fill_col'] = $cell_fill_color[0];
+            $data['modification'] = $modific[0];
+            $client = $this->qm->insert('template_format', $data);
         }
-        // if ($client) {
-        //     $this->session->set_flashdata('success', 'Template Add Successfully');
-        //     redirect('clients/create_template_master');
-        // } else {
-        //     $this->session->set_flashdata('error', 'Template Addition Failed');
-        //     redirect('clients/create_template_master');
-        // }
-
-        $this->qm->excel($heading_name, $mapped_field, $font_style, $font_color, $font_size, $cell_fill_color, $modific);
-        // die("scs");
+        // redirect('clients/create_template_master/' . $cid);
+        redirect('clients/create_template_master/' . $cid . '/' . $policy_type_id . '/' . $endor_type);
     }
     public function updShortperiodscale($cid, $pid, $id)
     {
@@ -1187,7 +1368,6 @@ class Clients extends MY_Controller
             $this->load->view('panel', $data);
         }
     }
-
     public function updpolicy($pid)
     {
         $post = $this->input->post();

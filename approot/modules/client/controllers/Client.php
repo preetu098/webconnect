@@ -115,8 +115,7 @@ class Client extends MY_Controller
     }
 
     public function dashboard($pid = null)
-    {
-        
+    {   
         if (empty($this->session->userdata('cid'))) {
             redirect("client/index/");
         } else {
@@ -166,6 +165,7 @@ class Client extends MY_Controller
                     $pid = $this->qm->single("ri_clientpolicy_tbl", "*", array('cid' => $cid))->id;
                 }
                 if ($this->input->post('approve') == '1') {
+                    
                     redirect("client/endorsement/$pid");
                 }
             }
@@ -1509,15 +1509,14 @@ class Client extends MY_Controller
     }
 
     public function endorsement($pid, $def = 0)
-    {
+    { 
         if (empty($this->session->userdata('cid'))) {
             redirect("client/index/");
         } else {
             $data['cid'] = $cid = $this->session->userdata('cid');
+        
             $data['pid'] = $pid;
-
             $cond = " cid='$cid' && pid='$pid' && status=2";
-
             if (!empty($emp_search = $this->input->post('emp_search'))) {
                 $cond .= " && (name = '" . $emp_search . "' ";
                 $cond .= " OR emp_id = '" . $emp_search . "' ";
@@ -1529,6 +1528,7 @@ class Client extends MY_Controller
             $data['resDep'] = $this->qm->all("ri_dependent_tbl", "*", $cond, '', 'both', '', '', 'ASC');
 
             $data['mainContent'] = "client/endorsement";
+          
             $this->load->view('cpanel', $data);
         }
     }

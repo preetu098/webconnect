@@ -10,6 +10,8 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+
+   <link rel="stylesheet" src="plugins/colorpicker/bootstrap-colorpicker.min.css">
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
@@ -89,9 +91,10 @@
                                     <span class="nav-text">Template Manager</span>
                                  </a>
                                  <ul aria-expanded="false" class="left mm-collapse mm-show" style="">
-                                 <li><a href="<?= base_url('clients/create_template_master/'); ?>">Create Template Master</a></li>
+                                    <!-- <li><a href="<?= base_url('clients/create_template_master/'); ?>">Create Template Master</a></li> -->
                                     <li><a href="<?= base_url('clients/template_master/'); ?>">Template Masters</a></li>
-                                    
+                                    <li><a href="<?= base_url('clients/template_format_lists/'); ?>">Template Format List</a></li>
+
                                  </ul>
 
                               </li>

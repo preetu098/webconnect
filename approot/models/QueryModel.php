@@ -1,4 +1,9 @@
 <?php
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
+
 class QueryModel extends CI_Model
 {
 
@@ -9,24 +14,23 @@ class QueryModel extends CI_Model
 
     public function insert($table, $dataArr)
     {
-        // var_dump($table);
-        echo $table;
-        // print_r($this->db->insert($table, $dataArr));
-        die("db");
+
         if ($this->db->insert($table, $dataArr)) {
-            //$this->db->last_query();
+           
             return $this->db->insert_id();
         }
     }
 
     public function update($table, $dataArr, $where)
     {
+   
         $this->db
-            ->set($dataArr)
-            ->where($where)
-            ->update($table);
-        //echo $this->db->last_query();
-        return ($this->db->affected_rows() > 0) ? TRUE : FALSE;
+        ->set($dataArr)
+        ->where($where)
+        ->update($table);
+         return ($this->db->affected_rows() > 0) ? TRUE : FALSE;
+       
+        
     }
 
     public function delete($table, $where)
@@ -70,6 +74,54 @@ class QueryModel extends CI_Model
         //echo $this->db->last_query();
         return $query->result();
     }
+    public function getAll($table, $column = "*",  $where = "1=1", $srcharr = '', $searchType = 'both', $groupBy = '', $orderColumn = '', $orderBy = 'ASC', $limit = NULL, $offset = 0)
+    {
+
+        $searchArr = array("'.$srcharr.'" => '');
+        $query = $this->db
+            ->select($column, FALSE)
+            ->from($table)
+            ->where($where)
+            ->or_where("mode = ", "New Registration")
+            ->like($searchArr, FALSE, $searchType)
+            ->order_by($orderColumn, $orderBy)
+            ->group_by($groupBy)
+            ->limit($limit, $offset)
+            ->get();
+        //echo $this->db->last_query();
+        return $query->result();
+    }
+
+    public function groupByAll($table, $column = "*",  $where = "1=1", $groupBy = '', $orderColumn = '', $orderBy = 'ASC', $limit = NULL, $offset = 0)
+    {
+        // $searchArr = array("'.$srcharr.'" => '');
+        $query = $this->db
+            ->select($column, FALSE)
+            ->from($table)
+            ->where($where)
+            ->group_by($groupBy)
+            ->get();
+        //echo $this->db->last_query();
+        return $query->result();
+    }
+
+    public function getAllWithoutWhere($table, $column = "*", $groupBy = '', $orderColumn = '', $orderBy = 'ASC', $limit = NULL, $offset = 0)
+    {
+        // $searchArr = array("'.$srcharr.'" => '');
+        $query = $this->db
+            ->select($column, FALSE)
+            ->from($table)
+            // ->where($where)
+            ->group_by($groupBy)
+            ->get();
+        //echo $this->db->last_query();
+        return $query->result();
+    }
+
+
+
+
+
 
     //    public function countRec($table, $where = null) {
     //        $this->db->where($where);
@@ -284,7 +336,7 @@ class QueryModel extends CI_Model
     //                 $modificField,
     //             );
     //             // Set the cell styles
-    //             $cellStyle = $sheet->getStyle('A' . ($index + 2) . ':H' . ($index + 2));
+    //             $cellStyle = $sheet->getStyle('A' . ($index + 2) . ':Q' . ($index + 2));
     //             $cellStyle->getFont()->setName($fontFamily);
     //             $cellStyle->getFont()->setSize($fontSize);
     //             $cellStyle->getFont()->setColor(new \PhpOffice\PhpSpreadsheet\Style\Color($fontColor));
@@ -308,61 +360,108 @@ class QueryModel extends CI_Model
     //     $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
     //     $writer->save('php://output');
     // }
-    public function excel($heading_name, $mapped_field, $font_style, $font_color, $font_size, $cell_fill_color, $modific)
+    // public function excel($heading_name, $mapped_field, $font_style, $font_color, $font_size, $cell_fill_color, $modific)
+    // public function getColumnIndex($columnName)
+    // {
+    //     return $ColumnIndex = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($columnName) - 1;
+    // }
+
+    public function excel($format_array, $data, $pid)
     {
+        $rowData = [];
+        $fieldName = [];
+        foreach ($format_array as $val) {
+            $fieldName[] = $val->heading_name;
+        }
+      
         // php spreadsheet
         $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
         // Set active sheet
         $sheet = $spreadsheet->getActiveSheet();
-        //column names
-        $fieldName = array("Heading Name", "Mapped With", "Font Style", "Font Color", "Font Size", "Cell Fill Color", "Modification");
-
-        // Set cell styles for each column header
-        $columnCount = count($fieldName);
-        for ($i = 1; $i <= $columnCount; $i++) {
-            $cell = $sheet->getCellByColumnAndRow($i, 1);
-            $cell->setValue($fieldName[$i - 1]);
-            $cell->getStyle()->getFont()->setBold(true);
-            $cell->getStyle()->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
-            $cell->getStyle()->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
-            $cell->getStyle()->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('FFCCCCCC');
-            $cell->getStyle()->getFont()->setSize(12);
-        }
-
-        // Add data rows
-        if (count($heading_name) != 0) {
-            foreach ($heading_name as $index => $heading) {
-                $mapField = $mapped_field[$index];
-                $fontStyle = $font_style[$index];
-                $fontColor = $font_color[$index];
-                $fontSize = $font_size[$index];
-                $fillColor = $cell_fill_color[$index];
-                $modificField = $modific[$index];
-
-                $sheet->setCellValue('A' . ($index + 2), $heading)
-                    ->setCellValue('B' . ($index + 2), $mapField)
-                    ->setCellValue('C' . ($index + 2), $fontStyle)
-                    ->setCellValue('D' . ($index + 2), $fontColor)
-                    ->setCellValue('E' . ($index + 2), $fontSize)
-                    ->setCellValue('F' . ($index + 2), $modificField);
-
-                // Set cell styles for each data row
-                $cell = $sheet->getCellByColumnAndRow(1, $index + 2);
-                $cell->getStyle()->getFont()->setName($fontStyle);
-                $cell->getStyle()->getFont()->setSize($fontSize);
-                $cell->getStyle()->getFont()->getColor()->setARGB("FF8080");
-                $cell->getStyle()->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB($fillColor);
+        // Add heading row
+        $sheet->fromArray($fieldName, null, 'A1');
+          // Add the heading row to the sheet
+          $column_index = [];
+          foreach ($sheet->getRowIterator(1, 1) as  $row) {
+              foreach ($row->getCellIterator() as $index  => $cell) {
+                  if ($cell->getValue()) {
+                      $column_index[] = $cell->getColumn();
+                    //   break 2;
+                  }
+              }
+          }
+         
+        foreach ($data as $item) {
+            $row = [];
+            foreach ($format_array as $format) {
+                $map_with = $format->map_with;
+                if (isset($item->$map_with)) {
+                    $row[$format->heading_name] = $item->$map_with;
+                    $row['font_style'] = $format->font_style;
+                    $row['font_color'] = $format->font_color;
+                    $row['font_size'] = $format->font_size;
+                    $row['cell_fill_col'] = $format->cell_fill_col;
+                } else {
+                    $row[$format->heading_name] = $item->$map_with;
+                    $row['font_style'] = $format->font_style;
+                    $row['font_color'] = $format->font_color;
+                    $row['font_size'] = $format->font_size;
+                    $row['cell_fill_col'] = $format->cell_fill_col;
+                }
+            }
+            if (!empty($row)) {
+                $rowData[] = $row;
             }
         }
-
+        foreach ($rowData as $index => $row) {
+                        $dataToPrint = $row;
+                        unset($dataToPrint['font_style'], $dataToPrint['font_size'], $dataToPrint['font_color'], $dataToPrint['cell_fill_col']);
+                        $sheet->fromArray($dataToPrint, null, 'A' . ($index + 2));
+                        // foreach ($column_index as $name) {
+                        //     echo"<pre>";
+                        //     print_r($name);
+                            $cellStyle = $sheet->getStyle("A" . ($index + 2));
+                            $cellStyle->applyFromArray([
+                                'font' => [
+                                    'name' => $row['font_style'],
+                                    'size' => $row['font_size'],
+                                    'color' => [
+                                        'argb' =>str_replace('#', '', $row['font_color']),
+                                    ],
+                                ],
+                                'fill' => [
+                                    'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
+                                    'startColor' => [
+                                        'argb' => str_replace('#', '', $row['cell_fill_col']),
+                                    ],
+                                ],
+                            ]);
+                        // }
+                }
+                  //   break 2;
+            
         // Set download headers
-        $fileName = "excel.xlsx";
+        $fileName ="excel.xlsx";
         header('Content-Type: application/vnd.ms-excel');
         header('Content-Disposition: attachment;filename="' . $fileName . '"');
         header('Cache-Control: max-age=0');
 
         // Save spreadsheet as Excel file and output to browser
         $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+        // $writer->load('php://output');
         $writer->save('php://output');
+    }
+
+    public function calculation($dataToPrint, $data, $pid)
+    {
+        $policy_info = $this->qm->single("ad_policy", "*", array('policy_id' => $pid));
+        foreach ($data as $key => $value) {
+            # code...
+            echo "<pre>";
+            print_r($dataToPrint);
+            echo "<pre>";
+            print_r($value);
+        }
+        die();
     }
 }

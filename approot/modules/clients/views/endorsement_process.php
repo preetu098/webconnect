@@ -1,3 +1,13 @@
+<style>
+    .form-control {
+        background: #fff;
+        border: 0.0625rem solid #886cc0;
+        padding: 0.3125rem 1.25rem;
+        color: #6e6e6e;
+        height: 3.5rem;
+        border-radius: 1rem;
+    }
+</style>
 <div class="content-body">
     <div class="container-fluid">
         <div class="row page-titles">
@@ -10,6 +20,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
+
                         <h4 class="card-title">Endorsement Addition List</h4>
                         <a href="<?= base_url('Clients/endorsement_deletion/'); ?><?= $cid; ?>/<?= $pid; ?>" class="btn btn-primary">Deletion List</a>
                         <!-- <a href="<?= base_url('Clients/endorsement_format_download/'); ?><?= $cid; ?>/<?= $pid; ?>" class="btn btn-primary">Download</a> -->
@@ -167,13 +178,7 @@
                                                         <?php echo date("d-m-Y", strtotime($emp->doj)); ?>
                                                     </td>
                                                     <td>
-                                                        <?php
-                                                        if ($EED >= 43) {
-                                                            echo '43';
-                                                        } else {
-                                                            echo $EED;
-                                                        }
-                                                        ?>
+                                                          <?php echo $emp->eed_cal ?>
                                                     </td>
 
                                                     <td>
@@ -199,10 +204,10 @@
                                                         ?>
                                                     </td>
                                                     <td>
-                                                        <?php echo $policy_premium_info->premium; ?>
+                                                        <?php echo $emp->premium_cal; ?>
                                                     </td>
                                                     <td>
-                                                        <?php echo $diffDays; ?>
+                                                        <?php echo $emp->days_coverage_cal; ?>
                                                     </td>
                                                     <?php
                                                     if ($endorsment_calculations_info->basis_of_calculation == "pro_rata_basis") {
@@ -210,29 +215,29 @@
 
                                                     ?>
                                                         <td>
-                                                            <?php echo (int) $pro_rata ?>
+                                                            <?php echo (int) $emp->pro_rata_premium_cal ?>
                                                         </td>
                                                         <td>
-                                                            <?php echo (int) $pro_gst_premium ?>
+                                                            <?php echo (int) $emp->gst_cal ?>
                                                         </td>
                                                         <td>
-                                                            <?php echo (int) $pro_rata_gst_premium ?>
+                                                            <?php echo (int) $emp->pro_rata_premium_gst_cal ?>
                                                         </td>
                                                     <?php
                                                     } else {
                                                     ?>
                                                         <td>
-                                                            <?php echo $short_peroid_rate; ?>
+                                                            <?php echo $$emp->short_period_rate_cal; ?>
                                                         </td>
 
                                                         <td>
-                                                            <?php echo $premium; ?>
+                                                            <?php echo $short_period_premium_cal; ?>
                                                         </td>
                                                         <td>
-                                                            <?php echo $gst_premium; ?>
+                                                            <?php echo $emp->gst_cal; ?>
                                                         </td>
                                                         <td>
-                                                            <?php echo $short_gst_premium; ?>
+                                                            <?php echo $emp->short_period_premium_gst_cal; ?>
                                                         </td>
 
                                                     <?php
@@ -257,35 +262,45 @@
 
     </div>
 
+    <?php
 
+    $policy = $this->qm->single("ri_clientpolicy_tbl", "*", array('cid' => $cid, 'id' => $pid));
+    $policy_detail = $this->qm->single('ad_policy_type', "*", array('policy_dept_id' => '7', 'policy_type_id' => $policy->policy_type));
+    $detail = $this->qm->single("ad_policy", "*", array('policy_no' => $policy->policy_num));
+    $companyName = $this->qm->single('ad_crm_account', "*", array('account_type_id' => '1', "account_id" => $detail->insurer_account_id));
+    $insuranceCompany = $this->qm->groupByAll('template_format', '*', array('cid' => $detail->insurer_account_id), array("policy_type_name", "endor_type"));
+    ?>
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog  modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Select Format </h5>
+                    <h5 class="modal-title" id="staticBackdropLabel"><?php echo $companyName->account_name ?> </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <input type="checkbox" name="format" value="chech"> check
-                        <br>
-                        <input type="checkbox" name="format" value="chech"> check
-                        <br>
-                        <input type="checkbox" name="format" value="chech"> check
-                        <br>
-                        <input type="checkbox" name="format" value="chech"> check
-                        <br>
-                        <input type="checkbox" name="format" value="chech"> check
-                        <br>
-                        <input type="checkbox" name="format" value="chech"> check
+                    <form method="POST" action="<?= base_url('clients/download_template_excel') ?>">
+                        <input type="hidden" name="cid" value="<?php echo $cid;  ?>">
+                        <input type="hidden" name="companyId" value="<?php echo $detail->insurer_account_id;  ?>">
+                        <input type="hidden" name="pid" value="<?php echo $pid;  ?>">
+                        <!-- <input type="hidden" name="policy->policy_type" value="<?php echo $policy->policy_type;  ?>"> -->
+                        <select name="format" class="form-control" require>
+                            <option value="">Select Format</option>
+                            <?php
+                            foreach ($insuranceCompany as $index => $company) {;
+                            ?>
+                                <option value="<?php echo $policy->policy_type  ?>"><?php echo $policy_detail->policy_type_name . " - " . $company->endor_type;  ?></option>
+                            <?php }
+                            ?>
+                        </select>
+                        <div class="modal-footer">
+                            <button type="sumit" class="btn btn-primary">Submit</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
+                        </div>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
-                </div>
+
             </div>
         </div>
     </div>
