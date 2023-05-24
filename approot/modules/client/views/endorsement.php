@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <!--<div class="row page-titles">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active"><a href="<?=base_url('')?>">Home ></a></li>
+                <li class="breadcrumb-item active"><a href="<?= base_url('') ?>">Home ></a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Endorsements</a></li>
             </ol>
         </div>-->
@@ -25,13 +25,13 @@
                                 </tr>
                             </table>
                         </form>
-                        <a href="<?=base_url('client/downloadend/'.$pid)?>/2" class="btn btn-outline-info btn-rounded btn-sm fs-18">Download</a>
+                        <a href="<?= base_url('client/downloadend/' . $pid) ?>/2" class="btn btn-outline-info btn-rounded btn-sm fs-18">Download</a>
                         <a href="javascript:void(0)" id="proceed_endorsment" class="btn btn-outline-info btn-rounded btn-sm fs-18">Proceed For Endorsment</a>
                         </h4>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                                <table id="example_" class="table display endorsementtable" style="min-width: 845px">
+                            <table id="example_" class="table display endorsementtable" style="min-width: 845px">
                                 <thead>
                                     <tr>
                                         <th>Emp Id</th>
@@ -41,7 +41,7 @@
                                         <th>Mode</th>
                                         <th>Hr Approval Date</th>
                                         <th>Status</th>
-                                        <th>Doc Upload</th>                                                
+                                        <th>Doc Upload</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -51,34 +51,34 @@
                                             $com = $this->qm->single("ri_clientpolicy_tbl","*",array('cid'=>$cid));
                                         ?>
                                     <tr>
-                                        <td><?=$res->emp_id?></td>
-                                        <td><?=$res->emp_name?></td>
-                                        <td><?=$res->emp_name?></td>
-                                        <td>Self /<br><?=$res->gender?></td>
-                                        <td><?=$res->mode?></td>
-                                        <td><?=getDMYDate($res->hr_approval_date, false) ?></td>
-                                        <td><a href="javascript:;" class="badge badge-success"><?=($res->status==3)?"Hr Approval Pending":(($res->status==2)?"Under process":"")?></a></td>
+                                        <td><?= $res->emp_id ?></td>
+                                        <td><?= $res->emp_name ?></td>
+                                        <td><?= $res->emp_name ?></td>
+                                        <td>Self /<br><?= $res->gender ?></td>
+                                        <td><?= $res->mode ?></td>
+                                        <td><?= getDMYDate($res->hr_approval_date, false) ?></td>
+                                        <td><a href="javascript:;" class="badge badge-success"><?= ($res->status == 3) ? "Hr Approval Pending" : (($res->status == 2) ? "Under process" : "") ?></a></td>
                                         <td>
-                                        <?php if(!empty($res->pimage)): ?>
-                                            <a target="_blank" href="<?= base_url('external/uploads/'.$res->pimage) ?>">View</a>
-                                        <?php else: ?>
-                                            N/A
-                                        <?php endif; ?>
+                                            <?php if (!empty($res->pimage)) : ?>
+                                                <a target="_blank" href="<?= base_url('external/uploads/' . $res->pimage) ?>">View</a>
+                                            <?php else : ?>
+                                                N/A
+                                            <?php endif; ?>
                                         </td>
                                     </tr>
-                                    <?php 
-                                    }  
-                                    foreach($resDep as $rr){
-                                        $empRes = $this->qm->single("ri_employee_tbl","*",array('eid'=>$rr->eid, 'relation'=>'Self', 'cid'=>$cid, 'pid'=>$pid));
-                                    ?>
+                                <?php
+                                }
+                                foreach ($resDep as $rr) {
+                                    $empRes = $this->qm->single("ri_employee_tbl", "*", array('eid' => $rr->eid, 'relation' => 'Self', 'cid' => $cid, 'pid' => $pid));
+                                ?>
                                     <tr>
-                                            <td><?=$rr->emp_id?></td>
+                                        <td><?= $rr->emp_id ?></td>
                                         <td><?php echo ($empRes) ? $empRes->emp_name : ''; ?></td>
-                                        <td><?=$rr->name?></td>
-                                        <td><?=$rr->reltype?><br><?=$rr->gender?></td>
-                                        <td><?=$rr->mode?></td>
+                                        <td><?= $rr->name ?></td>
+                                        <td><?= $rr->reltype ?><br><?= $rr->gender ?></td>
+                                        <td><?= $rr->mode ?></td>
                                         <td><?= getDMYDate($rr->hr_approval_date, false) ?></td>
-                                        <td><a href="javascript:;" class="badge badge-success"><?=($rr->status==3)?"Hr Approval Pending":(($rr->status==2)?"Under process":"")?></a></td>
+                                        <td><a href="javascript:;" class="badge badge-success"><?= ($rr->status == 3) ? "Hr Approval Pending" : (($rr->status == 2) ? "Under process" : "") ?></a></td>
                                         <td>N/A</td>
                                     </tr>
                                     <?php }
@@ -98,7 +98,7 @@
                                 <h4><i class="fas fa-download"></i> Booked Endorsement</h4>
                                 <hr>
                                 <ul>
-                                    <?php
+                                <?php
                                     $cnt=0;
                                     $gp = $this->qm->all("ri_clientpolicy_tbl","*",array('cid'=>$cid,'id'=>$pid));
                                     foreach($gp as $gp){

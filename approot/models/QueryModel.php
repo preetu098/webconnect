@@ -16,25 +16,26 @@ class QueryModel extends CI_Model
     {
 
         if ($this->db->insert($table, $dataArr)) {
-           
+
             return $this->db->insert_id();
         }
     }
 
     public function update($table, $dataArr, $where)
     {
-   
+
         $this->db
-        ->set($dataArr)
-        ->where($where)
-        ->update($table);
-         return ($this->db->affected_rows() > 0) ? TRUE : FALSE;
-       
-        
+            ->set($dataArr)
+            ->where($where)
+            ->update($table);
+        return ($this->db->affected_rows() > 0) ? TRUE : FALSE;
     }
 
     public function delete($table, $where)
     {
+        // var_dump($table);
+        // var_dump($where);
+        // die();
         $this->db->where($where);
         return $this->db->delete($table);
         //echo $this->db->last_query();
@@ -373,24 +374,24 @@ class QueryModel extends CI_Model
         foreach ($format_array as $val) {
             $fieldName[] = $val->heading_name;
         }
-      
+
         // php spreadsheet
         $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
         // Set active sheet
         $sheet = $spreadsheet->getActiveSheet();
         // Add heading row
         $sheet->fromArray($fieldName, null, 'A1');
-          // Add the heading row to the sheet
-          $column_index = [];
-          foreach ($sheet->getRowIterator(1, 1) as  $row) {
-              foreach ($row->getCellIterator() as $index  => $cell) {
-                  if ($cell->getValue()) {
-                      $column_index[] = $cell->getColumn();
+        // Add the heading row to the sheet
+        $column_index = [];
+        foreach ($sheet->getRowIterator(1, 1) as  $row) {
+            foreach ($row->getCellIterator() as $index  => $cell) {
+                if ($cell->getValue()) {
+                    $column_index[] = $cell->getColumn();
                     //   break 2;
-                  }
-              }
-          }
-         
+                }
+            }
+        }
+
         foreach ($data as $item) {
             $row = [];
             foreach ($format_array as $format) {
@@ -414,34 +415,34 @@ class QueryModel extends CI_Model
             }
         }
         foreach ($rowData as $index => $row) {
-                        $dataToPrint = $row;
-                        unset($dataToPrint['font_style'], $dataToPrint['font_size'], $dataToPrint['font_color'], $dataToPrint['cell_fill_col']);
-                        $sheet->fromArray($dataToPrint, null, 'A' . ($index + 2));
-                        // foreach ($column_index as $name) {
-                        //     echo"<pre>";
-                        //     print_r($name);
-                            $cellStyle = $sheet->getStyle("A" . ($index + 2));
-                            $cellStyle->applyFromArray([
-                                'font' => [
-                                    'name' => $row['font_style'],
-                                    'size' => $row['font_size'],
-                                    'color' => [
-                                        'argb' =>str_replace('#', '', $row['font_color']),
-                                    ],
-                                ],
-                                'fill' => [
-                                    'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
-                                    'startColor' => [
-                                        'argb' => str_replace('#', '', $row['cell_fill_col']),
-                                    ],
-                                ],
-                            ]);
-                        // }
-                }
-                  //   break 2;
-            
+            $dataToPrint = $row;
+            unset($dataToPrint['font_style'], $dataToPrint['font_size'], $dataToPrint['font_color'], $dataToPrint['cell_fill_col']);
+            $sheet->fromArray($dataToPrint, null, 'A' . ($index + 2));
+            // foreach ($column_index as $name) {
+            //     echo"<pre>";
+            //     print_r($name);
+            $cellStyle = $sheet->getStyle("A" . ($index + 2));
+            $cellStyle->applyFromArray([
+                'font' => [
+                    'name' => $row['font_style'],
+                    'size' => $row['font_size'],
+                    'color' => [
+                        'argb' => str_replace('#', '', $row['font_color']),
+                    ],
+                ],
+                'fill' => [
+                    'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
+                    'startColor' => [
+                        'argb' => str_replace('#', '', $row['cell_fill_col']),
+                    ],
+                ],
+            ]);
+            // }
+        }
+        //   break 2;
+
         // Set download headers
-        $fileName ="excel.xlsx";
+        $fileName = "excel.xlsx";
         header('Content-Type: application/vnd.ms-excel');
         header('Content-Disposition: attachment;filename="' . $fileName . '"');
         header('Cache-Control: max-age=0');
@@ -450,18 +451,5 @@ class QueryModel extends CI_Model
         $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
         // $writer->load('php://output');
         $writer->save('php://output');
-    }
-
-    public function calculation($dataToPrint, $data, $pid)
-    {
-        $policy_info = $this->qm->single("ad_policy", "*", array('policy_id' => $pid));
-        foreach ($data as $key => $value) {
-            # code...
-            echo "<pre>";
-            print_r($dataToPrint);
-            echo "<pre>";
-            print_r($value);
-        }
-        die();
     }
 }

@@ -169,8 +169,6 @@ class Client extends MY_Controller
                     redirect("client/endorsement/$pid");
                 }
             }
-
-            
         }
     }
 

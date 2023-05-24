@@ -446,24 +446,24 @@ class Clients extends MY_Controller
         }
         if (!empty($data['endorscalc'])) {
             $up = $this->qm->update('endorsment_calculations', $postdata, $where);
-            $this->saveCalculations($cid,$pic);
+            $this->saveCalculations($cid, $pic);
         } else {
             $in = $this->qm->insert('endorsment_calculations', $postdata);
-            $this->saveCalculations($cid,$pic);
+            $this->saveCalculations($cid, $pic);
         }
 
         redirect("clients/endorsement/$cid/$pid", $data);
     }
-    public function saveCalculations($cid,$pid){
-       try {
-        $postdata=[];
-        $endorsment_calculations_info = $this->qm->single("endorsment_calculations", "*", array('cid' => $cid, 'pid' => $pid));
-        $endorsment_calculations_info = $this->qm->single("endorsment_calculations", "*", array('cid' => $cid, 'pid' => $pid));
-        $policy_info = $this->qm->single("ad_policy", "*", array('policy_id' => $pid));
-        $policy_premium_info = $this->qm->single("policy_premium", "*", array('cid' => $cid, 'pid' => $pid));
-        $empl = $this->qm->getAll('ri_employee_tbl', '*', array('cid' => $cid, 'pid' => $pid,'mode'=>"New Addition"));
-        
-        foreach ($empl  as $emp) {
+    public function saveCalculations($cid, $pid){
+        try {
+            $postdata=[];
+            $endorsment_calculations_info = $this->qm->single("endorsment_calculations", "*", array('cid' => $cid, 'pid' => $pid));
+            $endorsment_calculations_info = $this->qm->single("endorsment_calculations", "*", array('cid' => $cid, 'pid' => $pid));
+            $policy_info = $this->qm->single("ad_policy", "*", array('policy_id' => $pid));
+            $policy_premium_info = $this->qm->single("policy_premium", "*", array('cid' => $cid, 'pid' => $pid));
+            $empl = $this->qm->getAll('ri_employee_tbl', '*', array('cid' => $cid, 'pid' => $pid, 'mode' => "New Addition"));
+
+            foreach ($empl  as $emp) {
                 $date_of_joining = date("Y-m-d", strtotime($emp->doj));
                 $date_of_policy_expire = date("Y-m-d", strtotime($policy_info->expiry_on));
                 $diffDays = $this->dateDifference($date_of_joining, $date_of_policy_expire);
@@ -471,7 +471,7 @@ class Clients extends MY_Controller
                 $diffDays = abs($diffDays) + 1;
                 $pro_date_of_policy_start = date("Y-m-d", strtotime($policy_info->start_on));
                 $pro_date_of_policy_expire = date("Y-m-d", strtotime($policy_info->expiry_on));
-                $pro_diffDays =$this->dateDifference($pro_date_of_policy_start, $pro_date_of_policy_expire);
+                $pro_diffDays = $this->dateDifference($pro_date_of_policy_start, $pro_date_of_policy_expire);
                 $pro_diffDays = abs($pro_diffDays) + 1;
                 $pro_rata = (($policy_premium_info->premium / $pro_diffDays) * $diffDays);
                 if ($endorsment_calculations_info->gst == 1) {
@@ -510,37 +510,32 @@ class Clients extends MY_Controller
                     $premium = $policy_premium_info->premium * (100 / 100);
                     $short_peroid_rate = '100%';
                 }
-                $postdata['eed_cal'] = $EED>= 43? 43:$EED;
-                $postdata['premium_cal'] =$policy_premium_info->premium;
+                $postdata['eed_cal'] = $EED >= 43 ? 43 : $EED;
+                $postdata['premium_cal'] = $policy_premium_info->premium;
                 $postdata['days_coverage_cal'] = $diffDays;
                 if ($endorsment_calculations_info->basis_of_calculation == "pro_rata_basis") {
-                        $postdata['pro_rata_premium_cal'] =$pro_rata?(int)$pro_rata:0 ;
-                        $postdata['gst_cal'] = $pro_gst_premium?(int) $pro_gst_premium :0;
-                        $postdata['pro_rata_premium_gst_cal'] = $pro_rata_gst_premium ?(int) $pro_rata_gst_premium:0;
+                    $postdata['pro_rata_premium_cal'] = $pro_rata ? (int)$pro_rata : 0;
+                    $postdata['gst_cal'] = $pro_gst_premium ? (int) $pro_gst_premium : 0;
+                    $postdata['pro_rata_premium_gst_cal'] = $pro_rata_gst_premium ? (int) $pro_rata_gst_premium : 0;
 
-                        $postdata['short_period_rate_cal'] = 0;
-                        $postdata['short_period_premium_cal'] = 0;
-                        $postdata['short_period_premium_gst_cal'] = 0;
-                    } else {
-                        $postdata['short_period_rate_cal'] = $short_peroid_rate?$short_peroid_rate:0;
-                        $postdata['short_period_premium_cal'] = $premium?$premium:0;
-                        $postdata['gst_cal'] = $gst_premium?$gst_premium:0;
-                        $postdata['short_period_premium_gst_cal'] = $short_gst_premium?$short_gst_premium:0;
-                        $postdata['pro_rata_premium_cal'] =0;
-                        $postdata['pro_rata_premium_gst_cal'] = 0;
-                    }
+                    $postdata['short_period_rate_cal'] = 0;
+                    $postdata['short_period_premium_cal'] = 0;
+                    $postdata['short_period_premium_gst_cal'] = 0;
+                } else {
+                    $postdata['short_period_rate_cal'] = $short_peroid_rate ? $short_peroid_rate : 0;
+                    $postdata['short_period_premium_cal'] = $premium ? $premium : 0;
+                    $postdata['gst_cal'] = $gst_premium ? $gst_premium : 0;
+                    $postdata['short_period_premium_gst_cal'] = $short_gst_premium ? $short_gst_premium : 0;
+                    $postdata['pro_rata_premium_cal'] = 0;
+                    $postdata['pro_rata_premium_gst_cal'] = 0;
+                }
                 $where = array('pid' => $pid, 'cid' => $cid, 'eid' => $emp->eid);
                 $update = $this->qm->update('ri_employee_tbl', $postdata, $where);
-                
+            }
+        } catch (\Exception $e) {
         }
-       } catch (\Exception $e) {
-         
-              
-       }
-      
-        
     }
-     public  function dateDifference($start_date, $end_date)
+    public  function dateDifference($start_date, $end_date)
     {
         $start_array = date_parse($start_date);
         $end_array = date_parse($end_date);
@@ -549,12 +544,12 @@ class Clients extends MY_Controller
         return round(($end_date - $start_date), 0);
     }
 
-    
-    
+
+
 
     public function endorsmentCalculationMethod($cid, $pid)
-    {       
-        
+    {
+
         $data = [];
         $post = $this->input->post();
         $where = "pid = '" . $pid . "' and cid = '" . $cid . "'";
@@ -897,12 +892,17 @@ class Clients extends MY_Controller
     public function create_template_master($cid, $policy_type, $endor_type)
     {
 
-        $data = [];
-        $data['cid'] = $cid;
-        $data['policy_type'] = $policy_type;
-        $data['endor_type'] = $endor_type;
-        $data['mainContent'] = "clients/create_template_master";
-        $this->load->view('panel', $data);
+
+        if (!empty($cid) &&  !empty($policy_type) && !empty($endor_type)) {
+            $data = [];
+            $data['cid'] = $cid;
+            $data['policy_type'] = $policy_type;
+            $data['endor_type'] = $endor_type;
+            $data['mainContent'] = "clients/create_template_master";
+            $this->load->view('panel', $data);
+        } else {
+            redirect("clients/template_master/");
+        }
     }
     public function template_format_lists()
     {
@@ -915,10 +915,14 @@ class Clients extends MY_Controller
         $this->load->view('panel', $data);
     }
 
-    public function delete_template($policy_type_id, $endor_type)
+    public function delete_template($endor_type, $policy_type_id)
     {
-        if (!empty($endor_type)) {
-            $this->qm->delete("template_format", array('policy_type_id' => $policy_type_id, 'endor_type' => $endor_type));
+
+        if (!empty($endor_type) && !empty($policy_type_id)) {
+            $templates = $this->qm->all('template_format', '*', array('policy_type_id' => $policy_type_id, 'endor_type' => $endor_type));
+            foreach ($templates as $item) {
+                $this->qm->delete("template_format", array('id' => $item->id));
+            }
             $this->session->set_flashdata('success', 'Template Deleted Successfully');
         }
         redirect("clients/template_format_lists/");
@@ -1028,8 +1032,10 @@ class Clients extends MY_Controller
         $companyId =  $this->input->post('companyId');
         $cid =  $this->input->post('cid');
         $pid =  $this->input->post('pid');
-        $format =  $this->input->post('format');
-        $companyFormat = $this->qm->all('template_format', '*', array('policy_type_id' => $format, 'cid' => $companyId));
+        $format = explode("-", $this->input->post('format'));
+        $policy_type_id = $format[0];
+        $endor_type = $format[1];
+        $companyFormat = $this->qm->all('template_format', '*', array('policy_type_id' => $policy_type_id, 'cid' => $companyId, "endor_type" => $endor_type));
         $emp = $this->qm->all('ri_employee_tbl', '*', array('cid' => $cid, 'pid' => $pid, "mode" => "New Addition"));
         $this->qm->excel($companyFormat, $emp, $pid);
     }
